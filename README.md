@@ -1,2 +1,1 @@
 # mystudy
-bitcamp study
