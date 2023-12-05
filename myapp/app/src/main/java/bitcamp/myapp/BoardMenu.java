@@ -21,7 +21,7 @@ public class BoardMenu {
 
     loop:
     while (true) {
-      String input = Prompt.input("메인/게시글");
+      String input = Prompt.input("메인/게시글> ");
 
       switch (input) {
         case "1":
