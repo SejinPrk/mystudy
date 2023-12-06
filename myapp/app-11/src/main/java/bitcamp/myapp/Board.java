@@ -1,9 +1,9 @@
 package bitcamp.myapp;
 
-public class Assignment {
+public class Board {
 
   String title;
   String content;
-  String deadline;
-
+  String writer;
+  String createdDate;
 }

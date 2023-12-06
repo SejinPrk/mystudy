@@ -15,4 +15,3 @@ public class Prompt {
     keyIn.close();
   }
 }
-
