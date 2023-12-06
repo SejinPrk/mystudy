@@ -8,7 +8,7 @@ public class AssignmentMenu {
   static void printMenu() {
     System.out.println("[과제]");
     System.out.println("1. 등록");
-    System.out.println("2. 상세조회");
+    System.out.println("2. 상세 조회");
     System.out.println("3. 변경");
     System.out.println("4. 삭제");
     System.out.println("5. 목록");
@@ -49,7 +49,8 @@ public class AssignmentMenu {
 
   static void add() {
     System.out.println("과제 등록:");
-    if (length >= assignments.length) {
+
+    if (length == assignments.length) {
       //System.out.println("과제를 더 이상 등록할 수 없습니다.");
       int oldSize = assignments.length;
       int newSize = oldSize + (oldSize / 2);
@@ -61,10 +62,9 @@ public class AssignmentMenu {
       }
 
       // 새 배열을 가리키도록 배열 레퍼런스를 변경
-
       assignments = arr;
-
     }
+
     Assignment assignment = new Assignment();
     assignment.title = Prompt.input("과제명? ");
     assignment.content = Prompt.input("내용? ");
@@ -101,6 +101,7 @@ public class AssignmentMenu {
 
   static void modify() {
     System.out.println("과제 변경:");
+
     int index = Integer.parseInt(Prompt.input("번호? "));
     if (index >= 0 && index >= length) {
       System.out.println("과제 번호가 유효하지 않습니다.");
@@ -116,6 +117,7 @@ public class AssignmentMenu {
 
   static void delete() {
     System.out.println("과제 삭제:");
+
     int index = Integer.parseInt(Prompt.input("번호? "));
     if (index >= 0 && index >= length) {
       System.out.println("과제 번호가 유효하지 않습니다.");
