@@ -4,7 +4,7 @@ public class MainMenu {
 
   static final String ANSI_CLEAR = "\033[0m";
   static final String ANSI_BOLD_RED = "\033[1;31m";
-  static final String ANSI_RED = "\033[0;31m";
+  static final String ANSsI_RED = "\033[0;31m";
   static final String APP_TITLE = ANSI_BOLD_RED + "[과제관리 시스템]" + ANSI_CLEAR;
   static final String[] MENUS = {
       "1. 과제",

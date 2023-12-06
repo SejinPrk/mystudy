@@ -36,7 +36,7 @@ public class BoardMenu {
     board.createdDate = "";
   }
 
-  public void execute() {
+  static void execute() {
     System.out.println("[게시글]");
     System.out.println("1. 등록");
     System.out.println("2. 조회");
@@ -72,7 +72,7 @@ public class BoardMenu {
     }
   }
 
-  public void printMenu() {
+  static void printMenu() {
     System.out.println("[게시글]");
     System.out.println("1. 등록");
     System.out.println("2. 조회");
