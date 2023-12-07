@@ -10,8 +10,7 @@ public class MainMenu {
       "1. 과제",
       "2. 게시글",
       "3. 회원",
-      "4. 가입인사",
-      "5. 도움말",
+      "4. 도움말",
       ANSI_RED + "0. 종료" + ANSI_CLEAR
   };
 
@@ -40,10 +39,8 @@ public class MainMenu {
           MemberMenu.execute();
           break;
         case "4":
-          GreetingBoardMenu.execute();
-          break;
-        case "5":
           System.out.println("도움말입니다.");
+          break;
         case "0":
           System.out.println("종료합니다.");
           return;

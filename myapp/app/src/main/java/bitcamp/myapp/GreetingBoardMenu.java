@@ -1,12 +1,12 @@
 package bitcamp.myapp;
 
-public class BoardMenu {
+public class GreetingBoardMenu {
 
-  static GreetingBoard[] boards = new GreetingBoard[3];
+  static GreetingBoard[] greetingboards = new GreetingBoard[3];
   static int length = 0;
 
   static void printMenu() {
-    System.out.println("[게시글]");
+    System.out.println("[가입인사]");
     System.out.println("1. 등록");
     System.out.println("2. 조회");
     System.out.println("3. 변경");
@@ -18,7 +18,7 @@ public class BoardMenu {
   static void execute() {
     printMenu();
     while (true) {
-      String input = Prompt.input("메인/게시글> ");
+      String input = Prompt.input("가입인사/게시글> ");
 
       switch (input) {
         case "1":
@@ -48,18 +48,18 @@ public class BoardMenu {
   }
 
   static void add() {
-    System.out.println("게시글 등록:");
+    System.out.println("가입인사 등록:");
 
-    if (length == boards.length) {
-      int oldSize = boards.length;
+    if (length == greetingboards.length) {
+      int oldSize = greetingboards.length;
       int newSize = oldSize + (oldSize >> 1);
 
       GreetingBoard[] arr = new GreetingBoard[newSize];
       for (int i = 0; i < oldSize; i++) {
-        arr[i] = boards[i];
+        arr[i] = greetingboards[i];
       }
 
-      boards = arr;
+      greetingboards = arr;
     }
 
     GreetingBoard greetingBoard = new GreetingBoard();
@@ -68,30 +68,30 @@ public class BoardMenu {
     greetingBoard.writer = Prompt.input("작성자? ");
     greetingBoard.createdDate = Prompt.input("작성일? ");
 
-    boards[length++] = greetingBoard;
+    greetingboards[length++] = greetingBoard;
   }
 
   static void list() {
-    System.out.println("게시글 목록:");
+    System.out.println("가입인사 목록:");
     System.out.printf("%-20s\t%10s\t%s\n", "Title", "Writer", "Date");
 
     for (int i = 0; i < length; i++) {
-      GreetingBoard greetingBoard = boards[i];
+      GreetingBoard greetingBoard = greetingboards[i];
       System.out.printf("%-20s\t%10s\t%s\n", greetingBoard.title, greetingBoard.writer,
           greetingBoard.createdDate);
     }
   }
 
   static void view() {
-    System.out.println("게시글 조회:");
+    System.out.println("가입인사 조회:");
 
     int index = Integer.parseInt(Prompt.input("번호? "));
     if (index < 0 || index >= length) {
-      System.out.println("게시글 번호가 유효하지 않습니다.");
+      System.out.println("가입인사 번호가 유효하지 않습니다.");
       return;
     }
 
-    GreetingBoard greetingBoard = boards[index];
+    GreetingBoard greetingBoard = greetingboards[index];
     System.out.printf("제목: %s\n", greetingBoard.title);
     System.out.printf("내용: %s\n", greetingBoard.content);
     System.out.printf("작성자: %s\n", greetingBoard.writer);
@@ -99,15 +99,15 @@ public class BoardMenu {
   }
 
   static void modify() {
-    System.out.println("게시글 변경:");
+    System.out.println("가입인사 변경:");
 
     int index = Integer.parseInt(Prompt.input("번호? "));
     if (index < 0 || index >= length) {
-      System.out.println("게시글 번호가 유효하지 않습니다.");
+      System.out.println("가입인사 번호가 유효하지 않습니다.");
       return;
     }
 
-    GreetingBoard greetingBoard = boards[index];
+    GreetingBoard greetingBoard = greetingboards[index];
     greetingBoard.title = Prompt.input("제목(%s)? ", greetingBoard.title);
     greetingBoard.content = Prompt.input("내용(%s)? ", greetingBoard.content);
     greetingBoard.writer = Prompt.input("작성자(%s)? ", greetingBoard.writer);
@@ -115,17 +115,17 @@ public class BoardMenu {
   }
 
   static void delete() {
-    System.out.println("게시글 삭제:");
+    System.out.println("가입인사 삭제:");
 
     int index = Integer.parseInt(Prompt.input("번호? "));
     if (index < 0 || index >= length) {
-      System.out.println("게시글 번호가 유효하지 않습니다.");
+      System.out.println("가입인사 번호가 유효하지 않습니다.");
       return;
     }
 
     for (int i = index; i < (length - 1); i++) {
-      boards[i] = boards[i + 1];
+      greetingboards[i] = greetingboards[i + 1];
     }
-    boards[--length] = null;
+    greetingboards[--length] = null;
   }
 }

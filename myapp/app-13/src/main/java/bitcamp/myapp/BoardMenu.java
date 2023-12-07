@@ -2,7 +2,7 @@ package bitcamp.myapp;
 
 public class BoardMenu {
 
-  static GreetingBoard[] boards = new GreetingBoard[3];
+  static Board[] boards = new Board[3];
   static int length = 0;
 
   static void printMenu() {
@@ -54,7 +54,7 @@ public class BoardMenu {
       int oldSize = boards.length;
       int newSize = oldSize + (oldSize >> 1);
 
-      GreetingBoard[] arr = new GreetingBoard[newSize];
+      Board[] arr = new Board[newSize];
       for (int i = 0; i < oldSize; i++) {
         arr[i] = boards[i];
       }
@@ -62,13 +62,13 @@ public class BoardMenu {
       boards = arr;
     }
 
-    GreetingBoard greetingBoard = new GreetingBoard();
-    greetingBoard.title = Prompt.input("제목? ");
-    greetingBoard.content = Prompt.input("내용? ");
-    greetingBoard.writer = Prompt.input("작성자? ");
-    greetingBoard.createdDate = Prompt.input("작성일? ");
+    Board board = new Board();
+    board.title = Prompt.input("제목? ");
+    board.content = Prompt.input("내용? ");
+    board.writer = Prompt.input("작성자? ");
+    board.createdDate = Prompt.input("작성일? ");
 
-    boards[length++] = greetingBoard;
+    boards[length++] = board;
   }
 
   static void list() {
@@ -76,9 +76,8 @@ public class BoardMenu {
     System.out.printf("%-20s\t%10s\t%s\n", "Title", "Writer", "Date");
 
     for (int i = 0; i < length; i++) {
-      GreetingBoard greetingBoard = boards[i];
-      System.out.printf("%-20s\t%10s\t%s\n", greetingBoard.title, greetingBoard.writer,
-          greetingBoard.createdDate);
+      Board board = boards[i];
+      System.out.printf("%-20s\t%10s\t%s\n", board.title, board.writer, board.createdDate);
     }
   }
 
@@ -91,11 +90,11 @@ public class BoardMenu {
       return;
     }
 
-    GreetingBoard greetingBoard = boards[index];
-    System.out.printf("제목: %s\n", greetingBoard.title);
-    System.out.printf("내용: %s\n", greetingBoard.content);
-    System.out.printf("작성자: %s\n", greetingBoard.writer);
-    System.out.printf("작성일: %s\n", greetingBoard.createdDate);
+    Board board = boards[index];
+    System.out.printf("제목: %s\n", board.title);
+    System.out.printf("내용: %s\n", board.content);
+    System.out.printf("작성자: %s\n", board.writer);
+    System.out.printf("작성일: %s\n", board.createdDate);
   }
 
   static void modify() {
@@ -107,11 +106,11 @@ public class BoardMenu {
       return;
     }
 
-    GreetingBoard greetingBoard = boards[index];
-    greetingBoard.title = Prompt.input("제목(%s)? ", greetingBoard.title);
-    greetingBoard.content = Prompt.input("내용(%s)? ", greetingBoard.content);
-    greetingBoard.writer = Prompt.input("작성자(%s)? ", greetingBoard.writer);
-    greetingBoard.createdDate = Prompt.input("작성일(%s)? ", greetingBoard.createdDate);
+    Board board = boards[index];
+    board.title = Prompt.input("제목(%s)? ", board.title);
+    board.content = Prompt.input("내용(%s)? ", board.content);
+    board.writer = Prompt.input("작성자(%s)? ", board.writer);
+    board.createdDate = Prompt.input("작성일(%s)? ", board.createdDate);
   }
 
   static void delete() {
