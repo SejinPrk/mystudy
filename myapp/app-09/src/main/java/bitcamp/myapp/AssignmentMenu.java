@@ -1,8 +1,9 @@
 package bitcamp.myapp;
 
-Public class AssignmentMenu {
+public class AssignmentMenu {
+
   static void printMenu() {
-    System.out.println("[게시글]");
+    System.out.println("[과제]");
     System.out.println("1. 등록");
     System.out.println("2. 조회");
     System.out.println("3. 변경");
@@ -14,7 +15,7 @@ Public class AssignmentMenu {
     printMenu();
 
     while (true) {
-      String input = prompt("메인/과제");
+      String input = Prompt.input("메인/과제");
 
       switch (input) {
         case "1":

@@ -2,8 +2,8 @@ package bitcamp.myapp;
 
 public class Member {
 
-  String name;
   String email;
+  String name;
   String password;
   String createdDate;
 }

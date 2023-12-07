@@ -1,6 +1,7 @@
 package bitcamp.myapp;
 
-Public class BoardMenu {
+public class BoardMenu {
+
   static void printMenu() {
     System.out.println("[게시글]");
     System.out.println("1. 등록");
@@ -9,10 +10,11 @@ Public class BoardMenu {
     System.out.println("4. 삭제");
     System.out.println("0. 이전");
   }
-  static void execute() {
 
+  static void execute() {
+    printMenu();
     while (true) {
-      String input = prompt("메인/게시판", keyIn);
+      String input = Prompt.input("메인/게시글");
 
       switch (input) {
         case "1":

@@ -48,7 +48,7 @@ tasks.named('test') {
 tasks.withType(JavaCompile).configureEach {
     // 프로젝트의 소스 파일 인코딩을 gradle에게 알려준다.
     // $javac -encoding UTF-8 ..
-    options.encoding = 'UTF-8' 
+    options.encoding = 'UTF-8'
 }
 
 // eclipse 프로젝트 이름을 설정하기(Eclipse로 컴파일 할 때)
@@ -57,8 +57,12 @@ eclipse {
         name = "myapp"
     }
     jdt {
-      sourceCompatibility = 21
-      targetCompatibility = 21
-      javaRuntimeName = "JavaSE-21"
+        sourceCompatibility = 21
+        targetCompatibility = 21
+        javaRuntimeName = "JavaSE-21"
     }
+}
+
+run {
+    standardInput = System.in
 }

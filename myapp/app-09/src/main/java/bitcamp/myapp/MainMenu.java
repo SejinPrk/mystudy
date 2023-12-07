@@ -1,6 +1,7 @@
 package bitcamp.myapp;
 
-Public class MainMenu{
+public class MainMenu {
+
   static final String ANSI_CLEAR = "\033[0m";
   static final String ANSI_BOLD_RED = "\033[1;31m";
   static final String ANSI_RED = "\033[0;31m";
@@ -20,27 +21,26 @@ Public class MainMenu{
     }
   }
 
-  static void execute(){
+  static void execute() {
     printMenu();
+
     while (true) {
-      String input = prompt("메인", keyIn);
+      String input = Prompt.input("메인");
 
       switch (input) {
         case "1":
-          onAssignment(keyIn);
+          AssignmentMenu.execute();
           break;
         case "2":
-          onBoard(keyIn);
+          BoardMenu.execute();
           break;
         case "3":
           System.out.println("도움말입니다.");
           break;
         case "4":
           System.out.println("종료합니다.");
-          break loop;
+          return;
         case "menu":
-          // 코드를 기능 단위로 묶어 메서드로 정의하면
-          // 메서드의 이름을 통해 해당 기능을 쉽게 유추할 수 있어 유지보수에 좋다.
           printMenu();
           break;
         default:

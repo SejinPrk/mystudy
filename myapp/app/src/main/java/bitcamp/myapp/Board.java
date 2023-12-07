@@ -6,5 +6,4 @@ public class Board {
   String content;
   String writer;
   String createdDate;
-
 }
