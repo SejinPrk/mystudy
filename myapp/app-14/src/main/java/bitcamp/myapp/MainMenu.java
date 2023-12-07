@@ -24,8 +24,6 @@ public class MainMenu {
   }
 
   static void execute() {
-    BoardMenu boardMenu = new BoardMenu("게시판");
-    BoardMenu greetingMenu = new BoardMenu("가입인사");
     printMenu();
 
     while (true) {
@@ -36,16 +34,17 @@ public class MainMenu {
           AssignmentMenu.execute();
           break;
         case "2":
-          boardMenu.execute();
+          BoardMenu.execute();
           break;
         case "3":
           MemberMenu.execute();
           break;
         case "4":
-          greetingMenu.execute();
+          GreetingBoardMenu.execute();
           break;
         case "5":
           System.out.println("도움말입니다.");
+          break;
         case "0":
           System.out.println("종료합니다.");
           return;

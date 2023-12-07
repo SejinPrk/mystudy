@@ -1,10 +1,9 @@
 package bitcamp.myapp;
 
-public class GreetingBoard {
+public class Board {
 
   String title;
   String content;
   String writer;
   String createdDate;
-
 }
