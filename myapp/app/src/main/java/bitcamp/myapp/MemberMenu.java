@@ -66,8 +66,8 @@ public class MemberMenu {
     }
 
     Member member = new Member();
-    member.name = Prompt.input("이름? ");
     member.email = Prompt.input("이메일? ");
+    member.name = Prompt.input("이름? ");
     member.password = Prompt.input("암호? ");
     member.createdDate = Prompt.input("가입일? ");
 
@@ -77,11 +77,11 @@ public class MemberMenu {
 
   static void list() {
     System.out.println("회원 목록:");
-    System.out.printf("%-20s\t%s\t%s\n", "이름", "이메일", "가입일");
+    System.out.printf("%-10s\t%30s\t%s\n", "이름", "이메일", "가입일");
 
     for (int i = 0; i < length; i++) {
       Member member = members[i];
-      System.out.printf("%-20s\t%s\t%s\n", member.name, member.email, member.createdDate);
+      System.out.printf("%-10s\t%30s\t%s\n", member.name, member.email, member.createdDate);
 
     }
   }
@@ -95,8 +95,8 @@ public class MemberMenu {
     }
 
     Member member = members[index];
-    System.out.printf("이름: %s\n", member.name);
     System.out.printf("이메일: %s\n", member.email);
+    System.out.printf("이름: %s\n", member.name);
     System.out.printf("가입일: %s\n", member.createdDate);
   }
 
@@ -110,9 +110,9 @@ public class MemberMenu {
     }
 
     Member member = members[index];
-    member.name = Prompt.input("이름(%s)? ", member.name);
     member.email = Prompt.input("이메일(%s)? ", member.email);
-    member.password = Prompt.input("비밀번호(%s)? ", member.password);
+    member.name = Prompt.input("이름(%s)? ", member.name);
+    member.password = Prompt.input("새 암호? "); // 원래 암호는 출력하면 안됨.
     member.createdDate = Prompt.input("가입일(%s)? ", member.createdDate);
 
   }
@@ -128,7 +128,6 @@ public class MemberMenu {
     for (int i = index; i < (length - 1); i++) {
       members[i] = members[i + 1]; // 다음 레퍼런스의 값을 삭제하려는 현재 레퍼런스로 이동(당겨옴)
     }
-    length--;
-    members[length] = null;
+    members[--length] = null;
   }
 }

@@ -88,7 +88,7 @@ public class AssignmentMenu {
   static void view() {
     System.out.println("과제 조회:");
     int index = Integer.parseInt(Prompt.input("번호? "));
-    if (index >= 0 && index >= length) {
+    if (index < 0 || index >= length) {
       System.out.println("과제 번호가 유효하지 않습니다.");
       return;
     }
@@ -103,7 +103,7 @@ public class AssignmentMenu {
     System.out.println("과제 변경:");
 
     int index = Integer.parseInt(Prompt.input("번호? "));
-    if (index >= 0 && index >= length) {
+    if (index < 0 || index >= length) {
       System.out.println("과제 번호가 유효하지 않습니다.");
       return;
     }
@@ -119,7 +119,7 @@ public class AssignmentMenu {
     System.out.println("과제 삭제:");
 
     int index = Integer.parseInt(Prompt.input("번호? "));
-    if (index >= 0 && index >= length) {
+    if (index < 0 || index >= length) {
       System.out.println("과제 번호가 유효하지 않습니다.");
       return;
     }
