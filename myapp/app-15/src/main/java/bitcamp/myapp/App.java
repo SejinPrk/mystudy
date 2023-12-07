@@ -7,8 +7,7 @@ public class App {
 
   public static void main(String[] args) {
     Prompt prompt = new Prompt(System.in);
-    MainMenu mainMenu = new MainMenu(prompt);
-    mainMenu.execute();
+    new MainMenu(prompt).execute();
     prompt.close();
   }
 }
