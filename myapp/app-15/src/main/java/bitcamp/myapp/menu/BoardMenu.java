@@ -8,7 +8,6 @@ public class BoardMenu {
   // 의존 객체(Dependency Object ==> dependency);
   // - 클래스가 작업을 수행할 때 사용하는 객체
   Prompt prompt;
-
   String title;
   Board[] boards = new Board[3];
   int length = 0;
