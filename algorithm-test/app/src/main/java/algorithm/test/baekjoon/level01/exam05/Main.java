@@ -1,3 +1,4 @@
+package algorithm.test.baekjoon.level01.exam05;
 import java.util.Scanner;
 public class Main {
   public static void main(String[] args) {
@@ -5,7 +6,7 @@ public class Main {
     int A = sc.nextInt();
     int B = sc.nextInt();
     sc.close();
-    int r = A + B;
+    double r =  (double) A / B;
     System.out.println(r);
   }
 }
