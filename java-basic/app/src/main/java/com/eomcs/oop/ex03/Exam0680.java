@@ -8,7 +8,7 @@ public class Exam0680 {
       b = 400;
     }
 
-    static int a = 100; 
+    static int a = 100;
 
     static {
       a = 200;
@@ -38,6 +38,8 @@ public class Exam0680 {
     // 2) 스태틱 블록을 한 개의 블록으로 합친다.
     //     static int a;
     //     static int b;
+    //
+    // 아래처럼 하나의 static 문으로 합쳐진다.
     //
     //     static {
     //       b = 400;

@@ -29,6 +29,15 @@ public class Exam0720 {
     }
   }
 
+  // public A(){
+  // a = 100;
+  // System.out.println("인스턴스 초기화 블록 실행!");
+  // a = 200;
+  // System.out.println("A() 생성자 호출");
+  //   }
+  // }
+  // 위와 똑같은 코드
+
   public static void main(String[] args) {
     A obj1 = new A();
     System.out.printf("a=%d, b=%d, c=%d\n", obj1.a, obj1.b, obj1.c);

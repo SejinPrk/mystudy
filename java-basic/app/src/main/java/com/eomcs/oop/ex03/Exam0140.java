@@ -5,8 +5,8 @@ package com.eomcs.oop.ex03;
 public class Exam0140 {
 
   static class A {
-    static int v1;
-    int v2;
+    static int v1; // 스태틱 변수
+    int v2; //논 스태틱 변수
   }
 
   public static void main(String[] args) {
@@ -20,7 +20,7 @@ public class Exam0140 {
     A.v1 = 100;
 
     // v2 는 인스턴스 변수이기 때문에 사용하기 전에 new 명령으로 먼저 생성해야 한다.
-    // A.v2 = 200; // 컴파일 오류!
+    // A.v2 = 200; // 인스턴스 주소 없이 선언하면 컴파일 오류!
 
     A p = new A();
     // 이제 v2 변수는 Heap에 생성되었다.

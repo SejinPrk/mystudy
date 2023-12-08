@@ -6,7 +6,7 @@ public class Exam0691 {
     static int a = 7;
     static {
       System.out.println("A.static{}");
-      a += B.b;
+      a += B.b; //잠깐, B 클래스가 먼저 로딩한 다음에 실행하자.
     }
   }
   static class B {
