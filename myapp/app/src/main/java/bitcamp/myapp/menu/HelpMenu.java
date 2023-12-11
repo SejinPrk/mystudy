@@ -14,7 +14,12 @@ public class HelpMenu implements Menu {
     this.title = title;
   }
 
-  public void execute() {
+  @Override
+  public String getTitle() {
+    return null;
+  }
+
+  public void execute(Prompt prompt) {
     System.out.printf("[%s]\n", this.title);
     System.out.println("도움말입니다.");
 
