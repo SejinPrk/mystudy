@@ -33,7 +33,7 @@ public class App {
     MenuGroup boardMenu = new MenuGroup("게시글");
 
     // 사용자로부터 게시글을 입력 받아서 배열에 저장하는 일을 한다.
-    MenuHandler boardAddHandler = new BoardAddHandler(prompt);
+    MenuHandler boardAddHandler = new BoardAddHandler(boardRepository, prompt);
 
     // "등록"이라는 메뉴를 선택했을 때 BoardAddHandler를 실행시키는 일을 한다.
     MenuItem boardAddMenu = new MenuItem("등록", boardAddHandler);
@@ -44,7 +44,7 @@ public class App {
     boardMenu.add(new MenuItem("조회", new BoardViewHandler()));
     boardMenu.add(new MenuItem("변경", new BoardModifyHandler()));
     boardMenu.add(new MenuItem("삭제", new BoardDeleteHandler()));
-    boardMenu.add(new MenuItem("목록", new BoardListHandler()));
+    boardMenu.add(new MenuItem("목록", new BoardListHandler(boardRepository)));
     mainMenu.add(boardMenu);
 
     MenuGroup memberMenu = new MenuGroup("회원");
