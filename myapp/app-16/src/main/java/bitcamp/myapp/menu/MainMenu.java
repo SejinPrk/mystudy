@@ -34,12 +34,7 @@ public class MainMenu implements Menu {
     }
   }
 
-  @Override
-  public String getTitle() {
-    return null;
-  }
-
-  public void execute(Prompt prompt) {
+  public void execute() {
 
     Menu boardMenu = new BoardMenu("게시판", this.prompt);
     Menu greetingMenu = new BoardMenu("가입인사", this.prompt);
@@ -54,19 +49,19 @@ public class MainMenu implements Menu {
 
       switch (input) {
         case "1":
-          assignmentMenu.execute(prompt);
+          assignmentMenu.execute();
           break;
         case "2":
-          boardMenu.execute(prompt);
+          boardMenu.execute();
           break;
         case "3":
-          memberMenu.execute(prompt);
+          memberMenu.execute();
           break;
         case "4":
-          greetingMenu.execute(prompt);
+          greetingMenu.execute();
           break;
         case "5":
-          helpMenu.execute(prompt);
+          helpMenu.execute();
           break;
         case "0":
           System.out.println("종료합니다.");
