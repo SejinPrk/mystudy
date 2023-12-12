@@ -13,7 +13,6 @@ import bitcamp.myapp.handler.board.BoardAddHandler;
 import bitcamp.myapp.handler.board.BoardDeleteHandler;
 import bitcamp.myapp.handler.board.BoardListHandler;
 import bitcamp.myapp.handler.board.BoardModifyHandler;
-import bitcamp.myapp.handler.board.BoardRepository;
 import bitcamp.myapp.handler.board.BoardViewHandler;
 import bitcamp.myapp.handler.member.MemberAddHandler;
 import bitcamp.myapp.handler.member.MemberDeleteHandler;
@@ -21,6 +20,7 @@ import bitcamp.myapp.handler.member.MemberListHandler;
 import bitcamp.myapp.handler.member.MemberModifyHandler;
 import bitcamp.myapp.handler.member.MemberRepository;
 import bitcamp.myapp.handler.member.MemberViewHandler;
+import bitcamp.util.BoardRepository;
 import bitcamp.util.Prompt;
 
 public class App {
