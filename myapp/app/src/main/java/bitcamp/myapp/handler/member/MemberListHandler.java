@@ -6,6 +6,7 @@ import bitcamp.myapp.vo.Member;
 import bitcamp.util.AnsiEscape;
 import java.util.ArrayList;
 
+
 public class MemberListHandler implements MenuHandler {
 
   ArrayList<Member> objectRepository;
@@ -20,9 +21,7 @@ public class MemberListHandler implements MenuHandler {
 
     System.out.printf("%-10s\t%30s\t%s\n", "이름", "이메일", "가입일");
 
-    Member[] members = new Member[this.objectRepository.size()];
-    this.objectRepository.toArray(members);
-
+    Member[] members = this.objectRepository.toArray(new Member[0]);
     for (Member member : members) {
       System.out.printf("%-10s\t%30s\t%s\n", member.name, member.email, member.createdDate);
     }

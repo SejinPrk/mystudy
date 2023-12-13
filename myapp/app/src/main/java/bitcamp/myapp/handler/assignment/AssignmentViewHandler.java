@@ -7,11 +7,11 @@ import bitcamp.util.AnsiEscape;
 import bitcamp.util.Prompt;
 import java.util.ArrayList;
 
-
 public class AssignmentViewHandler implements MenuHandler {
 
   Prompt prompt;
   ArrayList<Assignment> objectRepository;
+
 
   public AssignmentViewHandler(ArrayList<Assignment> objectRepository, Prompt prompt) {
     this.objectRepository = objectRepository;
@@ -28,6 +28,7 @@ public class AssignmentViewHandler implements MenuHandler {
       System.out.println("과제 번호가 유효하지 않습니다.");
       return;
     }
+
     System.out.printf("과제명: %s\n", assignment.title);
     System.out.printf("내용: %s\n", assignment.content);
     System.out.printf("제출 마감일: %s\n", assignment.deadline);

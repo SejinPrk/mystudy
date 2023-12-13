@@ -7,6 +7,7 @@ import bitcamp.util.AnsiEscape;
 import bitcamp.util.Prompt;
 import java.util.ArrayList;
 
+
 public class MemberModifyHandler implements MenuHandler {
 
   Prompt prompt;
@@ -27,12 +28,11 @@ public class MemberModifyHandler implements MenuHandler {
       System.out.println("회원 번호가 유효하지 않습니다.");
       return;
     }
-
     Member member = new Member();
-    member.email = this.prompt.input("이메일(%s)? ", member.email);
-    member.name = this.prompt.input("이름(%s)? ", member.name);
+    member.email = this.prompt.input("이메일(%s)? ", oldMember.email);
+    member.name = this.prompt.input("이름(%s)? ", oldMember.name);
     member.password = this.prompt.input("새 암호? ");
-    member.createdDate = this.prompt.input("가입일(%s)? ", member.createdDate);
+    member.createdDate = this.prompt.input("가입일(%s)? ", oldMember.createdDate);
 
     this.objectRepository.set(index, member);
   }

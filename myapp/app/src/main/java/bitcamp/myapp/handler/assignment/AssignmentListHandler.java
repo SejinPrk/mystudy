@@ -6,7 +6,6 @@ import bitcamp.myapp.vo.Assignment;
 import bitcamp.util.AnsiEscape;
 import java.util.ArrayList;
 
-
 public class AssignmentListHandler implements MenuHandler {
 
   ArrayList<Assignment> objectRepository;
@@ -21,11 +20,9 @@ public class AssignmentListHandler implements MenuHandler {
     System.out.printf(AnsiEscape.ANSI_BOLD + "[%s]\n" + AnsiEscape.ANSI_CLEAR, menu.getTitle());
     System.out.printf("%-20s\t%s\n", "과제", "제출마감일");
 
-    Assignment[] assignments = new Assignment[this.objectRepository.size()];
-    this.objectRepository.toArray(assignments);
+    Assignment[] assignments = this.objectRepository.toArray(new Assignment[0]);
 
-    for (Object object : this.objectRepository.toArray()) {
-      Assignment assignment = (Assignment) object;
+    for (Assignment assignment : assignments) {
       System.out.printf("%-20s\t%s\n", assignment.title, assignment.deadline);
     }
   }

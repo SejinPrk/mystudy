@@ -17,12 +17,12 @@ import bitcamp.myapp.handler.member.MemberAddHandler;
 import bitcamp.myapp.handler.member.MemberDeleteHandler;
 import bitcamp.myapp.handler.member.MemberListHandler;
 import bitcamp.myapp.handler.member.MemberModifyHandler;
+import bitcamp.myapp.handler.member.MemberViewHandler;
 import bitcamp.myapp.vo.Assignment;
 import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.Prompt;
 import java.util.ArrayList;
-
 
 public class App {
 
@@ -30,8 +30,8 @@ public class App {
     Prompt prompt = new Prompt(System.in);
     //new MainMenu(prompt).execute();
 
-    ArrayList<Board> boardRepository = new ArrayList<>();
-    ArrayList<Assignment> assignmentRepository = new ArrayList<Assignment>();
+    ArrayList<Board> boardRepository = new ArrayList<Board>();
+    ArrayList<Assignment> assignmentRepository = new ArrayList<>();
     ArrayList<Member> memberRepository = new ArrayList<>();
     ArrayList<Board> greetingRepository = new ArrayList<>();
 
@@ -57,6 +57,7 @@ public class App {
 
     MenuGroup memberMenu = new MenuGroup("회원");
     memberMenu.add(new MenuItem("등록", new MemberAddHandler(memberRepository, prompt)));
+    memberMenu.add(new MenuItem("조회", new MemberViewHandler(memberRepository, prompt)));
     memberMenu.add(new MenuItem("변경", new MemberModifyHandler(memberRepository, prompt)));
     memberMenu.add(new MenuItem("삭제", new MemberDeleteHandler(memberRepository, prompt)));
     memberMenu.add(new MenuItem("목록", new MemberListHandler(memberRepository)));

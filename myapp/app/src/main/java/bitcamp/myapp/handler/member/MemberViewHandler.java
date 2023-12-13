@@ -12,8 +12,8 @@ public class MemberViewHandler implements MenuHandler {
   Prompt prompt;
   ArrayList<Member> objectRepository;
 
-  public MemberViewHandler(ArrayList<Member> objectRepository, Prompt prompt) {
-    this.objectRepository = objectRepository;
+  public MemberViewHandler(ArrayList<Member> memberRepository, Prompt prompt) {
+    this.objectRepository = memberRepository;
     this.prompt = prompt;
   }
 

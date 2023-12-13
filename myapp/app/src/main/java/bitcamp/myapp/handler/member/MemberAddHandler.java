@@ -7,6 +7,7 @@ import bitcamp.util.AnsiEscape;
 import bitcamp.util.Prompt;
 import java.util.ArrayList;
 
+
 public class MemberAddHandler implements MenuHandler {
 
   Prompt prompt;
