@@ -23,12 +23,18 @@ public class BoardListHandler implements MenuHandler {
 
     System.out.printf("%-20s\t%10s\t%s\n", "Title", "Writer", "Date");
 
-    Board[] boards = new Board[this.objectRepository.size()];
+    // 방법1; repository에 보관된 목록을 배열로 리턴 받기
+    // Board[] boards = new Board[this.objectRepository.size()];
+    // this.objectRepsitory.toArray(boards);
+    //
+    // 방법2
+    Board[] boards = this.objectRepository.toArray(new Board[0]);
     this.objectRepository.toArray(boards);
 
     for (Object object : this.objectRepository.toArray()) {
       Board board = (Board) object;
       System.out.printf("%-20s\t%10s\t%s\n", board.title, board.writer, board.createdDate);
+
     }
   }
 }
