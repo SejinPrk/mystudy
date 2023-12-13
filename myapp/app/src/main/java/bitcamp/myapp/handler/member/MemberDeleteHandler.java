@@ -3,15 +3,16 @@ package bitcamp.myapp.handler.member;
 import bitcamp.menu.Menu;
 import bitcamp.menu.MenuHandler;
 import bitcamp.util.AnsiEscape;
+import bitcamp.util.ObjectRepository;
 import bitcamp.util.Prompt;
 
 public class MemberDeleteHandler implements MenuHandler {
 
   Prompt prompt;
-  MemberRepository memberRepository;
+  ObjectRepository objectRepository;
 
-  public MemberDeleteHandler(MemberRepository memberRepository, Prompt prompt) {
-    this.memberRepository = memberRepository;
+  public MemberDeleteHandler(ObjectRepository objectRepository, Prompt prompt) {
+    this.objectRepository = objectRepository;
     this.prompt = prompt;
   }
 
@@ -20,14 +21,9 @@ public class MemberDeleteHandler implements MenuHandler {
     System.out.printf(AnsiEscape.ANSI_BOLD + "[%s]\n" + AnsiEscape.ANSI_CLEAR, menu.getTitle());
 
     int index = this.prompt.inputInt("번호? ");
-    if (index < 0 || index >= this.memberRepository.length) {
+    if (this.objectRepository.remove(index) == null) {
       System.out.println("회원 번호가 유효하지 않습니다.");
       return;
     }
-
-    for (int i = index; i < (this.memberRepository.length - 1); i++) {
-      this.memberRepository.members[i] = this.memberRepository.members[i + 1];
-    }
-    this.memberRepository.members[--this.memberRepository.length] = null;
   }
 }

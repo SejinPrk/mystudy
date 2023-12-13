@@ -2,7 +2,8 @@ package bitcamp.util;
 
 public class ObjectRepository {
 
-  // 목록을 저장하는 코드를 외부에서 볼 수 없게 감춘다.
+  // 수퍼 클래스의 레퍼런스는 서브 클래스의 인스턴스 주소를 담을 수 있다.
+// 따라서 Object 레퍼런스는 Member, Board, Assignment 등 어떤 주소라도 담을 수 있다 .
   private Object[] objects = new Object[3];
   private int length = 0;
 
