@@ -12,10 +12,10 @@ import bitcamp.util.Prompt;
 //
 public class BoardModifyHandler implements MenuHandler {
 
-  ObjectRepository objectRepository;
+  ObjectRepository<Board> objectRepository;
   Prompt prompt;
 
-  public BoardModifyHandler(ObjectRepository objectRepository, Prompt prompt) {
+  public BoardModifyHandler(ObjectRepository<Board> objectRepository, Prompt prompt) {
     this.objectRepository = objectRepository;
     this.prompt = prompt;
   }
