@@ -4,8 +4,8 @@ import bitcamp.menu.Menu;
 import bitcamp.menu.MenuHandler;
 import bitcamp.myapp.vo.Board;
 import bitcamp.util.AnsiEscape;
-import bitcamp.util.ObjectRepository;
 import bitcamp.util.Prompt;
+import java.util.ArrayList;
 
 
 // 게시글의 '등록' 메뉴를 선택했을 때 작업을 수행하는 클래스
@@ -14,9 +14,9 @@ import bitcamp.util.Prompt;
 public class BoardAddHandler implements MenuHandler {
 
   Prompt prompt;
-  ObjectRepository<Board> objectRepository; // board 객체만 다루는 objectRepository라는 의미
+  ArrayList<Board> objectRepository; // board 객체만 다루는 objectRepository라는 의미
 
-  public BoardAddHandler(ObjectRepository<Board> objectRepository, Prompt prompt) {
+  public BoardAddHandler(ArrayList<Board> objectRepository, Prompt prompt) {
     this.objectRepository = objectRepository;
     this.prompt = prompt;
   }
