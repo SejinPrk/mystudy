@@ -11,7 +11,7 @@ public class Exam0240 {
     System.out.println(str0);
 
     // 인스턴스 메서드 활용
-    System.out.println(d1.getYear() + 1900);
+    System.out.println(d1.getYear()+ 1900);
     System.out.println(d1.getMonth() + 1);
     System.out.println(d1.getDate());
 
