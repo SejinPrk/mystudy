@@ -16,6 +16,10 @@ public class Exam0220 {
     Integer i3 = Integer.valueOf(300);
 
     // 인스턴스 메서드 사용
+    //compareTo
+    // A=B; 0 반환
+    // A>B; 양수 반환
+    // A<B; 음수 반환
     System.out.println(i2.compareTo(i1));
     System.out.println(i2.compareTo(i3));
 
@@ -25,7 +29,7 @@ public class Exam0220 {
     // 스태틱 메서드 = 클래스 메서드 사용
     int v2 = Integer.parseInt("1280"); // 숫자에 해당하는 문자열
     // String ===> int 변환
-    String s1 = Integer.toBinaryString(77); // 숫자를 문자열 형태로 리턴
+    String s1 = Integer.toBinaryString(77); // 2진수로 바꿔서 문자열 형태로 리턴
     String s2 = Integer.toOctalString(77);  // 8진수로 바꿔서 문자열 형태로 리턴
     String s3 = Integer.toHexString(77);  // 16진수로 바꿔서 문자열 형태로 리턴
     System.out.printf("77 = %s, %s, %s\n", s1, s2, s3); // 2진수, 8진수, 16진수
