@@ -13,12 +13,12 @@ public class Exam0230 {
     // => floor() : 파라미터로 주어니 부동소수점의 바로 밑 작은 정수 값을 리턴
     System.out.println(Math.ceil(3.28)); // 4
     System.out.println(Math.floor(3.28)); // 3
-    
+
     System.out.println(Math.ceil(-3.28)); // -3
     System.out.println(Math.floor(-3.28)); // -4
 
     // => 2의 7승 값을 알고 싶을 때
-    System.out.println(Math.pow(2, 7));
+    System.out.println(Math.pow(2, 7)); // 자바에서는 2**7같은 연산자가 없어 메서드를 사용해야 한다.
 
     // => 반올림하여 정수 값 리턴
     System.out.println(Math.round(3.14));
