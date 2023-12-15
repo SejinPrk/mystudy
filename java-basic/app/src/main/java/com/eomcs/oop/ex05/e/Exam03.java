@@ -12,5 +12,4 @@ public class Exam03 {
     obj.m1();
 
   }
-
 }
