@@ -16,6 +16,13 @@ public class Exam0120 {
       return a + a;
     }
 
+    /* static int plus (int x, int y) {
+      return a+b;
+    }
+     */
+    //같은 메서드를 변수 개수, 타입까지 같게해서는 안된다.
+    // 어디에 호출해야하는지 알 수 없음.
+
     static float plus(float a, float b) {
       return a + b;
     }
