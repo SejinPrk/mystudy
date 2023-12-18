@@ -28,7 +28,7 @@ class Customer3 {
 
     // 이름은 최대 5자만 넣는다.
     if (name.length() > 5) {
-      this.name = name.substring(0, 5);
+      this.name = name. substring(0, 5);
     } else {
       this.name = name;
     }
