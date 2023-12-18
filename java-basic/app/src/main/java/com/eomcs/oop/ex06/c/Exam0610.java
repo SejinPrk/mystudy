@@ -9,7 +9,7 @@ public class Exam0610 {
   static class Tico extends Sedan {}
 
   static class CarFactory {
-    Car create() {
+    Car create() {        // Car가 아닌 Sedan으로 해도 가능 - 서브 클래스도 가능하다.
       return new Car();
     }
   }
@@ -27,7 +27,7 @@ public class Exam0610 {
     // 오버라이딩 메서드의 리턴 타입은
     // 서브 클래스도 가능하다.
     @Override
-    Tico create() {
+    Tico create() { // Sedan (가능) Car(에러)
       return new Tico();
     }
   }
