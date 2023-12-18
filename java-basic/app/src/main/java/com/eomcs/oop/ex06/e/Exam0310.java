@@ -1,4 +1,5 @@
 // final 사용법: 상수 필드 만들기
+// 생성자에서 딱 한 번만 저장 가능
 package com.eomcs.oop.ex06.e;
 
 class C {

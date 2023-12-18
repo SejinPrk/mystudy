@@ -24,7 +24,7 @@ abstract class A2 {
 }
 
 // 일반 클래스(concrete class)
-class A2Sub extends A2 {
+class A2Sub extends A2 { //콘크리트 클래스
   @Override
   public void m1() {
     // 서브 클래스에서 추상 메서드를 구현해야 한다.
