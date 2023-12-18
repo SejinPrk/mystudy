@@ -10,7 +10,7 @@ public class Exam01 {
 
     // Sorter 클래스의 sort() 메서드를 추상 메서드이기 때문에
     // Sorter 클래스를 상속 받은 서브 클래스가 무엇이든 간에
-    // sort() 메서드가 반드시 구현되어 있을 것이다.
+    // sort() 메서드를 반드시 존재할 것이다.
     // 따라서 display() 메서드에서는 파라미터로 넘어오는 Sorter가
     // BubbleSort 인지, QuickSort 인지, MergeSort 인지 따질 필요 없이,
     // 그냥 서브 클래스가 구현한 sort()를 호출하면 된다.
