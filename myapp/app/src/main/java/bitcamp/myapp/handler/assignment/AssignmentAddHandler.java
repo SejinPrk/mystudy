@@ -8,12 +8,10 @@ import java.util.ArrayList;
 public class AssignmentAddHandler extends AbstractMenuHandler {
 
   ArrayList<Assignment> objectRepository;
-  private Prompt prompt;
-
 
   public AssignmentAddHandler(ArrayList<Assignment> objectRepository, Prompt prompt) {
+    super(prompt);
     this.objectRepository = objectRepository;
-    this.prompt = prompt;
   }
 
   @Override

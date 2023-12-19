@@ -7,12 +7,11 @@ import java.util.ArrayList;
 
 public class MemberViewHandler extends AbstractMenuHandler {
 
-  private Prompt prompt;
   private ArrayList<Member> objectRepository;
 
   public MemberViewHandler(ArrayList<Member> memberRepository, Prompt prompt) {
+    super(prompt);
     this.objectRepository = memberRepository;
-    this.prompt = prompt;
   }
 
   @Override
