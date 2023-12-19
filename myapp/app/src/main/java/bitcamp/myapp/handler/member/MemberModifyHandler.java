@@ -16,7 +16,7 @@ public class MemberModifyHandler extends AbstractMenuHandler {
   }
 
   @Override
-  public void action() {
+  protected void action() {
     int index = this.prompt.inputInt("번호? ");
     Member oldMember = this.objectRepository.get(index);
     if (oldMember == null) {
