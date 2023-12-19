@@ -1,4 +1,5 @@
 // 잘못된 값을 넣었을 때 무시하지 않고 강력하게 오류를 알리기!
+// 예외처리 맛보기
 package com.eomcs.oop.ex08.c;
 
 class Patient3 {

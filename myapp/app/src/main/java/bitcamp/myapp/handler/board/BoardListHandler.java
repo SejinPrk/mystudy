@@ -12,7 +12,7 @@ import java.util.ArrayList;
 //
 public class BoardListHandler implements MenuHandler {
 
-  ArrayList<Board> objectRepository;
+  private ArrayList<Board> objectRepository;
 
   public BoardListHandler(ArrayList<Board> objectRepository) {
     this.objectRepository = objectRepository;
@@ -26,7 +26,8 @@ public class BoardListHandler implements MenuHandler {
 
     Board[] boards = this.objectRepository.toArray(new Board[0]);
     for (Board board : boards) {
-      System.out.printf("%-20s\t%10s\t%s\n", board.title, board.writer, board.createdDate);
+      System.out.printf("%-20s\t%10s\t%s\n", board.getTitle(), board.getWriter(),
+          board.getCreatedDate());
     }
   }
 }

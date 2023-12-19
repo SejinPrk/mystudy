@@ -34,7 +34,7 @@ public class Exam0215 extends com.eomcs.oop.ex08.b.sub.Y {
     // 상속 받은 변수인 경우 상속 받은 클래스를 기준으로 접근 가능 여부를 따져야 한다.
     //    obj.privateVar = 100; // 접근 불가!
     //    obj.defaultVar = 100; // 접근 불가!
-    obj.protectedVar = 100; // OK! Y 클래스를 상속 받아 만든 변수다.
+    obj.protectedVar = 100; // OK! Y 클래스를 상속 받아 만든 변수다. 자기가 만든 변수.
     obj.publicVar = 100; // OK! 모두 접근 가능
   }
 

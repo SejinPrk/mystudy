@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 public class MemberViewHandler implements MenuHandler {
 
-  Prompt prompt;
-  ArrayList<Member> objectRepository;
+  private Prompt prompt;
+  private ArrayList<Member> objectRepository;
 
   public MemberViewHandler(ArrayList<Member> memberRepository, Prompt prompt) {
     this.objectRepository = memberRepository;
@@ -28,8 +28,8 @@ public class MemberViewHandler implements MenuHandler {
       return;
     }
 
-    System.out.printf("이메일: %s\n", member.email);
-    System.out.printf("이름: %s\n", member.name);
-    System.out.printf("가입일: %s\n", member.createdDate);
+    System.out.printf("이메일: %s\n", member.getEmail());
+    System.out.printf("이름: %s\n", member.getName());
+    System.out.printf("가입일: %s\n", member.getCreatedDate());
   }
 }
