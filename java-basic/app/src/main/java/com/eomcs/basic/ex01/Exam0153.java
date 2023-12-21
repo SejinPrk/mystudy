@@ -64,7 +64,7 @@ public class Exam0153 {
     // equals() 비교 결과도 true 이기 때문에
     // HashMap 클래스에서는 서로 같은 key라고 간주한다.
 
-    System.out.println(k3 == k6); // 인스턴스는 다르다.
+    System.out.println(k3 == k6); // false 인스턴스는 다르다.
     System.out.printf("k3(%s), k6(%s)\n", k3, k6);
     System.out.println(k3.hashCode()); // hash code는 같다.
     System.out.println(k6.hashCode()); // hash code는 같다.

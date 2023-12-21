@@ -7,6 +7,7 @@ public class Exam0141 {
     String name;
     int age;
 
+
     @Override
     public int hashCode() {
       // String 클래스의 hashCode() 메서드는
