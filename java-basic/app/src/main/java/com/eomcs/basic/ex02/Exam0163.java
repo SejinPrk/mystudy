@@ -34,6 +34,7 @@ public class Exam0163 {
 
     public Worker(StringBuffer buf, String message) {
       this.buf = buf;
+      this.message = message;
     }
 
     @Override
