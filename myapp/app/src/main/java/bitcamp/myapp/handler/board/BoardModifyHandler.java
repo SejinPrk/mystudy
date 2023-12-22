@@ -31,6 +31,7 @@ public class BoardModifyHandler extends AbstractMenuHandler {
     board.setContent(this.prompt.input("내용(%s)? ", oldBoard.getContent()));
     board.setWriter(this.prompt.input("작성자(%s)? ", oldBoard.getWriter()));
     board.setCreatedDate(this.prompt.input("작성일(%s)? ", oldBoard.getCreatedDate()));
+    board.setCreatedDate(oldBoard.getCreatedDate());
 
     this.objectRepository.set(index, board);
   }

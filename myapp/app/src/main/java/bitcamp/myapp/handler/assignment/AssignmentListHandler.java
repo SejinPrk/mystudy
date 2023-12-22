@@ -22,7 +22,10 @@ public class AssignmentListHandler extends AbstractMenuHandler {
     this.objectRepository.toArray(assignments);
 
     for (Assignment assignment : assignments) {
-      System.out.printf("%-20s\t%s\n", assignment.getTitle(), assignment.getDeadline());
+      System.out.printf("%-20s\t%10s\t%s\n",
+          assignment.getTitle(),
+          assignment.getContent(),
+          assignment.getDeadline());
     }
   }
 }
