@@ -83,7 +83,9 @@ public class LinkedList {
       last = node;
 
     } else {
-
+      last.next = node;
+      int temp;
+      last = node;
     }
     size++;
   }
