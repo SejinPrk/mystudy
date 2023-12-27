@@ -8,16 +8,21 @@ public class Test {
     list.add(new String("ccc"));
     list.add(new String("ddd"));
 
-    Node node = list.first; // 첫 번째 노드
-    System.out.println(node.value);
+    list.add(0, new String("xxx"));
+    list.add(5, new String("yyy"));
 
-    node = node.next;
-    System.out.println(node.value); // 두 번째 노드
 
-    node = node.next;
-    System.out.println(node.value); // 세 번째 노드
+    Object[] arr = list.toArray();
+    for(Object value:arr){
+      System.out.printf("%s ", value);
+    }
 
-    node = node.next;
-    System.out.println(node.value); // 마지막 노드
+    System.out.println();
+//    System.out.println(list.get(0));
+//    System.out.println(list.get(1));
+//    System.out.println(list.get(2));
+//    System.out.println(list.get(3));
+//    System.out.println(list.get(4)); // 존재하지 않는 값 -> 호출 시 예외 발생
+
   }
 }
