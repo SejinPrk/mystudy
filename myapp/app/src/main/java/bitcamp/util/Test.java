@@ -3,15 +3,26 @@ package bitcamp.util;
 public class Test {
   public static void main(String[] args) {
     LinkedList list = new LinkedList();
-    list.add(new String("aaa")); // aaa
-    list.add(new String("bbb")); // aaa bbb
-    list.add(new String("ccc")); // aaa bbb ccc
-    list.add(new String("ddd")); // aaa bbb ccc ddd
+    list.add("aaa"); // aaa
+    list.add("bbb"); // aaa bbb
+    list.add("ccc"); // aaa bbb ccc
+    list.add("ddd"); // aaa bbb ccc ddd
 
-    list.remove(2); // aaa bbb ddd
-     list.remove(1); // aaa ddd
-    list.remove(0); // bbb
-    list.remove(0); //
+    System.out.println(list.remove("xxx")); // aaa bbb ccc ddd
+    System.out.println(list.remove("ccc")); // aaa bbb ddd
+    System.out.println(list.remove("ddd")); // aaa bbb
+    System.out.println(list.remove("aaa")); // bbb
+    System.out.println(list.remove("bbb")); //
+
+    list.add("xxx");
+    list.add("yyy");
+    list.add("zzz");
+
+
+//    list.remove(2); // aaa bbb ddd
+//     list.remove(1); // aaa ddd
+//    list.remove(0); // bbb
+//    list.remove(0); //
 
 
 //    // 맨 앞
@@ -25,7 +36,7 @@ public class Test {
 
     Object[] arr = list.toArray();
     for(Object value:arr){
-      System.out.printf("%s ", value);
+      System.out.printf("%s, ", value);
     }
 
     System.out.println();

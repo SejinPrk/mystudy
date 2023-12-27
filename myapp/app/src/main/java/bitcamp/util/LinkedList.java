@@ -132,13 +132,31 @@ public class LinkedList<E> {
     return old;
   }
   public boolean remove(E value){
-    Node node = null;
-      for (int i=0; i<size; i++){
+    Node prevNode = null;
+    Node node = first;
+
+    while (node!=null){
         if (node.value.equals(value)){
+          node = node;
           break;
-          
         }
+        prevNode = node;
+        node = node.next;
       }
+      if(node == null)
+      {
+        return false;
+      }
+      if(node == first){
+        first = first.next;
+        if(first == null){
+          last = null;
+        }
+      }else {
+        prevNode.next = node.next;
+      }
+      size--;
+      return true;
   }
   private static class Node<E>{
 
