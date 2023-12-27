@@ -93,5 +93,39 @@ public class LinkedList {
   }
     size++;
   }
+
+  public Object remove(int index){
+    // remove(): 유효한 인덱스만 삭제 가능
+    if (index < 0 || index >= size) { // 유효하지 않은 인덱스
+      throw new IndexOutOfBoundsException("무효한 인덱스입니다.");
+    }
+    Node node = new Node();
+
+    Object old =null;
+    if(size == 1){
+      old = first;
+      first = last = null;
+
+    } else if(index == 0) {
+      old = first;
+      first = first.next;
+
+    } else {
+      int cursor = 0;
+      Node currNode = first;
+      while (++cursor < index) {
+        currNode = currNode.next;
+      }
+      old = currNode.next;
+      currNode.next = currNode.next.next;
+
+      if (index == (size - 1)) {
+        last = currNode;
+      }
+    }
+
+    size--;
+    return old;
+  }
 }
 
