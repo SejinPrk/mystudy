@@ -74,19 +74,23 @@ public class LinkedList {
     if (first == null) {
       first = last = node;
 
-    } else if(index == 0) {
+    } else if (index == 0) {
       node.next = first;
       first = node;
 
-    } else if (index == size){
+    } else if (index == size) {
       last.next = node;
       last = node;
 
     } else {
-      last.next = node;
-      int temp;
-      last = node;
+      int cursor = 0;
+      Node currNode = first;
+      while (++cursor < index){
+        currNode = currNode.next;
     }
+      node.next = currNode.next;
+      currNode.next = node;
+  }
     size++;
   }
 }
