@@ -1,13 +1,17 @@
 package bitcamp.util;
 
-public class LinkedList {
+public class LinkedList<E> {
 
-  private Node first;
-  private Node last;
+  private Node<E> first;
+  private Node<E> last;
   private int size;
 
-  public void add(Object value) {
-    Node node = new Node();
+  public int size() {
+    return size;
+  }
+
+  public void add(E value) {
+    Node<E> node = new Node();
     node.value = value;
 
     if (last == null) {
@@ -24,7 +28,7 @@ public class LinkedList {
 
   public Object[] toArray() {
     Object[] arr = new Object[size];
-    Node node = first;
+    Node<E> node = first;
     int index = 0;
     while (node != null) {
       arr[index++] = node.value;
@@ -33,13 +37,13 @@ public class LinkedList {
     return arr;
   }
 
-  public Object get(int index) {
+  public E get(int index) {
     if (index < 0 || index >= size) { // 유효하지 않은 인덱스
       throw new IndexOutOfBoundsException("무효한 인덱스입니다.");
     }
 
     int cursor = 0; // 현재 위치
-    Node node = first;
+    Node<E> node = first;
     while (++cursor <= index) {
       node = node.next;
     }
@@ -47,28 +51,28 @@ public class LinkedList {
     return node.value;
   }
 
-  public Object set(int index, Object value) {
+  public E set(int index, E value) {
     if (index < 0 || index >= size) { // 유효하지 않은 인덱스
       throw new IndexOutOfBoundsException("무효한 인덱스입니다.");
     }
 
     int cursor = 0; // 현재 위치
-    Node node = first;
+    Node<E> node = first;
     while (++cursor <= index) {
       node = node.next;
     }
 
-    Object old = node.value;
+    E old = node.value;
     node.value = value;
     return old;
   }
 
-  public void add(int index, Object value) {
+  public void add(int index, E value) {
     if (index < 0 || index > size) { // 유효하지 않은 인덱스
       throw new IndexOutOfBoundsException("무효한 인덱스입니다.");
     }
 
-    Node node = new Node();
+    Node<E> node = new Node<>();
     node.value = value;
 
     if (first == null) {
@@ -84,7 +88,7 @@ public class LinkedList {
 
     } else {
       int cursor = 0;
-      Node currNode = first;
+      Node<E> currNode = first;
       while (++cursor < index){
         currNode = currNode.next;
     }
@@ -94,29 +98,29 @@ public class LinkedList {
     size++;
   }
 
-  public Object remove(int index){
+  public E remove(int index){
     // remove(): 유효한 인덱스만 삭제 가능
     if (index < 0 || index >= size) { // 유효하지 않은 인덱스
       throw new IndexOutOfBoundsException("무효한 인덱스입니다.");
     }
-    Node node = new Node();
+    Node<E> node = new Node();
 
-    Object old =null;
+    E old =null;
     if(size == 1){
-      old = first;
+      old = first.value;
       first = last = null;
 
     } else if(index == 0) {
-      old = first;
+      old = first.value;
       first = first.next;
 
     } else {
       int cursor = 0;
-      Node currNode = first;
+      Node<E> currNode = first;
       while (++cursor < index) {
         currNode = currNode.next;
       }
-      old = currNode.next;
+      old = currNode.next.value;
       currNode.next = currNode.next.next;
 
       if (index == (size - 1)) {
@@ -127,5 +131,21 @@ public class LinkedList {
     size--;
     return old;
   }
+  public boolean remove(E value){
+    Node node = null;
+      for (int i=0; i<size; i++){
+        if (node.value.equals(value)){
+          break;
+          
+        }
+      }
+  }
+  private static class Node<E>{
+
+    E value;
+    Node<E> next;
+
+  }
 }
+
 
