@@ -2,7 +2,7 @@ package bitcamp.util;
 
 public class Test {
   public static void main(String[] args) {
-    LinkedList list = new LinkedList();
+    ArrayList<String> list = new ArrayList<>();
     list.add("aaa"); // aaa
     list.add("bbb"); // aaa bbb
     list.add("ccc"); // aaa bbb ccc
@@ -34,12 +34,12 @@ public class Test {
 //    list.add(3, new String("ttt")); // xxx mmm aaa ttt bbb ccc ddd yyy
 //    list.add(7, new String("ppp")); // xxx mmm aaa ttt bbb ccc ddd ppp yyy
 
-    Object[] arr = list.toArray();
-    for(Object value:arr){
+   String[] arr = list.toArray(new String[0]);
+    for(String value:arr){
       System.out.printf("%s, ", value);
     }
-
     System.out.println();
+
 //    System.out.println(list.get(0));
 //    System.out.println(list.get(1));
 //    System.out.println(list.get(2));

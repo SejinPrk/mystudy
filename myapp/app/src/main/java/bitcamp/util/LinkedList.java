@@ -1,5 +1,7 @@
 package bitcamp.util;
 
+import java.util.Arrays;
+
 public class LinkedList<E> {
 
   private Node<E> first;
@@ -131,6 +133,7 @@ public class LinkedList<E> {
     size--;
     return old;
   }
+
   public boolean remove(E value){
     Node prevNode = null;
     Node node = first;
@@ -157,6 +160,23 @@ public class LinkedList<E> {
       }
       size--;
       return true;
+  }
+
+  public E[] toArray(final E[] arr){
+    E[] values = arr;
+    if(arr.length < size) {
+      values = Arrays.copyOf(arr, size);
+    }
+
+      int i = 0;
+      Node<E> node = first;
+
+      while(node != null){
+        values[i++] = node.value;
+        node = node.next;
+      }
+
+      return values;
   }
   private static class Node<E>{
 
