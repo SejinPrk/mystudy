@@ -13,7 +13,7 @@ public abstract class AbstractMenu implements Menu {
 
   @Override
   public String getTitle() {
-    return breadcrumb.peek();
+    return this.title;
   }
 
   public String getMenuPath(){

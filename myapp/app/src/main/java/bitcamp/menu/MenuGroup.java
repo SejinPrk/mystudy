@@ -31,7 +31,7 @@ public class MenuGroup extends AbstractMenu {
       } else if (input.equals("0")) {
         break;
       }
-      
+
       try {
         int menuNo = Integer.parseInt(input);
         if (menuNo < 1 || menuNo > this.menus.size()) {
