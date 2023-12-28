@@ -2,15 +2,10 @@ package bitcamp.util;
 
 import java.util.Arrays;
 
-public class LinkedList<E> {
+public class LinkedList<E> extends AbstractList<E> {
 
   private Node<E> first;
   private Node<E> last;
-  private int size;
-
-  public int size() {
-    return size;
-  }
 
   public void add(E value) {
     Node<E> node = new Node();
@@ -54,11 +49,11 @@ public class LinkedList<E> {
   }
 
   public E set(int index, E value) {
-    if (index < 0 || index >= size) { // 유효하지 않은 인덱스
+    if (index < 0 || index >= size) {
       throw new IndexOutOfBoundsException("무효한 인덱스입니다.");
     }
 
-    int cursor = 0; // 현재 위치
+    int cursor = 0;
     Node<E> node = first;
     while (++cursor <= index) {
       node = node.next;
@@ -107,13 +102,14 @@ public class LinkedList<E> {
     }
     Node<E> node = new Node();
 
-    E old =null;
+    Node<E> deleted = null;
+
     if(size == 1){
-      old = first.value;
+      deleted = first; // 삭제할 노드 보관
       first = last = null;
 
     } else if(index == 0) {
-      old = first.value;
+      deleted = first; // 삭제할 노드 보관
       first = first.next;
 
     } else {
@@ -122,7 +118,7 @@ public class LinkedList<E> {
       while (++cursor < index) {
         currNode = currNode.next;
       }
-      old = currNode.next.value;
+      deleted = currNode.next; // 삭제할 노드 보관
       currNode.next = currNode.next.next;
 
       if (index == (size - 1)) {
@@ -131,6 +127,10 @@ public class LinkedList<E> {
     }
 
     size--;
+
+    E old = deleted.value;
+    deleted.value = null; //가비지가 되기 전에 다른 객체를 참조하던 것을 제거한다.
+    deleted.next = null;  //가비지가 되기 전에 다른 객체를 참조하던 것을 제거한다.
     return old;
   }
 
