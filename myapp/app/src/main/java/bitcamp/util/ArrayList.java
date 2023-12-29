@@ -102,30 +102,23 @@ public class ArrayList<E> extends AbstractList<E> {
 //      public E next(){
 //        return list.get(cursor++); //커서를 꺼내고 난 다음에는 항상 증가시킨다.
 //      }
-
-      // 3) 논스태틱 중첩 클래스를 사용한 경우
-   @Override
-    public Iterator<E> iterator() {
-     return new IteratorImpl<>();
-    }
+// 3) 논스태틱 중첩 클래스를 사용한 경우
+@Override
+public Iterator<E> iterator() {
+  return new IteratorImpl<>();
+}
   private class IteratorImpl<E> implements Iterator<E> {
 
-     int cursor;
+    int cursor;
 
-      public IteratorImpl(){
-        //this.list = list;
-      }
-
-      @Override
-      public boolean hasNext(){
-        //return cursor >= 0 && cursor < ArrayList.this.size();
-        return false;
-      }
-
-      @Override
-      public E next(){
-        //return list.get(cursor++);
-        return null;
-      }
+    @Override
+    public boolean hasNext(){
+      return cursor >= 0 && cursor < ArrayList.this.size();
     }
+
+    @Override
+    public E next(){
+      return (E) ArrayList.this.get(cursor++);
+    }
+  }
 }
