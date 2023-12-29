@@ -1,5 +1,6 @@
 package bitcamp.util;
 
+import java.security.PublicKey;
 import java.util.Arrays;
 
 public class LinkedList<E> extends AbstractList<E> {
@@ -8,15 +9,15 @@ public class LinkedList<E> extends AbstractList<E> {
   private Node<E> last;
 
   public void add(E value) {
-    Node<E> node = new Node();
+    Node<E> node = new Node<>();
     node.value = value;
 
     if (last == null) {
-      // 노드 객체가 없을 때
+      // 노드 객체가 없을 때,
       first = last = node;
     } else {
       // 기존에 노드 객체가 있을 때,
-      // 마지막 노드의 다음 노드로 새로 만든 노드 주소를 가리키게 한다.
+      // 마지막 노드의 다음 노드로 새로 만든 노드를 가리키게 한다.
       last.next = node;
       last = node;
     }
@@ -25,8 +26,8 @@ public class LinkedList<E> extends AbstractList<E> {
 
   public Object[] toArray() {
     Object[] arr = new Object[size];
-    Node<E> node = first;
     int index = 0;
+    Node<E> node = first;
     while (node != null) {
       arr[index++] = node.value;
       node = node.next;
@@ -35,11 +36,11 @@ public class LinkedList<E> extends AbstractList<E> {
   }
 
   public E get(int index) {
-    if (index < 0 || index >= size) { // 유효하지 않은 인덱스
+    if (index < 0 || index >= size) {
       throw new IndexOutOfBoundsException("무효한 인덱스입니다.");
     }
 
-    int cursor = 0; // 현재 위치
+    int cursor = 0;
     Node<E> node = first;
     while (++cursor <= index) {
       node = node.next;
@@ -65,7 +66,7 @@ public class LinkedList<E> extends AbstractList<E> {
   }
 
   public void add(int index, E value) {
-    if (index < 0 || index > size) { // 유효하지 않은 인덱스
+    if (index < 0 || index > size) {
       throw new IndexOutOfBoundsException("무효한 인덱스입니다.");
     }
 
@@ -86,29 +87,27 @@ public class LinkedList<E> extends AbstractList<E> {
     } else {
       int cursor = 0;
       Node<E> currNode = first;
-      while (++cursor < index){
+      while (++cursor < index) {
         currNode = currNode.next;
-    }
+      }
       node.next = currNode.next;
       currNode.next = node;
-  }
+    }
     size++;
   }
 
-  public E remove(int index){
-    // remove(): 유효한 인덱스만 삭제 가능
-    if (index < 0 || index >= size) { // 유효하지 않은 인덱스
+  public E remove(int index) {
+    if (index < 0 || index >= size) {
       throw new IndexOutOfBoundsException("무효한 인덱스입니다.");
     }
-    Node<E> node = new Node();
 
     Node<E> deleted = null;
 
-    if(size == 1){
+    if (size == 1) {
       deleted = first; // 삭제할 노드 보관
       first = last = null;
 
-    } else if(index == 0) {
+    } else if (index == 0) {
       deleted = first; // 삭제할 노드 보관
       first = first.next;
 
@@ -129,61 +128,67 @@ public class LinkedList<E> extends AbstractList<E> {
     size--;
 
     E old = deleted.value;
-    deleted.value = null; //가비지가 되기 전에 다른 객체를 참조하던 것을 제거한다.
-    deleted.next = null;  //가비지가 되기 전에 다른 객체를 참조하던 것을 제거한다.
+    deleted.value = null; // 가비지가 되기 전에 다른 객체를 참조하던 것을 제거한다.
+    deleted.next = null; // 가비지가 되기 전에 다른 객체를 참조하던 것을 제거한다.
     return old;
   }
 
-  public boolean remove(E value){
+  public boolean remove(E value) {
     Node prevNode = null;
     Node node = first;
 
-    while (node!=null){
-        if (node.value.equals(value)){
-          node = node;
-          break;
-        }
-        prevNode = node;
-        node = node.next;
+    while (node != null) {
+      if (node.value.equals(value)) {
+        break;
       }
-      if(node == null)
-      {
-        return false;
+      prevNode = node;
+      node = node.next;
+    }
+
+    if (node == null) {
+      return false;
+    }
+
+    if (node == first) {
+      first = first.next;
+      if (first == null) {
+        last = null;
       }
-      if(node == first){
-        first = first.next;
-        if(first == null){
-          last = null;
-        }
-      }else {
-        prevNode.next = node.next;
-      }
-      size--;
-      return true;
+
+    } else {
+      prevNode.next = node.next;
+    }
+
+    size--;
+    return true;
   }
 
-  public E[] toArray(final E[] arr){
+  public E[] toArray(final E[] arr) {
     E[] values = arr;
-    if(arr.length < size) {
+    if (values.length < size) {
       values = Arrays.copyOf(arr, size);
     }
 
-      int i = 0;
-      Node<E> node = first;
+    int i = 0;
+    Node<E> node = first;
 
-      while(node != null){
-        values[i++] = node.value;
-        node = node.next;
-      }
+    while (node != null) {
+      values[i++] = node.value;
+      node = node.next;
+    }
 
-      return values;
+    return values;
   }
-  private static class Node<E>{
+
+  @Override
+  public Iterator<E> iterator(){
+    return new LinkedListIterator<>(this);
+  }
+
+  private static class Node<E> {
 
     E value;
     Node<E> next;
-
   }
+
 }
-
-
