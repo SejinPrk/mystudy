@@ -21,14 +21,15 @@ public class BoardListHandler extends AbstractMenuHandler {
   @Override
   protected void action() {
     System.out.printf("%-20s\t%10s\t%s\n", "Title", "Writer", "Date");
+
     Iterator<Board> iterator = this.objectRepository.iterator();
 
-        while (iterator.hasNext()) {
-          Board board = iterator.next();
-          System.out.printf("%-20s\t%10s\t%3$tY-%3$tm-%3$td\n",
-              board.getTitle(),
-              board.getWriter(),
-              board.getCreatedDate());
+    while (iterator.hasNext()) {
+      Board board = iterator.next();
+      System.out.printf("%-20s\t%10s\t%3$tY-%3$tm-%3$td\n",
+          board.getTitle(),
+          board.getWriter(),
+          board.getCreatedDate());
     }
   }
 }

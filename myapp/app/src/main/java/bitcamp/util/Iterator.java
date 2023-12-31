@@ -9,5 +9,4 @@ public interface Iterator<E> {
 
   // 값을 꺼낸다.
   E next();
-
 }

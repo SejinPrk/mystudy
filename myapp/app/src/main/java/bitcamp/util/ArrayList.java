@@ -59,7 +59,6 @@ public class ArrayList<E> extends AbstractList<E> {
     return (E) this.objects[index];
   }
 
-
   public E set(int index, E object) {
     if (index < 0 || index >= this.size) {
       return null;
@@ -77,54 +76,56 @@ public class ArrayList<E> extends AbstractList<E> {
 //    return new ArrayListIterator<>(this);
 //  }
 
-// 2) 스태틱 중첩 클래스를 사용한 경우
-//    @Override
-//    public Iterator<E> iterator() {
-//      return new IteratorImpl<>(this);
+//  // 2) 스태틱 중첩 클래스를 사용한 경우
+//  @Override
+//  public Iterator<E> iterator() {
+//    return new IteratorImpl<>(this);
+//  }
+//
+//  private static class IteratorImpl<E> implements Iterator<E> {
+//
+//    ArrayList<E> list;
+//    int cursor;
+//
+//    public IteratorImpl(ArrayList<E> list) {
+//      this.list = list;
 //    }
 //
-//    private static class IteratorImpl<E> implements Iterator<E> {
+//    @Override
+//    public boolean hasNext() {
+//      return cursor >= 0 && cursor < list.size();
+//    }
 //
-//      ArrayList<E> list;
-//      int cursor;
-//
-//      public IteratorImpl(ArrayList<E> list){
-//        this.list = list;
-//      }
-//
-//      @Override
-//      public boolean hasNext(){
-//        return cursor >= 0 && cursor < list.size();
-//      }
-//
-//      @Override
-//      public E next(){
-//        return list.get(cursor++); //커서를 꺼내고 난 다음에는 항상 증가시킨다.
-//      }
+//    @Override
+//    public E next() {
+//      return list.get(cursor++);
+//    }
+//  }
 
-// 3) 논스태틱 중첩 클래스를 사용한 경우
-// 바깥 클래스의 인스턴스 주소를 두는 코드가 자동으로 생성된다.
-
-//@Override
-//public Iterator<E> iterator() {
-//  return new IteratorImpl<>();
-//}
+//  // 3) 논스태틱 중첩 클래스를 사용한 경우
+//  // 바깥 클래스의 인스턴스 주소를 두는 코드가 자동으로 추가된다.
+//
+//  @Override
+//  public Iterator<E> iterator() {
+//    return new IteratorImpl<>();
+//  }
+//
 //  private class IteratorImpl<E> implements Iterator<E> {
 //
 //    int cursor;
 //
 //    @Override
-//    public boolean hasNext(){
+//    public boolean hasNext() {
 //      return cursor >= 0 && cursor < ArrayList.this.size();
 //    }
 //
 //    @Override
-//    public E next(){
+//    public E next() {
 //      return (E) ArrayList.this.get(cursor++);
 //    }
 //  }
 
-//  // 4) local class
+//  // 4) 로컬 클래스를 사용한 경우
 //  @Override
 //  public Iterator<E> iterator() {
 //
@@ -145,16 +146,14 @@ public class ArrayList<E> extends AbstractList<E> {
 //        return (E) ArrayList.this.get(cursor++);
 //      }
 //    }
-
+//
 //    return new IteratorImpl<>();
 //  }
 
-
-
-  //5) 익명 클래스를 사용하는 경우
+//  // 5) 익명 클래스를 사용한 경우
 //  @Override
 //  public Iterator<E> iterator() {
-//    // 익명 클래스는 이름이 없기 때문에 정의하는 즉시 인스턴스를 생성해야 한다. class, implements 필요x
+//    // 익명 클래스는 이름이 없기 때문에 정의하는 즉시 인스턴스를 생성해야 한다.
 //    Iterator<E> obj = new Iterator<E>() {
 //      int cursor;
 //
@@ -170,14 +169,13 @@ public class ArrayList<E> extends AbstractList<E> {
 //    };
 //    return obj;
 //  }
-//
-
 
   // 6) 익명 클래스를 사용한 경우 - 더 간결하게 표현하기
   @Override
   public Iterator<E> iterator() {
     return new Iterator<E>() {
       int cursor;
+
       @Override
       public boolean hasNext() {
         return cursor >= 0 && cursor < ArrayList.this.size();
@@ -186,10 +184,8 @@ public class ArrayList<E> extends AbstractList<E> {
       @Override
       public E next() {
         return (E) ArrayList.this.get(cursor++);
-
       }
     };
   }
+
 }
-
-

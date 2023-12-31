@@ -23,7 +23,8 @@ public class Exam0410 {
     D.m1();
     D.X obj = new D.X();
 
-    // 다른 패키지 클래스
+    // 다른 패키지 M의 클래스
+    // import 했기 때문에 경로를 전부 적어야 할 필요가 없음.
     M.v2 = 200;
     M.m2();
     M.Y obj2 = new M.Y();

@@ -1,11 +1,11 @@
 package bitcamp.util;
 
-public class LinkedListIterator<E> implements Iterator<E>{
+public class LinkedListIterator<E> implements Iterator<E> {
 
   LinkedList<E> list;
   int cursor;
 
-  public LinkedListIterator(LinkedList<E> list){
+  public LinkedListIterator(LinkedList<E> list) {
     this.list = list;
   }
 

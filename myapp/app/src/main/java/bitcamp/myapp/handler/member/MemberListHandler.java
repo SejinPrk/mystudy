@@ -19,12 +19,12 @@ public class MemberListHandler extends AbstractMenuHandler {
   protected void action() {
     System.out.printf("%-10s\t%30s\t%s\n", "이름", "이메일", "가입일");
 
-        Iterator<Member> iterator = this.objectRepository.iterator();
+    Iterator<Member> iterator = this.objectRepository.iterator();
 
-        while (iterator.hasNext()) {
-          Member member = iterator.next();
-          System.out.printf("%-10s\t%30s\t%3$tY-%3$tm-%3$td\n", member.getName(), member.getEmail(),
-              member.getCreatedDate());
-        }
+    while (iterator.hasNext()) {
+      Member member = iterator.next();
+      System.out.printf("%-10s\t%30s\t%3$tY-%3$tm-%3$td\n", member.getName(), member.getEmail(),
+          member.getCreatedDate());
     }
+  }
 }
