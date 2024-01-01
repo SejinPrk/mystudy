@@ -1,5 +1,5 @@
-package algorithm.test.baekjoon.level05.exam10;
-// 5622 다이얼
+package algorithm.test.baekjoon.level05.exam11;
+// 11718 그대로 출력하기
 import java.util.Scanner;
 
 public class Main {
