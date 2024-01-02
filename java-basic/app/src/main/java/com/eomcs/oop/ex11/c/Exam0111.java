@@ -5,10 +5,7 @@ class A2 {
   class X {
     // inner class 는 스태틱 멤버를 가질 수 없다.
     // 스태틱 멤버는 오직
-    // - top level class 나
-    // - static nested class
-    // 만이 가질 수 있다.
-    //
+    // - top level class 나 static nested class 만이 가질 수 있다.
     // - Java16 부터는 inner class도 스태틱 멤버를 가질 수 있다.
     //
     //   static int v1; // 컴파일 오류!
