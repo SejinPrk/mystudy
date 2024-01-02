@@ -31,13 +31,23 @@ public class Exam0440 {
     };
     m1(obj);
 
-    // 3) 익명 클래스를 파라미터 자리에 바로 삽입
+    // 3) 익명 클래스를 파라미터 자리에 바로 삽입 -> 실무에서 사용하는 방법
     m1(new A() {
       @Override
       public void print() {
         System.out.println("안녕!!!");
       }
     });
+
+    //    위의 코드는 컴파일러가 다음 코드로 바꾼다.
+    //    class Exam0440$2 implements A{
+    //      @Override
+    //      public void print() {
+    //        System.out.println("안녕!!!");
+    //      }
+    //    }
+    //    A temp = new Exam0440$2();
+    //    m1(temp);
 
   }
 }

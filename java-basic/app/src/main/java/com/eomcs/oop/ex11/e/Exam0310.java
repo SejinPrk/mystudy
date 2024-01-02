@@ -16,6 +16,7 @@ public class Exam0310 {
         System.out.println("정말 반갑습니다!");
       }
     };
-    obj.print();
+    obj.print();// 컴파일 ok! print()는 A의 메서드이다. JVM이 호출할 때는 실제 메서드를 호출한다.
+    // obj.m()  // 컴파일 오류! 왜? obj 타입에 정의된 메서드가 아니다.
   }
 }

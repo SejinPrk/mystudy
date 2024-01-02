@@ -18,6 +18,6 @@ public class Exam0120 {
     }
 
     A obj = new My();
-    obj.print();
+
   }
 }
