@@ -83,7 +83,7 @@
   &quot;keyToString&quot;: {
     &quot;Gradle.Build myapp.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.myapp [classes].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.myapp [run].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [run].executor&quot;: &quot;Debug&quot;,
     &quot;Gradle.myapp:app [:app:QueueTest.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.myapp:app [:app:StackTest.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.myapp:app [:app:Test.main()].executor&quot;: &quot;Run&quot;,
