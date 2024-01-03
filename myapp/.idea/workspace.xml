@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9160b05-d132-42d9-bdad-84098ff3ce04" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assignment.data" beforeDir="false" afterPath="$PROJECT_DIR$/app/assignment.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/member.data" beforeDir="false" afterPath="$PROJECT_DIR$/app/member.data" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,21 +78,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.Build myapp.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.myapp [classes].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.myapp [run].executor&quot;: &quot;Debug&quot;,
-    &quot;Gradle.myapp:app [:app:QueueTest.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.myapp:app [:app:StackTest.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.myapp:app [:app:Test.main()].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/sejinpark/git/mystudy/myapp/settings.gradle&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Build myapp.executor": "Run",
+    "Gradle.myapp [classes].executor": "Run",
+    "Gradle.myapp [run].executor": "Run",
+    "Gradle.myapp:app [:app:QueueTest.main()].executor": "Run",
+    "Gradle.myapp:app [:app:StackTest.main()].executor": "Run",
+    "Gradle.myapp:app [:app:Test.main()].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/sejinpark/git/mystudy/myapp/settings.gradle",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="bitcamp.util" />
