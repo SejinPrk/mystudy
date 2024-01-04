@@ -1,5 +1,6 @@
 package bitcamp.myapp;
 
+import bitcamp.io.BufferedDataInputStream;
 import bitcamp.io.BufferedDataOutputStream;
 import bitcamp.io.DataInputStream;
 import bitcamp.io.DataOutputStream;
@@ -24,6 +25,7 @@ import bitcamp.myapp.vo.Assignment;
 import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.Prompt;
+import java.nio.Buffer;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -103,7 +105,7 @@ public class App {
   }
 
   void loadAssignment() {
-    try (DataInputStream in = new DataInputStream("assignment.data")) {
+    try (BufferedDataInputStream in = new BufferedDataInputStream("assignment.data")) {
 
       long start = System.currentTimeMillis();
       int size = in.readInt();

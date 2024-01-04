@@ -5,8 +5,8 @@ import java.io.IOException;
 
 public class BufferedDataInputStream extends DataInputStream {
 
-  int size;
-  int cursor;
+  int size; // 버퍼에 읽어들인 개수
+  int cursor; // 버퍼에서 꺼낸 순서
   private byte[] buffer = new byte[8192];
 
   public BufferedDataInputStream(String name) throws FileNotFoundException {
@@ -15,13 +15,30 @@ public class BufferedDataInputStream extends DataInputStream {
 
   @Override
   public int read() throws IOException {
-    if (size == 0) {
+    if (size == cursor) {
+      cursor = 0;
       size = super.read(buffer);
-      if (size < 0) {
+      if (size == -1) {
         return -1;
       }
-      cursor = 0;
     }
-    return buffer[cursor++]; // 주의!
+    return buffer[cursor++] & 0xff; //주의!
+  }
+
+  @Override
+  public int read(byte[] arr) throws IOException {
+    return read(arr, 0, arr.length);
+  }
+  @Override
+  public int read(byte[] arr, int off, int len) throws IOException {
+    // 배열 호출, 배열의 0번째가 아닌 off번째(지정 위치)부터 담을 것
+    for (int i =off, count = 0; count<len; i++, count++){
+      int b = read();
+      if(b == -1){
+        return count > 0 ? count : -1; // 현재까지 읽은 것 리턴
+      }
+      arr[i] = (byte) b;
+    }
+    return len;
   }
 }
