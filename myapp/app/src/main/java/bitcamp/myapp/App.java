@@ -107,7 +107,7 @@ public class App {
   void loadAssignment() {
     try (BufferedDataInputStream in = new BufferedDataInputStream("assignment.data")) {
 
-      long start = System.currentTimeMillis();
+      //long start = System.currentTimeMillis();
       int size = in.readInt();
 
       for (int i = 0; i < size; i++) {
@@ -117,8 +117,8 @@ public class App {
         assignment.setDeadline(Date.valueOf(in.readUTF()));
         assignmentRepository.add(assignment);
       }
-      long end = System.currentTimeMillis();
-      System.out.printf("걸린 시간: %d\n", end - start);
+     // long end = System.currentTimeMillis();
+      // System.out.printf("걸린 시간: %d\n", end - start);
 
     } catch (Exception e) {
       System.out.println("과제 데이터 로딩 중 오류 발생!");
@@ -128,7 +128,7 @@ public class App {
 
   void saveAssignment() {
     try (BufferedDataOutputStream out = new BufferedDataOutputStream("assignment.data")) {
-      long start = System.currentTimeMillis();
+     // long start = System.currentTimeMillis();
       out.writeInt(assignmentRepository.size());
 
       for (Assignment assignment : assignmentRepository) {
@@ -137,8 +137,8 @@ public class App {
         out.writeUTF(assignment.getDeadline().toString());
       }
 
-      long end = System.currentTimeMillis();
-      System.out.printf("걸린 시간: %d\n", end - start);
+//      long end = System.currentTimeMillis();
+//      System.out.printf("걸린 시간: %d\n", end - start);
 
     } catch (Exception e) {
       System.out.println("과제 데이터 저장 중 오류 발생!");
@@ -147,7 +147,7 @@ public class App {
   }
 
   void loadMember() {
-    try (DataInputStream in = new DataInputStream("member.data")) {
+    try (BufferedDataInputStream in = new BufferedDataInputStream("member.data")) {
       int size = in.readShort();
 
       for (int i = 0; i < size; i++) {
@@ -165,7 +165,7 @@ public class App {
   }
 
   void saveMember() {
-    try (DataOutputStream out = new DataOutputStream("member.data")) {
+    try (BufferedDataOutputStream out = new BufferedDataOutputStream("member.data")) {
 
       out.writeShort(memberRepository.size());
 
@@ -183,7 +183,7 @@ public class App {
   }
 
   void loadBoard() {
-    try (DataInputStream in = new DataInputStream("board.data")) {
+    try (BufferedDataInputStream in = new BufferedDataInputStream("board.data")) {
       int size = in.readShort();
 
       for (int i = 0; i < size; i++) {
@@ -201,7 +201,7 @@ public class App {
   }
 
   void saveBoard() {
-    try (DataOutputStream out = new DataOutputStream("board.data")) {
+    try (BufferedDataOutputStream out = new BufferedDataOutputStream("board.data")) {
 
       out.writeShort(boardRepository.size());
 
@@ -211,7 +211,6 @@ public class App {
         out.writeUTF(board.getWriter());
         out.writeLong(board.getCreatedDate().getTime());
       }
-
     } catch (Exception e) {
       System.out.println("게시글 데이터 저장 중 오류 발생!");
       e.printStackTrace();
@@ -219,7 +218,7 @@ public class App {
   }
 
   void loadGreeting() {
-    try (DataInputStream in = new DataInputStream("greeting.data")) {
+    try (BufferedDataInputStream in = new BufferedDataInputStream("greeting.data")) {
       int size = in.readShort();
 
       for (int i = 0; i < size; i++) {
@@ -237,7 +236,7 @@ public class App {
   }
 
   void saveGreeting() {
-    try (DataOutputStream out = new DataOutputStream("greeting.data")) {
+    try (BufferedDataOutputStream out = new BufferedDataOutputStream("greeting.data")) {
 
       out.writeShort(greetingRepository.size());
 
