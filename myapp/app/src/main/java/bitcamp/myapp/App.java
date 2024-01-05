@@ -23,25 +23,19 @@ import bitcamp.myapp.vo.Member;
 import bitcamp.util.Prompt;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Objects;
-import org.checkerframework.checker.units.qual.A;
 
 public class App {
 
   Prompt prompt = new Prompt(System.in);
 
-  List<Board> boardRepository = new ArrayList<>() ;
+  List<Board> boardRepository = new ArrayList<>();
   List<Assignment> assignmentRepository = new LinkedList<>();
   List<Member> memberRepository = new ArrayList<>();
   List<Board> greetingRepository = new LinkedList<>();
@@ -52,11 +46,11 @@ public class App {
     loadData("assignment.data", assignmentRepository);
     loadData("member.data", memberRepository);
     loadData("board.data", boardRepository);
-    loadData("greeting.data",greetingRepository);
+    loadData("greeting.data", greetingRepository);
     prepareMenu();
   }
 
-  public static void main(String[] args) throws Exception {
+  public static void main(String[] args) {
     new App().run();
   }
 
@@ -107,17 +101,18 @@ public class App {
     saveData("assignment.data", assignmentRepository);
     saveData("member.data", memberRepository);
     saveData("board.data", boardRepository);
-    saveData("greeting.data",greetingRepository);
+    saveData("greeting.data", greetingRepository);
   }
 
-  <E> void loadData(String filepath,List<?> dataList) {
+  <E> void loadData(String filepath, List<E> dataList) {
     try (ObjectInputStream in = new ObjectInputStream(
-        new BufferedInputStream(new FileInputStream(filepath)))){
+        new BufferedInputStream(new FileInputStream(filepath)))) {
 
-//      List list = (List) in.readObject();
-//      dataList.addAll(list);
+      List<E> list = (List<E>) in.readObject();
+      dataList.addAll(list);
+
     } catch (Exception e) {
-      System.out.println("파일 로딩 중 오류 발생!");
+      System.out.printf("%s 파일 로딩 중 오류 발생!\n", filepath);
       e.printStackTrace();
     }
   }
@@ -128,14 +123,9 @@ public class App {
 
       out.writeObject(dataList);
 
-      for (Assignment assignment : assignmentRepository) {
-        out.writeObject(assignment);
-      }
-
     } catch (Exception e) {
-      System.out.println("파일 저장 중 오류 발생!");
+      System.out.printf("%s 파일 저장 중 오류 발생!\n", filepath);
       e.printStackTrace();
     }
   }
-
 }
