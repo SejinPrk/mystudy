@@ -19,15 +19,12 @@ import bitcamp.myapp.handler.member.MemberModifyHandler;
 import bitcamp.myapp.handler.member.MemberViewHandler;
 import bitcamp.myapp.vo.Assignment;
 import bitcamp.myapp.vo.Board;
-import bitcamp.myapp.vo.CsvString;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.Prompt;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
@@ -42,6 +39,7 @@ public class App {
   List<Assignment> assignmentRepository = new LinkedList<>();
   List<Member> memberRepository = new ArrayList<>();
   List<Board> greetingRepository = new LinkedList<>();
+
   MenuGroup mainMenu;
 
   App() {
@@ -50,8 +48,8 @@ public class App {
 //    loadData("board.data", boardRepository);
 //    loadData("greeting.data", greetingRepository);
     assignmentRepository = loadData("assignment.data");
-    boardRepository = loadData("board.data");
     memberRepository = loadData("member.data");
+    boardRepository = loadData("board.data");
     greetingRepository = loadData("greeting.data");
     prepareMenu();
   }
@@ -122,6 +120,7 @@ public class App {
     }
     return new ArrayList<E>();
   }
+
   void saveData(String filepath, List<?> dataList) {
     try (ObjectOutputStream out = new ObjectOutputStream(
         new BufferedOutputStream(new FileOutputStream(filepath)))) {
@@ -135,11 +134,11 @@ public class App {
   }
 
 //  void saveData(String filepath, List<? extends CsvString> dataList) {
-//    try (FileWriter out = new FileWriter(filepath) {
+//    try (FileWriter out = new FileWriter(filepath)) {
 //
-//    for(CsvString csvObject : dataList){
+//      for (CsvString csvObject : dataList) {
 //        out.write(csvObject.toCsvString() + "\n");
-//     }
+//      }
 //
 //    } catch (Exception e) {
 //      System.out.printf("%s 파일 저장 중 오류 발생!\n", filepath);

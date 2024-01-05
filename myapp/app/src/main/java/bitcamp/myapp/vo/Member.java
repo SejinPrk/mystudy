@@ -5,6 +5,8 @@ import java.util.Date;
 
 public class Member implements Serializable/*, CsvString*/ {
 
+  private static final long servialVersionUID = 100L;
+  
   private String email;
   private String name;
   private String password;
