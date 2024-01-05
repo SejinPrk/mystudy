@@ -29,28 +29,30 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 public class App {
 
   Prompt prompt = new Prompt(System.in);
 
-  List<Board> boardRepository = new LinkedList<>();
-  List<Assignment> assignmentRepository = new LinkedList<>();
-  List<Member> memberRepository = new ArrayList<>();
-  List<Board> greetingRepository = new ArrayList<>();
+  List<Board> boardRepository ;
+  List<Assignment> assignmentRepository;
+  List<Member> memberRepository;
+  List<Board> greetingRepository;
 
   MenuGroup mainMenu;
 
   App() {
-    prepareMenu();
     loadAssignment();
     loadMember();
     loadBoard();
     loadGreeting();
+    prepareMenu();
   }
 
   public static void main(String[] args) throws Exception {
@@ -112,13 +114,9 @@ public class App {
         BufferedInputStream in1 = new BufferedInputStream(in0);
         ObjectInputStream in = new ObjectInputStream(in1)) {
 
-      int size = in.readInt();
-
-      for (int i = 0; i < size; i++) {
-        Assignment assignment = (Assignment) in.readObject();
-        assignmentRepository.add(assignment);
-      }
+      assignmentRepository = (List<Assignment>) in.readObject();
     } catch (Exception e) {
+      assignmentRepository = new LinkedList<>();
       System.out.println("과제 데이터 로딩 중 오류 발생!");
       e.printStackTrace();
     }
@@ -129,7 +127,7 @@ public class App {
         BufferedOutputStream out1 = new BufferedOutputStream(out0);
         ObjectOutputStream out = new ObjectOutputStream(out1)) {
 
-      out.writeInt(assignmentRepository.size());
+      out.writeObject(assignmentRepository);
 
       for (Assignment assignment : assignmentRepository) {
         out.writeObject(assignment);
@@ -142,39 +140,25 @@ public class App {
   }
 
   void loadMember() {
-    try (DataInputStream in = new DataInputStream(
+    try (ObjectInputStream in = new ObjectInputStream(
         new BufferedInputStream(new FileInputStream("member.data")))) {
-      int size = in.readShort();
-
-      for (
-          int i = 0;
-          i < size; i++) {
-        Member member = new Member();
-        member.setName(in.readUTF());
-        member.setEmail(in.readUTF());
-        member.setPassword(in.readUTF());
-        member.setCreatedDate(new java.util.Date(in.readLong()));
-        memberRepository.add(member);
-      }
+      memberRepository = (List<Member>) in.readObject();
     } catch (Exception e) {
+      memberRepository = new ArrayList<>();
       System.out.println("회원 데이터 로딩 중 오류 발생!");
       e.printStackTrace();
     }
   }
 
   void saveMember() {
-    try (DataOutputStream out = new DataOutputStream(
+    try (ObjectOutputStream out = new ObjectOutputStream(
         new BufferedOutputStream(new FileOutputStream("member.data")))) {
 
-      out.writeShort(memberRepository.size());
+      out.writeObject(memberRepository.size());
 
       for (Member member : memberRepository) {
-        out.writeUTF(member.getName());
-        out.writeUTF(member.getEmail());
-        out.writeUTF(member.getPassword());
-        out.writeLong(member.getCreatedDate().getTime());
+        out.writeObject(member);
       }
-
     } catch (Exception e) {
       System.out.println("회원 데이터 저장 중 오류 발생!");
       e.printStackTrace();
@@ -182,37 +166,25 @@ public class App {
   }
 
   void loadBoard() {
-    try (DataInputStream in = new DataInputStream(
+    try (ObjectInputStream in = new ObjectInputStream(
         new BufferedInputStream(new FileInputStream("board.data")))) {
-      int size = in.readShort();
-
-      for (int i = 0; i < size; i++) {
-        Board board = new Board();
-        board.setTitle(in.readUTF());
-        board.setContent(in.readUTF());
-        board.setWriter(in.readUTF());
-        board.setCreatedDate(new java.util.Date(in.readLong()));
-        boardRepository.add(board);
-      }
+      boardRepository = (List<Board>) in.readObject();
     } catch (Exception e) {
+      boardRepository = new ArrayList<>();
       System.out.println("게시글 데이터 로딩 중 오류 발생!");
       e.printStackTrace();
     }
   }
 
   void saveBoard() {
-    try (DataOutputStream out = new DataOutputStream(
+    try (ObjectOutputStream out = new ObjectOutputStream(
         new BufferedOutputStream(new FileOutputStream("board.data")))) {
 
-      out.writeShort(boardRepository.size());
+      out.writeObject(boardRepository.size());
 
       for (Board board : boardRepository) {
-        out.writeUTF(board.getTitle());
-        out.writeUTF(board.getContent());
-        out.writeUTF(board.getWriter());
-        out.writeLong(board.getCreatedDate().getTime());
+        out.writeObject(board);
       }
-
     } catch (Exception e) {
       System.out.println("게시글 데이터 저장 중 오류 발생!");
       e.printStackTrace();
@@ -220,42 +192,29 @@ public class App {
   }
 
   void loadGreeting() {
-    try (DataInputStream in = new DataInputStream(
+    try (ObjectInputStream in = new ObjectInputStream(
         new BufferedInputStream(new FileInputStream("greeting.data")))) {
-      int size = in.readShort();
-
-      for (int i = 0; i < size; i++) {
-        Board board = new Board();
-        board.setTitle(in.readUTF());
-        board.setContent(in.readUTF());
-        board.setWriter(in.readUTF());
-        board.setCreatedDate(new java.util.Date(in.readLong()));
-        greetingRepository.add(board);
-      }
+      greetingRepository = (List<Board>) in.readObject();
     } catch (Exception e) {
+      greetingRepository = new ArrayList<>();
       System.out.println("가입인사 데이터 로딩 중 오류 발생!");
       e.printStackTrace();
     }
   }
 
   void saveGreeting() {
-    try (DataOutputStream out = new DataOutputStream(
+    try (ObjectOutputStream out = new ObjectOutputStream(
         new BufferedOutputStream(new FileOutputStream("greeting.data")))) {
 
-      out.writeShort(greetingRepository.size());
+      out.writeObject(greetingRepository.size());
 
       for (Board board : greetingRepository) {
-        out.writeUTF(board.getTitle());
-        out.writeUTF(board.getContent());
-        out.writeUTF(board.getWriter());
-        out.writeLong(board.getCreatedDate().getTime());
+        out.writeObject(board);
       }
-
     } catch (Exception e) {
       System.out.println("가입인사 데이터 저장 중 오류 발생!");
       e.printStackTrace();
     }
   }
-
 
 }
