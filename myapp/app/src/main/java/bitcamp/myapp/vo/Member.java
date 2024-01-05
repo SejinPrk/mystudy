@@ -18,7 +18,7 @@ public class Member implements Serializable, CsvString {
         this.createdDate.getTime());
   }
 
-  // 팩토리 메서드
+  // 방법2) 팩토리 메서드를 통해 객체를 생성하기
   public static Member createFromCsv(String csv){
     String[] values = csv.split(",");
     Member obj = new Member();
