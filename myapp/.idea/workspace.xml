@@ -9,7 +9,6 @@
       <change beforePath="$PROJECT_DIR$/app/assignment.data" beforeDir="false" afterPath="$PROJECT_DIR$/app/assignment.data" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/board.data" beforeDir="false" afterPath="$PROJECT_DIR$/app/board.data" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/greeting.data" beforeDir="false" afterPath="$PROJECT_DIR$/app/greeting.data" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/member.data" beforeDir="false" afterPath="$PROJECT_DIR$/app/member.data" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -213,14 +212,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/App.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-field">
-          <url>file://$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/App.java</url>
-          <line>46</line>
-          <properties field="greetingRepository" class="bitcamp.myapp.App" />
-          <option name="timeStamp" value="4" />
+          <line>45</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

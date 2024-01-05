@@ -39,14 +39,17 @@ public class App {
   List<Assignment> assignmentRepository = new LinkedList<>();
   List<Member> memberRepository = new ArrayList<>();
   List<Board> greetingRepository = new LinkedList<>();
-
   MenuGroup mainMenu;
 
   App() {
-    loadData("assignment.data", assignmentRepository);
-    loadData("member.data", memberRepository);
-    loadData("board.data", boardRepository);
-    loadData("greeting.data", greetingRepository);
+//    loadData("assignment.data", assignmentRepository);
+//    loadData("member.data", memberRepository);
+//    loadData("board.data", boardRepository);
+//    loadData("greeting.data", greetingRepository);
+    assignmentRepository = loadData("assignment.data");
+    boardRepository = loadData("board.data");
+    memberRepository = loadData("member.data");
+    greetingRepository = loadData("greeting.data");
     prepareMenu();
   }
 
@@ -104,17 +107,30 @@ public class App {
     saveData("greeting.data", greetingRepository);
   }
 
-  <E> void loadData(String filepath, List<E> dataList) {
+//  <E> void loadData(String filepath, List<E> dataList) {
+//    try (ObjectInputStream in = new ObjectInputStream(
+//        new BufferedInputStream(new FileInputStream(filepath)))) {
+//
+//      List<E> list = (List<E>) in.readObject();
+//      dataList.addAll(list);
+//
+//    } catch (Exception e) {
+//      System.out.printf("%s 파일 로딩 중 오류 발생!\n", filepath);
+//      e.printStackTrace();
+//    }
+//  }
+
+  <E> List<E> loadData(String filepath) {
     try (ObjectInputStream in = new ObjectInputStream(
         new BufferedInputStream(new FileInputStream(filepath)))) {
 
-      List<E> list = (List<E>) in.readObject();
-      dataList.addAll(list);
+      return (List<E>) in.readObject();
 
     } catch (Exception e) {
       System.out.printf("%s 파일 로딩 중 오류 발생!\n", filepath);
       e.printStackTrace();
     }
+    return new ArrayList<E>();
   }
 
   void saveData(String filepath, List<?> dataList) {
