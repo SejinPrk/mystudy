@@ -3,11 +3,16 @@ package bitcamp.myapp.vo;
 import java.io.Serializable;
 import java.sql.Date;
 
-public class Assignment implements Serializable {
+public class Assignment implements Serializable/*, CsvString*/ {
 
   private String title;
   private String content;
   private Date deadline;
+
+//  @Override
+//  public String toCsvString() {
+//    return String.format("%s,%s,%s", this.title, this.content, this.deadline); // 공백이 없어야 한다!
+//  }
 
   public String getTitle() {
     return title;
