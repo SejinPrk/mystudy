@@ -19,33 +19,17 @@ import bitcamp.myapp.handler.member.MemberModifyHandler;
 import bitcamp.myapp.handler.member.MemberViewHandler;
 import bitcamp.myapp.vo.Assignment;
 import bitcamp.myapp.vo.Board;
-import bitcamp.myapp.vo.CsvString;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.Prompt;
-import com.google.common.reflect.TypeToInstanceMap;
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
-import org.checkerframework.checker.units.qual.A;
 
 public class App {
 
@@ -122,18 +106,19 @@ public class App {
 
   <E> List<E> loadData(String filepath, Class<E> clazz) {
 
-    try (BufferedReader in= new BufferedReader (new FileReader(filepath))) {
+    try (BufferedReader in = new BufferedReader(new FileReader(filepath))) {
 
       // 파일에서 JSON 문자열을 모두 읽어서 버퍼에 저장한다.
       StringBuilder strBuilder = new StringBuilder();
       String str;
-      while((str = in.readLine()) != null){
+      while ((str = in.readLine()) != null) {
         strBuilder.append(str);
       }
 
       // 버퍼에 저장된 JSON 문자열을 가지고 컬렉션 객체를 생성한다.
       return (List<E>) new GsonBuilder().setDateFormat("yyyy-MM-dd").create().fromJson(
-           strBuilder.toString(), TypeToken.getParameterized(ArrayList.class, clazz));
+          strBuilder.toString(),
+          TypeToken.getParameterized(ArrayList.class, clazz));
 
     } catch (Exception e) {
       System.out.printf("%s 파일 로딩 중 오류 발생!\n", filepath);
@@ -142,9 +127,8 @@ public class App {
     return new ArrayList<>();
   }
 
-
   void saveData(String filepath, List<?> dataList) {
-    try (BufferedWriter out = new BufferedWriter(new FileWriter(filepath))) { // buffer: 성능 향상 가능
+    try (BufferedWriter out = new BufferedWriter(new FileWriter(filepath))) {
 
       out.write(new GsonBuilder().setDateFormat("yyyy-MM-dd").create().toJson(dataList));
 
