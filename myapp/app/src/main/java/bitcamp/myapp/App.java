@@ -22,6 +22,7 @@ import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.CsvString;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.Prompt;
+import com.google.gson.Gson;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
@@ -140,12 +141,13 @@ public class App {
   }
 
 
-  void saveData(String filepath, List<? extends CsvString> dataList) {
+  void saveData(String filepath, List<?> dataList) {
     try (FileWriter out = new FileWriter(filepath)) {
 
-      for (CsvString csvObject : dataList) {
-        out.write(csvObject.toCsvString() + "\n");
-      }
+      Gson gson = new Gson();
+      String gsonData = gson.toJson(dataList);
+      System.out.println(gsonData);
+      System.out.println("-----------------------------------");
 
     } catch (Exception e) {
       System.out.printf("%s 파일 저장 중 오류 발생!\n", filepath);
