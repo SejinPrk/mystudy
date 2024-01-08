@@ -14,15 +14,15 @@ public class Member implements Serializable {
 
 
   // 방법2) 팩토리 메서드를 통해 객체를 생성하기
-  public static Member createFromCsv(String csv){
-    String[] values = csv.split(",");
-    Member obj = new Member();
-    obj.setEmail(values[0]);
-    obj.setName(values[1]);
-    obj.setPassword(values[2]);
-    obj.setCreatedDate(new Date(Long.valueOf(values[3])));
-    return obj;
-  }
+//  public static Member createFromCsv(String csv){
+//    String[] values = csv.split(",");
+//    Member obj = new Member();
+//    obj.setEmail(values[0]);
+//    obj.setName(values[1]);
+//    obj.setPassword(values[2]);
+//    obj.setCreatedDate(new Date(Long.valueOf(values[3])));
+//    return obj;
+//  }
   public String getEmail() { return email; }
 
   public void setEmail(String email) { this.email = email; }

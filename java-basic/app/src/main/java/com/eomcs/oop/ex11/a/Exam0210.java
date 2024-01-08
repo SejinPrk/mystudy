@@ -22,7 +22,7 @@ public class Exam0210 {
   //    바깥 클래스의 인스턴스 없이 작업할 수 없는 경우
   //    중첩 클래스를 non-static nested class 로 정의한다.
   // => 바깥 클래스의 인스턴스 없이 생성할 수 없다.
-  class B {} //public, private 모두 붙일 수 있다.
+  class B {}
 
   // => 다른 인스턴스 멤버
   int b; // 논스태틱 필드 = 인스턴스 필드
@@ -33,7 +33,7 @@ public class Exam0210 {
 
     // 3) local class
     // => 특정 메서드 안에서만 사용되는 클래스.
-    class C {}  // public을 붙일 수 없다.
+    class C {}
 
     // 4) anonymous class
     // => 클래스의 이름이 없다.

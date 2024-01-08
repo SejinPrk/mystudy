@@ -9,7 +9,7 @@ public class Score {
   public int sum;
   public float aver;
 
-  // 클래스에 생성자가 없으면,
+  // 클래스에 생성자가 없으면, 
   // 컴파일러는 파라미터가 없는 기본 생성자를 자동 추가한다.
   //  public Score() {
   //  }
@@ -25,7 +25,7 @@ public class Score {
     this.eng = eng;
     this.math = math;
 
-    this.compute();
+    this.compute(); // 컴파일 할 때 컴파일러가 compute() 앞에 생성자가 받은 인스턴스 주소를 넘깁니다.
   }
 
   public void compute() {

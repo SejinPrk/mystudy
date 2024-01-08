@@ -1,7 +1,7 @@
 package com.eomcs.oop.ex05.d;
 
 public class Car {
-  // 실제 상속에서는 기존 코드가 필요없다.
+
   public String model;
   public String maker;
   public int capacity;

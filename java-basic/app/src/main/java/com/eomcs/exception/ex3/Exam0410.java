@@ -23,4 +23,5 @@ public class Exam0410 {
     m(1);
 
   }
+
 }

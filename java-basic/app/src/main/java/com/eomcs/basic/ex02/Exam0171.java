@@ -6,9 +6,7 @@ public class Exam0171 {
 
     String[] arr = {"101", "제목", "내용", "4", "2021-2-2"};
 
-    // 1) 배열의 모든 값을 CSV(comma seperated value) 형식의 한 문자열로 만들기
-    // 한 줄에 한 데이터 표현
-    // 공백없이 콤마 사용해서 표현
+    // 1) 배열의 모든 값을 CSV 형식의 한 문자열로 만들기
     // => format() 사용
     String s1 = String.format("%s,%s,%s,%s,%s", arr[0], arr[1], arr[2], arr[3], arr[4]);
     System.out.println(s1);

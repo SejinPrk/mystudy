@@ -16,8 +16,6 @@ public class Exam0440 {
       // 단, 생성자의 첫 문장으로 와야 한다.
 
       this("이름없음"); // Score(String) 생성자 호출
-      // 다른 생성자를 호출하는 특별한 메서드 this
-      // this를 호출하기 전에 다른 문장이 앞에 와서는 안됨.
       System.out.println("Score()");
     }
 

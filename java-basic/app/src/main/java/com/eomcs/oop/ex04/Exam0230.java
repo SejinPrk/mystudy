@@ -18,7 +18,7 @@ public class Exam0230 {
     System.out.println(Math.floor(-3.28)); // -4
 
     // => 2의 7승 값을 알고 싶을 때
-    System.out.println(Math.pow(2, 7)); // 자바에서는 2**7같은 연산자가 없어 메서드를 사용해야 한다.
+    System.out.println(Math.pow(2, 7));
 
     // => 반올림하여 정수 값 리턴
     System.out.println(Math.round(3.14));

@@ -4,7 +4,7 @@ package com.eomcs.oop.ex03;
 public class Exam0810 {
 
   static class A {
-    int a = 100; // 이게 주석 코드보다 실무에서 더 많이 쓰는 방
+    int a = 100;
     int b = 200;
     int c;
 

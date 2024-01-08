@@ -14,6 +14,8 @@ public class Exam0950 {
     //
     Monitor(int bright, int contrast) {
       // 변수 초기화 문장(variable initializer)은 생성자의 앞부분으로 복사된다.
+      //      contrast = 50;
+      //      heightRes = 1080;
       this.bright = bright;
       this.contrast = contrast;
     }
@@ -38,7 +40,7 @@ public class Exam0950 {
     //    new Monitor(2); // 컴파일 오류!
 
     // 존재하는 생성자를 지정해야 하고, 그 생성자의 파라미터에 맞춰 값을 넘겨야 한다.
-    // => Monitor 설계도에 따라 인스턴스를 생성한 후,
+    // => Monitor 설계도에 따라 인스턴스를 생성한 후, 
     //    int 값 두 개를 받는 생성자를 호출하라는 의미다.
     Monitor m = new Monitor(50, 50); // OK!
     m.display();

@@ -36,7 +36,7 @@ public class A {
   // => 이유?
   //    메서드를 찾을 때 파라미터 값의 타입으로 찾기 때문이다.
   //    따라서 다음 메서드는 컴파일 오류이다.
-  //    파라미터 형식이 달라야 함.
+  //
   //  static public int m(int a, String b) {
   //    return 0;
   //  }

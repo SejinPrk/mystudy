@@ -32,7 +32,6 @@ public class Exam0210 {
 
 
     // Wrapper 클래스의 인스턴스를 생성할 때는 생성자 대신 클래스 메서드를 사용하라.
-    // Factory Method Pattern
     Byte b2 = Byte.valueOf((byte)100);
     Short s2 = Short.valueOf((short)20000);
     Integer i2 = Integer.valueOf(3000000);

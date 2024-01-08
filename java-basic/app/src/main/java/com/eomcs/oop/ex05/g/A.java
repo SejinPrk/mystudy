@@ -16,8 +16,6 @@ public class A /*extends Object*/ {
     //    자바의 모든 클래스는 java.lang.Object의 자손 클래스가 된다.
 
     System.out.println("A() 생성자!");
-    // super(); // 위치를 아래로 옮기면 에러 발생!
-
     this.v1 = 100;
   }
 }

@@ -1,4 +1,4 @@
-// StringBuffer vs. StringBuilder
+// StringBuffer vs StringBuilder
 package com.eomcs.basic.ex02;
 
 public class Exam0164 {
@@ -12,7 +12,7 @@ public class Exam0164 {
 
     // 순차적으로 작업을 시키지 않고 동시에 진행한다.
     // => Thread 객체에 대해 start()를 호출하면 run() 메서드를 실행시키고 즉시 리턴한다.
-    // => 즉 run()메서드의 작업이 끝날 때까지 기다리지 않는다.
+    // => 즉 run() 메서드의 작업이 끝날 때까지 기다리지 않는다.
     w1.start();
     w2.start();
     w3.start();
@@ -39,12 +39,13 @@ public class Exam0164 {
 
     @Override
     public void run() {
-      for(int i=0; i < 100; i++) {
+      for (int i = 0; i < 100; i++) {
         buf.append(message);
       }
       System.out.printf("'%s' 메시지 저장 끝!\n", message);
     }
   }
+
 }
 
 

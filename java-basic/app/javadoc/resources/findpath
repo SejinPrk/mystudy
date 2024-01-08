@@ -1,7 +1,0 @@
-public  void getClassPath(){
-  String sPath = System.getProperty("Exam.0560")
-  String[] classpathEntries = sPath.split(File.pathSeparator);
-  for (String path : classpathEntries) {
-    System.out.println(path);
-  }
-}

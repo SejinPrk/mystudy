@@ -3,8 +3,8 @@ package com.eomcs.oop.ex03;
 
 public class Exam0410 {
 
-  // Exam0410 클래스조차도 기본 생성자가 자동으로 추가된다.
-  // 즉 다음의 생성자를 컴파일러가 자동으로 다음 생성자를 붙일 것이다.
+  // Exam0410 클래스 조차도 기본 생성자가 자동으로 추가된다.
+  // 컴파일러가 자동으로 다음 생성자를 붙일 것이다.
   //public Exam0410() {}
 
   static class Score {
@@ -48,7 +48,7 @@ public class Exam0410 {
 
     Score s3 = new Score();
 
-    //    s3.Score(); // 생성자는 따로 호출할 수 없다! 인스턴스를 생성할 때만 호출 가
+    //    s3.Score(); // 생성자는 따로 호출할 수 없다!
   }
 }
 

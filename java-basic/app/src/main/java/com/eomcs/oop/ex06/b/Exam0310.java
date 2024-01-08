@@ -4,8 +4,6 @@ package com.eomcs.oop.ex06.b;
 public class Exam0310 {
   public static void main(String[] args) {
 
-    // 전형적인 오버로딩 문법
-
     // 다양한 파라미터 값을 받는 println()
     System.out.println(100);
     System.out.println(true);
@@ -19,4 +17,5 @@ public class Exam0310 {
     System.out.printf("%d, %d, %d\n", obj1, obj2, obj3);
 
   }
+
 }

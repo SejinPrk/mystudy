@@ -48,6 +48,7 @@ public class Exam0450 {
 
   static A create3() {
     return () -> System.out.println("Hello3!");
+
     // 컴파일러는 위의 문장을 다음과 같이 바꾼다.
     //    return new A() {
     //      @Override
@@ -59,14 +60,16 @@ public class Exam0450 {
 
   static A create4() {
     return My::m1;
+
     // 컴파일러는 위의 문장을 다음과 같이 바꾼다.
-    //   return () -> My.m1();
+    //    return () -> My.m1();
   }
 
   static A create5() {
     return new My()::m2;
+
     // 컴파일러는 위의 문장을 다음과 같이 바꾼다.
-    //   return () -> new My.m2();
+    //    return () -> new My().m2();
   }
 
   public static void main(String[] args) {

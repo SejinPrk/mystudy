@@ -22,21 +22,21 @@ plugins {
 // 
 /*
 eclipse {
-  classpath {
+	classpath {
         defaultOutputDir = file('myokok')
         
-    file {
-          whenMerged { 
-            // use default Output for all source-folders. see also defaultOutputDir per project
-            entries.each { source ->
-          if (source.kind == 'src' && !source.path.startsWith('/')) { // only Source-folders in the project starting with '/' are project-references
-            source.output = null
-              }
-        }
-          }
-      }
+		file {
+        	whenMerged { 
+    	    	// use default Output for all source-folders. see also defaultOutputDir per project
+	        	entries.each { source ->
+					if (source.kind == 'src' && !source.path.startsWith('/')) { // only Source-folders in the project starting with '/' are project-references
+						source.output = null
+        			}
+				}
+    	    }
+	    }
         
-  }
+	}
 }
 */
 
@@ -145,11 +145,11 @@ tasks.withType(JavaCompile).configureEach {
     // 자바 클래스를 실행시킬 JVM의 최소 버전
     //targetCompatibility = '21'
 }
-    
- // eclipse 프로젝트 이름을 설정하기
+
+// eclipse 프로젝트 이름을 설정하기
 eclipse {
     project {
-        name = "java-basic"
+        name = "eomcs-java-lang"
     }
     jdt {
       sourceCompatibility = 21
@@ -157,4 +157,4 @@ eclipse {
       javaRuntimeName = "JavaSE-21"
     }
 }
-    
+

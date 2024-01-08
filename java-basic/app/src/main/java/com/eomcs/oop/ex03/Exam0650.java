@@ -35,17 +35,11 @@ public class Exam0650 {
     // => import 문장에서는 $ 대신 .을 써야 한다.
     //    예) import com.eomcs.oop.ex03.Exam0650.A;
     // => 변수 선언문에서도 $ 대신 .을 써야 한다.
-    // 예) com.eomcs.oop.ex03.Exam0650.A obj;
-    // A obj;
-    // 여기서 .$를 쓰면 오류가 난다.
+    //    예) com.eomcs.oop.ex03.Exam0650.A obj;
 
     System.out.println("----------------------------------");
 
     Class.forName("com.eomcs.oop.ex03.Exam0650$A"); // 클래스는 중복 로딩되지 않는다.
-    //Class.forName("com.eomcs.oop.ex03.Exam0650.A");
-    // Class forName에 들어있을 땐 $를써야 한다.
-    // .을 쓰면 오류가 난다.
-    // $: Exam0650 클래스 안에 중첩 클래스 A를 로딩.
     System.out.println("----------------------------------");
 
     System.out.println("종료!");

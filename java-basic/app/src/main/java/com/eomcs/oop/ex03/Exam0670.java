@@ -4,7 +4,7 @@ package com.eomcs.oop.ex03;
 public class Exam0670 {
 
   public static class A {
-    static int a = 100; // 선언한 직후에 초기화시키는 것 = 변수 초기화 문장
+    static int a = 100;
 
     // 위 문장 해석:
     // 1) "클래스가 로딩될 때" int 타입의 메모리를 만들고 그 메모리의 이름을 'a'라고 하라.
@@ -21,7 +21,7 @@ public class Exam0670 {
     //
     //    static int a;
     //    static {
-    //      a = 100;  이렇게 작성해도 실행속도에는 차이가 없다.
+    //      a = 100;
     //    }
     // - 바이트 코드(Exam0670$A.class)를 확인해 보라!
   }
