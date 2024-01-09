@@ -9,17 +9,10 @@ public class Exam0540 {
       return a + b;
     }
 
-    public static int minus(int a, int b) {
-      return a - b;
+    public static int plus() {
+      return 100;
     }
 
-    public static int multiple(int a, int b) {
-      return a * b;
-    }
-
-    public static int divide(int a, int b) {
-      return a / b;
-    }
   }
 
   static interface Calculator1 {
@@ -81,7 +74,7 @@ public class Exam0540 {
     //    };
 
     // 파라미터 타입: long, long ===> int, int
-    //    Calculator3 c3 = MyCalculator::plus; // 컴파일 오류!
+    //    Calculator3 c3 = MyCalculator::plus; // 컴파일 오류! 형변환 불가능
     //
     //    Calculator3 c3 = new Calculator3() {
     //      @Override
@@ -106,7 +99,7 @@ public class Exam0540 {
     //      @Override
     //      public int compute(Integer a, Integer b) {
     //        return MyCalculator.plus(a, b); // OK!
-    //        // 이유? 오토언박싱 때문이다. 
+    //        // 이유? 오토언박싱 때문이다.
     //        // MyCalculator.plus(a.intValue(), b.intValue()) 코드로 변경된다.
     //      }
     //    };
@@ -123,16 +116,19 @@ public class Exam0540 {
     //    };
 
     // 파라미터 타입: int, int, int ===> int, int
-    //Calculator9 c9 = MyCalculator::plus; // 컴파일 오류!
+    //Calculator9 c9 = MyCalculator::plus; // 컴파일 오류! 세 개 중에 두 개만 사용 불가!
     //
     //    Calculator9 c9 = new Calculator9() {
     //      @Override
     //      public int compute(int a, int b, int c) {
     //        return MyCalculator.plus(a, b, c); // 컴파일 오류!
-    //        // compute()는 int 값 세 개를 받아서 plus()에 세 개 모두 전달한다. 
+    //        // compute()는 int 값 세 개를 받아서 plus()에 세 개 모두 전달한다.
     //        // 그러나 plus()는 int 파라미터가 두 개만 있다.
     //      }
     //    };
+
+
+    // Calculator8 c99 = MyCalculator::plus2; // 컴파일 오
 
     // 메서드 레퍼런스를 지정할 때 파라미터 타입 규칙:
     // => 인터페이스 규칙에 따라 받은 값을
