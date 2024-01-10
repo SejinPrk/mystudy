@@ -12,6 +12,24 @@ public class Main {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     StringTokenizer st  = new StringTokenizer(br.readLine());
 
+    String n = st.nextToken();
+    int b = Integer.parseInt(st.nextToken());
+    br.close();
 
+    int temp = 1;
+    int sum = 0;
+
+    for (int i = n.length()-1; i>=0; i--) {
+      char C = n.charAt(i);
+
+      if ('A' <= C && C<= 'Z') {
+        sum += (C - 'A' + 10) * temp;
+      } else {
+        sum += (C - '0') * temp;
+      }
+      temp *= b;
+    }
+    System.out.println(sum);
+    }
   }
-}
+
