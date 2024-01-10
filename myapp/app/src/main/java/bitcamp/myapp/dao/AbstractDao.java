@@ -10,7 +10,7 @@ import java.io.FileWriter;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List
+import java.util.List;
 
 public abstract class AbstractDao<T> {
   ArrayList<T> list;
@@ -30,6 +30,7 @@ public abstract class AbstractDao<T> {
       }
 
       // 이 클래스가 다루는 데이터의 클래스 정보를 알아낸다.
+      // 타입 파라미터 T가 가리키는 클래스가 무엇인지 알아낸다. 
       Class<?> dataType = (Class)(
           (ParameterizedType) this.getClass(). // 이 메서드를 호출한 클래스의 정보를 알아낸다.
           getGenericSuperclass()). // AbstractDao 클래스의 정보를 알아낸다.
