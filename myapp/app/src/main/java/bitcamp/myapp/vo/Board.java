@@ -5,6 +5,16 @@ import java.util.Date;
 
 public class Board implements Serializable {
 
+  @Override
+  public String toString() {
+    return "Board{" +
+        "title='" + title + '\'' +
+        ", content='" + content + '\'' +
+        ", writer='" + writer + '\'' +
+        ", createdDate=" + createdDate +
+        '}';
+  }
+
   private static final long serialVersionUID = 100L;
 
   private String title;

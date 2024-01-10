@@ -1,13 +1,13 @@
 // 애노테이션 유지 정책 확인
 package com.eomcs.annotation.ex2;
 
-//애노테이션 유지 범위 
+//애노테이션 유지 범위
 //=> CLASS
-//   - .class 파일까지는 유지된다. 
+//   - .class 파일까지는 유지된다.
 //   - 그러나 runtime에는 메모리에 로딩되지 않는다.
 //   - 애노테이션을 정의할 때 유지 범위를 지정하지 않으면 기본이 CLASS 이다.
 //=> SOURCE
-//   - 컴파일 할 때 제거된다. 
+//   - 컴파일 할 때 제거된다.
 //   - .class 파일에 포함되지 않는다.
 //   - 보통 소스 파일에서 애노테이션 값을 꺼내 다른 파일을 자동 생성하는 도구를 만들 때 많이 사용한다.
 //=> RUNTIME
@@ -21,7 +21,7 @@ public class Exam0110 {
     // MyClass.class 파일을 편집기로 열어서 확인해보라!
 
     // 클래스 정보 객체로부터 애노테이션 정보 추출
-    Class<?> clazz = MyClass.class;
+    Class<?> clazz = MyClass.class; // 어떤 클래스 정보도 <> 안에 담을 수 있다.
 
     // => 유지정책 : CLASS
     MyAnnotation obj = clazz.getAnnotation(MyAnnotation.class);

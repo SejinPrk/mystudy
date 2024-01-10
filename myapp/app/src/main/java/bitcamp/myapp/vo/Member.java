@@ -7,6 +7,16 @@ public class Member implements Serializable {
 
   private static final long serialVersionUID = 100L;
 
+  @Override
+  public String toString() {
+    return "Member{" +
+        "email='" + email + '\'' +
+        ", name='" + name + '\'' +
+        ", password='" + password + '\'' +
+        ", createdDate=" + createdDate +
+        '}';
+  }
+
   private String email;
   private String name;
   private String password;
