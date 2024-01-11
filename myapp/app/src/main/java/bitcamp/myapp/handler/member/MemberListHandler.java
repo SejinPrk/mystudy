@@ -4,7 +4,6 @@ import bitcamp.menu.AbstractMenuHandler;
 import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.Prompt;
-import java.util.Iterator;
 import java.util.List;
 
 public class MemberListHandler extends AbstractMenuHandler {
@@ -22,8 +21,8 @@ public class MemberListHandler extends AbstractMenuHandler {
 
     List<Member> list = memberDao.findAll();
 
-    for (Member member : list){
-      System.out.printf("%-4d\t%-10s\t%30s\t%3$tY-%3$tm-%3$td\n",
+    for (Member member : list) {
+      System.out.printf("%-4d\t%-10s\t%30s\t%4$tY-%4$tm-%4$td\n",
           member.getNo(),
           member.getName(),
           member.getEmail(),

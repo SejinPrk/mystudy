@@ -1,6 +1,5 @@
 package bitcamp.myapp.dao;
 
-
 import bitcamp.myapp.vo.Member;
 import java.util.List;
 
@@ -10,6 +9,7 @@ public class MemberDao extends AbstractDao<Member> {
 
   public MemberDao(String filepath) {
     super(filepath);
+
     lastKey = list.getLast().getNo();
   }
 
@@ -20,38 +20,36 @@ public class MemberDao extends AbstractDao<Member> {
   }
 
   public int delete(int no) {
-    for (int i = 0; i < list.size(); i++) {
-      if (list.get(i).getNo() == no) {
-        list.remove(i);
-        saveData();
-        return 1;
-      }
+    int index = indexOf(no);
+    if (index == -1) {
+      return 0;
     }
-    return 0;
-  }
 
+    list.remove(index);
+    saveData();
+    return 1;
+  }
 
   public List<Member> findAll() {
     return this.list.subList(0, list.size());
   }
 
   public Member findBy(int no) {
-    for (int i = 0; i < list.size(); i++) {
-      if (list.get(i).getNo() == no) {
-        return list.get(i);
-      }
+    int index = indexOf(no);
+    if (index == -1) {
+      return null;
     }
-    return null;
+    return list.get(index);
   }
 
-  public int update(int no, Member member) {
-    for (int i = 0; i < list.size(); i++) {
-      if (list.get(i).getNo() == no) {
-        list.set(i, member);
-        return 1;
-      }
+  public int update(Member member) {
+    int index = indexOf(member.getNo());
+    if (index == -1) {
+      return 0;
     }
-    return 0;
+    list.set(index, member);
+    saveData();
+    return 1;
   }
 
   private int indexOf(int no) {

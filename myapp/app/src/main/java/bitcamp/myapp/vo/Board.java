@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Board implements Serializable {
+
   private static final long serialVersionUID = 100L;
 
   private int no;
@@ -11,7 +12,7 @@ public class Board implements Serializable {
   private String content;
   private String writer;
   private Date createdDate;
-
+  
   @Override
   public String toString() {
     return "Board{" +
@@ -23,12 +24,14 @@ public class Board implements Serializable {
         '}';
   }
 
-  public int getNo(){
+  public int getNo() {
     return no;
-}
-public void setNo(int no){
+  }
+
+  public void setNo(int no) {
     this.no = no;
-}
+  }
+
   public String getTitle() {
     return title;
   }

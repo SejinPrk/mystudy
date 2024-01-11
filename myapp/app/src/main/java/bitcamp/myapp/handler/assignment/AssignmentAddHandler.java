@@ -4,11 +4,11 @@ import bitcamp.menu.AbstractMenuHandler;
 import bitcamp.myapp.dao.AssignmentDao;
 import bitcamp.myapp.vo.Assignment;
 import bitcamp.util.Prompt;
-import java.util.List;
 
 public class AssignmentAddHandler extends AbstractMenuHandler {
 
   private AssignmentDao assignmentDao;
+
 
   public AssignmentAddHandler(AssignmentDao assignmentDao, Prompt prompt) {
     super(prompt);

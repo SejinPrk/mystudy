@@ -9,49 +9,49 @@ public class AssignmentDao extends AbstractDao<Assignment> {
 
   public AssignmentDao(String filepath) {
     super(filepath);
+
     lastKey = list.getLast().getNo();
   }
 
   public void add(Assignment assignment) {
     assignment.setNo(++lastKey);
-    this.list.add(assignment);
+    list.add(assignment);
     saveData();
   }
 
   public int delete(int no) {
-    for (int i = 0; i < list.size(); i++) {
-      if (list.get(i).getNo() == no) {
-        list.remove(i);
-        saveData();
-        return 1;
-      }
+    int index = indexOf(no);
+    if (index == -1) {
+      return 0;
     }
-    return 0;
+
+    list.remove(index);
+    saveData();
+    return 1;
   }
 
-
   public List<Assignment> findAll() {
-    return this.list.subList(0, list.size());
+    return list.subList(0, list.size());
   }
 
   public Assignment findBy(int no) {
-    for (int i = 0; i < list.size(); i++) {
-      if (list.get(i).getNo() == no) {
-        return list.get(i);
-      }
+    int index = indexOf(no);
+    if (index == -1) {
+      return null;
     }
-    return null;
+
+    return list.get(index);
   }
 
-  public int update(int no, Assignment assignment) {
-    for (int i = 0; i < list.size(); i++) {
-      if (list.get(i).getNo() == no) {
-        list.set(i, assignment);
-        saveData();
-        return 1;
-      }
+  public int update(Assignment assignment) {
+    int index = indexOf(assignment.getNo());
+    if (index == -1) {
+      return 0;
     }
-    return 0;
+
+    list.set(index, assignment);
+    saveData();
+    return 1;
   }
 
   private int indexOf(int no) {
@@ -60,6 +60,7 @@ public class AssignmentDao extends AbstractDao<Assignment> {
         return i;
       }
     }
+
     return -1;
   }
 }

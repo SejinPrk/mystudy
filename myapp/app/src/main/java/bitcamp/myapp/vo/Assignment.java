@@ -22,10 +22,11 @@ public class Assignment implements Serializable {
         '}';
   }
 
-  public int getNo(){
-   return no;
+  public int getNo() {
+    return no;
   }
-  public void setNo(int no){
+
+  public void setNo(int no) {
     this.no = no;
   }
 

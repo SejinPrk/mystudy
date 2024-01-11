@@ -31,7 +31,7 @@ public class BoardModifyHandler extends AbstractMenuHandler {
     board.setWriter(this.prompt.input("작성자(%s)? ", oldBoard.getWriter()));
     board.setCreatedDate(oldBoard.getCreatedDate());
 
-    boardDao.update(no, board);
+    boardDao.update(board);
     System.out.println("게시글을 변경했습니다.");
   }
 }

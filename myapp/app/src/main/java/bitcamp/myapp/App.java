@@ -20,22 +20,16 @@ import bitcamp.myapp.handler.member.MemberDeleteHandler;
 import bitcamp.myapp.handler.member.MemberListHandler;
 import bitcamp.myapp.handler.member.MemberModifyHandler;
 import bitcamp.myapp.handler.member.MemberViewHandler;
-import bitcamp.myapp.vo.Assignment;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.Prompt;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class App {
 
   Prompt prompt = new Prompt(System.in);
+
+  List<Member> memberRepository = new ArrayList<>();
 
   BoardDao boardDao = new BoardDao("board.json");
   BoardDao greetingDao = new BoardDao("greeting.json");
@@ -95,40 +89,6 @@ public class App {
       } catch (Exception e) {
         System.out.println("예외 발생!");
       }
-    }
-  }
-
-  <E> List<E> loadData(String filepath, Class<E> clazz) {
-
-    try (BufferedReader in = new BufferedReader(new FileReader(filepath))) {
-
-      // 파일에서 JSON 문자열을 모두 읽어서 버퍼에 저장한다.
-      StringBuilder strBuilder = new StringBuilder();
-      String str;
-      while ((str = in.readLine()) != null) {
-        strBuilder.append(str);
-      }
-
-      // 버퍼에 저장된 JSON 문자열을 가지고 컬렉션 객체를 생성한다.
-      return (List<E>) new GsonBuilder().setDateFormat("yyyy-MM-dd").create().fromJson(
-          strBuilder.toString(),
-          TypeToken.getParameterized(ArrayList.class, clazz));
-
-    } catch (Exception e) {
-      System.out.printf("%s 파일 로딩 중 오류 발생!\n", filepath);
-      e.printStackTrace();
-    }
-    return new ArrayList<>();
-  }
-
-  void saveData(String filepath, List<?> dataList) {
-    try (BufferedWriter out = new BufferedWriter(new FileWriter(filepath))) {
-
-      out.write(new GsonBuilder().setDateFormat("yyyy-MM-dd").create().toJson(dataList));
-
-    } catch (Exception e) {
-      System.out.printf("%s 파일 저장 중 오류 발생!\n", filepath);
-      e.printStackTrace();
     }
   }
 }

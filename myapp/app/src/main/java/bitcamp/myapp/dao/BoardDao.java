@@ -8,8 +8,8 @@ public class BoardDao extends AbstractDao<Board> {
   private int lastKey;
 
   public BoardDao(String filepath) {
-
     super(filepath);
+
     // 마지막 게시글의 식별 번호를 알아낸다.
     lastKey = list.getLast().getNo();
   }
@@ -22,7 +22,7 @@ public class BoardDao extends AbstractDao<Board> {
 
   public int delete(int no) {
     int index = indexOf(no);
-    if(index == -1){
+    if (index == -1) {
       return 0;
     }
 
@@ -37,15 +37,15 @@ public class BoardDao extends AbstractDao<Board> {
 
   public Board findBy(int no) {
     int index = indexOf(no);
-    if(index == -1){
+    if (index == -1) {
       return null;
     }
     return list.get(index);
   }
 
-  public int update(int no, Board board) {
+  public int update(Board board) {
     int index = indexOf(board.getNo());
-    if(index == -1){
+    if (index == -1) {
       return 0;
     }
     list.set(index, board);
@@ -53,8 +53,7 @@ public class BoardDao extends AbstractDao<Board> {
     return 1;
   }
 
-
-  private int indexOf(int no){
+  private int indexOf(int no) {
     for (int i = 0; i < list.size(); i++) {
       if (list.get(i).getNo() == no) {
         return i;

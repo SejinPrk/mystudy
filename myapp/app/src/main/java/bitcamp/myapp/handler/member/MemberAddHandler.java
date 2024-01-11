@@ -5,7 +5,6 @@ import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.Prompt;
 import java.util.Date;
-import java.util.List;
 
 public class MemberAddHandler extends AbstractMenuHandler {
 
