@@ -14,13 +14,15 @@ public class Main {
 
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     StringTokenizer st = new StringTokenizer(br.readLine());
-    int n = Integer.parseInt(st.nextToken());
-    int b = Integer.parseInt(st.nextToken());
+    int N = Integer.parseInt(st.nextToken());
+    int B = Integer.parseInt(st.nextToken());
 
-    List<Character> list = new ArrayList<>();
-    while(n>0){
-      if(n%b < 10){
-        list.add((char)(n%b + '0'));
+    br.close();
+
+    ArrayList<Character> list = new ArrayList<>();
+    while(N > 0){
+      if(N % B < 10){
+        list.add((char)(N % B + '0'));
       }
       else{
         list.add((char)(n%b - 10 + 'A'));
