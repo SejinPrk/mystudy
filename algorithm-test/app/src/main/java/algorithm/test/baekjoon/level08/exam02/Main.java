@@ -6,7 +6,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -25,13 +24,13 @@ public class Main {
         list.add((char)(N % B + '0'));
       }
       else{
-        list.add((char)(n%b - 10 + 'A'));
+        list.add((char)(N % B - 10 + 'A'));
       }
-      n/=b;
+      N/=B;
     }
 
     for (int i = list.size()-1; i>= 0; i--){
-      System.out.println(list.get(i));
+      System.out.print(list.get(i));
     }
   }
 }
