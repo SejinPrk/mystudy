@@ -2,9 +2,7 @@ package bitcamp.myapp.handler.board;
 
 import bitcamp.menu.AbstractMenuHandler;
 import bitcamp.myapp.dao.BoardDao;
-import bitcamp.myapp.vo.Board;
 import bitcamp.util.Prompt;
-import java.util.List;
 
 public class BoardDeleteHandler extends AbstractMenuHandler {
 
@@ -18,10 +16,10 @@ public class BoardDeleteHandler extends AbstractMenuHandler {
   @Override
   protected void action() {
     int index = this.prompt.inputInt("번호? ");
-    if (boardDao.delete(index) == 0){
+    if (boardDao.delete(index) == 0) {
       System.out.println("게시글 번호가 유효하지 않습니다.");
     } else {
-      System.out.println("삭제했습니다.");
+      System.out.println("삭제했습니다!");
     }
   }
 }

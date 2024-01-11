@@ -7,16 +7,6 @@ public class Member implements Serializable {
 
   private static final long serialVersionUID = 100L;
 
-  @Override
-  public String toString() {
-    return "Member{" +
-        "email='" + email + '\'' +
-        ", name='" + name + '\'' +
-        ", password='" + password + '\'' +
-        ", createdDate=" + createdDate +
-        '}';
-  }
-
   private String email;
   private String name;
   private String password;
@@ -32,6 +22,16 @@ public class Member implements Serializable {
     obj.setPassword(values[2]);
     obj.setCreatedDate(new Date(Long.valueOf(values[3])));
     return obj;
+  }
+
+  @Override
+  public String toString() {
+    return "Member{" +
+        "email='" + email + '\'' +
+        ", name='" + name + '\'' +
+        ", password='" + password + '\'' +
+        ", createdDate=" + createdDate +
+        '}';
   }
 
   // CSV 문자열을 가지고 객체에 저장하기

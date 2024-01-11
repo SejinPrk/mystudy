@@ -5,16 +5,6 @@ import java.util.Date;
 
 public class Board implements Serializable {
 
-  @Override
-  public String toString() {
-    return "Board{" +
-        "title='" + title + '\'' +
-        ", content='" + content + '\'' +
-        ", writer='" + writer + '\'' +
-        ", createdDate=" + createdDate +
-        '}';
-  }
-
   private static final long serialVersionUID = 100L;
 
   private String title;
@@ -31,6 +21,16 @@ public class Board implements Serializable {
     obj.setWriter(values[2]);
     obj.setCreatedDate(new Date(Long.valueOf(values[3])));
     return obj;
+  }
+
+  @Override
+  public String toString() {
+    return "Board{" +
+        "title='" + title + '\'' +
+        ", content='" + content + '\'' +
+        ", writer='" + writer + '\'' +
+        ", createdDate=" + createdDate +
+        '}';
   }
 
   public String getTitle() {

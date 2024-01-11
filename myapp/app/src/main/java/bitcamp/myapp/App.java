@@ -19,7 +19,6 @@ import bitcamp.myapp.handler.member.MemberListHandler;
 import bitcamp.myapp.handler.member.MemberModifyHandler;
 import bitcamp.myapp.handler.member.MemberViewHandler;
 import bitcamp.myapp.vo.Assignment;
-import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.Prompt;
 import com.google.gson.GsonBuilder;
@@ -38,13 +37,11 @@ public class App {
 
   List<Assignment> assignmentRepository = new LinkedList<>();
   List<Member> memberRepository = new ArrayList<>();
-//  BoardDao boardDao;
-//  BoardDao greetingDao;
-  MenuGroup mainMenu;
 
   BoardDao boardDao = new BoardDao("board.json");
   BoardDao greetingDao = new BoardDao("greeting.json");
 
+  MenuGroup mainMenu;
 
   App() {
     assignmentRepository = loadData("assignment.json", Assignment.class);

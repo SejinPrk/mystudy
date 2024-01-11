@@ -5,18 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9160b05-d132-42d9-bdad-84098ff3ce04" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/BoardDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../algorithm-test/app/src/main/java/algorithm/test/baekjoon/level08/exam02/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../algorithm-test/app/src/main/java/algorithm/test/baekjoon/level08/exam02/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../algorithm-test/app/src/main/java/algorithm/test/baekjoon/level08/exam07/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../algorithm-test/app/src/main/java/algorithm/test/baekjoon/level08/exam07/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/board.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/board.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/AbstractDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/AbstractDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/DaoTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/BoardDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/BoardDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/DaoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/DaoException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardAddHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardAddHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardDeleteHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardDeleteHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardListHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardModifyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardModifyHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardViewHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/board/BoardViewHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Member.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,23 +238,23 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/App.java</url>
-          <line>52</line>
+          <line>49</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/App.java</url>
-          <line>96</line>
+          <line>93</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/App.java</url>
-          <line>42</line>
+          <line>43</line>
           <properties field="mainMenu" class="bitcamp.myapp.App" />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Board.java</url>
-          <line>21</line>
+          <line>11</line>
           <properties field="writer" class="bitcamp.myapp.vo.Board" />
           <option name="timeStamp" value="18" />
         </line-breakpoint>
