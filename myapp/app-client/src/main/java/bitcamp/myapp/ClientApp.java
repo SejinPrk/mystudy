@@ -23,11 +23,8 @@ import bitcamp.myapp.handler.member.MemberDeleteHandler;
 import bitcamp.myapp.handler.member.MemberListHandler;
 import bitcamp.myapp.handler.member.MemberModifyHandler;
 import bitcamp.myapp.handler.member.MemberViewHandler;
-import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.Prompt;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.Socket;
@@ -54,11 +51,10 @@ public class ClientApp {
 
   public static void main(String[] args) {
     System.out.println("[과제관리 시스템]");
-
     new ClientApp().run();
   }
 
-  void prepareNetwork(){
+  void prepareNetwork() {
     try {
       // 1) 서버와 연결한 후 연결 정보 준비
       // => new Socket(서버주소, 포트번호)
@@ -76,7 +72,7 @@ public class ClientApp {
       System.out.println("입출력 준비 완료!");
 
       // 네트워크 DAO 구현체 준비
-      boardDao = new BoardDaoImpl("board.json", in, out);
+      boardDao = new BoardDaoImpl("board", in, out);
       greetingDao = new BoardDaoImpl("greeting", in, out);
       assignmentDao = new AssignmentDaoImpl("assignment", in, out);
       memberDao = new MemberDaoImpl("member", in, out);

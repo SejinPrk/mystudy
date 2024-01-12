@@ -1,10 +1,8 @@
 package bitcamp.myapp.dao.network;
 
 import bitcamp.myapp.dao.AssignmentDao;
-import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.dao.DaoException;
 import bitcamp.myapp.vo.Assignment;
-import bitcamp.myapp.vo.Board;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -81,7 +79,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
       }
 
       return (List<Assignment>) gson.fromJson(entity,
-          TypeToken.getParameterized(ArrayList.class, Board.class));
+          TypeToken.getParameterized(ArrayList.class, Assignment.class));
 
     } catch (Exception e) {
       throw new DaoException(e);
