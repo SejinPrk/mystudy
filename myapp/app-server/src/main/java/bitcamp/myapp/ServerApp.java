@@ -6,17 +6,14 @@ import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.dao.json.AssignmentDaoImpl;
 import bitcamp.myapp.dao.json.BoardDaoImpl;
 import bitcamp.myapp.dao.json.MemberDaoImpl;
-import bitcamp.myapp.vo.Board;
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.StandardSocketOptions;
-import java.util.List;
 
 public class ServerApp {
+
   BoardDao boardDao = new BoardDaoImpl("board.json");
   BoardDao greetingDao = new BoardDaoImpl("greeting.json");
   AssignmentDao assignmentDao = new AssignmentDaoImpl("assignment.json");
@@ -27,13 +24,13 @@ public class ServerApp {
   }
 
   void run() {
-    System.out.println("[과제관리 서버 시스템]");
+    System.out.println("[과제관리 서버시스템]");
 
     try {
-      // 1) 랜카드 정보를 준비한다.
+      // 1) 랜카드 연결 정보를 준비한다.
       // => 랜카드와 연결하는 것은 실제 OS가 수행한다.
       // => JVM은 OS가 작업한 결과를 가져온다.
-      // => new ServerSocket(포트번호)
+      // new ServerSocket(포트번호)
       // => 포트번호: 랜카드로 들어온 데이터를 받을 때 사용할 식별 번호. 중복 불가.
       ServerSocket serverSocket = new ServerSocket(8888);
       System.out.println("서버 실행!");
@@ -50,7 +47,6 @@ public class ServerApp {
       DataOutputStream out = new DataOutputStream(socket.getOutputStream());
       System.out.println("입출력 준비 완료!");
 
-
       String dataName = in.readUTF();
       String command = in.readUTF();
       String value = in.readUTF();
@@ -60,15 +56,16 @@ public class ServerApp {
       System.out.println(command);
       System.out.println(value);
 
-      String json = new GsonBuilder().setDateFormat("yyyy-MM-dd").create().toJson(boardDao.findAll());
+      out.writeUTF("200");
 
+      String json = new GsonBuilder().setDateFormat("yyyy-MM-dd").create()
+          .toJson(boardDao.findAll());
       out.writeUTF(json);
       System.out.println("클라이언트로 데이터 전송!");
 
-    } catch (Exception e){
+    } catch (Exception e) {
       System.out.println("통신 오류!");
       e.printStackTrace();
     }
   }
 }
-

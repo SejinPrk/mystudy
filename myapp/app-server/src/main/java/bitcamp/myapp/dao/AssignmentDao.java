@@ -1,18 +1,18 @@
 package bitcamp.myapp.dao;
 
-import bitcamp.myapp.dao.json.AbstractDao;
 import bitcamp.myapp.vo.Assignment;
 import java.util.List;
-public interface AssignmentDao{
 
-void add(Assignment assignment);
+public interface AssignmentDao {
 
-int delete(int no);
+  void add(Assignment assignment);
 
-List<Assignment> findAll();
+  int delete(int no);
 
-Assignment findBy(int no);
+  List<Assignment> findAll();
 
-int update(Assignment assignment);
+  Assignment findBy(int no);
+
+  int update(Assignment assignment);
 
 }

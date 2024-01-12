@@ -4,9 +4,9 @@ import bitcamp.menu.MenuGroup;
 import bitcamp.myapp.dao.AssignmentDao;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.dao.MemberDao;
-import bitcamp.myapp.dao.json.AssignmentDaoImpl;
-import bitcamp.myapp.dao.json.BoardDaoImpl;
-import bitcamp.myapp.dao.json.MemberDaoImpl;
+import bitcamp.myapp.dao.network.AssignmentDaoImpl;
+import bitcamp.myapp.dao.network.BoardDaoImpl;
+import bitcamp.myapp.dao.network.MemberDaoImpl;
 import bitcamp.myapp.handler.HelpHandler;
 import bitcamp.myapp.handler.assignment.AssignmentAddHandler;
 import bitcamp.myapp.handler.assignment.AssignmentDeleteHandler;
@@ -26,71 +26,65 @@ import bitcamp.myapp.handler.member.MemberViewHandler;
 import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.Prompt;
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.internal.bind.DateTypeAdapter;
 import com.google.gson.reflect.TypeToken;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BooleanSupplier;
 
 public class ClientApp {
 
   Prompt prompt = new Prompt(System.in);
 
-  BoardDao boardDao = new BoardDaoImpl("board.json");
-  BoardDao greetingDao = new BoardDaoImpl("greeting.json");
-  AssignmentDao assignmentDao = new AssignmentDaoImpl("assignment.json");
-  MemberDao memberDao = new MemberDaoImpl("member.json");
+  List<Member> memberRepository = new ArrayList<>();
+
+  BoardDao boardDao;
+  BoardDao greetingDao;
+  AssignmentDao assignmentDao;
+  MemberDao memberDao;
 
   MenuGroup mainMenu;
 
   ClientApp() {
+    prepareNetwork();
     prepareMenu();
   }
 
   public static void main(String[] args) {
     System.out.println("[과제관리 시스템]");
+
+    new ClientApp().run();
+  }
+
+  void prepareNetwork(){
     try {
       // 1) 서버와 연결한 후 연결 정보 준비
       // => new Socket(서버주소, 포트번호)
-      // - 서버 주소: IP 주소, 도메인명 모두 가능
-      // - 포트 번호: 서버 포트 번호
-      // => 로컬 컴퓨터를 가리키는
-      // - IP 주소: 127.0.0.1
-      // - 도메인명: localhost
+      //    - 서버 주소: IP 주소, 도메인명
+      //    - 포트 번호: 서버 포트 번호
+      // => 로컬 컴퓨터를 가리키는 주소
+      //   - IP 주소: 127.0.0.1
+      //   - 도메인명: localhost
       System.out.println("서버 연결 중...");
-      Socket socket = new Socket("127.0.0.1", 8888);
+      Socket socket = new Socket("localhost", 8888);
       System.out.println("서버와 연결되었음!");
 
-      DataInputStream in  = new DataInputStream(socket.getInputStream());
+      DataInputStream in = new DataInputStream(socket.getInputStream());
       DataOutputStream out = new DataOutputStream(socket.getOutputStream());
       System.out.println("입출력 준비 완료!");
 
-      out.writeUTF("board");
-      out.writeUTF("findAll");
-      out.writeUTF("");
-      System.out.println("서버에 데이터를 보냈음!");
+      // 네트워크 DAO 구현체 준비
+      boardDao = new BoardDaoImpl("board.json", in, out);
+      greetingDao = new BoardDaoImpl("greeting", in, out);
+      assignmentDao = new AssignmentDaoImpl("assignment", in, out);
+      memberDao = new MemberDaoImpl("member", in, out);
 
-      String response = in.readUTF();
-     ArrayList<Board> list =  (ArrayList<Board>) new GsonBuilder().setDateFormat("yyyy-MM-dd")
-         .create().fromJson(response,
-          TypeToken.getParameterized(ArrayList.class, Board.class));
-
-     for (Board board : list) {
-       System.out.println(board);
-     }
-
-    } catch (Exception e){
+    } catch (Exception e) {
       System.out.println("통신 오류!");
       e.printStackTrace();
     }
-    //new ClientApp().run();
   }
 
   void prepareMenu() {

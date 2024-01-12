@@ -14,4 +14,6 @@ public interface MemberDao {
   public Member findBy(int no);
 
   public int update(Member member);
+
+  ;
 }

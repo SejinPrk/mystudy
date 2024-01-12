@@ -32,6 +32,8 @@ public class App {
 
   Prompt prompt = new Prompt(System.in);
 
+  List<Member> memberRepository = new ArrayList<>();
+
   BoardDao boardDao = new BoardDaoImpl("board.json");
   BoardDao greetingDao = new BoardDaoImpl("greeting.json");
   AssignmentDao assignmentDao = new AssignmentDaoImpl("assignment.json");

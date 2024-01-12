@@ -5,8 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9160b05-d132-42d9-bdad-84098ff3ce04" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/dao/network/BoardDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/dao/network/AssignmentDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/dao/network/MemberDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-client/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-client/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app-client/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/ClientApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/ClientApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/dao/AssignmentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/dao/AssignmentDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/dao/MemberDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/dao/MemberDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/dao/json/AssignmentDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/dao/json/AssignmentDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/dao/network/BoardDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/dao/network/BoardDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/ServerApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/ServerApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/dao/AssignmentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/dao/AssignmentDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/dao/MemberDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/dao/MemberDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/dao/json/AssignmentDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/dao/json/AssignmentDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/AssignmentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/AssignmentDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/MemberDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/MemberDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/json/AssignmentDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/json/AssignmentDaoImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +157,7 @@
       <recent name="bitcamp.util" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.myapp:app-server [run]">
+  <component name="RunManager" selected="Gradle.myapp:app-client [run]">
     <configuration name="DaoTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="bitcamp.myapp.dao.DaoTest" />
       <module name="myapp.app.main" />
@@ -311,17 +327,17 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/App.java</url>
-          <line>43</line>
+          <line>45</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/App.java</url>
-          <line>87</line>
+          <line>89</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/App.java</url>
-          <line>39</line>
+          <line>41</line>
           <properties field="mainMenu" class="bitcamp.myapp.App" />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
