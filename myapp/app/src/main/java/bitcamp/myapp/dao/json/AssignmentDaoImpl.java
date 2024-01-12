@@ -27,7 +27,6 @@ public class AssignmentDaoImpl extends AbstractDao<Assignment> implements Assign
     if (index == -1) {
       return 0;
     }
-
     list.remove(index);
     saveData();
     return 1;
@@ -44,7 +43,6 @@ public class AssignmentDaoImpl extends AbstractDao<Assignment> implements Assign
     if (index == -1) {
       return null;
     }
-
     return list.get(index);
   }
 
@@ -54,7 +52,6 @@ public class AssignmentDaoImpl extends AbstractDao<Assignment> implements Assign
     if (index == -1) {
       return 0;
     }
-
     list.set(index, assignment);
     saveData();
     return 1;
@@ -66,7 +63,6 @@ public class AssignmentDaoImpl extends AbstractDao<Assignment> implements Assign
         return i;
       }
     }
-
     return -1;
   }
 }
