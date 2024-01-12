@@ -28,9 +28,11 @@ import bitcamp.util.Prompt;
 import java.util.ArrayList;
 import java.util.List;
 
-public class App {
+public class ClientApp {
 
   Prompt prompt = new Prompt(System.in);
+
+  List<Member> memberRepository = new ArrayList<>();
 
   BoardDao boardDao = new BoardDaoImpl("board.json");
   BoardDao greetingDao = new BoardDaoImpl("greeting.json");
@@ -39,12 +41,13 @@ public class App {
 
   MenuGroup mainMenu;
 
-  App() {
+  ClientApp() {
     prepareMenu();
   }
 
   public static void main(String[] args) {
-    new App().run();
+    System.out.println("[과제관리 시스템]");
+    //new ClientApp().run();
   }
 
   void prepareMenu() {
