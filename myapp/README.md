@@ -171,7 +171,7 @@
 ## 15. 인스턴스 필드와 인스턴스 메서드 활용
 
 - BoardMenu 클래스에 인스턴스 필드 및 메서드 적용, 생성자 적용
-- 향후 확장성을 고려하여 AssignmentMenu, MemberMenu 클래스도 인스턴스 필드와 인스턴스 메서드, 생성자를 적용
+- 향후 확장성을 고려하여 AssignmentMenu, MemberMenu, MainMenu 클래스에도 인스턴스 필드와 인스턴스 메서드, 생성자를 적용
   - 그래서 실무에서는 대부분의 클래스가 인스턴스 필드와 인스턴스 메서드로 구성된다.
 - 향후 확장성을 고려하여 Prompt 크래스에도 인스턴스 필드와 인스턴스 메서드를 적용
   - 생성자 도입: Scanner 사용할 입력 도구를 지정할 수 있게 한다.
@@ -179,119 +179,115 @@
     - 사용자 입력한 문자열을 int, float, boolean으로 변경해주는 일을 한다.
 - 의존 객체 주입의 개념과 구현
   - 생성자를 통해 Prompt 객체를 XxxMenu에 주입
+- 리팩토링
+  - ANSI Escape Sequence 값을 별도의 클래스로 분리
+  - 역할에 따라 클래스를 패키지로 나눠서 분류 
 
 
+## 16. 인터페이스를 이용한 객체 사용 규칙 정의
+
+- 인터페이스 문법으로 메뉴를 다루는 객체의 실행 규칙 정의
+- 인터페이스에 정의한 대로 메뉴를 다루는 객체를 구현
+- 인터페이스에 정의한 대로 메뉴를 다루는 객체를 실행
 
 
+## 17. 인터페이스와 GoF의 Composite 패턴을 이용하여 메뉴를 구현하기
 
-
-## 12. 생성자, 셋터, 겟터 도입하기
-
-- 인스턴스 필드를 초기화시키는 방법: 생성자
-- 인스턴스 필드에 직접 접근하는 것을 막는 방법: private
-- 인스턴스 필드에 값을 저장하고 꺼내는 방법: setter/getter
-- 스태틱 필드 및 생성자 활용
-- 스태틱 상수 필드 활용 + GRASP 패턴의 Information Expert
-
-## 13. 복사/붙여넣기를 이용한 CRUD 구현
-
-- 게시글 CRUD 기능 추가
-- Value Object, Handler 클래스 추가
-- Prompt 클래스 리팩토링
-
-## 14. 스태틱 필드의 한계 확인
-
-- BoardHandler 클래스를 복제하여 독서록 게시판 추가
-- 클래스 코드 복제의 문제점 확인
-
-## 15. 인스턴스 필드와 인스턴스 메서드, 생성자와 의존 객체 주입
-
-- BoardHandler 클래스에 인스턴스 필드 및 메서드 적용
-- 향후 확장성을 고려하여 MemberHandler 크래스에도 인스턴스 필드와 인스턴스 메서드를 적용
-  - 그래서 실무에서는 대부분의 클래스가 인스턴스 필드와 인스턴스 메서드로 구성된다.
-- 향후 확장성을 고려하여 Prompt 크래스에도 인스턴스 필드와 인스턴스 메서드를 적용
-  - 생성자 도입: Scanner 사용할 입력 도구를 지정할 수 있게 한다.
-- 의존 객체 주입의 개념과 구현
-  - 생성자를 통해 Prompt 객체를 Handler에 주입
-
-## 16. GRASP 패턴: Information Expert 적용
-
-- 메뉴 기능을 각 핸들러에게 위임
-  - 기능을 수행하는데 필요한 정보를 가지고 있는 객체에 역할 부여
-  - CRUD 메뉴 기능은 핸들러로 이전
-- App 클래스는 메인 메뉴 제공
-
-## 17. 인터페이스를 이용한 객체 사용 규칙 정의
-
-- 인터페이스 문법으로 핸들러의 실행 규칙 정의
-- 인터페이스에 정의한 대로 핸들러 구현
-- 인터페이스에 정의한 대로 핸들러 실행
+- GoF의 Composite 디자인 패턴 적용
+  - 메뉴 간의 연결을 느슨하게 조정하기
+  - 현황:
+    - MainMenu와 나머지 Menu 객체들 사이에 coupling이 강결합되어 있다.
+    - 메뉴 클래스를 추가하면 MainMenu 클래스를 또 변경해야 한다.
+  - 목표:
+    - 메뉴를 추가하더라도 기존 클래스를 변경하지 않을 방법이 필요하다.
+  - 객체지향 설계 원칙 및 OOP 개념:
+    - SOLID의 'OCP(Open/Closed Priciple)' 준수
+    - GRASP의 'Low Coupling' 책임 할당 원칙 준수
 
 ## 18. 인스턴스 목록 제어 기능을 별도의 클래스로 캡슐화: 재사용성 높임
 
-- 핸들러에서 인스턴스 목록을 다루는 기능을 별도의 클래스로 분리
-  - UI가 CLI에서 윈도우 또는 웹으로 바뀌더라도 인스턴스 목록 다루는 기능은 재사용 가능
-- 배열 크기 자동 증가 기능 추가
+- 핸들러 객체에서 수행하는 배열 다루는 일을 실제 배열을 가지고 있는 Repository 객체로 이관하기
+  - 현황:
+    - Repository 클래스의 배열 레퍼런스를 Handler에서 다루고 있다.
+  - 목표:
+    - 인스턴스를 다루는 기능을 다른 프로젝트에서도 재사용할 수 있게 만들고 싶다.
+  - 객체지향 설계 원칙 및 OOP 개념:
+    - GRASP의 Information Expert 책임 할당 원칙 준수
+    - GRASP의 High Cohesion 책임 할당 원칙 준수
+    - OOP의 Encapsulation(캡슐화)
+  - 효과: 
+    - 배열을 다루는 코드를 별도의 객체로 분리하면 코드 재사용이 쉬워진다.
+    - 객체의 역할을 전문화함으로써 코드를 관리하기가 쉬워진다. 
+    - 목록을 다루는 방식을 감추고 대신 외부에 공개된 도구(메서드)를 통해 목록을 사용하도록 유도하면,
+      목록을 다루는 방식을 변경하더라도 외부에 영향을 주지 않는다.
+      즉 기능을 변경하더라도 다른 클래스에 미치는 영향을 최소화시킬 수 있다.
 
-## 19. 다형성을 이용하여 범용으로 사용할 수 있는 목록 클래스 만들기
+## 19. 다형성을 이용하여 범용으로 사용할 수 있는 Repository 클래스 만들기
 
-- 목록 관리 범용 클래스 ArrayList 정의
+- 목록 관리 범용 클래스 ObjectRepository 정의
   - 다형성의 polymorphic variable 문법 활용
-- equals() 메서드와 오버라이딩 활용
-  - Object 클래스와 상속
-  - Member와 Board 클래스에 적용
-- 오버로딩을 활용하여 생성자를 추가
-  - Member와 Board 클래스 적용
-- MemberHandler와 BoardHandler에 적용
+- 기존의 Repository 클래스를 ObjectRepository로 대체
 
-## 20. LinkedList 자료구조 구현하기
+## 20. 제네릭을 사용하여 타입을 파라미터로 다루기
+
+- ObjectRepository에 제네릭 적용하기
+  - 범용 클래스를 특정 타입을 다루는 클래스로 제한할 수 있다.
+  - 파라미터 값에 대해 특정 타입으로 한정할 수 있다.
+  - 반환값의 타입을 형변환 할 필요가 없다.
+- T[] toArray(T[]) 메서드 추가하기
+  - System.arraycopy() 메서드 사용하기
+  - Arrays.copyOf() 메서드 사용하기
+
+## 21. 자바 Collection API 사용하기 - ArrayList 적용
+
+- 목록을 다루는 기존 Repository 클래스를 자바 컬렉션 API 로 교체
+
+## 22. 접근 제어 modifier 및 셋터, 겟터 도입하기
+
+- 인스턴스 필드에 직접 접근하는 것을 막는 방법: private
+- 인스턴스 필드에 값을 저장하고 꺼내는 방법: setter/getter
+
+## 23. 상속(generalization)과 추상 클래스/추상 메서드, 접근 제어 활용하기
+
+- MenuItem과 MenuGroup의 공통 코드를 추출하여 수퍼 클래스를 정의하기
+- MenuHandler 구현체의 공통 분모를 추출하여 수퍼 클래스 정의하기
+- 수퍼 클래스를 추상 클래스로 정의하여 직접 사용을 막기
+- 추상 메서드를 선언하여 서브 클래스에게 구현을 강요하기
+- 서브 클래스가 의존 객체를 사용할 수 있도록 접근 범위를 protected로 설정하기
+
+## 24. Date 클래스를 사용하여 날짜 데이터를 다루기
+
+- java.util.Date/java.sql.Date 클래스를 활용하기
+
+## 25. 예외 처리하기
+
+- 예외가 발생했을 때 시스템을 멈추기 않게 하는 방법
+- try ~ catch ~ finally 사용법
+
+## 26. LinkedList 자료구조 구현하기
 
 - 목록 관리 범용 클래스 LinkedList 정의
   - LinkedList 구동원리 이해 및 구현
-  - 중첩 클래스 활용
-- MemberHandler와 BoardHandler에 적용
-
-## 21. 인터페이스를 이용하여 List 사용 규칙 정의하기
-
-- 목록 관리 객체의 사용 규칙을 인터페이스 정의
-  - List 인터페이스 정의
-  - ArrayList, LinkedList에 List 인터페이스 적용
-- MemberHandler와 BoardHandler에 적용
+  - 중첩 클래스 활용: static 중첩 클래스 Node 정의
+  - 제네릭 적용
   - List 구현체를 생성자를 통해 주입: DI(Dependency Injection) 적용
+- List 객체 사용 규칙 정의
+  - ArrayList, LinkedList에 List 인터페이스 적용
+- AbstractList 추상 클래스 적용 
+  - ArrayList, LinkedList에 AbstractList 추상 클래스 적용
+- MenuGroup에 적용
+- Handler에 적용
 
-## 22. Stack, Queue 자료구조 구현하기
+## 27. Stack, Queue 자료구조 구현하기
 
 - Stack과 Queue의 구동원리 이해 및 구현
 - Stack 적용
-  - Prompt 클래스의 서브 클래스 MenuPrompt 정의
-  - MenuPrompt에서 Stack을 이용하여 프롬프트 제목에 breadcrumb 기능을 적용
-- Queue 적용
-  - MenuPrompt 클래스에 메뉴 출력 기능을 추가
-    - App, BoardHandler, MemberHandler 변경
-  - MenuPrompt 클래스에 입력한 명령어의 history 기능을 추가
+  - MenuGroup에 Stack을 이용하여 Breadcrumb 구현
+- GoF의 "Factory Method" 디자인 패턴 적용
+  - MenuGroup에 적용
 
-## 23. Composite, Command, Observer 디자인 패턴, 추상 클래스/메서드 활용하기
 
-- Composite 패턴을 활용하여 메뉴 구현하기
-  - BreadcrumbPrompt에 적용
-  - Menu, MenuGroup 클래스 정의
-- Observer 패턴을 활용하여 메뉴 명령 처리하기
-  - ActionListener 인터페이스 정의
-  - Menu와 리스너 객체 연결
-- Command 패턴을 활용하여 메뉴 기능 구현하기
-  - BoardHandler, MemberHandler에 적용
-  - ActionListener 인터페이스 활용
-  - BoardXxxListener, MemberXxxListener 클래스로 분해
-- Generalization(상속) 수행
-  - AbstractBoardListener 추상 클래스 정의
-    - 추상 메서드 도입
-
-## 24. 제네릭을 사용하여 타입을 파라미터로 다루기
-
-- ArrayList, LinkedList, Stack, Queue에 제네릭 적용하기
-- T[] toArray(T[]) 메서드 추가하기
-
-## 25. Iterator 디자인 패턴을 활용하여 목록 조회 기능을 캡슐화하기
+## 28. Iterator 디자인 패턴을 활용하여 목록 조회 기능을 캡슐화하기
 
 - GoF의 디자인 패턴 중 Iterator 패턴의 동작원리 이해 및 구현
 - ArrayList, LinkedList, Stack, Queue에 적용
@@ -299,28 +295,34 @@
   - static/non-static nested 클래스 문법을 활용하는 방법
   - local/anonymous 클래스 문법을 활용하는 방법
 
-## 26. 자바 Collection API 사용하기
+## 29. 기존의 컬렉션 클래스 및 인터페이스를 자바 컬렉션 API로 교체하기
 
-- 목록을 다루는 기존 클래스를 자바 컬렉션 API 로 교체
+- java.util 패키지에서 제공하는 컬렉션 API로 교체
 
-## 27. File I/O API를 이용하여 데이터를 바이너리 형식으로 입출력하기
+## 30. 리팩토링: App 클래스
+
+- main() 메서드에 들어 있는 코드를 기능에 따라 묶어 여러 메서드로 분리
+- 공유하는 변수는 인스턴스 필드로 전환
+
+
+## 31. File I/O API를 이용하여 데이터를 바이너리 형식으로 입출력하기
 
 - FileInputStream/FileOutputStream 사용법
 - 바이너리 형식으로 데이터를 입출력하는 방법
 
-## 28. 상속을 이용하여 primitive type과 String 출력 기능을 추가하기
+## 32. 상속을 이용하여 primitive type과 String 출력 기능을 추가하기
 
 - 상속을 이용하여 바이트 입출력 기능을 확장하기
   - DataInputStream = FileInputStream 클래스 + primitive type/String 값 읽기
   - DataOutputStream = FileOutputStream 클래스 + primitive type/String 값 쓰기
 
-## 29. 입출력 성능을 높이기 위해 버퍼 기능 추가하기
+## 33. 입출력 성능을 높이기 위해 버퍼 기능 추가하기
 
 - 기존의 클래스에 버퍼 기능을 추가한다.
   - BufferedDataInputStream = DataInputStream + 버퍼 기능
   - BufferedDataOutputStream = DataOutputStream + 버퍼 기능
 
-## 30. 입출력 기능 확장에 상속 대신 Decorator 패턴을 적용하기
+## 34. 입출력 기능 확장에 상속 대신 Decorator 패턴을 적용하기
 
 - 상속 vs Decorator 패턴(GoF)
   - 기존 코드를 손대지 않고 기능 확장하는 방법
@@ -330,64 +332,82 @@
   - BufferedInputStream, DataInputStream, FileInputStream
 - BufferedDataOutputStream 분해
   - BufferedOutputStream, DataOutputStream, FileOutputStream
+- Java I/O Stream API로 대체하기
 
-## 31. Java Stream API 로 교체하기
-
-- 입출력 관련 클래스를 자바 스트림 클래스로 교체
-  - java.io.\* 패키지의 클래스 사용
-
-## 32. 인스턴스를 통째로 입출력하기(객체 직렬화)
+## 35. 인스턴스를 통째로 입출력하기(객체 직렬화)
 
 - ObjectInputStream/ObjectOutputStream 사용법
   - java.io.Serializable 인터페이스 사용법
   - transient modifier 사용법
 
-## 33. character stream API를 사용하여 CSV 텍스트 형식으로 입출력하기
+## 36. 리팩토링 - 중복 코드 정리
+
+- 데이터 읽고 쓰는 중복 코드 정리
+- serialVersionUID 스태틱 필드 사용하기
+
+## 37. character I/O stream API를 사용하여 CSV 텍스트 형식으로 입출력하기
 
 - CSV 형식으로 데이터를 읽고 쓰는 법
 - FileReader/FileWriter 사용법
+- GRASP의 Information Expert 패턴 적용
+  - toCsvString() 메서드 정의
+  - createFromCsv() 메서드 정의
+- GoF의 Factory Method 패턴 적용
+  - createFromCsv() 메서드 정의
+- Reflection API 사용
+  - createFromCsv() 메서드 정보 알아내기 및 호출하기
 
-## 34. 리팩토링: Factory Method 패턴(GoF), Information Expert 패턴(GRASP)
-
-- CSV 데이터 생성을 Board 클래스에 맡기기
-  - Information Expert 패턴 적용
-- CSV 데이터를 가지로 Board 클래스 생성하기
-  - Factory Method 패턴 적용
-  - Reflection API 사용법
-    - Class, Method 사용법
-
-## 35. JSON 형식으로 입출력하기
+## 38. JSON 형식으로 입출력하기
 
 - JSON 형식으로 데이터를 읽고 쓰는 법
 - Gson 라이브러리 사용법
 
-## 36. 데이터의 등록, 조회, 수정, 삭제 기능을 캡슐화하기 : DAO 객체 도입
+## 39. 데이터의 등록, 조회, 수정, 삭제 기능을 캡슐화하기 : DAO 객체 도입
 
-- XxxListener에서 데이터를 조작하는 코드를 캡슐화하여 별도의 클래스로 분리
+- XxxHandler에서 데이터를 조작하는 코드를 캡슐화하여 별도의 클래스로 분리
+  - UI 처리 코드와 데이터 처리 코드를 분리
+  - UI 처리 방식이 바뀌더라도 데이터 처리 코드는 재사용할 수 있다.
+  - List나 Map처럼 특정 자료구조에 종속적인 코드를 작성할 필요가 없어진다.
+- 데이터 식별 값 추가
+  - 기존 방식은 인덱스 사용
+    - 데이터를 삭제하면 인덱스가 변경된다.
+    - 데이터 조회 시 일관성이 없다.
+  - 개선 방식은 각 데이터에 고유의 식별 번호 부여
+    - 데이터를 삭제하더라도 기존 데이터의 식별 번호는 그대로 유지된다.
+    - 데이터 조회 시 일관성이 있다.
 - 인터페이스로 DAO 객체 사용법을 정의
+  - DAO 교체가 용이하다.
 
-## 37. 네트워킹을 이용하여 데이터 공유하기 : Client/Server 아키텍처로 전환
+## 40. 네트워킹을 이용하여 데이터 공유하기 : Client/Server 아키텍처로 전환
 
 - 네트워크 프로그래밍 방법
   - Client와 Server 개념
   - 프로토콜에 따라 애플리케이션 간에 데이터를 주고 받기
-  - GoF의 프록시 패턴의 원리 이해 및 적용
-  - 분산 컴퓨팅의 개념과 주요 기술 이해
+- Reflection API를 사용하는 방법
+  - 서버의 DAO 메서드 호출을 자동화 하는 방법
+- GoF의 "Proxy" 패턴 적용
+  - 원격 객체와 동일한 인터페이스를 갖는 대행 객체(프록시) 구현하기
 
-## 38. DAO 프록시 객체를 자동 생성하기
+## 41. 공통 기능을 서브 프로젝트로 분리하기
+
+- Gradle 빌드 도구에서 멀티 서브 프로젝트를 다루는 방법
+- 클라이언트와 서버에서 공통으로 사용하는 코드를 별도의 프로젝트로 분리
+  - app-common 프로젝트 생성
+- 원격 서비스 객체(DAO)의 Stub을 별도의 프로젝트로 분리
+  - app-api 프로젝트 생성
+
+
+## 42. DAO 프록시 객체(스텁 객체)를 자동 생성하기
 
 - java.lang.reflect.Proxy 클래스 사용법
-- 프록시 객체의 구동원리 이해
 
-## 39. Reflection API를 활용하여 DAO 메서드 호출을 자동화하기
 
-- Reflection API를 사용하는 방법
-- 서버의 DAO 메서드 호출을 자동화 하는 방법
 
-## 40. 예외 처리하기
 
-- 예외가 발생했을 때 시스템을 멈추기 않게 하는 방법
-- try ~ catch ~ finally 사용법
+
+
+  - Connection-Oriented vs Connectionless
+    - Stateful vs Stateless
 
 ## 41. 여러 클라이언트의 요청을 순차적으로 처리하기: Stateful 방식
 

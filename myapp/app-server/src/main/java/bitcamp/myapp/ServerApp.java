@@ -36,24 +36,25 @@ public class ServerApp {
   void run() {
     System.out.println("[과제관리 서버시스템]");
 
-    try {
-      ServerSocket serverSocket = new ServerSocket(8888);
+    try (ServerSocket serverSocket = new ServerSocket(8888)) {
+
       System.out.println("서버 실행!");
 
       while (true) {
         service(serverSocket.accept());
       }
-      
+
     } catch (Exception e) {
       System.out.println("통신 오류!");
       e.printStackTrace();
     }
   }
 
-  void service(Socket socket) throws Exception {
-    try(Socket s = socket;
+  void service(Socket socket) {
+
+    try (Socket s = socket;
         DataInputStream in = new DataInputStream(socket.getInputStream());
-        DataOutputStream out = new DataOutputStream(socket.getOutputStream());) {
+        DataOutputStream out = new DataOutputStream(socket.getOutputStream())) {
 
       System.out.println("클라이언트와 연결됨!");
 
@@ -63,7 +64,7 @@ public class ServerApp {
 
       System.out.println("클라이언트 연결 종료!");
 
-    } catch (Exception e){
+    } catch (Exception e) {
       System.out.println("클라이언트 연결 오류!");
     }
   }
@@ -91,8 +92,8 @@ public class ServerApp {
 
       Object[] args = getArguments(commandHandler, value);
 
-      Class<?> returnType = commandHandler.getReturnType();
-      System.out.printf("리턴: %s\n", returnType.getName());
+//      Class<?> returnType = commandHandler.getReturnType();
+//      System.out.printf("리턴: %s\n", returnType.getName());
 
       // 메서드를 호출한다.
       Object returnValue = commandHandler.invoke(dao, args);
@@ -109,7 +110,7 @@ public class ServerApp {
       out.writeUTF("500");
       out.writeUTF(gson.toJson(e.getMessage()));
     }
-   return 0;
+    return 0;
   }
 
   Method findMethod(Class<?> clazz, String name) {

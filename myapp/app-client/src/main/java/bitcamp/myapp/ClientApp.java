@@ -23,13 +23,10 @@ import bitcamp.myapp.handler.member.MemberDeleteHandler;
 import bitcamp.myapp.handler.member.MemberListHandler;
 import bitcamp.myapp.handler.member.MemberModifyHandler;
 import bitcamp.myapp.handler.member.MemberViewHandler;
-import bitcamp.myapp.vo.Member;
 import bitcamp.util.Prompt;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ClientApp {
 
@@ -45,7 +42,6 @@ public class ClientApp {
   Socket socket;
   DataInputStream in;
   DataOutputStream out;
-
 
   ClientApp() {
     prepareNetwork();
@@ -123,17 +119,17 @@ public class ClientApp {
     }
   }
 
-  void close(){
-    try(Socket socket = this.socket;
+  void close() {
+    try (Socket socket = this.socket;
         DataInputStream in = this.in;
-        DataOutputStream out = this.out;){
+        DataOutputStream out = this.out) {
 
       out.writeUTF("quit");
       System.out.println(in.readUTF());
-    }catch (Exception e){
+
+    } catch (Exception e) {
       // 서버와 연결을 끊는 과정에서 예외가 발생한 경우 무시한다.
       // 왜? 따로 처리할 것이 없다.
-
     }
   }
 }
