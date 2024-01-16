@@ -5,9 +5,6 @@ import bitcamp.myapp.dao.AssignmentDao;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.dao.DaoProxyGenerator;
 import bitcamp.myapp.dao.MemberDao;
-import bitcamp.myapp.dao.network.AssignmentDaoImpl;
-import bitcamp.myapp.dao.network.BoardDaoImpl;
-import bitcamp.myapp.dao.network.MemberDaoImpl;
 import bitcamp.myapp.handler.HelpHandler;
 import bitcamp.myapp.handler.assignment.AssignmentAddHandler;
 import bitcamp.myapp.handler.assignment.AssignmentDeleteHandler;
@@ -62,7 +59,7 @@ public class ClientApp {
       in = new DataInputStream(socket.getInputStream());
       out = new DataOutputStream(socket.getOutputStream());
 
-      DaoProxyGenerator daoGenerator  = new DaoProxyGenerator(in, out);
+      DaoProxyGenerator daoGenerator = new DaoProxyGenerator(in, out);
       boardDao = daoGenerator.create(BoardDao.class, "board");
       greetingDao = daoGenerator.create(BoardDao.class, "greeting");
       assignmentDao = daoGenerator.create(AssignmentDao.class, "assignment");
