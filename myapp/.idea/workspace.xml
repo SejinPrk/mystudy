@@ -8,6 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app-api/src/main/java/bitcamp/myapp/dao/DaoProxyGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-api/src/main/java/bitcamp/myapp/dao/DaoProxyGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/ClientApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/ClientApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-server/assignment.json" beforeDir="false" afterPath="$PROJECT_DIR$/app-server/assignment.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-server/board.json" beforeDir="false" afterPath="$PROJECT_DIR$/app-server/board.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/ServerApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/ServerApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,24 +50,6 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="myapp" type="f1a62948:ProjectNode" />
-                <item name="app-api" type="2d1252cf:ModuleNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="myapp" type="f1a62948:ProjectNode" />
-                <item name="app-api" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="myapp" type="f1a62948:ProjectNode" />
-                <item name="app-api" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="myapp" type="f1a62948:ProjectNode" />
                 <item name="app-client" type="2d1252cf:ModuleNode" />
               </path>
               <path>
@@ -98,13 +82,6 @@
                 <item name="app-server" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="application" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="myapp" type="f1a62948:ProjectNode" />
-                <item name="app-server" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -221,10 +198,10 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="myapp:app-api [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="myapp [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/app-api" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
@@ -232,7 +209,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="build" />
+            <option value="run" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -243,10 +220,10 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="myapp:app-client [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="myapp:app-api [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/app-client" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/app-api" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
@@ -324,9 +301,9 @@
       <list>
         <item itemvalue="Gradle.myapp:app-client [run]" />
         <item itemvalue="Gradle.myapp:app-server [run]" />
+        <item itemvalue="Gradle.myapp [run]" />
         <item itemvalue="Gradle.myapp:app-api [build]" />
         <item itemvalue="Gradle.myapp [build]" />
-        <item itemvalue="Gradle.myapp:app-client [build]" />
       </list>
     </recent_temporary>
   </component>
@@ -379,12 +356,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/ServerApp.java</url>
-          <line>95</line>
+          <line>101</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/ServerApp.java</url>
-          <line>70</line>
+          <line>72</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -394,7 +371,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/ServerApp.java</url>
-          <line>113</line>
+          <line>120</line>
           <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">

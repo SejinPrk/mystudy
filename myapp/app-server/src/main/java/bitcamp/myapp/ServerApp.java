@@ -58,7 +58,7 @@ public class ServerApp {
 
       System.out.println("클라이언트와 연결됨!");
 
-        System.out.println("----------------------------");
+      processRequest(in, out);
 
       System.out.println("클라이언트 연결 종료!");
 
