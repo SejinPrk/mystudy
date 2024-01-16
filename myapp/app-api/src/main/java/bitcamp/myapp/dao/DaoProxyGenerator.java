@@ -6,9 +6,12 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Proxy;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import org.checkerframework.checker.units.qual.A;
 
 public class DaoProxyGenerator {
 
@@ -43,17 +46,10 @@ public class DaoProxyGenerator {
               throw new Exception(entity);
             }
 
-            Class<?> returnType = method.getReturnType();
-            System.out.println(returnType.getName());
+            Type returnType = method.getGenericReturnType();
 
-            if (returnType == List.class) {
-
-              return (List<Assignment>) gson.fromJson(entity,
-                  TypeToken.getParameterized(ArrayList.class, Assignment.class));
-
-            } else if (returnType == void.class) {
+            if (returnType == void.class) {
               return null;
-
             } else {
               return gson.fromJson(entity, returnType);
             }
