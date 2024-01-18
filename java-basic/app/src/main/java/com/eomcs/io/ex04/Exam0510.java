@@ -6,11 +6,13 @@ import java.io.FileOutputStream;
 public class Exam0510 {
 
   public static void main(String[] args) throws Exception {
-    FileOutputStream out = new FileOutputStream("test6.data");
+    FileOutputStream out = new FileOutputStream("temp/test3.data");
 
     float f = 12.375f; // hex: 41460000
     double d = 12.375; // hex: 4028c00000000000
+    //out.write(f >> 24); // float 데이터 타입은 비트 이동이 안된다!
 
+    //floatToIntBits 사용 > 비트 연산자 사용 가능
     // f 출력
     out.write(Float.floatToIntBits(f) >> 24);
     out.write(Float.floatToIntBits(f) >> 16);
