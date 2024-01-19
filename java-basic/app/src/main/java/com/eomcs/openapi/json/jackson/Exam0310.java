@@ -15,7 +15,6 @@ public class Exam0310 {
     project.setEndDate(Date.valueOf("2024-5-8"));
 
     ObjectMapper mapper = new ObjectMapper();
-
     String jsonStr = mapper.writeValueAsString(project);
 
     System.out.println(jsonStr);

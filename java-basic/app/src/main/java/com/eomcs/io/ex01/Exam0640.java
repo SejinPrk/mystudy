@@ -24,8 +24,8 @@ public class Exam0640 {
       }
     });
 
-    for(File file : files) {
-      System.out.printf("%s %12d %S\n", file.isDirectory() ? "d" : "-", file.length(),
+    for (File file : files) {
+      System.out.printf("%s %12d %s\n", file.isDirectory() ? "d" : "-", file.length(),
           file.getName());
     }
   }

@@ -25,9 +25,9 @@ public class Exam0710 {
     //    };
 
     // 2) 람다 문법으로 인터페이스 구현
-    // ListFactory f1 = () -> new ArrayList();
+    //    ListFactory f1 = () -> new ArrayList();
 
-    // 3) 메서드 레퍼런스로 인터페이스 구현
+    // 3) 메서드 레퍼런스로 인터페이스 구현 
     ListFactory f1 = ArrayList::new;
 
     // 인터페이스의 메서드를 호출하면

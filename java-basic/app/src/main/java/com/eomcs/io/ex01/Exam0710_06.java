@@ -32,7 +32,7 @@ public class Exam0710_06 {
 
     // 리턴 받은 파일 배열에서 이름을 꺼내 출력한다.
     for (File file : files) {
-      for(int i = 0; i<level; i++) {
+      for (int i = 0; i < level; i++) {
         System.out.print("  ");
       }
 

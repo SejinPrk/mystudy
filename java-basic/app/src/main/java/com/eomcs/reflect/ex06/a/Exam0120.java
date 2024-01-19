@@ -8,18 +8,18 @@ public class Exam0120 {
   public static void main(String[] args) {
 
     Class<?> clazz = Exam0120.class;
-    ClassLoader classLoader = Exam0120.class.getClassLoader();
+    ClassLoader classLoader = clazz.getClassLoader();
 
-    Class<?> aType = A.class; // A 인터페이스의 타입 정보 = A의 타입 정보 = A의 타입
+    Class<?> aType = A.class; // A 인터페이스의 정보 = A의 타입 정보  = A의 타입
     Class<?> bType = B.class;
     Class<?> cType = C.class;
 
-    Class<?>[] interfaceTypes = new Class<?>[] {A.class, B.class, C.class};
+    Class<?>[] interfaceTypes = new Class<?>[] {aType, bType, cType}; 
 
     InvocationHandler invocationHandler = new InvocationHandler() {
       @Override
-      public Object invoke(Object proxy, Method method, Object[] args) throws Throwable{
-        System.out.println("===>" + method.getName());
+      public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        System.out.println("===> " + method.getName());
         return null;
       }
     };
@@ -30,6 +30,7 @@ public class Exam0120 {
 
     ((A) obj).m1();
     ((B) obj).m2();
-    ((String) obj).replaceFirst(null, null);
+    ((C) obj).m3();
+
   }
 }

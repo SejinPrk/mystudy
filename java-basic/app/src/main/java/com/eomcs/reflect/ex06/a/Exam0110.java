@@ -5,15 +5,16 @@ import java.lang.reflect.Proxy;
 // Proxy 객체를 만드는 방법
 public class Exam0110 {
   public static void main(String[] args) {
+
     //    Class<?> clazz = Exam0110.class;
-    //    ClassLoader classLoader = clazz.getClazzLoader();
+    //    ClassLoader classLoader = clazz.getClassLoader();
     //    Class<?>[] interfaceTypes = new Class<?>[] {MyInterface.class};
     //    InvocationHandler invocationHandler = new MyInvocationHandler();
-    //
+    //    
     //    MyInterface obj = (MyInterface) Proxy.newProxyInstance(
-    //    classLoader,
-    //    interfaceTypes,
-    //    invocationHandler);
+    //        classLoader, 
+    //        interfaceTypes, 
+    //        invocationHandler);
 
     MyInterface obj = (MyInterface) Proxy.newProxyInstance(
         Exam0110.class.getClassLoader(), // 클래스를 메모리에 로딩하는 일을 할 객체

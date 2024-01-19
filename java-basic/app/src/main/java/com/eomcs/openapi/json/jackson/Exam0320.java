@@ -1,4 +1,4 @@
-// 객체 --> JSON 문자열 : Date 값을 yyyy-MM-dd 형식으로 읽어들이기
+// 객체 --> JSON 문자열 : Date 값을 yyyy-MM-dd 형식으로 출력하기
 package com.eomcs.openapi.json.jackson;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,7 +11,7 @@ public class Exam0320 {
     ObjectMapper mapper = new ObjectMapper();
     Project project = mapper.readValue(jsonStr, Project.class);
 
-    System.out.println(jsonStr);
+    System.out.println(project);
   }
 }
 

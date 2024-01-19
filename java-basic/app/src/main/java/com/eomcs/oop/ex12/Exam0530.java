@@ -8,18 +8,6 @@ public class Exam0530 {
     public static int plus(int a, int b) {
       return a + b;
     }
-
-    public static int minus(int a, int b) {
-      return a - b;
-    }
-
-    public static int multiple(int a, int b) {
-      return a * b;
-    }
-
-    public static int divide(int a, int b) {
-      return a / b;
-    }
   }
 
   interface Calculator1 {
@@ -50,10 +38,10 @@ public class Exam0530 {
 
     // 리턴 타입 int ===> double
     Calculator1 c1 = MyCalculator::plus; // OK!
-    // 위의 코드는 다음의 람다 코드로 변경된다.
-    // => Calculator1 c1 = (int x, int y) -> MyCalculator.plus(x,y);
-    //
-    // 위 문장은 다음 문장과 같다.
+    // 위의 코드는 다음의 람다 코드로 변환된다.
+    // => Calculator1 c1 = (int x, int y) -> {return MyCalculator.plus(x, y);};
+    // 
+    // 위 람다 문장은 다음 문장과 같다.
     //    Calculator1 c1 = new Calculator1() {
     //      @Override
     //      public double compute(int a, int b) {
@@ -64,13 +52,14 @@ public class Exam0530 {
 
     // 리턴 타입 int ===> float
     Calculator2 c2 = MyCalculator::plus; // OK!
-    // => Calculator2 c2 = (int x, int y) -> MyCalculator.plus(x,y);
+    // => Calculator2 c2 = (int x, int y) -> {return MyCalculator.plus(x, y);};
+    //
     System.out.println(c2.compute(100, 200));
 
     // 리턴 타입 int ===> short
     //    Calculator3 c3 = MyCalculator::plus; // 컴파일 오류!
-    // int -> short 암시적 형변환 불가!!
-    // => Calculator3 c3 = (int x, int y) -> MyCalculator.plus(x,y);
+    //    // => Calculator3 c3 = (int x, int y) -> {return MyCalculator.plus(x, y);};
+    //    //
     //    System.out.println(c3.compute(100, 200));
     // 위 문장은 다음과 같다.
     //    Calculator3 c3 = new Calculator3() {
@@ -83,9 +72,8 @@ public class Exam0530 {
 
     // 리턴 타입 int ===> void
     Calculator4 c4 = MyCalculator::plus; // OK!
-    // Calculator4 c4 = (int x, int y) -> { MyCalculator.plus(x, y);};
-    // void는 리턴이 안된다.
-    // 받은 두 개의 int값을 무시하는 것에는 아무 문제 없다 -> 오류나지 않음.
+    // => Calculator4 c4 = (int x, int y) -> {MyCalculator.plus(x, y);};
+    //
     // 위 문장은 다음과 같다.
     //    Calculator4 c4 = new Calculator4() {
     //      @Override
@@ -97,13 +85,8 @@ public class Exam0530 {
 
     // 리턴 타입 int ===> Object
     Calculator5 c5 = MyCalculator::plus; // OK!
-    // Calculator5 c5 = (int x, int y) -> {return Integer.valueOf(MyCalculator.plus(x, y));};
-    // return 타입이 Object면 오토박싱 -> Integer.valueOf()
-    // main 클래스 바깥에 아래 코드를 선언하면 오류나지 않는 것을 확인할 수 있다.
-    //    static Object m(int a, int b) {
-    //      return MyCalculator.plus(a, b);
-    //    }
-
+    // =>Calculator5 c5 = (int x, int y) -> {return Integer.valueOf(MyCalculator.plus(x, y));};
+    //
     // 위 문장은 다음과 같다.
     //    Calculator5 c5 = new Calculator5() {
     //      @Override
@@ -116,8 +99,8 @@ public class Exam0530 {
 
     // 리턴 타입 int ===> String
     //    Calculator6 c6 = MyCalculator::plus; // 컴파일 오류!
-    // Calculator6 c6 = (int x, int y) -> {return MyCalculator.plus(x,y);};
-    // int를 String으로 오토박싱하는 문법은 자바에 존재하지 않는다.
+    //    // => Calculator6 c6 = (int x, int y) -> {return MyCalculator.plus(x, y);};
+    // 
     // 위 문장은 다음과 같다.
     //    Calculator6 c6 = new Calculator6() {
     //      @Override

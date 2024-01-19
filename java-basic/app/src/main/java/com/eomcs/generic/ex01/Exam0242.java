@@ -4,7 +4,7 @@ package com.eomcs.generic.ex01;
 public class Exam0242 {
 
   static class Box<T> {
-    T value;
+    T value; 
     public T get() {return this.value;}
     public void set(T value) {this.value = value;}
   }
@@ -18,8 +18,8 @@ public class Exam0242 {
     //
     Box b5 = new Box(); // 경고!
 
-    // 제네릭은 다형성의 유연함을 그대로 유지하면서
-    // 특정 타입의 데이터를 다루는
+    // 제네릭은 다형성의 유연함을 그대로 유지하면서 
+    // 특정 타입의 데이터를 다루는 
     // 범용 클래스를 만드는 매우 편리한 문법이다.
 
     // 결론:

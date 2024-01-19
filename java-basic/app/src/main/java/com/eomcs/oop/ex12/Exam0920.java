@@ -18,7 +18,7 @@ public class Exam0920 {
       @Override
       public void accept(T item) {
         // 이 메서드는 List의 각 항목을 반복할 때마다 호출된다.
-        // List에 대해 반복문을 돌면서 각 항목에 대해 처리할 작업이 있다면
+        // 따라서 List의 각 항목에 대해 처리할 작업이 있다면 
         // 이 메서드에 작성하라.
         System.out.println(item);
       }
@@ -26,11 +26,12 @@ public class Exam0920 {
     names.forEach(new MyConsumer<String>());
 
     // forEach() 메서드는 대략적으로 다음과 같이 구현되어 있다.
-    //
-    // public void forEach(Consumer<? super E> action){
-    //  for (E value : this) {
-    //   action.accept(value);
-    //  }
+    // 
+    //    public void forEach(Consumer<? super E> action) {
+    //      for (E value : this) {
+    //        action.accept(value);
+    //      }
+    //    }
 
   }
 }

@@ -15,6 +15,7 @@ public class Exam0730 {
   }
 
   static void printClasses(File dir) {
+
     File[] files = dir.listFiles(new FileFilter() {
       @Override
       public boolean accept(File pathname) {
@@ -27,7 +28,6 @@ public class Exam0730 {
         printClasses(file);
       } else {
         System.out.printf("%s\n", file.getName());
-
       }
     }
   }

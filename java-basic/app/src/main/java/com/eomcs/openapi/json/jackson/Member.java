@@ -12,6 +12,7 @@ public class Member {
   private Date registeredDate;
   private School school;
 
+
   @Override
   public String toString() {
     return "Member [no=" + no + ", fullname=" + fullname + ", email=" + email + ", password="
@@ -61,7 +62,7 @@ public class Member {
   public void setRegisteredDate(Date registeredDate) {
     this.registeredDate = registeredDate;
   }
-  public School getSchool(){
+  public School getSchool() {
     return school;
   }
   public void setSchool(School school) {

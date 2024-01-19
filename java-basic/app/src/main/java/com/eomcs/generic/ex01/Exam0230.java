@@ -38,7 +38,7 @@ public class Exam0230 {
     System.out.println(m);
 
     // - 제네릭에서 지정한 타입이 아닌 경우 컴파일 오류!
-    //    b1.set(new String("Hello"));  // string
-    //    b1.set(100);                  // int
+    //    b1.set(new String("Hello"));
+    //    b1.set(100);
   }
 }

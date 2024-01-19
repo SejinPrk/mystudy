@@ -8,9 +8,6 @@ public class Exam0150 {
   }
 
   public static void main(String[] args) {
-    Calculator c0 = (int a, int b) -> Math.min(a, b);
-    System.out.println(c0.compute(100, 200));
-
     // 1) 리턴 값은 return 명령을 사용하여 처리한다.
     Calculator c1 = (a, b) -> {
       return a + b;
