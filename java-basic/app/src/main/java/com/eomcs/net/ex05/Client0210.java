@@ -34,7 +34,7 @@ public class Client0210 {
         bytes, // 데이터가 저장된 바이트 배열
         bytes.length, // 전송할 데이터 개수
         InetAddress.getByName("localhost"), // 데이터를 받을 상대편 주소
-        port // 포트번호
+        8888 // 포트번호
         );
 
     // 데이터 전송
