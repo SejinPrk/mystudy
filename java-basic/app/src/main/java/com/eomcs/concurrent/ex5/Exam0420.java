@@ -1,4 +1,4 @@
-// synchronized 메서드 - 적용 후
+// synchronized 스태틱 메서드 - 적용 후
 package com.eomcs.concurrent.ex5;
 
 public class Exam0420 {
@@ -11,9 +11,9 @@ public class Exam0420 {
 
   }
 
-  synchronized static void m(String threadName) throws Exception {
+  synchronized static void play(String threadName) throws Exception {
     System.out.println(threadName);
-    Thread.currentThread().sleep(3000);
+    Thread.sleep(10000);
   }
 
   static class Worker extends Thread {
@@ -24,19 +24,10 @@ public class Exam0420 {
     @Override
     public void run() {
       try {
-        for (int i = 0; i < 10; i++) {
-          m(getName());
-          delay();
-        }
+        play(getName());
       } catch (Exception e) {
         e.printStackTrace();
       }
-    }
-
-    private void delay() {
-      int delayCount = (int)(Math.random() * 1000);
-      for (int i = 0; i < delayCount; i++)
-        Math.asin(45.765); // CPU를 뺏길 기회를 제공
     }
   }
 }
