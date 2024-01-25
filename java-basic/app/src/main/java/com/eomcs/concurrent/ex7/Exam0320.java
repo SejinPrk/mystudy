@@ -48,6 +48,8 @@ public class Exam0320 {
     future1.get();
     System.out.println("첫 번째 작업이 끝났음");
 
+    executorService.shutdown();
+
     System.out.println("main() 종료!");
   }
 }
