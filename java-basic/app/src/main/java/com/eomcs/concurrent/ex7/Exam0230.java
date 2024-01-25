@@ -1,4 +1,6 @@
 // Executors 태스크 프레임워크 - 스레드풀 만들기 : 한 개의 스레드를 갖는 스레드풀
+// node.js에서 사용하는 방식 : 순차처리
+// ex. 좌석 예약
 package com.eomcs.concurrent.ex7;
 
 import java.util.concurrent.ExecutorService;
@@ -39,6 +41,8 @@ public class Exam0230 {
     executorService.execute(new MyRunnable(9000));
     executorService.execute(new MyRunnable(2000));
     executorService.execute(new MyRunnable(4000));
+
+    executorService.shutdown();
 
     System.out.println("main() 종료!");
   }
