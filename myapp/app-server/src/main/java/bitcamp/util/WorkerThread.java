@@ -1,10 +1,11 @@
 package bitcamp.util;
 
 public class WorkerThread extends Thread {
+
   Pooling<WorkerThread> pool;
   Worker worker;
 
-  public WorkerThread(Pooling<WorkerThread> pool){
+  public WorkerThread(Pooling<WorkerThread> pool) {
     this.pool = pool;
   }
 
@@ -15,9 +16,9 @@ public class WorkerThread extends Thread {
 
   @Override
   public void run() {
-    try{
-      while(true) {
-        synchronized (this){
+    try {
+      while (true) {
+        synchronized (this) {
           this.wait();
         }
         try {
@@ -29,8 +30,7 @@ public class WorkerThread extends Thread {
         // 작업을 완료했으면 다시 풀로 돌아간다.
         pool.revert(this);
       }
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       System.out.println("스레드 예외 발생!");
       e.printStackTrace();
     }
