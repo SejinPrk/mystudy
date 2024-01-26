@@ -2,16 +2,17 @@ package bitcamp.myapp.dao.mysql;
 
 import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.vo.Member;
-import com.mysql.cj.exceptions.ConnectionIsClosedException;
 import java.sql.Connection;
 import java.util.List;
 
 public class MemberDaoImpl implements MemberDao {
-Connection con;
 
-public MemberDaoImpl(Connection con){
-  this.con = con;
-}
+  Connection con;
+
+  public MemberDaoImpl(Connection con) {
+    this.con = con;
+  }
+
   @Override
   public void add(Member member) {
 

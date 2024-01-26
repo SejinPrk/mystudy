@@ -6,10 +6,11 @@ import java.sql.Connection;
 import java.util.List;
 
 public class BoardDaoImpl implements BoardDao {
-int category;
-Connection con;
 
-  public BoardDaoImpl(int category) {
+  int category;
+  Connection con;
+
+  public BoardDaoImpl(Connection con, int category) {
     this.con = con;
     this.category = category;
   }

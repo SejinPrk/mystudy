@@ -6,11 +6,13 @@ import java.sql.Connection;
 import java.util.List;
 
 public class AssignmentDaoImpl implements AssignmentDao {
-Connection con;
 
-public AssignmentDaoImpl(Connection con){
-  this.con = con;
-}
+  Connection con;
+
+  public AssignmentDaoImpl(Connection con) {
+    this.con = con;
+  }
+
   @Override
   public void add(Assignment assignment) {
 
