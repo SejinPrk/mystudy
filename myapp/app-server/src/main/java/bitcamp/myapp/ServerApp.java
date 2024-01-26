@@ -15,10 +15,11 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ServerApp {
 
-  ExecutorService executorService = ExecutorService.newCachedThreadPool();
+  ExecutorService executorService = Executors.newCachedThreadPool();
   HashMap<String, Object> daoMap = new HashMap<>();
   Gson gson;
 
