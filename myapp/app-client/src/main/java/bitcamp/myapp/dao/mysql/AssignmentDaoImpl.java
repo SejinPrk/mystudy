@@ -19,15 +19,15 @@ public class AssignmentDaoImpl implements AssignmentDao {
 
   @Override
   public void add(Assignment assignment) {
-   try {
-     Statement stmt = con.createStatement();
-     stmt.executeUpdate(String.format(
-         "insert into assignments(title,content,deadline) values('%s','%s','%s')",
-         assignment.getTitle(), assignment.getContent(), assignment.getDeadline()));
+    try {
+      Statement stmt = con.createStatement();
+      stmt.executeUpdate(String.format(
+          "insert into assignments(title,content,deadline) values('%s','%s','%s')",
+          assignment.getTitle(), assignment.getContent(), assignment.getDeadline()));
 
-   } catch (Exception e){
-     throw new DaoException("데이터 입력 오류", e);
-   }
+    } catch (Exception e) {
+      throw new DaoException("데이터 입력 오류", e);
+    }
   }
 
   @Override
@@ -50,7 +50,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
 
       ArrayList<Assignment> list = new ArrayList<>();
 
-      while(rs.next()){
+      while (rs.next()) {
         Assignment assignment = new Assignment();
         assignment.setNo(rs.getInt("assignment_no"));
         assignment.setTitle(rs.getString("title"));
@@ -70,11 +70,11 @@ public class AssignmentDaoImpl implements AssignmentDao {
   public Assignment findBy(int no) {
     try {
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("select * from assignments where assignment_no = " + no);
+      ResultSet rs = stmt.executeQuery("select * from assignments where assignment_no=" + no);
 
       ArrayList<Assignment> list = new ArrayList<>();
 
-      if(rs.next()){
+      if (rs.next()) {
         Assignment assignment = new Assignment();
         assignment.setNo(rs.getInt("assignment_no"));
         assignment.setTitle(rs.getString("title"));
@@ -84,6 +84,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
         return assignment;
       }
       return null;
+
     } catch (Exception e) {
       throw new DaoException("데이터 가져오기 오류", e);
     }
@@ -94,11 +95,12 @@ public class AssignmentDaoImpl implements AssignmentDao {
     try {
       Statement stmt = con.createStatement();
       return stmt.executeUpdate(String.format(
-          "update assignments set title='%s',content='%s', deadline='%d' where assignment_no=%d",
-          assignment.getTitle(), assignment.getContent(), assignment.getDeadline()));
+          "update assignments set title='%s', content='%s', deadline='%s' where assignment_no=%d",
+          assignment.getTitle(), assignment.getContent(), assignment.getDeadline(),
+          assignment.getNo()));
 
-  } catch (Exception e){
-      throw new DaoException("데이터 변경 오류, e");
+    } catch (Exception e) {
+      throw new DaoException("데이터 변경 오류", e);
     }
   }
 }

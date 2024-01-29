@@ -83,3 +83,8 @@ values('user5@test.com', 'user5',sha2('1111',256),'2024-5-5');
 
 
 select * from members;
+
+alter table boards
+  add column category int not null;
+
+update boards set category=1;

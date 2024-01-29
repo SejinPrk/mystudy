@@ -3,9 +3,7 @@ package bitcamp.myapp.dao.mysql;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.dao.DaoException;
 import bitcamp.myapp.vo.Board;
-import bitcamp.myapp.vo.Member;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -26,8 +24,8 @@ public class BoardDaoImpl implements BoardDao {
     try {
       Statement stmt = con.createStatement();
       stmt.executeUpdate(String.format(
-          " insert into boards(title,content,writer) values('%s','%s','%s')",
-          board.getTitle(), board.getContent(), board.getWriter()));
+          "insert into boards(title,content,writer,category) values('%s','%s','%s','%d')",
+          board.getTitle(), board.getContent(), board.getWriter(), this.category));
 
     } catch (Exception e) {
       throw new DaoException("데이터 입력 오류", e);
@@ -38,10 +36,10 @@ public class BoardDaoImpl implements BoardDao {
   public int delete(int no) {
     try {
       Statement stmt = con.createStatement();
-      return stmt.executeUpdate(String.format("delete from boards where board_no=%d",no));
+      return stmt.executeUpdate(String.format("delete from boards where board_no=%d", no));
 
     } catch (Exception e) {
-      throw new DaoException("데이터 입력 오류", e);
+      throw new DaoException("데이터 삭제 오류", e);
     }
   }
 
@@ -49,11 +47,11 @@ public class BoardDaoImpl implements BoardDao {
   public List<Board> findAll() {
     try {
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("select * from boards");
+      ResultSet rs = stmt.executeQuery("select * from boards where category = " + this.category);
 
       ArrayList<Board> list = new ArrayList<>();
 
-      while(rs.next()) {
+      while (rs.next()) {
         Board board = new Board();
         board.setNo(rs.getInt("board_no"));
         board.setTitle(rs.getString("title"));
@@ -64,6 +62,7 @@ public class BoardDaoImpl implements BoardDao {
         list.add(board);
       }
       return list;
+
     } catch (Exception e) {
       throw new DaoException("데이터 가져오기 오류", e);
     }
@@ -86,6 +85,7 @@ public class BoardDaoImpl implements BoardDao {
         return board;
       }
       return null;
+
     } catch (Exception e) {
       throw new DaoException("데이터 가져오기 오류", e);
     }
@@ -100,7 +100,7 @@ public class BoardDaoImpl implements BoardDao {
           board.getTitle(), board.getContent(), board.getWriter(), board.getNo()));
 
     } catch (Exception e) {
-      throw new DaoException("데이터 입력 오류", e);
+      throw new DaoException("데이터 변경 오류", e);
     }
   }
 }
