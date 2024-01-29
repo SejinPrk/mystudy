@@ -33,6 +33,7 @@ delete from boards where board_no=3;
 
 
 
+
 create table assignments(
   assignment_no int primary key auto_increment,
   title varchar(255) not null,
@@ -53,6 +54,7 @@ values(5, '과제5','내용5','2024-5-5');
 
 select * from assignments;
 
+select * from assignments where assignment_no = 3;
 
 
 create table members(
@@ -63,15 +65,16 @@ create table members(
   created_date datetime null default now()
   );
 
-insert into members(member_no,email,name,password) 
-values(1, '회원1','이름1','2024-1-1');
+insert into members(email,name,password, created_date) 
+values('user1@test.com', 'user1','sha1('1111',256)','2024-1-1');
 insert into members(member_no,title,name,deadline) 
-values(2, '회원2','내용2','2024-2-2');
+values('user2@test.com', 'user2','sha2('2222',256)','2024-2-2');
 insert into members(member_no,title,content,deadline) 
-values(3, '회원3','내용3','2024-3-3');
+values(user3, '회원3','내용3','2024-3-3');
 insert into members(member_no,title,content,deadline) 
 values(4, '회원4','내용4','2024-4-4');
 insert into members(member_no,title,content,deadline) 
 values(5, '회원5','내용5','2024-5-5');
+
 
 select * from members;
