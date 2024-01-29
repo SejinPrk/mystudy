@@ -3,6 +3,7 @@ package bitcamp.myapp.dao.mysql;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.dao.DaoException;
 import bitcamp.myapp.vo.Board;
+import bitcamp.myapp.vo.Member;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;

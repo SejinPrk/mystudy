@@ -22,7 +22,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
    try {
      Statement stmt = con.createStatement();
      stmt.executeUpdate(String.format(
-         "insert into assignments(title,content,deadline) values('%s','%s','%d')",
+         "insert into assignments(title,content,deadline) values('%s','%s','%s')",
          assignment.getTitle(), assignment.getContent(), assignment.getDeadline()));
 
    } catch (Exception e){
@@ -34,10 +34,11 @@ public class AssignmentDaoImpl implements AssignmentDao {
   public int delete(int no) {
     try {
       Statement stmt = con.createStatement();
-      return stmt.executeUpdate(String.format("delete from assignments where assignment_no=%d", no));
+      return stmt.executeUpdate(
+          String.format("delete from assignments where assignment_no=%d", no));
 
     } catch (Exception e) {
-      throw new DaoException("데이터 입력 오류", e);
+      throw new DaoException("데이터 삭제 오류", e);
     }
   }
 
@@ -59,6 +60,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
         list.add(assignment);
       }
       return list;
+
     } catch (Exception e) {
       throw new DaoException("데이터 가져오기 오류", e);
     }
@@ -69,6 +71,8 @@ public class AssignmentDaoImpl implements AssignmentDao {
     try {
       Statement stmt = con.createStatement();
       ResultSet rs = stmt.executeQuery("select * from assignments where assignment_no = " + no);
+
+      ArrayList<Assignment> list = new ArrayList<>();
 
       if(rs.next()){
         Assignment assignment = new Assignment();
@@ -94,7 +98,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
           assignment.getTitle(), assignment.getContent(), assignment.getDeadline()));
 
   } catch (Exception e){
-      throw new DaoException("데이터 입력 오류, e");
+      throw new DaoException("데이터 변경 오류, e");
     }
   }
 }
