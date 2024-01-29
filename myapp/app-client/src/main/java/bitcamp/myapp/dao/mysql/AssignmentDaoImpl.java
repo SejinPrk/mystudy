@@ -12,18 +12,17 @@ import java.util.List;
 public class AssignmentDaoImpl implements AssignmentDao {
 
   Connection con;
-  int category;
 
   public AssignmentDaoImpl(Connection con) {
     this.con = con;
-    this.category = category;
   }
 
   @Override
   public void add(Assignment assignment) {
    try {
      Statement stmt = con.createStatement();
-     stmt.executeUpdate(String.format("insert into assignments(title,content) values('%s','%s)",
+     stmt.executeUpdate(String.format(
+         "insert into assignments(title,content,deadline) values('%s','%s','%s')",
          assignment.getTitle(), assignment.getContent(), assignment.getDeadline()));
 
    } catch (Exception e){
@@ -55,7 +54,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
         assignment.setNo(rs.getInt("assignment_no"));
         assignment.setTitle(rs.getString("title"));
         assignment.setContent(rs.getString("content"));
-        assignment.getDeadline(rs.getDate("deadline"));
+        assignment.setDeadline(rs.getDate("deadline"));
 
         list.add(assignment);
       }
@@ -76,7 +75,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
         assignment.setNo(rs.getInt("assignment_no"));
         assignment.setTitle(rs.getString("title"));
         assignment.setContent(rs.getString("content"));
-        assignment.getDeadline(rs.getDate("deadline"));
+        assignment.setDeadline(rs.getDate("deadline"));
 
         return assignment;
       }

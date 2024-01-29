@@ -2,7 +2,11 @@ package bitcamp.myapp.dao.mysql;
 
 import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.vo.Member;
+import java.security.spec.ECField;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MemberDaoImpl implements MemberDao {
@@ -25,7 +29,22 @@ public class MemberDaoImpl implements MemberDao {
 
   @Override
   public List<Member> findAll() {
-    return null;
+    try {
+      Statement stmt = con.createStatement();
+      ResultSet rs = stmt.executeQuery("select * from members");
+
+      ArrayList<Member> list = new ArrayList<>();
+
+      while(rs.next()){
+        Member member = new Member();
+        member.setNo(rs.getInt("member_no"));
+        member.setName(rs.getString("name"));
+        member.setEmail(rs.getString("email"));
+
+        list.add(member);
+      }
+      return list;
+    } catch (Exception e) {
   }
 
   @Override
