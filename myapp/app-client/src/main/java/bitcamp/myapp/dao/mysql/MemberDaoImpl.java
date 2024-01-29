@@ -22,8 +22,8 @@ public class MemberDaoImpl implements MemberDao {
     try {
       Statement stmt = con.createStatement();
       stmt.executeUpdate(String.format(
-          "insert into members(email, name) values('%s','%s')",
-          member.getEmail(), member.getName()));
+          "insert into members(email, name, password) values('%s','%s','%s')",
+          member.getEmail(), member.getName(), member.getPassword()));
 
     }  catch (Exception e){
       throw new DaoException("데이터 입력 오류", e);
@@ -55,6 +55,7 @@ public class MemberDaoImpl implements MemberDao {
         member.setNo(rs.getInt("member_no"));
         member.setEmail(rs.getString("email"));
         member.setName(rs.getString("name"));
+        member.setPassword(rs.getString("password"));
         member.setCreatedDate(rs.getDate("created_date"));
 
         list.add(member);
@@ -76,6 +77,7 @@ public class MemberDaoImpl implements MemberDao {
         member.setNo(rs.getInt("member_no"));
         member.setEmail(rs.getString("email"));
         member.setName(rs.getString("name"));
+        member.setPassword(rs.getString("password"));
         member.setCreatedDate(rs.getDate("created_date"));
 
         return member;
@@ -91,8 +93,8 @@ public class MemberDaoImpl implements MemberDao {
     try {
       Statement stmt = con.createStatement();
       return stmt.executeUpdate(String.format(
-          "update members set email='%s', name='%s' where member_no=%d",
-          member.getEmail(), member.getName()));
+          "update members set email='%s', name='%s', password='%s' where member_no=%d",
+          member.getEmail(), member.getName(), member.getPassword()));
 
     } catch (Exception e) {
       throw new DaoException("데이터 가져오기 오류", e);

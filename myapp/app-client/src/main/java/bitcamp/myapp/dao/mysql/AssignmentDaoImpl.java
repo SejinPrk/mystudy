@@ -22,7 +22,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
    try {
      Statement stmt = con.createStatement();
      stmt.executeUpdate(String.format(
-         "insert into assignments(title,content,deadline) values('%s','%s','%s')",
+         "insert into assignments(title,content,deadline) values('%s','%s','%d')",
          assignment.getTitle(), assignment.getContent(), assignment.getDeadline()));
 
    } catch (Exception e){
@@ -90,7 +90,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
     try {
       Statement stmt = con.createStatement();
       return stmt.executeUpdate(String.format(
-          "update assignments set title='%s',content='%s', deadline='%s' where assignment_no=%d",
+          "update assignments set title='%s',content='%s', deadline='%d' where assignment_no=%d",
           assignment.getTitle(), assignment.getContent(), assignment.getDeadline()));
 
   } catch (Exception e){
