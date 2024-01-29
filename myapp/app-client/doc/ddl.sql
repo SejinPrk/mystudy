@@ -1,5 +1,7 @@
 -- DDL(Data Definition Language)
 
+drop table boards;
+
 create table boards(
   board_no int primary key auto_increment,
   title varchar(255) not null,
@@ -19,9 +21,12 @@ values(4, '제목4','내용4','안중근');
 insert into boards(board_no,title,content,writer) 
 values(5, '제목5','내용5','윤봉길');
 
-select * from boards;
+select * 
+from boards;
 
-select * from boards where board_no = 3;
+select * 
+from boards 
+where board_no = 3;
 
 update boards set 
 title='okok', 
@@ -32,13 +37,13 @@ where board_no = 3;
 delete from boards where board_no=3;
 
 
-
+drop table assignments;
 
 create table assignments(
   assignment_no int primary key auto_increment,
   title varchar(255) not null,
   content text not null,
-  deadline datetime not null
+  deadline date not null
   );
 
 insert into assignments(assignment_no,title,content,deadline) 
@@ -66,15 +71,15 @@ create table members(
   );
 
 insert into members(email,name,password, created_date) 
-values('user1@test.com', 'user1','sha1('1111',256)','2024-1-1');
-insert into members(member_no,title,name,deadline) 
-values('user2@test.com', 'user2','sha2('2222',256)','2024-2-2');
-insert into members(member_no,title,content,deadline) 
-values(user3, '회원3','내용3','2024-3-3');
-insert into members(member_no,title,content,deadline) 
-values(4, '회원4','내용4','2024-4-4');
-insert into members(member_no,title,content,deadline) 
-values(5, '회원5','내용5','2024-5-5');
+values('user1@test.com', 'user1',sha2('1111',256),'2024-1-1');
+insert into members(email,name,password,created_date) 
+values('user2@test.com', 'user2',sha2('1111',256),'2024-2-2');
+insert into members(email,name,password,created_date) 
+values('user3@test.com', 'user3',sha2('1111',256),'2024-3-3');
+insert into members(email,name,password,created_date) 
+values('user4@test.com', 'user4',sha2('1111',256),'2024-4-4');
+insert into members(email,name,password,created_date) 
+values('user5@test.com', 'user5',sha2('1111',256),'2024-5-5');
 
 
 select * from members;
