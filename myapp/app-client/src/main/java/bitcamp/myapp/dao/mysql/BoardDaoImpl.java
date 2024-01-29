@@ -58,7 +58,7 @@ public class BoardDaoImpl implements BoardDao {
         board.setTitle(rs.getString("title"));
         board.setContent(rs.getString("content"));
         board.setWriter(rs.getString("writer"));
-        board.setCreatedDate(rs.getDate("Created_date"));
+        board.setCreatedDate(rs.getDate("created_date"));
 
         list.add(board);
       }
@@ -80,7 +80,7 @@ public class BoardDaoImpl implements BoardDao {
         board.setTitle(rs.getString("title"));
         board.setContent(rs.getString("content"));
         board.setWriter(rs.getString("writer"));
-        board.setCreatedDate(rs.getDate("Created_date"));
+        board.setCreatedDate(rs.getDate("created_date"));
 
         return board;
       }
