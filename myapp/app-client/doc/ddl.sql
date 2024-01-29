@@ -52,3 +52,26 @@ insert into assignments(assignment_no,title,content,deadline)
 values(5, '과제5','내용5','2024-5-5');
 
 select * from assignments;
+
+
+
+create table members(
+  member_no int primary key auto_increment,
+  email varchar(255) not null,
+  name varchar(255) not null,
+  password varchar(100) not null,
+  created_date datetime null default now()
+  );
+
+insert into members(member_no,email,name,password) 
+values(1, '회원1','이름1','2024-1-1');
+insert into members(member_no,title,name,deadline) 
+values(2, '회원2','내용2','2024-2-2');
+insert into members(member_no,title,content,deadline) 
+values(3, '회원3','내용3','2024-3-3');
+insert into members(member_no,title,content,deadline) 
+values(4, '회원4','내용4','2024-4-4');
+insert into members(member_no,title,content,deadline) 
+values(5, '회원5','내용5','2024-5-5');
+
+select * from members;
