@@ -1,21 +1,23 @@
 package algorithm.test.baekjoon.level14.Exam06;
 // 1427 소트 인사이드
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Arrays;
+import java.io.InputStream;
 
 public class Main {
   public static void main(String[] args) throws IOException {
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    InputStream in = System.in;
 
-    char[] arr = br.readLine().toCharArray();
+    int[] counting = new int[10];
+    int c;
+    while((c=in.read()) != '\n'){
+      counting[c-'0']++;
+    }
 
-    Arrays.sort(arr);
-
-    for (int i = arr.length-1; i >= 0; i--) {
-      System.out.println(arr[i]);
+    for (int i = 9; i >= 0; i--) {
+      while(counting[i]-- > 0){
+        System.out.print(i);
+      }
     }
   }
 }
