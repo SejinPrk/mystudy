@@ -154,6 +154,8 @@ delete from test1 where no=2; -- OK!
 /* 그러나 5번 게시물은 삭제할 수 없다. 왜? test2 테이블의 데이터 중 일부가 참조하기 때문이다.*/
 delete from test1 where no=5; -- Error!
 
+/* 2,3,6,7만 삭제 가능*/
+
 
 ## 용어 정리
 - test1 처럼 다른 테이블에 의해 참조되는 테이블을 '부모 테이블'이라 부른다.
