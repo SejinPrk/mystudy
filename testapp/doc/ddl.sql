@@ -37,9 +37,9 @@ delete from books where book_no=3;
 
 create table members(
   member_no int primary key auto_increment,
-  name varchar(255) not null,
-  borrow varchar(2) not null,
-  bname varchar(100) not null,
+  name text not null,
+  borrow ENUM('Y', 'N'),
+  bname text not null,
   deadline date not null
 );
 
@@ -51,3 +51,5 @@ insert into members(name,borrow,bname,deadline)
   values('user3','Y','book3','2024-2-24');
 insert into members(name,borrow,bname,deadline)
   values('user4','N','book4','2015-1-2');
+insert into members(name,borrow,bname,deadline)
+  values('user5','N','boo54','2020-12-8');
