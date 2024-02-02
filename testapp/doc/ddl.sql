@@ -32,8 +32,8 @@ update book set
   title='하루 10분 SQL',
   author='한상일',
   publisher='위키북스',
-  genre='IT/컴퓨터',
-where book_no = 3;
+  genre='IT/컴퓨터'
+where book_no=4;
 
 delete from book where book_no=3;
 

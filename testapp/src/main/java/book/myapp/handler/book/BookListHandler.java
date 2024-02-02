@@ -17,12 +17,12 @@ public class BookListHandler extends AbstractMenuHandler {
 
   @Override
   protected void action() {
-    System.out.printf("%-4s\t%-13s\t%-13s\t%-10s\t%3s\n", "번호", "도서명", "저자", "출판사", "분류");
+    System.out.printf("%-4s\t%-13s\t%-13s\t%-12s\t%s\n", "번호", "도서명", "저자", "출판사", "분류");
 
     List<Book> list = bookDao.findAll();
 
     for (Book book : list) {
-      System.out.printf("%-4d\t%-13s\t%-13s\t%-10s\t%3s\n",
+      System.out.printf("%-4d\t%-13s\t%-13s\t%-12s\t%s\n",
           book.getNo(),
           book.getTitle(),
           book.getAuthor(),
