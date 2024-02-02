@@ -11,7 +11,7 @@ create table book(
 );
 
 insert into book(book_no,title,author,publisher,genre)
-  values(1, '백범일지','김구','돌베개','역사-인물');
+  values(1, '백범일지','김구','돌베게','역사-인물');
 insert into book(book_no,title,author,publisher,genre)
   values(2, '노인과 바다','헤밍웨이','민음사','외국소설');
 insert into book(book_no,title,author,publisher,genre)

@@ -33,7 +33,7 @@ public class View {
   }
 
   public static void main(String[] args) {
-    System.out.println("[도서관 프로그램]");
+    System.out.println("[도서관리시스템]");
     new View().run();
   }
 
@@ -66,7 +66,7 @@ public class View {
     bookMenu.addItem("도서 삭제", new BookDeleteHandler(bookDao, prompt));
     bookMenu.addItem("도서 목록", new BookListHandler(bookDao, prompt));
 
-    MenuGroup memberMenu = mainMenu.addGroup("회원 관리");
+    MenuGroup memberMenu = mainMenu.addGroup("회원");
     memberMenu.addItem("회원 등록", new MemberAddHandler(memberDao, prompt));
     memberMenu.addItem("회원 조회", new MemberViewHandler(memberDao, prompt));
     memberMenu.addItem("회원 변경", new MemberModifyHandler(memberDao, prompt));
