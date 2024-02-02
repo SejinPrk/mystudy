@@ -5,10 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9160b05-d132-42d9-bdad-84098ff3ce04" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../java-basic/app/sql/Exam10_1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/sql/Exam10_1.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie/.idea/workspace.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/menu/AbstractMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/menu/AbstractMenuHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/menu/Menu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/menu/MenuGroup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/menu/MenuHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/menu/MenuItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/ClientApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/dao/AssignmentDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/dao/BoardDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/dao/DaoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/dao/MemberDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/dao/mysql/AssignmentDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/dao/mysql/BoardDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/dao/mysql/MemberDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/HelpHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/assignment/AssignmentAddHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/assignment/AssignmentDeleteHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/assignment/AssignmentListHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/assignment/AssignmentModifyHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/assignment/AssignmentViewHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/board/BoardAddHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/board/BoardDeleteHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/board/BoardListHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/board/BoardModifyHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/board/BoardViewHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/member/MemberAddHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/member/MemberDeleteHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/member/MemberListHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/member/MemberModifyHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/member/MemberViewHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/vo/Assignment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/vo/Board.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/vo/Member.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/util/AnsiEscape.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/util/Prompt.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
