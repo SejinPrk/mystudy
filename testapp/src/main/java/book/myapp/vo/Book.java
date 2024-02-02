@@ -2,7 +2,7 @@ package book.myapp.vo;
 
 import java.io.Serializable;
 
-public class Books implements Serializable {
+public class Book implements Serializable {
 
   private static final long serialVersionUID = 100L;
 
@@ -10,15 +10,16 @@ public class Books implements Serializable {
   private String title;
   private String author;
   private String publisher;
-
+  private String genre;
 
   @Override
   public String toString() {
-    return "Books{" +
+    return "Book{" +
         "no=" + no +
         ", title='" + title + '\'' +
         ", author='" + author + '\'' +
-        ", publisher='" + publisher +
+        ", publisher='" + publisher +'\'' +
+        ", genre='" + genre +
         '}';
   }
 
@@ -50,5 +51,13 @@ public class Books implements Serializable {
 
   public void setPublisher(String publisher) {
     this.publisher = publisher;
+  }
+
+  public String getGenre() {
+    return genre;
+  }
+
+  public void setGenre(String genre) {
+    this.genre = genre;
   }
 }

@@ -1,23 +1,23 @@
-package book.myapp.handler.books;
+package book.myapp.handler.book;
 
 import book.menu.AbstractMenuHandler;
-import book.myapp.dao.BooksDao;
+import book.myapp.dao.BookDao;
 import book.util.Prompt;
 
-public class BooksDeleteHandler extends AbstractMenuHandler {
+public class BookDeleteHandler extends AbstractMenuHandler {
 
-  private BooksDao booksDao;
+  private BookDao bookDao;
 
-  public BooksDeleteHandler(BooksDao booksDao, Prompt prompt) {
+  public BookDeleteHandler(BookDao bookDao, Prompt prompt) {
     super(prompt);
-    this.booksDao = booksDao;
+    this.bookDao = bookDao;
   }
 
   @Override
   protected void action() {
     try {
       int no = this.prompt.inputInt("번호? ");
-      if (booksDao.delete(no) == 0) {
+      if (bookDao.delete(no) == 0) {
         System.out.println("도서 번호가 유효하지 않습니다!");
       } else {
         System.out.println("도서를 삭제했습니다.");

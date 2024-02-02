@@ -1,22 +1,22 @@
-package book.myapp.handler.members;
+package book.myapp.handler.member;
 
 import book.menu.AbstractMenuHandler;
-import book.myapp.dao.MembersDao;
+import book.myapp.dao.MemberDao;
 import book.util.Prompt;
 
-public class MembersDeleteHandler extends AbstractMenuHandler {
+public class MemberDeleteHandler extends AbstractMenuHandler {
 
-  private MembersDao membersDao;
+  private MemberDao memberDao;
 
-  public MembersDeleteHandler(MembersDao membersDao, Prompt prompt) {
+  public MemberDeleteHandler(MemberDao memberDao, Prompt prompt) {
     super(prompt);
-    this.membersDao = membersDao;
+    this.memberDao = memberDao;
   }
 
   @Override
   protected void action() {
     int no = this.prompt.inputInt("회원번호: ");
-    if (membersDao.delete(no) == -1) {
+    if (memberDao.delete(no) == -1) {
       System.out.println("회원번호가 유효하지 않습니다!");
     } else {
       System.out.println("회원을 삭제했습니다.");
