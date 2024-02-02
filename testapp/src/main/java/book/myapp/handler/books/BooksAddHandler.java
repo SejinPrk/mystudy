@@ -10,9 +10,9 @@ public class BooksAddHandler extends AbstractMenuHandler {
   private BooksDao booksDao;
 
 
-  public BooksAddHandler(BooksDao assignmentDao, Prompt prompt) {
+  public BooksAddHandler(BooksDao booksDao, Prompt prompt) {
     super(prompt);
-    this.booksDao = assignmentDao;
+    this.booksDao = booksDao;
   }
 
   @Override
@@ -27,6 +27,7 @@ public class BooksAddHandler extends AbstractMenuHandler {
 
     } catch (Exception e) {
       System.out.println("오류 발생!");
+      e.printStackTrace();
       System.out.println("다시 시도하시기 바랍니다.");
     }
   }

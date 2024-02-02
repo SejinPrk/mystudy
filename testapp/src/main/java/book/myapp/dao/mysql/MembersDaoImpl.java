@@ -1,29 +1,29 @@
 package book.myapp.dao.mysql;
 
 import book.myapp.dao.DaoException;
-import book.myapp.dao.MemberDao;
-import book.myapp.vo.Member;
+import book.myapp.dao.MembersDao;
+import book.myapp.vo.Members;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MemberDaoImpl implements MemberDao {
+public class MembersDaoImpl implements MembersDao {
 
   Connection con;
 
-  public MemberDaoImpl(Connection con) {
+  public MembersDaoImpl(Connection con) {
     this.con = con;
   }
 
   @Override
-  public void add(Member member) {
+  public void add(Members members) {
     try {
       Statement stmt = con.createStatement();
       stmt.executeUpdate(String.format(
           "insert into members(name,borrow,bname,deadline) values('%s','%s','%s','%s')",
-          member.getName(), member.getBorrow(), member.getBname(), member.getDeadline()));
+          members.getName(), members.getBorrow(), members.getBname(), members.getDeadline()));
 
     } catch (Exception e) {
       throw new DaoException("데이터 입력 오류", e);
@@ -42,22 +42,22 @@ public class MemberDaoImpl implements MemberDao {
   }
 
   @Override
-  public List<Member> findAll() {
+  public List<Members> findAll() {
     try {
       Statement stmt = con.createStatement();
       ResultSet rs = stmt.executeQuery("select * from members");
 
-      ArrayList<Member> list = new ArrayList<>();
+      ArrayList<Members> list = new ArrayList<>();
 
       while (rs.next()) {
-        Member member = new Member();
-        member.setNo(rs.getInt("member_no"));
-        member.setName(rs.getString("name"));
-        member.setBorrow(rs.getString("borrow"));
-        member.setBname(rs.getString("bname"));
-        member.setDeadline(rs.getDate("deadline"));
+        Members members = new Members();
+        members.setNo(rs.getInt("member_no"));
+        members.setName(rs.getString("name"));
+        members.setBorrow(rs.getString("borrow"));
+        members.setBname(rs.getString("bname"));
+        members.setDeadline(rs.getDate("deadline"));
 
-        list.add(member);
+        list.add(members);
       }
       return list;
 
@@ -67,18 +67,18 @@ public class MemberDaoImpl implements MemberDao {
   }
 
   @Override
-  public Member findBy(int no) {
+  public Members findBy(int no) {
     try {
       Statement stmt = con.createStatement();
       ResultSet rs = stmt.executeQuery("select * from members where member_no = " + no);
 
       if (rs.next()) {
-        Member member = new Member();
-        member.setNo(rs.getInt("member_no"));
-        member.setBorrow(rs.getString("borrow"));
-        member.setDeadline(rs.getDate("deadline"));
+        Members members = new Members();
+        members.setNo(rs.getInt("member_no"));
+        members.setBorrow(rs.getString("borrow"));
+        members.setDeadline(rs.getDate("deadline"));
 
-        return member;
+        return members;
       }
       return null;
 
@@ -88,12 +88,12 @@ public class MemberDaoImpl implements MemberDao {
   }
 
   @Override
-  public int update(Member member) {
+  public int update(Members members) {
     try {
       Statement stmt = con.createStatement();
       return stmt.executeUpdate(String.format(
           "update members set name='%s', borrow='%s', bname='%s', deadline='%s' where member_no=%d",
-         member.getName(), member.getBorrow(), member.getBname(), member.getDeadline(), member.getNo()));
+         members.getName(), members.getBorrow(), members.getBname(), members.getDeadline(), members.getNo()));
 
     } catch (Exception e) {
       throw new DaoException("데이터 변경 오류", e);

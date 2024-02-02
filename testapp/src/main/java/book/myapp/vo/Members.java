@@ -3,7 +3,7 @@ package book.myapp.vo;
 import java.io.Serializable;
 import java.sql.Date;
 
-public class Member implements Serializable {
+public class Members implements Serializable {
 
   private static final long serialVersionUID = 100L;
 
@@ -15,7 +15,7 @@ public class Member implements Serializable {
 
   @Override
   public String toString() {
-    return "Member{" +
+    return "Members{" +
         "no=" + no +
         ", name='" + name + '\'' +
         ", borrow='" + borrow + '\'' +

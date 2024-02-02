@@ -2,19 +2,19 @@ package book.myapp;
 
 import book.menu.MenuGroup;
 import book.myapp.dao.BooksDao;
-import book.myapp.dao.MemberDao;
+import book.myapp.dao.MembersDao;
 import book.myapp.dao.mysql.BooksDaoImpl;
-import book.myapp.dao.mysql.MemberDaoImpl;
+import book.myapp.dao.mysql.MembersDaoImpl;
 import book.myapp.handler.books.BooksAddHandler;
 import book.myapp.handler.books.BooksDeleteHandler;
 import book.myapp.handler.books.BooksListHandler;
 import book.myapp.handler.books.BooksModifyHandler;
 import book.myapp.handler.books.BooksViewHandler;
-import book.myapp.handler.member.MemberAddHandler;
-import book.myapp.handler.member.MemberDeleteHandler;
-import book.myapp.handler.member.MemberListHandler;
-import book.myapp.handler.member.MemberModifyHandler;
-import book.myapp.handler.member.MemberViewHandler;
+import book.myapp.handler.members.MembersAddHandler;
+import book.myapp.handler.members.MembersDeleteHandler;
+import book.myapp.handler.members.MembersListHandler;
+import book.myapp.handler.members.MembersModifyHandler;
+import book.myapp.handler.members.MembersViewHandler;
 import book.util.Prompt;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -24,7 +24,7 @@ public class view {
   Prompt prompt = new Prompt(System.in);
 
   BooksDao booksDao;
-  MemberDao memberDao;
+  MembersDao membersDao;
   MenuGroup mainMenu;
 
   view() {
@@ -33,7 +33,7 @@ public class view {
   }
 
   public static void main(String[] args) {
-    System.out.println("[도서관리 시스템]");
+    System.out.println("[도서관리시스템]");
     new view().run();
   }
 
@@ -44,11 +44,11 @@ public class view {
 //      DriverManager.registerDriver(driver);
 
       Connection con = DriverManager.getConnection(
-          "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
-     //"jdbc:mysql://db-ld24q-kr.vpc-pub-cdb.ntruss.com/studydb","study", "Bitcamp!@#123");
+          //"jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
+     "jdbc:mysql://db-ld24q-kr.vpc-pub-cdb.ntruss.com/studydb","study", "Bitcamp!@#123");
 
       booksDao = new BooksDaoImpl(con);
-      memberDao = new MemberDaoImpl(con);
+      membersDao = new MembersDaoImpl(con);
 
     } catch (Exception e) {
       System.out.println("통신 오류!");
@@ -66,12 +66,12 @@ public class view {
     booksMenu.addItem("도서 삭제", new BooksDeleteHandler(booksDao, prompt));
     booksMenu.addItem("도서 목록", new BooksListHandler(booksDao, prompt));
 
-    MenuGroup memberMenu = mainMenu.addGroup("회원");
-    memberMenu.addItem("회원 등록", new MemberAddHandler(memberDao, prompt));
-    memberMenu.addItem("회원 조회", new MemberViewHandler(memberDao, prompt));
-    memberMenu.addItem("회원 변경", new MemberModifyHandler(memberDao, prompt));
-    memberMenu.addItem("회원 삭제", new MemberDeleteHandler(memberDao, prompt));
-    memberMenu.addItem("회원 목록", new MemberListHandler(memberDao, prompt));
+    MenuGroup membersMenu = mainMenu.addGroup("회원");
+    membersMenu.addItem("회원 등록", new MembersAddHandler(membersDao, prompt));
+    membersMenu.addItem("회원 조회", new MembersViewHandler(membersDao, prompt));
+    membersMenu.addItem("회원 변경", new MembersModifyHandler(membersDao, prompt));
+    membersMenu.addItem("회원 삭제", new MembersDeleteHandler(membersDao, prompt));
+    membersMenu.addItem("회원 목록", new MembersListHandler(membersDao, prompt));
   }
 
   void run() {
