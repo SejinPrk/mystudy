@@ -42,7 +42,7 @@ CREATE TABLE lms_application (
   application_no INTEGER  NOT NULL COMMENT '수강신청번호', -- 수강신청번호
   lecture_no     INTEGER  NOT NULL COMMENT '과정번호', -- 과정번호
   student_no     INTEGER  NOT NULL COMMENT '학생번호', -- 학생번호
-  register_dt    DATETIME NOT NULL DEFAULT now() COMMENT '신청일', -- 신청일
+  register_dt    DATETIME NOT NULL DEFAULT (now()) COMMENT '신청일', -- 신청일
   state          CHAR(1)  NULL     COMMENT '상태' -- 상태
 )
 COMMENT '수강신청';
@@ -219,20 +219,10 @@ ALTER TABLE lms_students
   student_no -- 학생번호
   );
 
--- 학생 Unique Index
-CREATE UNIQUE INDEX UIX_lms_students
-  ON lms_students ( -- 학생
-  );
-
 -- 학생 Unique Index2
 CREATE UNIQUE INDEX UIX_lms_students2
   ON lms_students ( -- 학생
     jumin ASC -- 주민번호
-  );
-
--- 학생 Index
-CREATE INDEX IX_lms_students
-  ON lms_students( -- 학생
   );
 
 -- 학력
@@ -302,7 +292,7 @@ CREATE TABLE lms_members (
   name        VARCHAR(60) NOT NULL COMMENT '이름', -- 이름
   email       VARCHAR(40) NOT NULL COMMENT '이메일', -- 이메일
   tel         VARCHAR(30) NOT NULL COMMENT '전화', -- 전화
-  register_dt DATE        NULL     DEFAULT curdate() COMMENT '가입일' -- 가입일
+  register_dt DATE        NULL     DEFAULT (curdate()) COMMENT '가입일' -- 가입일
 )
 COMMENT '회원';
 
