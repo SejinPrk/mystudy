@@ -99,11 +99,6 @@ ALTER TABLE lms_managers
   manager_no -- 매니저번호
   );
 
--- 매니저 Unique Index
-CREATE UNIQUE INDEX UIX_lms_managers
-  ON lms_managers ( -- 매니저
-  );
-
 -- 강의실
 CREATE TABLE lms_rooms (
   room_no   INTEGER     NOT NULL COMMENT '강의실번호', -- 강의실번호
@@ -137,11 +132,6 @@ ALTER TABLE lms_teachers
   ADD CONSTRAINT PK_lms_teachers -- 강사 Primary key
   PRIMARY KEY (
   teacher_no -- 강사번호
-  );
-
--- 강사 Unique Index
-CREATE UNIQUE INDEX UIX_lms_teachers
-  ON lms_teachers ( -- 강사
   );
 
 -- 강의실사진
