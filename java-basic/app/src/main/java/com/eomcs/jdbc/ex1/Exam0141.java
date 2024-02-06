@@ -9,7 +9,7 @@ public class Exam0141 {
 
     // JDBC 드라이버 로딩 방법4: Driver 구현체 자동 로딩
     // => DriverManager를 사용할 때,
-    //    JVM은 'service-provider loading' 절차에 따라 
+    //    JVM은 'service-provider loading' 절차에 따라
     //    Driver 구현체를 자동으로 로딩한다.
     //
     // 2) java.sql.Driver 클래스의 서비스 제공자를 찾아 로딩한다.
@@ -33,12 +33,12 @@ public class Exam0141 {
 
       // 그럼에도 MariaDB Driver를 찾을 수 있다!
       // 왜?
-      // - JVM은 프로그램을 실행할 때 
+      // - JVM은 프로그램을 실행할 때
       //   'service-provider loading' 절차에 따라
       //   .jar 파일에 있는 특정 클래스를 찾아 로딩하거나 객체를 자동으로 생성한다.
       // - JDBC의 경우도 이 규칙을 따른다.
-      //   DriverManager의 getDriver()를 호출할 때 
-      //   'service-provider loading' 규칙에 따라 .jar 파일에서 
+      //   DriverManager의 getDriver()를 호출할 때
+      //   'service-provider loading' 규칙에 따라 .jar 파일에서
       //   Driver 구현체를 찾아 자동으로 로딩한다.
 
       // 이 프로젝트에 Oracle JDBC 드라이버와 MSSQL Server의 JDBC 드라이버도 있다.
