@@ -30,6 +30,6 @@ public class Main {
     for (var i : list) {
       System.out.println(i + " ");
     }
-    
+
   }
 }
