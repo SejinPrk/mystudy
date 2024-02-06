@@ -28,7 +28,7 @@ public class Exam0210 {
       con = DriverManager.getConnection(
           "jdbc:mysql://localhost:3306/studydb", // jdbcURL
           "study", // username
-          "1111" // password
+          "Bitcamp!@#123" // password
           );
       // => DriverManager는 등록된 java.sql.Driver 구현체 중에서
       //    jdbc url에 지정된 DBMS의 Driver 객체를 찾는다.
@@ -68,5 +68,4 @@ public class Exam0210 {
     }
   }
 }
-
 
