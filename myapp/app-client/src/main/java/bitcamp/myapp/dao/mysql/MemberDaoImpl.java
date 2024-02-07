@@ -6,7 +6,6 @@ import bitcamp.myapp.vo.Member;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +24,6 @@ public class MemberDaoImpl implements MemberDao {
       pstmt.setString(1, member.getEmail());
       pstmt.setString(2, member.getName());
       pstmt.setString(3, member.getPassword());
-
       pstmt.executeUpdate();
 
     } catch (Exception e) {
@@ -48,7 +46,7 @@ public class MemberDaoImpl implements MemberDao {
   @Override
   public List<Member> findAll() {
     try (PreparedStatement pstmt = con.prepareStatement(
-        "select member_no, email, name, createdDate from members order by member_no desc");
+        "select member_no, email, name, created_date from members");
       ResultSet rs = pstmt.executeQuery()) {
 
       ArrayList<Member> list = new ArrayList<>();
@@ -72,7 +70,7 @@ public class MemberDaoImpl implements MemberDao {
   @Override
   public Member findBy(int no) {
     try (PreparedStatement pstmt = con.prepareStatement(
-        "select * from members where member_no=?")){
+        "select member_no, email, name, created_date from members where member_no=?")){
       pstmt.setInt(1, no);
 
       try(ResultSet rs = pstmt.executeQuery()) {
@@ -102,7 +100,6 @@ public class MemberDaoImpl implements MemberDao {
       pstmt.setString(3, member.getPassword());
       pstmt.setInt(4, member.getNo());
       return pstmt.executeUpdate();
-
     } catch (Exception e) {
       throw new DaoException("데이터 변경 오류", e);
     }
