@@ -4,28 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9160b05-d132-42d9-bdad-84098ff3ce04" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../java-basic/app/doc/modeling/박세진.exerd" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/doc/modeling/박세진.exerd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex2/BoardDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex2/BoardDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex2/Exam0110.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex2/Exam0110.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex2/Exam0120.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex2/Exam0120.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex2/Exam0130.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex2/Exam0130.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex2/Exam0140.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex2/Exam0140.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex2/Exam0150.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex2/Exam0150.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex3/BoardDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex3/BoardDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex3/Exam0110.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex3/Exam0110.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex3/Exam0120.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex3/Exam0120.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex3/Exam0210.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex3/Exam0210.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex3/Exam0220.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex3/Exam0220.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex3/Exam0310.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex3/Exam0310.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex3/Exam0320.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex3/Exam0320.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex3/Exam0330.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex3/Exam0330.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex3/Exam0340.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex3/Exam0340.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex3/Exam0350.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/jdbc/ex3/Exam0350.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="b9160b05-d132-42d9-bdad-84098ff3ce04" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
