@@ -25,7 +25,7 @@ java {
 }
 
 application {
-    mainClass = 'platform.myapp.Main'
+    mainClass = 'app.myapp.Main'
 }
 
 tasks.named('test') {

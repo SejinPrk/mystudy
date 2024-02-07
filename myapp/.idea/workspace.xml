@@ -5,9 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9160b05-d132-42d9-bdad-84098ff3ce04" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/doc/ddl.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/AssignmentDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/BoardDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/DaoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/MemberDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/handler/HelpHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/PaymentMethod.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/dao/mysql/BoardDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/dao/mysql/BoardDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/dao/mysql/MemberDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp/dao/mysql/MemberDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/myapp/handler/book/BookAddHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/myapp/handler/book/BookDeleteHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/myapp/handler/book/BookListHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/myapp/handler/book/BooksModifyHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/myapp/handler/book/BooksViewHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/myapp/handler/member/MemberAddHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/myapp/handler/member/MemberDeleteHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/myapp/handler/member/MemberListHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/myapp/handler/member/MemberModifyHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/myapp/handler/member/MemberViewHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/myapp/menu/AbstractMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/menu/AbstractMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/myapp/menu/AbstractMenuHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/menu/AbstractMenuHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/myapp/menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/menu/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/myapp/menu/MenuGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/menu/MenuGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/myapp/menu/MenuHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/menu/MenuHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/myapp/menu/MenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/menu/MenuItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/myapp/mysql/BookDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/myapp/mysql/MemberDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/myapp/util/AnsiEscape.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/util/AnsiEscape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/myapp/util/Prompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/util/Prompt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/myapp/vo/Book.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/myapp/vo/Member.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
