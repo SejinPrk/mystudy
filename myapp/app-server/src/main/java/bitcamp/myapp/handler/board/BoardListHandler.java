@@ -10,8 +10,7 @@ public class BoardListHandler extends AbstractMenuHandler {
 
   private BoardDao boardDao;
 
-  public BoardListHandler(BoardDao boardDao, Prompt prompt) {
-    super(prompt);
+  public BoardListHandler(BoardDao boardDao) {
     this.boardDao = boardDao;
   }
 

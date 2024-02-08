@@ -79,11 +79,11 @@ public class ServerApp {
     assignmentMenu.addItem("목록", new AssignmentListHandler(assignmentDao, prompt));
 
     MenuGroup boardMenu = mainMenu.addGroup("게시글");
-    boardMenu.addItem("등록", new BoardAddHandler(boardDao, prompt));
-    boardMenu.addItem("조회", new BoardViewHandler(boardDao, prompt));
-    boardMenu.addItem("변경", new BoardModifyHandler(boardDao, prompt));
-    boardMenu.addItem("삭제", new BoardDeleteHandler(boardDao, prompt));
-    boardMenu.addItem("목록", new BoardListHandler(boardDao, prompt));
+    boardMenu.addItem("등록", new BoardAddHandler(boardDao));
+    boardMenu.addItem("조회", new BoardViewHandler(boardDao));
+    boardMenu.addItem("변경", new BoardModifyHandler(boardDao));
+    boardMenu.addItem("삭제", new BoardDeleteHandler(boardDao));
+    boardMenu.addItem("목록", new BoardListHandler(boardDao));
 
     MenuGroup memberMenu = mainMenu.addGroup("회원");
     memberMenu.addItem("등록", new MemberAddHandler(memberDao, prompt));
@@ -93,11 +93,11 @@ public class ServerApp {
     memberMenu.addItem("목록", new MemberListHandler(memberDao, prompt));
 
     MenuGroup greetingMenu = mainMenu.addGroup("가입인사");
-    greetingMenu.addItem("등록", new BoardAddHandler(greetingDao, prompt));
-    greetingMenu.addItem("조회", new BoardViewHandler(greetingDao, prompt));
-    greetingMenu.addItem("변경", new BoardModifyHandler(greetingDao, prompt));
-    greetingMenu.addItem("삭제", new BoardDeleteHandler(greetingDao, prompt));
-    greetingMenu.addItem("목록", new BoardListHandler(greetingDao, prompt));
+    greetingMenu.addItem("등록", new BoardAddHandler(greetingDao));
+    greetingMenu.addItem("조회", new BoardViewHandler(greetingDao));
+    greetingMenu.addItem("변경", new BoardModifyHandler(greetingDao));
+    greetingMenu.addItem("삭제", new BoardDeleteHandler(greetingDao));
+    greetingMenu.addItem("목록", new BoardListHandler(greetingDao));
 
     mainMenu.addItem("도움말", new HelpHandler(prompt));
   }
