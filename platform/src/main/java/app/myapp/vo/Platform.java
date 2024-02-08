@@ -8,17 +8,20 @@ public class Platform implements Serializable {
   private static final long serialVersionUID = 100L;
 
   private int no;
-  private String title;
-  private String content;
-  private Date deadline;
+  private String name;
+  private String price;
+  private String option;
+  private String term;
+
 
   @Override
   public String toString() {
     return "Platform{" +
         "no=" + no +
-        ", title='" + title + '\'' +
-        ", content='" + content + '\'' +
-        ", deadline=" + deadline +
+        ", name='" + name + '\'' +
+        ", price='" + price + '\'' +
+        ", option=" + option + '\'' +
+        ", term=" + term +
         '}';
   }
 
@@ -30,27 +33,35 @@ public class Platform implements Serializable {
     this.no = no;
   }
 
-  public String getTitle() {
-    return title;
+  public String getName() {
+    return name;
   }
 
-  public void setTitle(String title) {
-    this.title = title;
+  public void setName(String name) {
+    this.name = name;
   }
 
-  public String getContent() {
-    return content;
+  public String getPrice() {
+    return price;
   }
 
-  public void setContent(String content) {
-    this.content = content;
+  public void setPrice(String price) {
+    this.price = price;
   }
 
-  public Date getDeadline() {
-    return deadline;
+  public String getOption() {
+    return option;
   }
 
-  public void setDeadline(Date deadline) {
-    this.deadline = deadline;
+  public void setOption(String option) {
+    this.option = option;
+  }
+
+  public String getTerm() {
+    return term;
+  }
+
+  public void setTerm(String term) {
+    this.term = term;
   }
 }

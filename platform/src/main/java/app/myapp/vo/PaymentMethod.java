@@ -8,10 +8,12 @@ public class PaymentMethod implements Serializable {
   private static final long serialVersionUID = 100L;
 
   private int no;
-  private String title;
-  private String content;
-  private String writer;
-  private Date createdDate;
+  private String ID;
+  private String price;
+  private Date date;
+  private Date Prev;
+  private Date Next;
+
   
   @Override
   public String toString() {

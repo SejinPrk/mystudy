@@ -2,16 +2,16 @@ package app.myapp.handler.platform;
 
 import app.menu.AbstractMenuHandler;
 import app.myapp.dao.PlatformDao;
-import app.myapp.vo.Assignment;
+import app.myapp.vo.Platform;
 import app.util.Prompt;
 
 public class PlatformViewHandler extends AbstractMenuHandler {
 
-  private PlatformDao assignmentDao;
+  private PlatformDao platformDao;
 
-  public PlatformViewHandler(PlatformDao assignmentDao, Prompt prompt) {
+  public PlatformViewHandler(PlatformDao platformDao, Prompt prompt) {
     super(prompt);
-    this.assignmentDao = assignmentDao;
+    this.platformDao = platformDao;
   }
 
   @Override
