@@ -6,13 +6,13 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.sql.Date;
 
-public class Prompt implements AutoCloseable {
+public class NetPrompt implements AutoCloseable {
 private DataInputStream in;
 private DataOutputStream out;
 private StringWriter stringWriter = new StringWriter();
 private PrintWriter writer = new PrintWriter(stringWriter);
 
-public Prompt (DataInputStream in, DataOutputStream out) {
+public NetPrompt(DataInputStream in, DataOutputStream out) {
   this.in = in;
   this.out = out;
   }

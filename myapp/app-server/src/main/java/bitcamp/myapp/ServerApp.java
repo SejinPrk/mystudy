@@ -28,7 +28,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.sql.Connection; 
+import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class ServerApp {
@@ -118,13 +118,14 @@ public class ServerApp {
   void processRequest(java.net.Socket socket) {
     try (Socket s = socket;
         DataOutputStream out = new DataOutputStream(s.getOutputStream());
-        DataInputStream in = new DataInputStream(s.getInputStream())) {
+        DataInputStream in = new DataInputStream(s.getInputStream());
+        Prompt prompt = new Prompt(in, out)) {
+      prompt.println("[과제관리 시스템]");
+      prompt.println("환영합니다!");
+      prompt.println("반가워요");
+      prompt.end();
 
-      out.writeUTF("[과제관리 시스템]");
-      String request = in.readUTF();
-      if (request.equals("quit")) {
-        out.writeUTF("[[quit!]]");
-      }
+      String request = prompt.input();
       System.out.println(request);
 
     } catch (Exception e) {
