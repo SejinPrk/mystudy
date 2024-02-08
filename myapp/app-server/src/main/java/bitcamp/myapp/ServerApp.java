@@ -123,7 +123,9 @@ public class ServerApp {
         while (true) {
       try {
         mainMenu.execute(prompt);
+        prompt.print("[[quit!]]");
         prompt.close();
+        prompt.end();
         break;
       } catch (Exception e) {
         System.out.println("예외 발생!");
