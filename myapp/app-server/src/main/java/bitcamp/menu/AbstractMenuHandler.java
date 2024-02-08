@@ -7,7 +7,7 @@ public abstract class AbstractMenuHandler implements MenuHandler {
 
   protected Prompt prompt;
   protected Menu menu;
-public AbstractMenuHandler(){}
+  public AbstractMenuHandler(){}
   public AbstractMenuHandler(Prompt prompt) {
     this.prompt = prompt;
   }
@@ -20,16 +20,24 @@ public AbstractMenuHandler(){}
   }
   @Override
   public void action(Menu menu, Prompt prompt) {
-    this.printMenuTitle(menu.getTitle());
+    this.printMenuTitle(menu.getTitle(), prompt);
     this.menu = menu;
-    this.action();
+    this.action(prompt);
   }
 
   private void printMenuTitle(String title) {
     System.out.printf(AnsiEscape.ANSI_BOLD + "[%s]\n" + AnsiEscape.ANSI_CLEAR, title);
   }
 
-  protected void action() {}
-  protected abstract void action(Prompt prompt);
+  private void printMenuTitle(String title, Prompt prompt) {
+    prompt.printf(AnsiEscape.ANSI_BOLD + "[%s]\n" + AnsiEscape.ANSI_CLEAR, title);
+  }
+
+  protected void action() {
+
+  }
+  protected void action(Prompt prompt){
+
+  }
 
 }
