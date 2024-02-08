@@ -8,8 +8,8 @@ public class Report implements Serializable {
   private static final long serialVersionUID = 100L;
 
   private int no;
-  private Date date;
-  private String content;
+  private int future_pay;
+  private int time;
   private String writer;
   private Date createdDate;
   
