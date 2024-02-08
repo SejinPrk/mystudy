@@ -14,7 +14,7 @@ public class MemberViewHandler extends AbstractMenuHandler {
   }
 
   @Override
-  protected void action() {
+  protected void action(Prompt prompt) {
     int no = prompt.inputInt("번호? ");
 
     Member member = memberDao.findBy(no);
