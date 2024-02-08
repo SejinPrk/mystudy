@@ -10,19 +10,18 @@ public class AssignmentListHandler extends AbstractMenuHandler {
 
   private AssignmentDao assignmentDao;
 
-  public AssignmentListHandler(AssignmentDao assignmentDao, Prompt prompt) {
-    super(prompt);
+  public AssignmentListHandler(AssignmentDao assignmentDao) {
     this.assignmentDao = assignmentDao;
   }
 
   @Override
-  protected void action() {
+  protected void action(Prompt prompt) {
     System.out.printf("%-4s\t%-20s\t%s\n", "번호", "과제", "제출마감일");
 
     List<Assignment> list = assignmentDao.findAll();
 
     for (Assignment assignment : list) {
-      System.out.printf("%-4d\t%-20s\t%s\n",
+      prompt.printf("%-4d\t%-20s\t%s\n",
           assignment.getNo(),
           assignment.getTitle(),
           assignment.getDeadline());
