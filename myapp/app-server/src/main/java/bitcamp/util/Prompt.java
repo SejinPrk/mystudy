@@ -7,15 +7,17 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.sql.Date;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Prompt implements AutoCloseable {
 
-  Scanner keyIn;
+  Stack<String> breadcrumb = new Stack<>();
+
   private DataInputStream in;
   private DataOutputStream out;
   private StringWriter stringWriter = new StringWriter();
   private PrintWriter writer = new PrintWriter(stringWriter);
-  public Prompt (InputStream in) { keyIn = new Scanner(in); }
+
   public Prompt(DataInputStream in, DataOutputStream out) {
     this.in = in;
     this.out = out;
@@ -76,4 +78,15 @@ public class Prompt implements AutoCloseable {
     writer.close();
     stringWriter.close();
   }
+
+  public void pushPath(String path) { breadcrumb.push(path); }
+
+  public String popPath() {
+    return breadcrumb.pop();
+  }
+  public String getFullPath() {
+    return String.join("/", breadcrumb.toArray(new String[0]));
+  }
+
 }
+

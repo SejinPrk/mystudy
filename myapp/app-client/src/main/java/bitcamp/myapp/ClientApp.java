@@ -10,8 +10,9 @@ public class ClientApp {
   int port;
 
   public static void main(String[] args) {
-    new ClientApp().
-        server("localhost")
+    new ClientApp()
+       // .server("192.168.0.49");
+        .server("localhost")
         .port(8888)
         .run();
   }
