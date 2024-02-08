@@ -7,6 +7,7 @@ public class Member implements Serializable {
 
   private static final long serialVersionUID = 100L;
 
+  private int no;
   private String id;
   private String password;
   private String name;
@@ -17,13 +18,22 @@ public class Member implements Serializable {
   @Override
   public String toString() {
     return "Member{" +
-        "id=" + id +
+        "no=" + no +
+        "id=" + id + '\'' +
         ", password='" + password + '\'' +
         ", name='" + name + '\'' +
         ", tel='" + tel + '\'' +
         ", email='" + email + '\'' +
         ", createdDate=" + createdDate +
         '}';
+  }
+
+  public int getNo() {
+    return no;
+  }
+
+  public void setNo(int no) {
+    this.no = no;
   }
 
   public String getId() {

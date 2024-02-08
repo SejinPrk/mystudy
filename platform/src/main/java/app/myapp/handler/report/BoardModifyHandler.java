@@ -1,15 +1,15 @@
 package app.myapp.handler.report;
 
 import app.menu.AbstractMenuHandler;
-import app.myapp.dao.BoardDao;
+import app.myapp.dao.ReportDao;
 import app.myapp.vo.Report;
 import app.util.Prompt;
 
 public class BoardModifyHandler extends AbstractMenuHandler {
 
-  private BoardDao boardDao;
+  private ReportDao boardDao;
 
-  public BoardModifyHandler(BoardDao boardDao, Prompt prompt) {
+  public BoardModifyHandler(ReportDao boardDao, Prompt prompt) {
     super(prompt);
     this.boardDao = boardDao;
   }

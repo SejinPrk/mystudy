@@ -1,6 +1,6 @@
 package app.myapp.dao.mysql;
 
-import app.myapp.dao.BoardDao;
+import app.myapp.dao.ReportDao;
 import app.myapp.dao.DaoException;
 import app.myapp.vo.Report;
 import java.sql.Connection;
@@ -9,12 +9,12 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BoardDaoImpl implements BoardDao {
+public class ReportDaoImpl implements ReportDao {
 
   int category;
   Connection con;
 
-  public BoardDaoImpl(Connection con, int category) {
+  public ReportDaoImpl(Connection con, int category) {
     this.con = con;
     this.category = category;
   }
@@ -105,14 +105,14 @@ public class BoardDaoImpl implements BoardDao {
   }
 
   @Override
-  public int update(Report board) {
+  public int update(Report report) {
     try (PreparedStatement pstmt = con.prepareStatement(
         "update boards set title=?, content=?, writer=? where board_no=?")) {
 
-      pstmt.setString(1, board.getTitle());
-      pstmt.setString(2, board.getContent());
-      pstmt.setString(3, board.getWriter());
-      pstmt.setInt(4, board.getNo());
+      pstmt.setString(1, report.getTitle());
+      pstmt.setString(2, report.getContent());
+      pstmt.setString(3, report.getWriter());
+      pstmt.setInt(4, report.getNo());
 
       return pstmt.executeUpdate();
 

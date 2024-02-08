@@ -1,16 +1,16 @@
 package app.myapp.handler.platform;
 
 import app.menu.AbstractMenuHandler;
-import app.myapp.dao.AssignmentDao;
+import app.myapp.dao.PlatformDao;
 import app.myapp.vo.Assignment;
 import app.util.Prompt;
 import java.util.List;
 
-public class AssignmentListHandler extends AbstractMenuHandler {
+public class PlatformListHandler extends AbstractMenuHandler {
 
-  private AssignmentDao assignmentDao;
+  private PlatformDao assignmentDao;
 
-  public AssignmentListHandler(AssignmentDao assignmentDao, Prompt prompt) {
+  public PlatformListHandler(PlatformDao assignmentDao, Prompt prompt) {
     super(prompt);
     this.assignmentDao = assignmentDao;
   }

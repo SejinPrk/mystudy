@@ -1,29 +1,29 @@
 package app.myapp.dao.mysql;
 
-import app.myapp.dao.AssignmentDao;
+import app.myapp.dao.PlatformDao;
 import app.myapp.dao.DaoException;
-import app.myapp.vo.Assignment;
+import app.myapp.vo.Platform;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AssignmentDaoImpl implements AssignmentDao {
+public class PlatformDaoImpl implements PlatformDao {
 
   Connection con;
 
-  public AssignmentDaoImpl(Connection con) {
+  public PlatformDaoImpl(Connection con) {
     this.con = con;
   }
 
   @Override
-  public void add(Assignment assignment) {
+  public void add(Platform platform) {
     try (PreparedStatement pstmt = con.prepareStatement(
-          "insert into assignments(title,content,deadline) values(?,?,?)")) {
-        pstmt.setString(1, assignment.getTitle());
-        pstmt.setString(2, assignment.getContent());
-        pstmt.setDate(3, assignment.getDeadline());
+          "insert into platforms(title,content,deadline) values(?,?,?)")) {
+        pstmt.setString(1, platform.getTitle());
+        pstmt.setString(2, platform.getContent());
+        pstmt.setDate(3, platform.getDeadline());
 
         pstmt.executeUpdate();
 
@@ -35,7 +35,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
   @Override
   public int delete(int no) {
     try (PreparedStatement pstmt = con.prepareStatement(
-        "delete from assignments where assignment_no=?")) {
+        "delete from platforms where assignment_no=?")) {
       pstmt.setInt(1, no);
         return pstmt.executeUpdate();
 
@@ -50,7 +50,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
         "select assignment_no, title, deadline from assignments order by assignment_no desc");
         ResultSet rs = pstmt.executeQuery()) {
 
-      ArrayList<Assignment> list = new ArrayList<>();
+      ArrayList<Platform> list = new ArrayList<>();
 
       while (rs.next()) {
         Assignment assignment = new Assignment();

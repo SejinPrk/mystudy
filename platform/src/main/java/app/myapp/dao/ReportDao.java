@@ -3,9 +3,9 @@ package app.myapp.dao;
 import app.myapp.vo.Report;
 import java.util.List;
 
-public interface BoardDao {
+public interface ReportDao {
 
-  void add(Report board);
+  void add(Report report);
 
   int delete(int no);
 
@@ -13,6 +13,6 @@ public interface BoardDao {
 
   Report findBy(int no);
 
-  int update(Report board);
+  int update(Report report);
 
 }

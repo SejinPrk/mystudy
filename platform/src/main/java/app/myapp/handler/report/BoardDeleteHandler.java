@@ -1,14 +1,14 @@
 package app.myapp.handler.report;
 
 import app.menu.AbstractMenuHandler;
-import app.myapp.dao.BoardDao;
+import app.myapp.dao.ReportDao;
 import app.util.Prompt;
 
 public class BoardDeleteHandler extends AbstractMenuHandler {
 
-  private BoardDao boardDao;
+  private ReportDao boardDao;
 
-  public BoardDeleteHandler(BoardDao boardDao, Prompt prompt) {
+  public BoardDeleteHandler(ReportDao boardDao, Prompt prompt) {
     super(prompt);
     this.boardDao = boardDao;
   }

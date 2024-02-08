@@ -1,18 +1,16 @@
 package app.myapp;
 
 import app.menu.MenuGroup;
-import app.myapp.dao.AssignmentDao;
-import app.myapp.dao.BoardDao;
+import app.myapp.dao.PlatformDao;
+import app.myapp.dao.ReportDao;
 import app.myapp.dao.MemberDao;
-import app.myapp.dao.mysql.AssignmentDaoImpl;
-import app.myapp.dao.mysql.BoardDaoImpl;
+import app.myapp.dao.mysql.PlatformDaoImpl;
+import app.myapp.dao.mysql.ReportDaoImpl;
 import app.myapp.dao.mysql.MemberDaoImpl;
-import app.myapp.handler.HelpHandler;
 import app.myapp.handler.platform.PlatformAddHandler;
-import app.myapp.handler.platform.AssignmentDeleteHandler;
-import app.myapp.handler.platform.AssignmentListHandler;
-import app.myapp.handler.platform.AssignmentModifyHandler;
-import app.myapp.handler.platform.AssignmentViewHandler;
+import app.myapp.handler.platform.PlatformDeleteHandler;
+import app.myapp.handler.platform.PlatformListHandler;
+import app.myapp.handler.platform.PlatformModifyHandler;
 import app.myapp.handler.report.BoardAddHandler;
 import app.myapp.handler.report.BoardDeleteHandler;
 import app.myapp.handler.report.BoardListHandler;
@@ -31,9 +29,8 @@ public class Main {
 
   Prompt prompt = new Prompt(System.in);
 
-  BoardDao boardDao;
-  BoardDao greetingDao;
-  AssignmentDao assignmentDao;
+  ReportDao reportDao;
+  PlatformDao platformDao;
   MemberDao memberDao;
 
   MenuGroup mainMenu;
@@ -44,8 +41,8 @@ public class Main {
   }
 
   public static void main(String[] args) {
-    System.out.println("[과제관리 시스템]");
-    new ClientApp().run();
+    System.out.println("[플랫폼 관리 시스템]");
+    new Main().run();
   }
 
   void prepareDatabase() {
@@ -58,9 +55,8 @@ public class Main {
          // "jdbc:mysql://localhost/studydb", "study", "app!@#123"
      "jdbc:mysql://db-ld24q-kr.vpc-pub-cdb.ntruss.com/studydb","study", "app!@#123");
 
-      boardDao = new BoardDaoImpl(con, 1);
-      greetingDao = new BoardDaoImpl(con, 2);
-      assignmentDao = new AssignmentDaoImpl(con);
+      reportDao = new ReportDaoImpl(con, 1);
+      platformDao = new PlatformDaoImpl(con);
       memberDao = new MemberDaoImpl(con);
 
     } catch (Exception e) {
@@ -73,11 +69,11 @@ public class Main {
     mainMenu = MenuGroup.getInstance("메인");
 
     MenuGroup assignmentMenu = mainMenu.addGroup("과제");
-    assignmentMenu.addItem("등록", new PlatformAddHandler(assignmentDao, prompt));
-    assignmentMenu.addItem("조회", new AssignmentViewHandler(assignmentDao, prompt));
-    assignmentMenu.addItem("변경", new AssignmentModifyHandler(assignmentDao, prompt));
-    assignmentMenu.addItem("삭제", new AssignmentDeleteHandler(assignmentDao, prompt));
-    assignmentMenu.addItem("목록", new AssignmentListHandler(assignmentDao, prompt));
+    assignmentMenu.addItem("등록", new PlatformAddHandler(platformDao, prompt));
+    assignmentMenu.addItem("조회", new PlatformViewHandler(platformDao, prompt));
+    assignmentMenu.addItem("변경", new PlatformModifyHandler(platformDao, prompt));
+    assignmentMenu.addItem("삭제", new PlatformDeleteHandler(assignmentDao, prompt));
+    assignmentMenu.addItem("목록", new PlatformListHandler(assignmentDao, prompt));
 
     MenuGroup boardMenu = mainMenu.addGroup("게시글");
     boardMenu.addItem("등록", new BoardAddHandler(boardDao, prompt));

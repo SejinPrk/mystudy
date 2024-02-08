@@ -20,10 +20,12 @@ public class MemberDaoImpl implements MemberDao {
   @Override
   public void add(Member member) {
     try (PreparedStatement pstmt = con.prepareStatement(
-          "insert into members(email,name,password) values(?,?,sha2(?,256))")){
-      pstmt.setString(1, member.getEmail());
-      pstmt.setString(2, member.getName());
-      pstmt.setString(3, member.getPassword());
+          "insert into members(id,password,name,tel,email) values(?,sha2(?,256),?,?,?)")){
+      pstmt.setString(1, member.getId());
+      pstmt.setString(2, member.getPassword());
+      pstmt.setString(3, member.getName());
+      pstmt.setString(4, member.getTel());
+      pstmt.setString(5, member.getEmail());
       pstmt.executeUpdate();
 
     } catch (Exception e) {
@@ -46,7 +48,7 @@ public class MemberDaoImpl implements MemberDao {
   @Override
   public List<Member> findAll() {
     try (PreparedStatement pstmt = con.prepareStatement(
-        "select member_no, email, name, created_date from members");
+        "select member_no, id, name, tel, email, created_date from members");
       ResultSet rs = pstmt.executeQuery()) {
 
       ArrayList<Member> list = new ArrayList<>();
@@ -54,8 +56,10 @@ public class MemberDaoImpl implements MemberDao {
       while (rs.next()) {
         Member member = new Member();
         member.setNo(rs.getInt("member_no"));
-        member.setEmail(rs.getString("email"));
+        member.setId(rs.getString("id"));
         member.setName(rs.getString("name"));
+        member.setTel(rs.getString("tel"));
+        member.setEmail(rs.getString("email"));
         member.setCreatedDate(rs.getDate("created_date"));
 
         list.add(member);
@@ -70,7 +74,7 @@ public class MemberDaoImpl implements MemberDao {
   @Override
   public Member findBy(int no) {
     try (PreparedStatement pstmt = con.prepareStatement(
-        "select member_no, email, name, created_date from members where member_no=?")){
+        "select member_no, id, name, tel, email, created_date from members where member_no=?")){
       pstmt.setInt(1, no);
 
       try(ResultSet rs = pstmt.executeQuery()) {
@@ -78,8 +82,10 @@ public class MemberDaoImpl implements MemberDao {
         if (rs.next()) {
           Member member = new Member();
           member.setNo(rs.getInt("member_no"));
-          member.setEmail(rs.getString("email"));
+          member.setId(rs.getString("id"));
           member.setName(rs.getString("name"));
+          member.setTel(rs.getString("tel"));
+          member.setEmail(rs.getString("email"));
           member.setCreatedDate(rs.getDate("created_date"));
           return member;
         }
@@ -94,11 +100,13 @@ public class MemberDaoImpl implements MemberDao {
   @Override
   public int update(Member member) {
     try (PreparedStatement pstmt = con.prepareStatement(
-        "update members set email=?, name=?, password=sha2(?,256) where member_no=?")){
-      pstmt.setString(1, member.getEmail());
-      pstmt.setString(2, member.getName());
-      pstmt.setString(3, member.getPassword());
-      pstmt.setString(4, member.getId());
+        "update members set id=?, password=sha2(?,256), name=?, tel=?, email=?"
+            + " where member_no=?")){
+      pstmt.setString(1, member.getId());
+      pstmt.setString(2, member.getPassword());
+      pstmt.setString(3, member.getName());
+      pstmt.setString(4, member.getTel());
+      pstmt.setString(5, member.getEmail());
       return pstmt.executeUpdate();
     } catch (Exception e) {
       throw new DaoException("데이터 변경 오류", e);

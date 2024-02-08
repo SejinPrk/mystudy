@@ -1,15 +1,15 @@
 package app.myapp.handler.platform;
 
 import app.menu.AbstractMenuHandler;
-import app.myapp.dao.AssignmentDao;
+import app.myapp.dao.PlatformDao;
 import app.myapp.vo.Assignment;
 import app.util.Prompt;
 
-public class AssignmentModifyHandler extends AbstractMenuHandler {
+public class PlatformModifyHandler extends AbstractMenuHandler {
 
-  private AssignmentDao assignmentDao;
+  private PlatformDao assignmentDao;
 
-  public AssignmentModifyHandler(AssignmentDao assignmentDao, Prompt prompt) {
+  public PlatformModifyHandler(PlatformDao assignmentDao, Prompt prompt) {
     super(prompt);
     this.assignmentDao = assignmentDao;
   }

@@ -5,6 +5,7 @@ import app.myapp.dao.MemberDao;
 import app.myapp.vo.Member;
 import app.util.Prompt;
 
+
 public class MemberViewHandler extends AbstractMenuHandler {
 
   private MemberDao memberDao;
@@ -25,8 +26,11 @@ public class MemberViewHandler extends AbstractMenuHandler {
     }
 
     System.out.printf("번호: %d\n", member.getNo());
-    System.out.printf("이메일: %s\n", member.getEmail());
+    System.out.printf("id: %s\n", member.getId());
     System.out.printf("이름: %s\n", member.getName());
+    System.out.printf("전화번호: %s\n", member.getTel());
+    System.out.printf("이메일: %s\n", member.getEmail());
+
     System.out.printf("가입일: %1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS\n", member.getCreatedDate());
   }
 }

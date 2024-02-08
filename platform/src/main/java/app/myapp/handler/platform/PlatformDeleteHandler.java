@@ -1,14 +1,14 @@
 package app.myapp.handler.platform;
 
 import app.menu.AbstractMenuHandler;
-import app.myapp.dao.AssignmentDao;
+import app.myapp.dao.PlatformDao;
 import app.util.Prompt;
 
-public class AssignmentDeleteHandler extends AbstractMenuHandler {
+public class PlatformDeleteHandler extends AbstractMenuHandler {
 
-  private AssignmentDao assignmentDao;
+  private PlatformDao assignmentDao;
 
-  public AssignmentDeleteHandler(AssignmentDao assignmentDao, Prompt prompt) {
+  public PlatformDeleteHandler(PlatformDao assignmentDao, Prompt prompt) {
     super(prompt);
     this.assignmentDao = assignmentDao;
   }

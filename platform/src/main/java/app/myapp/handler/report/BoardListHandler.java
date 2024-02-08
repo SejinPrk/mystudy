@@ -1,16 +1,16 @@
 package app.myapp.handler.report;
 
 import app.menu.AbstractMenuHandler;
-import app.myapp.dao.BoardDao;
+import app.myapp.dao.ReportDao;
 import app.myapp.vo.Report;
 import app.util.Prompt;
 import java.util.List;
 
 public class BoardListHandler extends AbstractMenuHandler {
 
-  private BoardDao boardDao;
+  private ReportDao boardDao;
 
-  public BoardListHandler(BoardDao boardDao, Prompt prompt) {
+  public BoardListHandler(ReportDao boardDao, Prompt prompt) {
     super(prompt);
     this.boardDao = boardDao;
   }
