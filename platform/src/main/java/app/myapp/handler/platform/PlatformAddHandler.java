@@ -2,27 +2,28 @@ package app.myapp.handler.platform;
 
 import app.menu.AbstractMenuHandler;
 import app.myapp.dao.PlatformDao;
+import app.myapp.vo.Platform;
 import app.util.Prompt;
 
 public class PlatformAddHandler extends AbstractMenuHandler {
 
-  private PlatformDao assignmentDao;
+  private PlatformDao platformDao;
 
 
-  public PlatformAddHandler(PlatformDao assignmentDao, Prompt prompt) {
+  public PlatformAddHandler(PlatformDao platformDao, Prompt prompt) {
     super(prompt);
-    this.assignmentDao = assignmentDao;
+    this.platformDao = platformDao;
   }
 
   @Override
   protected void action() {
     try {
-      Assignment assignment = new Assignment();
-      assignment.setTitle(this.prompt.input("과제명? "));
-      assignment.setContent(this.prompt.input("내용? "));
-      assignment.setDeadline(this.prompt.inputDate("제출 마감일?(예: 2023-12-25) "));
+      Platform platform = new Platform();
+      platform.setName(this.prompt.input("플랫폼명: "));
+      platform.setPrice(this.prompt.input("구독료: "));
+      platform.setTerm(this.prompt.input("결제주기: "));
 
-      assignmentDao.add(assignment);
+      platformDao.add(platform);
 
     } catch (Exception e) {
       System.out.println("과제 입력 중 오류 발생!");

@@ -2,16 +2,16 @@ package app.myapp.handler.platform;
 
 import app.menu.AbstractMenuHandler;
 import app.myapp.dao.PlatformDao;
-import app.myapp.vo.Assignment;
+import app.myapp.vo.Platform;
 import app.util.Prompt;
 
 public class PlatformModifyHandler extends AbstractMenuHandler {
 
-  private PlatformDao assignmentDao;
+  private PlatformDao platformDao;
 
-  public PlatformModifyHandler(PlatformDao assignmentDao, Prompt prompt) {
+  public PlatformModifyHandler(PlatformDao platformDao, Prompt prompt) {
     super(prompt);
-    this.assignmentDao = assignmentDao;
+    this.platformDao = platformDao;
   }
 
   @Override
@@ -19,19 +19,19 @@ public class PlatformModifyHandler extends AbstractMenuHandler {
     try {
       int no = this.prompt.inputInt("번호? ");
 
-      Assignment old = assignmentDao.findBy(no);
+      Platform old = PlatformDao.findBy(no);
       if (old == null) {
-        System.out.println("과제 번호가 유효하지 않습니다!");
+        System.out.println("플랫폼 번호가 유효하지 않습니다!");
         return;
       }
 
-      Assignment assignment = new Assignment();
-      assignment.setNo(old.getNo());
-      assignment.setTitle(this.prompt.input("과제명(%s)? ", old.getTitle()));
-      assignment.setContent(this.prompt.input("내용(%s)? ", old.getContent()));
-      assignment.setDeadline(this.prompt.inputDate("제출 마감일(%s)? ", old.getDeadline()));
+      Platform platform = new Platform();
+      platform.setNo(old.getNo());
+      platform.setName(this.prompt.input("플랫폼명(%s): ", old.getName()));
+      platform.setPrice(this.prompt.input("구독료(%s): ", old.getPrice()));
+      platform.setTerm(this.prompt.input("결제주기(%s): ", old.getTerm()));
 
-      assignmentDao.update(assignment);
+      platformDao.update(platform);
       System.out.println("과제를 변경했습니다.");
 
     } catch (NumberFormatException e) {

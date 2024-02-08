@@ -1,18 +1,18 @@
 package app.myapp.dao;
 
-import app.myapp.vo.Method;
+import app.myapp.vo.Payment;
 import java.util.List;
 
 public interface MethodDao {
 
-  void add(Method method);
+  void add(Payment method);
 
   int delete(int no);
 
-  List<Method> findAll();
+  List<Payment> findAll();
 
-  Method findBy(int no);
+  Payment findBy(int no);
 
-  int update(Method method);
+  int update(Payment method);
 
 }

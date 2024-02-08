@@ -2,7 +2,7 @@ package app.myapp.handler.method;
 
 import app.menu.AbstractMenuHandler;
 import app.myapp.dao.ReportDao;
-import app.myapp.vo.Report;
+import app.myapp.vo.Notification;
 import app.util.Prompt;
 
 public class BoardViewHandler extends AbstractMenuHandler {
@@ -18,7 +18,7 @@ public class BoardViewHandler extends AbstractMenuHandler {
   protected void action() {
     int no = this.prompt.inputInt("번호? ");
 
-    Report board = boardDao.findBy(no);
+    Notification board = boardDao.findBy(no);
     if (board == null) {
       System.out.println("게시글 번호가 유효하지 않습니다.");
       return;

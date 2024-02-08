@@ -14,6 +14,9 @@ public class Member implements Serializable {
   private String tel;
   private String email;
   private Date createdDate;
+  private int creditNo;
+  private boolean notification;
+
 
   @Override
   public String toString() {
@@ -24,7 +27,9 @@ public class Member implements Serializable {
         ", name='" + name + '\'' +
         ", tel='" + tel + '\'' +
         ", email='" + email + '\'' +
-        ", createdDate=" + createdDate +
+        ", createdDate=" + createdDate + '\'' +
+        ", creditNo=" + creditNo + '\'' +
+        ", notification=" + notification +
         '}';
   }
 
@@ -82,5 +87,21 @@ public class Member implements Serializable {
 
   public void setCreatedDate(Date createdDate) {
     this.createdDate = createdDate;
+  }
+
+  public int getCreditNo() {
+    return creditNo;
+  }
+
+  public void setCreditNo(int creditNo) {
+    this.creditNo = creditNo;
+  }
+
+  public boolean isNotification() {
+    return notification;
+  }
+
+  public void setNotification(boolean notification) {
+    this.notification = notification;
   }
 }

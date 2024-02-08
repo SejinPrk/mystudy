@@ -2,7 +2,7 @@ package app.myapp.dao.mysql;
 
 import app.myapp.dao.ReportDao;
 import app.myapp.dao.DaoException;
-import app.myapp.vo.Report;
+import app.myapp.vo.Notification;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,7 +20,7 @@ public class ReportDaoImpl implements ReportDao {
   }
 
   @Override
-  public void add(Report board) {
+  public void add(Notification board) {
     try (PreparedStatement pstmt = con.prepareStatement(
         "insert into boards(title,content,writer,category) values(?,?,?,?)")) {
 
@@ -51,7 +51,7 @@ public class ReportDaoImpl implements ReportDao {
   }
 
   @Override
-  public List<Report> findAll() {
+  public List<Notification> findAll() {
     try (PreparedStatement pstmt = con.prepareStatement(
         "select board_no, title, writer, created_date"
             + " from boards where category=? order by board_no desc")) {
@@ -60,10 +60,10 @@ public class ReportDaoImpl implements ReportDao {
 
       try (ResultSet rs = pstmt.executeQuery()) {
 
-        ArrayList<Report> list = new ArrayList<>();
+        ArrayList<Notification> list = new ArrayList<>();
 
         while (rs.next()) {
-          Report board = new Report();
+          Notification board = new Notification();
           board.setNo(rs.getInt("board_no"));
           board.setTitle(rs.getString("title"));
           board.setWriter(rs.getString("writer"));
@@ -80,14 +80,14 @@ public class ReportDaoImpl implements ReportDao {
   }
 
   @Override
-  public Report findBy(int no) {
+  public Notification findBy(int no) {
     try (PreparedStatement pstmt = con.prepareStatement("select * from boards where board_no=?")) {
 
       pstmt.setInt(1, no);
 
       try (ResultSet rs = pstmt.executeQuery()) {
         if (rs.next()) {
-          Report board = new Report();
+          Notification board = new Notification();
           board.setNo(rs.getInt("board_no"));
           board.setTitle(rs.getString("title"));
           board.setContent(rs.getString("content"));
@@ -105,7 +105,7 @@ public class ReportDaoImpl implements ReportDao {
   }
 
   @Override
-  public int update(Report report) {
+  public int update(Notification report) {
     try (PreparedStatement pstmt = con.prepareStatement(
         "update boards set title=?, content=?, writer=? where board_no=?")) {
 

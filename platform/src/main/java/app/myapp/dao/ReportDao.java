@@ -1,18 +1,18 @@
 package app.myapp.dao;
 
-import app.myapp.vo.Report;
+import app.myapp.vo.Notification;
 import java.util.List;
 
 public interface ReportDao {
 
-  void add(Report report);
+  void add(Notification report);
 
   int delete(int no);
 
-  List<Report> findAll();
+  List<Notification> findAll();
 
-  Report findBy(int no);
+  Notification findBy(int no);
 
-  int update(Report report);
+  int update(Notification report);
 
 }

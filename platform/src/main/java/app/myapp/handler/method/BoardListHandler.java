@@ -2,7 +2,7 @@ package app.myapp.handler.method;
 
 import app.menu.AbstractMenuHandler;
 import app.myapp.dao.ReportDao;
-import app.myapp.vo.Report;
+import app.myapp.vo.Notification;
 import app.util.Prompt;
 import java.util.List;
 
@@ -19,9 +19,9 @@ public class BoardListHandler extends AbstractMenuHandler {
   protected void action() {
     System.out.printf("%-4s\t%-20s\t%10s\t%s\n", "No", "Title", "Writer", "Date");
 
-    List<Report> list = boardDao.findAll();
+    List<Notification> list = boardDao.findAll();
 
-    for (Report board : list) {
+    for (Notification board : list) {
       System.out.printf("%-4d\t%-20s\t%10s\t%4$tY-%4$tm-%4$td\n",
           board.getNo(),
           board.getTitle(),

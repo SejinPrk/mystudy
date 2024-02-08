@@ -2,7 +2,7 @@ package app.myapp.handler.report;
 
 import app.menu.AbstractMenuHandler;
 import app.myapp.dao.ReportDao;
-import app.myapp.vo.Report;
+import app.myapp.vo.Notification;
 import app.util.Prompt;
 import java.util.Date;
 
@@ -17,7 +17,7 @@ public class BoardAddHandler extends AbstractMenuHandler {
 
   @Override
   protected void action() {
-    Report board = new Report();
+    Notification board = new Notification();
     board.setTitle(this.prompt.input("제목? "));
     board.setContent(this.prompt.input("내용? "));
     board.setWriter(this.prompt.input("작성자? "));

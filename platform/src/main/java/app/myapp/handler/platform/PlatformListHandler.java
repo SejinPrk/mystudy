@@ -2,30 +2,31 @@ package app.myapp.handler.platform;
 
 import app.menu.AbstractMenuHandler;
 import app.myapp.dao.PlatformDao;
-import app.myapp.vo.Assignment;
+import app.myapp.vo.Platform;
 import app.util.Prompt;
 import java.util.List;
 
 public class PlatformListHandler extends AbstractMenuHandler {
 
-  private PlatformDao assignmentDao;
+  private PlatformDao platformDao;
 
-  public PlatformListHandler(PlatformDao assignmentDao, Prompt prompt) {
+  public PlatformListHandler(PlatformDao platformDao,Prompt prompt) {
     super(prompt);
-    this.assignmentDao = assignmentDao;
+    this.platformDao = platformDao;
   }
 
   @Override
   protected void action() {
-    System.out.printf("%-4s\t%-20s\t%s\n", "번호", "과제", "제출마감일");
+    System.out.printf("%-4s\t%-20s\t%-20s\t%s\n", "번호", "플랫폼명", "구독료", "결제주기");
 
-    List<Assignment> list = assignmentDao.findAll();
+    List<Platform> list = platformDao.findAll();
 
-    for (Assignment assignment : list) {
-      System.out.printf("%-4d\t%-20s\t%s\n",
-          assignment.getNo(),
-          assignment.getTitle(),
-          assignment.getDeadline());
+    for (Platform platform : list) {
+      System.out.printf("%-4s\t%-20s\t%-20s\t%s\n",
+          platform.getNo(),
+          platform.getName(),
+          platform.getPrice(),
+          platform.getTerm());
     }
   }
 }

@@ -10,7 +10,6 @@ public class Platform implements Serializable {
   private int no;
   private String name;
   private int price;
-  private String option;
   private String term;
 
 
@@ -20,7 +19,6 @@ public class Platform implements Serializable {
         "no=" + no +
         ", name='" + name + '\'' +
         ", price='" + price + '\'' +
-        ", option=" + option + '\'' +
         ", term=" + term +
         '}';
   }
@@ -47,14 +45,6 @@ public class Platform implements Serializable {
 
   public void setPrice(int price) {
     this.price = price;
-  }
-
-  public String getOption() {
-    return option;
-  }
-
-  public void setOption(String option) {
-    this.option = option;
   }
 
   public String getTerm() {

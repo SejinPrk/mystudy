@@ -2,7 +2,7 @@ package app.myapp.handler.report;
 
 import app.menu.AbstractMenuHandler;
 import app.myapp.dao.ReportDao;
-import app.myapp.vo.Report;
+import app.myapp.vo.Notification;
 import app.util.Prompt;
 
 public class BoardModifyHandler extends AbstractMenuHandler {
@@ -18,13 +18,13 @@ public class BoardModifyHandler extends AbstractMenuHandler {
   protected void action() {
     int no = this.prompt.inputInt("번호? ");
 
-    Report oldBoard = boardDao.findBy(no);
+    Notification oldBoard = boardDao.findBy(no);
     if (oldBoard == null) {
       System.out.println("게시글 번호가 유효하지 않습니다.");
       return;
     }
 
-    Report board = new Report();
+    Notification board = new Notification();
     board.setNo(oldBoard.getNo()); // 기존 게시글의 번호를 그대로 설정한다.
     board.setTitle(this.prompt.input("제목(%s)? ", oldBoard.getTitle()));
     board.setContent(this.prompt.input("내용(%s)? ", oldBoard.getContent()));
