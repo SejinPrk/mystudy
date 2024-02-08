@@ -8,19 +8,21 @@ public class Report implements Serializable {
   private static final long serialVersionUID = 100L;
 
   private int no;
-  private int future_pay;
+  private int futurePay;
   private int time;
-  private String writer;
-  private Date createdDate;
+  private int fixedCost;
+  private String cancellation;
+  private int rate;
   
   @Override
   public String toString() {
-    return "Board{" +
+    return "Report{" +
         "no=" + no +
-        ", title='" + title + '\'' +
-        ", content='" + content + '\'' +
-        ", writer='" + writer + '\'' +
-        ", createdDate=" + createdDate +
+        ", futurePay='" + futurePay + '\'' +
+        ", time='" + time + '\'' +
+        ", fixedCost='" + fixedCost + '\'' +
+        ", cancellation=" + cancellation + '\'' +
+        ", rate=" + rate +
         '}';
   }
 
@@ -32,35 +34,43 @@ public class Report implements Serializable {
     this.no = no;
   }
 
-  public String getTitle() {
-    return title;
+  public int getFuturePay() {
+    return futurePay;
   }
 
-  public void setTitle(String title) {
-    this.title = title;
+  public void setFuturePay(int futurePay) {
+    this.futurePay = futurePay;
   }
 
-  public String getContent() {
-    return content;
+  public int getTime() {
+    return time;
   }
 
-  public void setContent(String content) {
-    this.content = content;
+  public void setTime(int time) {
+    this.time = time;
   }
 
-  public String getWriter() {
-    return writer;
+  public int getFixedCost() {
+    return fixedCost;
   }
 
-  public void setWriter(String writer) {
-    this.writer = writer;
+  public void setFixedCost(int fixedCost) {
+    this.fixedCost = fixedCost;
   }
 
-  public Date getCreatedDate() {
-    return createdDate;
+  public String getCancellation() {
+    return cancellation;
   }
 
-  public void setCreatedDate(Date createdDate) {
-    this.createdDate = createdDate;
+  public void setCancellation(String cancellation) {
+    this.cancellation = cancellation;
+  }
+
+  public int getRate() {
+    return rate;
+  }
+
+  public void setRate(int rate) {
+    this.rate = rate;
   }
 }

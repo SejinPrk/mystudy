@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9160b05-d132-42d9-bdad-84098ff3ce04" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/MethodDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/handler/method/BoardAddHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/handler/method/BoardDeleteHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/handler/method/BoardListHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/handler/method/BoardModifyHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/handler/method/BoardViewHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/PlatformDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/PlatformDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/PaymentMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Method.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Platform.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Platform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Report.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

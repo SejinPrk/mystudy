@@ -20,10 +20,11 @@ public class PlatformDaoImpl implements PlatformDao {
   @Override
   public void add(Platform platform) {
     try (PreparedStatement pstmt = con.prepareStatement(
-          "insert into platforms(title,content,deadline) values(?,?,?)")) {
-        pstmt.setString(1, platform.getTitle());
-        pstmt.setString(2, platform.getContent());
-        pstmt.setDate(3, platform.getDeadline());
+          "insert into platforms(name,price,option,term) values(?,?,?,?)")) {
+        pstmt.setString(1, platform.getName());
+        pstmt.setInt(2, platform.getPrice());
+        pstmt.setString(3, platform.getOption());
+        pstmt.setString(4, platform.getTerm());
 
         pstmt.executeUpdate();
 
@@ -35,7 +36,7 @@ public class PlatformDaoImpl implements PlatformDao {
   @Override
   public int delete(int no) {
     try (PreparedStatement pstmt = con.prepareStatement(
-        "delete from platforms where assignment_no=?")) {
+        "delete from platforms where platform_no=?")) {
       pstmt.setInt(1, no);
         return pstmt.executeUpdate();
 
@@ -45,20 +46,22 @@ public class PlatformDaoImpl implements PlatformDao {
   }
 
   @Override
-  public List<Assignment> findAll() {
+  public List<Platform> findAll() {
     try (PreparedStatement pstmt = con.prepareStatement(
-        "select assignment_no, title, deadline from assignments order by assignment_no desc");
+        "select platform_no, name, price, option, term  from assignments order by platform_no desc");
         ResultSet rs = pstmt.executeQuery()) {
 
       ArrayList<Platform> list = new ArrayList<>();
 
       while (rs.next()) {
-        Assignment assignment = new Assignment();
-        assignment.setNo(rs.getInt("assignment_no"));
-        assignment.setTitle(rs.getString("title"));
-        assignment.setDeadline(rs.getDate("deadline"));
+        Platform platform = new Platform();
+        platform.setNo(rs.getInt("platform"));
+        platform.setName(rs.getString("name"));
+        platform.setPrice(rs.getInt("price"));
+        platform.setOption(rs.getString("option"));
+        platform.setTerm(rs.getString("option"));
 
-        list.add(assignment);
+        list.add(platform);
       }
       return list;
 
@@ -68,21 +71,22 @@ public class PlatformDaoImpl implements PlatformDao {
   }
 
   @Override
-  public Assignment findBy(int no) {
+  public Platform findBy(int no) {
     try (PreparedStatement pstmt = con.prepareStatement(
-        "select * from assignments where assignment_no=?")){
+        "select * from platforms where platform_no=?")){
 
       pstmt.setInt(1, no);
 
       try(ResultSet rs = pstmt.executeQuery()) {
 
         if (rs.next()) {
-          Assignment assignment = new Assignment();
-          assignment.setNo(rs.getInt("assignment_no"));
-          assignment.setTitle(rs.getString("title"));
-          assignment.setContent(rs.getString("content"));
-          assignment.setDeadline(rs.getDate("deadline"));
-          return assignment;
+          Platform platform = new Platform();
+          platform.setNo(rs.getInt("platform_no"));
+          platform.setName(rs.getString("name"));
+          platform.setPrice(rs.getInt("price"));
+          platform.setOption(rs.getString("option"));
+          platform.setTerm(rs.getString("term"));
+          return platform;
         }
         return null;
       }
@@ -93,12 +97,12 @@ public class PlatformDaoImpl implements PlatformDao {
   }
 
   @Override
-  public int update(Assignment assignment) {
+  public int update(Platform platform) {
     try (PreparedStatement pstmt = con.prepareStatement(
-          "update assignments set title=?, content=?, deadline=? where assignment_no=?")) {
-      pstmt.setString(1, assignment.getTitle());
-      pstmt.setString(2, assignment.getContent());
-      pstmt.setDate(3, assignment.getDeadline());
+          "update platforms set name=?, price=?, option=?, term=? where platform_no=?")) {
+      pstmt.setString(1, platform.getName());
+      pstmt.setInt(2, platform.getPrice());
+      pstmt.setString(3, platform.getOption());
       pstmt.setInt(4, assignment.getNo());
       return pstmt.executeUpdate();
 
