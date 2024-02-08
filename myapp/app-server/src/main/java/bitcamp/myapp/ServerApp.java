@@ -35,7 +35,6 @@ public class ServerApp {
   BoardDao greetingDao;
   AssignmentDao assignmentDao;
   MemberDao memberDao;
-
   MenuGroup mainMenu;
 
   ServerApp() {
