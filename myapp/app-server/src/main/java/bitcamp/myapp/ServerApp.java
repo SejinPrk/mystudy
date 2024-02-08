@@ -120,10 +120,16 @@ public class ServerApp {
         DataOutputStream out = new DataOutputStream(s.getOutputStream());
         DataInputStream in = new DataInputStream(s.getInputStream());
         Prompt prompt = new Prompt(in, out)) {
-      prompt.println("[과제관리 시스템]");
-      prompt.println("환영합니다!");
-      prompt.println("반가워요");
-      prompt.end();
+        while (true) {
+      try {
+        mainMenu.execute(prompt);
+        prompt.close();
+        break;
+      } catch (Exception e) {
+        System.out.println("예외 발생!");
+        e.printStackTrace();
+         }
+        }
 
       String request = prompt.input();
       System.out.println(request);
@@ -133,17 +139,5 @@ public class ServerApp {
       e.printStackTrace();
     }
   }
-
-//  void run() {
-//    while (true) {
-//      try {
-//        mainMenu.execute(prompt);
-//        prompt.close();
-//        break;
-//      } catch (Exception e) {
-//        System.out.println("예외 발생!");
-//      }
-//    }
-//  }
 
 }
