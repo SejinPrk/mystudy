@@ -53,10 +53,9 @@ public class ServerApp {
 
   void prepareDatabase() {
     try {
-
       Connection con = DriverManager.getConnection(
          // "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123"
-     "jdbc:mysql://db-ld24q-kr.vpc-pub-cdb.ntruss.com/studydb","study", "Bitcamp!@#123");
+        "jdbc:mysql://db-ld24q-kr.vpc-pub-cdb.ntruss.com/studydb","study", "Bitcamp!@#123");
 
       boardDao = new BoardDaoImpl(con, 1);
       greetingDao = new BoardDaoImpl(con, 2);
@@ -105,10 +104,12 @@ public class ServerApp {
 
   void run() {
     try(ServerSocket serverSocket = new ServerSocket(8888)) {
+
       while (true) {
         Socket socket = serverSocket.accept();
         processRequest(socket);
       }
+
     } catch (Exception e) {
       System.out.println("서버 소켓 생성 오류!");
       e.printStackTrace();
@@ -120,11 +121,11 @@ public class ServerApp {
         DataOutputStream out = new DataOutputStream(s.getOutputStream());
         DataInputStream in = new DataInputStream(s.getInputStream());
         Prompt prompt = new Prompt(in, out)) {
-        while (true) {
-      try {
+
+      while (true) {
+         try {
         mainMenu.execute(prompt);
         prompt.print("[[quit!]]");
-        prompt.close();
         prompt.end();
         break;
       } catch (Exception e) {
@@ -132,9 +133,6 @@ public class ServerApp {
         e.printStackTrace();
          }
         }
-
-      String request = prompt.input();
-      System.out.println(request);
 
     } catch (Exception e) {
       System.out.println("클라이언트 통신 오류!");
