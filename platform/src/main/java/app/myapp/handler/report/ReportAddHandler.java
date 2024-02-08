@@ -6,11 +6,11 @@ import app.myapp.vo.Notification;
 import app.util.Prompt;
 import java.util.Date;
 
-public class BoardAddHandler extends AbstractMenuHandler {
+public class ReportAddHandler extends AbstractMenuHandler {
 
   private ReportDao boardDao;
 
-  public BoardAddHandler(ReportDao boardDao, Prompt prompt) {
+  public ReportAddHandler(ReportDao boardDao, Prompt prompt) {
     super(prompt);
     this.boardDao = boardDao;
   }

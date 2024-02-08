@@ -11,10 +11,10 @@ import app.myapp.handler.platform.PlatformAddHandler;
 import app.myapp.handler.platform.PlatformDeleteHandler;
 import app.myapp.handler.platform.PlatformListHandler;
 import app.myapp.handler.platform.PlatformModifyHandler;
-import app.myapp.handler.report.BoardAddHandler;
+import app.myapp.handler.report.ReportAddHandler;
 import app.myapp.handler.report.BoardDeleteHandler;
 import app.myapp.handler.report.BoardListHandler;
-import app.myapp.handler.report.BoardModifyHandler;
+import app.myapp.handler.report.ReportModifyHandler;
 import app.myapp.handler.report.BoardViewHandler;
 import app.myapp.handler.member.MemberAddHandler;
 import app.myapp.handler.member.MemberDeleteHandler;
@@ -73,9 +73,9 @@ public class Main {
     assignmentMenu.addItem("목록", new PlatformListHandler(assignmentDao, prompt));
 
     MenuGroup boardMenu = mainMenu.addGroup("게시글");
-    boardMenu.addItem("등록", new BoardAddHandler(boardDao, prompt));
+    boardMenu.addItem("등록", new ReportAddHandler(boardDao, prompt));
     boardMenu.addItem("조회", new BoardViewHandler(boardDao, prompt));
-    boardMenu.addItem("변경", new BoardModifyHandler(boardDao, prompt));
+    boardMenu.addItem("변경", new ReportModifyHandler(boardDao, prompt));
     boardMenu.addItem("삭제", new BoardDeleteHandler(boardDao, prompt));
     boardMenu.addItem("목록", new BoardListHandler(boardDao, prompt));
 
@@ -87,9 +87,9 @@ public class Main {
     memberMenu.addItem("목록", new MemberListHandler(memberDao, prompt));
 
     MenuGroup greetingMenu = mainMenu.addGroup("가입인사");
-    greetingMenu.addItem("등록", new BoardAddHandler(greetingDao, prompt));
+    greetingMenu.addItem("등록", new ReportAddHandler(greetingDao, prompt));
     greetingMenu.addItem("조회", new BoardViewHandler(greetingDao, prompt));
-    greetingMenu.addItem("변경", new BoardModifyHandler(greetingDao, prompt));
+    greetingMenu.addItem("변경", new ReportModifyHandler(greetingDao, prompt));
     greetingMenu.addItem("삭제", new BoardDeleteHandler(greetingDao, prompt));
     greetingMenu.addItem("목록", new BoardListHandler(greetingDao, prompt));
 

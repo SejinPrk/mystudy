@@ -5,22 +5,22 @@ import app.myapp.dao.ReportDao;
 import app.myapp.vo.Notification;
 import app.util.Prompt;
 
-public class BoardModifyHandler extends AbstractMenuHandler {
+public class ReportModifyHandler extends AbstractMenuHandler {
 
-  private ReportDao boardDao;
+  private ReportDao reportDao;
 
-  public BoardModifyHandler(ReportDao boardDao, Prompt prompt) {
+  public ReportModifyHandler(ReportDao reportDao, Prompt prompt) {
     super(prompt);
-    this.boardDao = boardDao;
+    this.reportDao = reportDao;
   }
 
   @Override
   protected void action() {
     int no = this.prompt.inputInt("번호? ");
 
-    Notification oldBoard = boardDao.findBy(no);
-    if (oldBoard == null) {
-      System.out.println("게시글 번호가 유효하지 않습니다.");
+    Notification oldBoard = reportDao.findBy(no);
+    if (reportDao == null) {
+      System.out.println("리포트 번호가 유효하지 않습니다.");
       return;
     }
 
