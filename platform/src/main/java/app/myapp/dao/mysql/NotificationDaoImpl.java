@@ -1,6 +1,6 @@
 package app.myapp.dao.mysql;
 
-import app.myapp.dao.ReportDao;
+import app.myapp.dao.NotificationDao;
 import app.myapp.dao.DaoException;
 import app.myapp.vo.Notification;
 import java.sql.Connection;
@@ -9,25 +9,23 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReportDaoImpl implements ReportDao {
+public class NotificationDaoImpl implements NotificationDao {
 
   int category;
   Connection con;
 
-  public ReportDaoImpl(Connection con, int category) {
+  public NotificationDaoImpl(Connection con) {
     this.con = con;
-    this.category = category;
   }
 
   @Override
-  public void add(Notification board) {
+  public void add(Notification notification) {
     try (PreparedStatement pstmt = con.prepareStatement(
-        "insert into boards(title,content,writer,category) values(?,?,?,?)")) {
+        "insert into notifications(content,date,check) values(?,?,?)")) {
 
-      pstmt.setString(1, board.getTitle());
-      pstmt.setString(2, board.getContent());
-      pstmt.setString(3, board.getWriter());
-      pstmt.setInt(4, category);
+      pstmt.setString(1, notification.getContent());
+      pstmt.setDate(2, notification.getDate());
+      pstmt.setBoolean(3, notification.isCheck());
 
       pstmt.executeUpdate();
 
@@ -39,7 +37,7 @@ public class ReportDaoImpl implements ReportDao {
   @Override
   public int delete(int no) {
     try (PreparedStatement pstmt = con.prepareStatement(
-        "delete from boards where board_no=?")) {
+        "delete from notifications where notification_no=?")) {
 
       pstmt.setInt(1, no);
 
@@ -53,10 +51,10 @@ public class ReportDaoImpl implements ReportDao {
   @Override
   public List<Notification> findAll() {
     try (PreparedStatement pstmt = con.prepareStatement(
-        "select board_no, title, writer, created_date"
-            + " from boards where category=? order by board_no desc")) {
+        "select notification_no, content, date, check"
+            + " from notifications order by notification_no desc")) {
 
-      pstmt.setInt(1, category);
+      pstmt.setInt(1, no);
 
       try (ResultSet rs = pstmt.executeQuery()) {
 

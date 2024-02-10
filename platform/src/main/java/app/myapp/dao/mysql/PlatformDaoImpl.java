@@ -20,11 +20,10 @@ public class PlatformDaoImpl implements PlatformDao {
   @Override
   public void add(Platform platform) {
     try (PreparedStatement pstmt = con.prepareStatement(
-          "insert into platforms(name,price,option,term) values(?,?,?,?)")) {
+          "insert into platforms(name,price,term) values(?,?,?)")) {
         pstmt.setString(1, platform.getName());
         pstmt.setInt(2, platform.getPrice());
-        pstmt.setString(3, platform.getOption());
-        pstmt.setString(4, platform.getTerm());
+        pstmt.setString(3, platform.getTerm());
 
         pstmt.executeUpdate();
 
@@ -48,7 +47,7 @@ public class PlatformDaoImpl implements PlatformDao {
   @Override
   public List<Platform> findAll() {
     try (PreparedStatement pstmt = con.prepareStatement(
-        "select platform_no, name, price, option, term  from assignments order by platform_no desc");
+        "select platform_no, name, price, term  from assignments order by platform_no desc");
         ResultSet rs = pstmt.executeQuery()) {
 
       ArrayList<Platform> list = new ArrayList<>();
@@ -58,8 +57,7 @@ public class PlatformDaoImpl implements PlatformDao {
         platform.setNo(rs.getInt("platform"));
         platform.setName(rs.getString("name"));
         platform.setPrice(rs.getInt("price"));
-        platform.setOption(rs.getString("option"));
-        platform.setTerm(rs.getString("option"));
+        platform.setTerm(rs.getString("term"));
 
         list.add(platform);
       }
@@ -84,7 +82,6 @@ public class PlatformDaoImpl implements PlatformDao {
           platform.setNo(rs.getInt("platform_no"));
           platform.setName(rs.getString("name"));
           platform.setPrice(rs.getInt("price"));
-          platform.setOption(rs.getString("option"));
           platform.setTerm(rs.getString("term"));
           return platform;
         }
@@ -99,11 +96,10 @@ public class PlatformDaoImpl implements PlatformDao {
   @Override
   public int update(Platform platform) {
     try (PreparedStatement pstmt = con.prepareStatement(
-          "update platforms set name=?, price=?, option=?, term=? where platform_no=?")) {
+          "update platforms set name=?, price=?, term=? where platform_no=?")) {
       pstmt.setString(1, platform.getName());
       pstmt.setInt(2, platform.getPrice());
-      pstmt.setString(3, platform.getOption());
-      pstmt.setInt(4, assignment.getNo());
+      pstmt.setInt(3, platform.getNo());
       return pstmt.executeUpdate();
 
     } catch (Exception e) {

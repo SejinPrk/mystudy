@@ -12,7 +12,7 @@ public class Subscription implements Serializable {
 
   @Override
   public String toString() {
-    return "Member{" +
+    return "Subscription{" +
         "start=" + start +
         "end=" + end +
         '}';

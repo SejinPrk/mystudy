@@ -3,9 +3,9 @@ package app.myapp.dao;
 import app.myapp.vo.Notification;
 import java.util.List;
 
-public interface ReportDao {
+public interface NotificationDao {
 
-  void add(Notification report);
+  void add(Notification notification);
 
   int delete(int no);
 
@@ -13,6 +13,6 @@ public interface ReportDao {
 
   Notification findBy(int no);
 
-  int update(Notification report);
+  int update(Notification notification);
 
 }

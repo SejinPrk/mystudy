@@ -31,16 +31,16 @@ public class Payment implements Serializable {
     this.no = no;
   }
 
-  public Date getStart() {
-    return start;
+  public java.sql.Date getStart() {
+    return (java.sql.Date) start;
   }
 
   public void setStart(Date start) {
     this.start = start;
   }
 
-  public Date getEnd() {
-    return end;
+  public java.sql.Date getEnd() {
+    return (java.sql.Date) end;
   }
 
   public void setEnd(Date end) {

@@ -11,7 +11,7 @@ public class Notification implements Serializable {
   private String content;
   private Date date;
   private boolean check;
-  
+
   @Override
   public String toString() {
     return "Report{" +
@@ -38,8 +38,8 @@ public class Notification implements Serializable {
     this.content = content;
   }
 
-  public Date getDate() {
-    return date;
+  public java.sql.Date getDate() {
+    return (java.sql.Date) date;
   }
 
   public void setDate(Date date) {
