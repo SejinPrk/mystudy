@@ -11,7 +11,6 @@ import java.util.List;
 
 public class NotificationDaoImpl implements NotificationDao {
 
-  int category;
   Connection con;
 
   public NotificationDaoImpl(Connection con) {
@@ -55,19 +54,18 @@ public class NotificationDaoImpl implements NotificationDao {
             + " from notifications order by notification_no desc")) {
 
       pstmt.setInt(1, no);
-
       try (ResultSet rs = pstmt.executeQuery()) {
 
         ArrayList<Notification> list = new ArrayList<>();
 
         while (rs.next()) {
-          Notification board = new Notification();
-          board.setNo(rs.getInt("board_no"));
-          board.setTitle(rs.getString("title"));
-          board.setWriter(rs.getString("writer"));
-          board.setCreatedDate(rs.getDate("created_date"));
+          Notification notification = new Notification();
+          notification.setNo(rs.getInt("notification_no"));
+          notification.setContent(rs.getString("content"));
+          notification.setDate(rs.getDate("date"));
+          notification.setCheck(rs.getBoolean("check"));
 
-          list.add(board);
+          list.add(notification);
         }
         return list;
       }
@@ -79,20 +77,19 @@ public class NotificationDaoImpl implements NotificationDao {
 
   @Override
   public Notification findBy(int no) {
-    try (PreparedStatement pstmt = con.prepareStatement("select * from boards where board_no=?")) {
+    try (PreparedStatement pstmt = con.prepareStatement("select * from notifications where notification_no=?")) {
 
       pstmt.setInt(1, no);
 
       try (ResultSet rs = pstmt.executeQuery()) {
         if (rs.next()) {
-          Notification board = new Notification();
-          board.setNo(rs.getInt("board_no"));
-          board.setTitle(rs.getString("title"));
-          board.setContent(rs.getString("content"));
-          board.setWriter(rs.getString("writer"));
-          board.setCreatedDate(rs.getDate("created_date"));
+          Notification notification = new Notification();
+          notification.setNo(rs.getInt("notification_no"));
+          notification.setContent(rs.getString("content"));
+          notification.setDate(rs.getDate("date"));
+          notification.setCheck(rs.getBoolean("check"));
 
-          return board;
+          return notification;
         }
         return null;
       }
@@ -103,14 +100,14 @@ public class NotificationDaoImpl implements NotificationDao {
   }
 
   @Override
-  public int update(Notification report) {
+  public int update(Notification notification) {
     try (PreparedStatement pstmt = con.prepareStatement(
-        "update boards set title=?, content=?, writer=? where board_no=?")) {
+        "update notifications set content=?, date=?, check=? where notification_no=?")) {
 
-      pstmt.setString(1, report.getTitle());
-      pstmt.setString(2, report.getContent());
-      pstmt.setString(3, report.getWriter());
-      pstmt.setInt(4, report.getNo());
+      pstmt.setString(1, notification.getContent());
+      pstmt.setDate(2, notification.getDate());
+      pstmt.setBoolean(3, notification.isCheck());
+      pstmt.setInt(4, notification.getNo());
 
       return pstmt.executeUpdate();
 
