@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9160b05-d132-42d9-bdad-84098ff3ce04" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/SubscriptionDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/handler/Category/CategoryAddHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/handler/Category/CategoryAddHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Member.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +164,7 @@
       <recent name="bitcamp.myapp.dao.json" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.myapp:app-server [run]">
+  <component name="RunManager">
     <configuration name="ServerApp" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="bitcamp.myapp.ServerApp" />
       <extension name="coverage">
