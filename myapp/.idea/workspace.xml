@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9160b05-d132-42d9-bdad-84098ff3ce04" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/MethodDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/handler/method/BoardAddHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/handler/method/BoardDeleteHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/handler/method/BoardListHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/handler/method/BoardModifyHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/handler/method/BoardViewHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/PlatformDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/PlatformDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/PaymentMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Method.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Platform.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Platform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Report.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/SubscriptionDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/handler/Category/CategoryAddHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/handler/Category/CategoryAddHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,39 +114,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.ServerApp.executor": "Run",
-    "Gradle.Build myapp.executor": "Run",
-    "Gradle.myapp [build].executor": "Run",
-    "Gradle.myapp [classes].executor": "Run",
-    "Gradle.myapp [clean].executor": "Run",
-    "Gradle.myapp [run].executor": "Run",
-    "Gradle.myapp:app [:app:DaoTest.main()].executor": "Run",
-    "Gradle.myapp:app [:app:QueueTest.main()].executor": "Run",
-    "Gradle.myapp:app [:app:StackTest.main()].executor": "Run",
-    "Gradle.myapp:app [:app:Test.main()].executor": "Run",
-    "Gradle.myapp:app-api [build].executor": "Run",
-    "Gradle.myapp:app-client [:app-client:ClientApp.main()].executor": "Run",
-    "Gradle.myapp:app-client [build].executor": "Run",
-    "Gradle.myapp:app-client [clean].executor": "Run",
-    "Gradle.myapp:app-client [run].executor": "Run",
-    "Gradle.myapp:app-common [build].executor": "Run",
-    "Gradle.myapp:app-server [:app-server:ServerApp.main()].executor": "Run",
-    "Gradle.myapp:app-server [:app-server:ServerApp02.main()].executor": "Run",
-    "Gradle.myapp:app-server [build].executor": "Run",
-    "Gradle.myapp:app-server [clean].executor": "Run",
-    "Gradle.myapp:app-server [run].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/sejinpark/git/mystudy/myapp",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.ServerApp.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build myapp.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [classes].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [run].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app [:app:DaoTest.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app [:app:QueueTest.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app [:app:StackTest.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app [:app:Test.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-api [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-client [:app-client:ClientApp.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-client [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-client [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-client [run].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-common [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-server [:app-server:ServerApp.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-server [:app-server:ServerApp02.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-server [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-server [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app-server [run].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/sejinpark/git/mystudy/myapp&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="bitcamp.myapp" />

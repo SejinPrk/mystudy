@@ -15,6 +15,7 @@ public class Member implements Serializable {
   private String email;
   private Date createdDate;
   private int creditNo;
+  private Date creditDate;
   private boolean notification;
 
 
@@ -29,6 +30,7 @@ public class Member implements Serializable {
         ", email='" + email + '\'' +
         ", createdDate=" + createdDate + '\'' +
         ", creditNo=" + creditNo + '\'' +
+        ", creditDate=" + creditDate + '\'' +
         ", notification=" + notification +
         '}';
   }
@@ -95,6 +97,14 @@ public class Member implements Serializable {
 
   public void setCreditNo(int creditNo) {
     this.creditNo = creditNo;
+  }
+
+  public Date getCreditDate() {
+    return creditDate;
+  }
+
+  public void setCreditDate(Date creditDate) {
+    this.creditDate = creditDate;
   }
 
   public boolean isNotification() {

@@ -1,24 +1,24 @@
 package app.myapp.handler.Category;
 
 import app.menu.AbstractMenuHandler;
-import app.myapp.dao.MemberDao;
-import app.myapp.vo.Member;
+import app.myapp.dao.CategoryDao;
+import app.myapp.vo.Category;
 import app.util.Prompt;
 import java.util.Date;
 
 public class CategoryAddHandler extends AbstractMenuHandler {
 
-  private CategoryDao memberDao;
+  private CategoryDao categoryDao;
 
-  public CategoryAddHandler(MemberDao memberDao, Prompt prompt) {
+  public CategoryAddHandler(CategoryDao categoryDao, Prompt prompt) {
     super(prompt);
-    this.memberDao = memberDao;
+    this.categoryDao = categoryDao;
   }
 
   @Override
   protected void action() {
-    Member member = new Member();
-    member.setId(this.prompt.input("ID: "));
+    Category category = new Category();
+    category.setId(this.prompt.input("ID: "));
     member.setPassword(this.prompt.input("pw: "));
     member.setName(this.prompt.input("이름: "));
     member.setTel(this.prompt.input("전화번호: "));
