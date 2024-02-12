@@ -1,4 +1,4 @@
-package app.myapp.handler.notification;
+package app.myapp.handler.Category;
 
 import app.menu.AbstractMenuHandler;
 import app.myapp.dao.MemberDao;
@@ -6,11 +6,11 @@ import app.myapp.vo.Member;
 import app.util.Prompt;
 import java.util.List;
 
-public class MemberListHandler extends AbstractMenuHandler {
+public class CategoryListHandler extends AbstractMenuHandler {
 
   private MemberDao memberDao;
 
-  public MemberListHandler(MemberDao memberDao, Prompt prompt) {
+  public CategoryListHandler(MemberDao memberDao, Prompt prompt) {
     super(prompt);
     this.memberDao = memberDao;
   }

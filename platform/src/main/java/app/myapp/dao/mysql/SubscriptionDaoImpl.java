@@ -2,7 +2,8 @@ package app.myapp.dao.mysql;
 
 import app.myapp.dao.DaoException;
 import app.myapp.dao.SubscriptionDao;
-import app.myapp.vo.Platform;
+import app.myapp.vo.Subscription;
+import java.awt.SplashScreen;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,12 +19,11 @@ public class SubscriptionDaoImpl implements SubscriptionDao {
   }
 
   @Override
-  public void add(Platform platform) {
+  public void add(Subscription subscription) {
     try (PreparedStatement pstmt = con.prepareStatement(
-          "insert into subscriptions(name,price,term) values(?,?,?)")) {
-        pstmt.setString(1, platform.getName());
-        pstmt.setInt(2, platform.getPrice());
-        pstmt.setString(3, platform.getTerm());
+          "insert into subscriptions(start, end) values(?,?)")) {
+        pstmt.setDate(1, subscription.getStart());
+        pstmt.setDate(2, subscription.getEnd());
 
         pstmt.executeUpdate();
 
@@ -35,7 +35,7 @@ public class SubscriptionDaoImpl implements SubscriptionDao {
   @Override
   public int delete(int no) {
     try (PreparedStatement pstmt = con.prepareStatement(
-        "delete from platforms where platform_no=?")) {
+        "delete from subscriptions where platform_no=?")) {
       pstmt.setInt(1, no);
         return pstmt.executeUpdate();
 
@@ -45,21 +45,19 @@ public class SubscriptionDaoImpl implements SubscriptionDao {
   }
 
   @Override
-  public List<Platform> findAll() {
+  public List<Subscription> findAll() {
     try (PreparedStatement pstmt = con.prepareStatement(
-        "select platform_no, name, price, term  from assignments order by platform_no desc");
+        "select start, end from subscriptions");
         ResultSet rs = pstmt.executeQuery()) {
 
-      ArrayList<Platform> list = new ArrayList<>();
+      ArrayList<Subscription> list = new ArrayList<>();
 
       while (rs.next()) {
-        Platform platform = new Platform();
-        platform.setNo(rs.getInt("platform"));
-        platform.setName(rs.getString("name"));
-        platform.setPrice(rs.getInt("price"));
-        platform.setTerm(rs.getString("term"));
+        Subscription subscription = new Subscription();
+        subscription.setStart(rs.getDate("start"));
+        subscription.setEnd(rs.getDate("end"));
 
-        list.add(platform);
+        list.add(subscription);
       }
       return list;
 
@@ -71,39 +69,23 @@ public class SubscriptionDaoImpl implements SubscriptionDao {
   @Override
   public Subscription findBy(int no) {
     try (PreparedStatement pstmt = con.prepareStatement(
-        "select * from platforms where platform_no=?")){
+        "select * from subscriptions where start=?")){
 
-      pstmt.setInt(1, no);
+      pstmt.setDate(1, );
 
       try(ResultSet rs = pstmt.executeQuery()) {
 
         if (rs.next()) {
-          Platform platform = new Platform();
-          platform.setNo(rs.getInt("platform_no"));
-          platform.setName(rs.getString("name"));
-          platform.setPrice(rs.getInt("price"));
-          platform.setTerm(rs.getString("term"));
-          return platform;
+          Subscription subscription = new Subscription();
+          subscription.setStart(rs.getDate("start"));
+          subscription.setEnd(rs.getDate("end"));
+          return subscription;
         }
         return null;
       }
 
     } catch (Exception e) {
       throw new DaoException("데이터 가져오기 오류", e);
-    }
-  }
-
-  @Override
-  public int update(Platform platform) {
-    try (PreparedStatement pstmt = con.prepareStatement(
-          "update platforms set name=?, price=?, term=? where platform_no=?")) {
-      pstmt.setString(1, platform.getName());
-      pstmt.setInt(2, platform.getPrice());
-      pstmt.setInt(3, platform.getNo());
-      return pstmt.executeUpdate();
-
-    } catch (Exception e) {
-      throw new DaoException("데이터 변경 오류", e);
     }
   }
 }

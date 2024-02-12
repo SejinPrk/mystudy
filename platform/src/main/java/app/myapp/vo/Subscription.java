@@ -1,7 +1,7 @@
 package app.myapp.vo;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 public class Subscription implements Serializable {
 

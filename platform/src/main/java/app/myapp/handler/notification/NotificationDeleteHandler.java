@@ -1,25 +1,25 @@
 package app.myapp.handler.notification;
 
 import app.menu.AbstractMenuHandler;
-import app.myapp.dao.MemberDao;
+import app.myapp.dao.NotificationDao;
 import app.util.Prompt;
 
 public class NotificationDeleteHandler extends AbstractMenuHandler {
 
-  private MemberDao memberDao;
+  private NotificationDao notificationDao;
 
-  public NotificationDeleteHandler(MemberDao memberDao, Prompt prompt) {
+  public NotificationDeleteHandler(NotificationDao notificationDao, Prompt prompt) {
     super(prompt);
-    this.memberDao = memberDao;
+    this.notificationDao = notificationDao();
   }
 
   @Override
   protected void action() {
     int no = this.prompt.inputInt("번호? ");
-    if (memberDao.delete(no) == -1) {
-      System.out.println("회원 번호가 유효하지 않습니다!");
+    if (notificationDao.delete(no) == -1) {
+      System.out.println("알림 번호가 유효하지 않습니다!");
     } else {
-      System.out.println("회원을 삭제했습니다.");
+      System.out.println("알림을 삭제했습니다.");
     }
   }
 }

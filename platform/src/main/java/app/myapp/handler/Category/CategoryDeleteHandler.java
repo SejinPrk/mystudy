@@ -4,11 +4,11 @@ import app.menu.AbstractMenuHandler;
 import app.myapp.dao.MemberDao;
 import app.util.Prompt;
 
-public class MemberDeleteHandler extends AbstractMenuHandler {
+public class CategoryDeleteHandler extends AbstractMenuHandler {
 
   private MemberDao memberDao;
 
-  public MemberDeleteHandler(MemberDao memberDao, Prompt prompt) {
+  public CategoryDeleteHandler(MemberDao memberDao, Prompt prompt) {
     super(prompt);
     this.memberDao = memberDao;
   }

@@ -6,11 +6,11 @@ import app.myapp.vo.Member;
 import app.util.Prompt;
 
 
-public class MemberViewHandler extends AbstractMenuHandler {
+public class CategoryViewHandler extends AbstractMenuHandler {
 
   private MemberDao memberDao;
 
-  public MemberViewHandler(MemberDao memberDao, Prompt prompt) {
+  public CategoryViewHandler(MemberDao memberDao, Prompt prompt) {
     super(prompt);
     this.memberDao = memberDao;
   }

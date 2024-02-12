@@ -100,13 +100,14 @@ public class MemberDaoImpl implements MemberDao {
   @Override
   public int update(Member member) {
     try (PreparedStatement pstmt = con.prepareStatement(
-        "update members set id=?, password=sha2(?,256), name=?, tel=?, email=?"
+        "update members set id=?, password=sha2(?,256), name=?, tel=?, email=?, createdDate=?"
             + " where member_no=?")){
       pstmt.setString(1, member.getId());
       pstmt.setString(2, member.getPassword());
       pstmt.setString(3, member.getName());
       pstmt.setString(4, member.getTel());
       pstmt.setString(5, member.getEmail());
+      pstmt.setDate(6, member.getCreatedDate());
       return pstmt.executeUpdate();
     } catch (Exception e) {
       throw new DaoException("데이터 변경 오류", e);

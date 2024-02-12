@@ -1,15 +1,15 @@
-package app.myapp.handler.notification;
+package app.myapp.handler.Category;
 
 import app.menu.AbstractMenuHandler;
 import app.myapp.dao.MemberDao;
 import app.myapp.vo.Member;
 import app.util.Prompt;
 
-public class MemberModifyHandler extends AbstractMenuHandler {
+public class CategoryModifyHandler extends AbstractMenuHandler {
 
   private MemberDao memberDao;
 
-  public MemberModifyHandler(MemberDao memberDao, Prompt prompt) {
+  public CategoryModifyHandler(MemberDao memberDao, Prompt prompt) {
     super(prompt);
     this.memberDao = memberDao;
   }

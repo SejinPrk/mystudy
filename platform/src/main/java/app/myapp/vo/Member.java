@@ -83,7 +83,7 @@ public class Member implements Serializable {
     this.email = email;
   }
 
-  public Date getCreatedDate() {
+  public java.sql.Date getCreatedDate() {
     return createdDate;
   }
 

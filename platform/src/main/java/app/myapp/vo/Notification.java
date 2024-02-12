@@ -14,7 +14,7 @@ public class Notification implements Serializable {
 
   @Override
   public String toString() {
-    return "Report{" +
+    return "Notification{" +
         "no=" + no +
         ", content='" + content + '\'' +
         ", date='" + date + '\'' +
