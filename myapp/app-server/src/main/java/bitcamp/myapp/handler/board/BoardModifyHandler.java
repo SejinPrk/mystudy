@@ -19,6 +19,9 @@ public class BoardModifyHandler extends AbstractMenuHandler {
   @Override
   protected void action(Prompt prompt) {
     Connection con = null;
+    try {
+    con = connectionPool.getConnection();
+
     int no = prompt.inputInt("번호? ");
 
     Board oldBoard = boardDao.findBy(no);
@@ -36,5 +39,10 @@ public class BoardModifyHandler extends AbstractMenuHandler {
 
     boardDao.update(board);
     prompt.println("게시글을 변경했습니다.");
+  } catch (Exception e) {
+      prompt.println("변경 오류!");
+    } finally {
+      connectionPool.returnConnection(con);
+    }
   }
 }

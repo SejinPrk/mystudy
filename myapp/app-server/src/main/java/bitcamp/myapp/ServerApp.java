@@ -24,8 +24,8 @@ import bitcamp.myapp.handler.member.MemberDeleteHandler;
 import bitcamp.myapp.handler.member.MemberListHandler;
 import bitcamp.myapp.handler.member.MemberModifyHandler;
 import bitcamp.myapp.handler.member.MemberViewHandler;
-import bitcamp.util.Prompt;
 import bitcamp.util.DBConnectionPool;
+import bitcamp.util.Prompt;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.ServerSocket;
@@ -36,11 +36,14 @@ import java.util.concurrent.Executors;
 public class ServerApp {
 
   ExecutorService executorService = Executors.newCachedThreadPool();
+
   DBConnectionPool connectionPool;
+
   BoardDao boardDao;
   BoardDao greetingDao;
   AssignmentDao assignmentDao;
   MemberDao memberDao;
+
   MenuGroup mainMenu;
 
   ServerApp() {
@@ -55,9 +58,9 @@ public class ServerApp {
 
   void prepareDatabase() {
     try {
-     // Connection con = DriverManager.getConnection(
-      //
-        //"jdbc:mysql://db-ld24q-kr.vpc-pub-cdb.ntruss.com/studydb","study", "Bitcamp!@#123");
+//      Connection con = DriverManager.getConnection(
+//
+      //"jdbc:mysql://db-ld27b-kr.vpc-pub-cdb.ntruss.com/studydb", "study", "Bitcamp!@#123");
 
       connectionPool = new DBConnectionPool(
           "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
@@ -109,7 +112,7 @@ public class ServerApp {
   }
 
   void run() {
-    try(ServerSocket serverSocket = new ServerSocket(8888)) {
+    try (ServerSocket serverSocket = new ServerSocket(8888)) {
 
       while (true) {
         Socket socket = serverSocket.accept();
@@ -122,27 +125,30 @@ public class ServerApp {
     }
   }
 
-  void processRequest(java.net.Socket socket) {
+  void processRequest(Socket socket) {
     try (Socket s = socket;
         DataOutputStream out = new DataOutputStream(s.getOutputStream());
         DataInputStream in = new DataInputStream(s.getInputStream());
         Prompt prompt = new Prompt(in, out)) {
 
       while (true) {
-         try {
-        mainMenu.execute(prompt);
-        prompt.print("[[quit!]]");
-        prompt.end();
-        break;
-      } catch (Exception e) {
-        System.out.println("예외 발생!");
-        e.printStackTrace();
-         }
+        try {
+          mainMenu.execute(prompt);
+          prompt.print("[[quit!]]");
+          prompt.end();
+          break;
+        } catch (Exception e) {
+          System.out.println("예외 발생!");
+          e.printStackTrace();
         }
+      }
 
     } catch (Exception e) {
-      System.out.println("클라이언트 통신 오류!");
+      System.out.println("클라이언 통신 오류!");
       e.printStackTrace();
+
+    } finally {
+      //threadConnection.remove();
     }
   }
 

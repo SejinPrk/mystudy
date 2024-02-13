@@ -11,11 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BoardDaoImpl implements BoardDao {
-  DBConnectionPool threadConnection;
+
+  DBConnectionPool connectionPool;
   int category;
 
-  public BoardDaoImpl(DBConnectionPool threadConnection, int category) {
-    this.threadConnection = threadConnection;
+  public BoardDaoImpl(DBConnectionPool connectionPool, int category) {
+    this.connectionPool = connectionPool;
     this.category = category;
   }
 
@@ -23,18 +24,19 @@ public class BoardDaoImpl implements BoardDao {
   public void add(Board board) {
     Connection con = null;
     try {
-      con = threadConnection.getConnection(); // 현재 스레드에 보관된 Connection 객체를 꺼낸다. 없으면 만들어준다.
-    try (PreparedStatement pstmt = con.prepareStatement(
-        "insert into boards(title,content,writer,category) values(?,?,?,?)")) {
+      con = connectionPool.getConnection();
 
-      pstmt.setString(1, board.getTitle());
-      pstmt.setString(2, board.getContent());
-      pstmt.setString(3, board.getWriter());
-      pstmt.setInt(4, category);
+      try (PreparedStatement pstmt = con.prepareStatement(
+          "insert into boards(title,content,writer,category) values(?,?,?,?)")) {
 
-      pstmt.executeUpdate();
+        pstmt.setString(1, board.getTitle());
+        pstmt.setString(2, board.getContent());
+        pstmt.setString(3, board.getWriter());
+        pstmt.setInt(4, category);
+
+        pstmt.executeUpdate();
       }
-    con.commit();
+
     } catch (Exception e) {
       throw new DaoException("데이터 입력 오류", e);
     }
@@ -44,12 +46,12 @@ public class BoardDaoImpl implements BoardDao {
   public int delete(int no) {
     Connection con = null;
     try {
-      con = threadConnection.getConnection(); // 현재 스레드에 보관된 Connection 객체를 꺼낸다. 없으면 만들어준다.
+      con = connectionPool.getConnection();
 
       try (PreparedStatement pstmt = con.prepareStatement(
-        "delete from boards where board_no=?")) {
-      pstmt.setInt(1, no);
-      return pstmt.executeUpdate();
+          "delete from boards where board_no=?")) {
+        pstmt.setInt(1, no);
+        return pstmt.executeUpdate();
       }
 
     } catch (Exception e) {
@@ -61,29 +63,30 @@ public class BoardDaoImpl implements BoardDao {
   public List<Board> findAll() {
     Connection con = null;
     try {
-      con = threadConnection.getConnection(); // 현재 스레드에 보관된 Connection 객체를 꺼낸다. 없으면 만들어준다.
+      con = connectionPool.getConnection();
+
       try (PreparedStatement pstmt = con.prepareStatement(
-        "select board_no, title, writer, created_date"
-            + " from boards where category=? order by board_no desc")) {
+          "select board_no, title, writer, created_date"
+              + " from boards where category=? order by board_no desc")) {
 
-      pstmt.setInt(1, category);
+        pstmt.setInt(1, category);
 
-      try (ResultSet rs = pstmt.executeQuery()) {
+        try (ResultSet rs = pstmt.executeQuery()) {
 
-        ArrayList<Board> list = new ArrayList<>();
+          ArrayList<Board> list = new ArrayList<>();
 
-        while (rs.next()) {
-          Board board = new Board();
-          board.setNo(rs.getInt("board_no"));
-          board.setTitle(rs.getString("title"));
-          board.setWriter(rs.getString("writer"));
-          board.setCreatedDate(rs.getDate("created_date"));
+          while (rs.next()) {
+            Board board = new Board();
+            board.setNo(rs.getInt("board_no"));
+            board.setTitle(rs.getString("title"));
+            board.setWriter(rs.getString("writer"));
+            board.setCreatedDate(rs.getDate("created_date"));
 
-          list.add(board);
+            list.add(board);
+          }
+          return list;
         }
-        return list;
       }
-    }
 
     } catch (Exception e) {
       throw new DaoException("데이터 가져오기 오류", e);
@@ -92,25 +95,27 @@ public class BoardDaoImpl implements BoardDao {
 
   @Override
   public Board findBy(int no) {
-      Connection con = null;
-      try {
-        con = threadConnection.getConnection(); // 현재 스레드에 보관된 Connection 객체를 꺼낸다. 없으면 만들어준다.
-        try (PreparedStatement pstmt = con.prepareStatement("select * from boards where board_no=?")) {
+    Connection con = null;
+    try {
+      con = connectionPool.getConnection();
 
-      pstmt.setInt(1, no);
+      try (PreparedStatement pstmt = con.prepareStatement(
+          "select * from boards where board_no=?")) {
 
-      try (ResultSet rs = pstmt.executeQuery()) {
-        if (rs.next()) {
-          Board board = new Board();
-          board.setNo(rs.getInt("board_no"));
-          board.setTitle(rs.getString("title"));
-          board.setContent(rs.getString("content"));
-          board.setWriter(rs.getString("writer"));
-          board.setCreatedDate(rs.getDate("created_date"));
+        pstmt.setInt(1, no);
 
-          return board;
-        }
-        return null;
+        try (ResultSet rs = pstmt.executeQuery()) {
+          if (rs.next()) {
+            Board board = new Board();
+            board.setNo(rs.getInt("board_no"));
+            board.setTitle(rs.getString("title"));
+            board.setContent(rs.getString("content"));
+            board.setWriter(rs.getString("writer"));
+            board.setCreatedDate(rs.getDate("created_date"));
+
+            return board;
+          }
+          return null;
         }
       }
     } catch (Exception e) {
@@ -120,20 +125,21 @@ public class BoardDaoImpl implements BoardDao {
 
   @Override
   public int update(Board board) {
-      Connection con = null;
-      try {
-        con = threadConnection.getConnection();
+    Connection con = null;
+    try {
+      con = connectionPool.getConnection();
 
-        try (PreparedStatement pstmt = con.prepareStatement(
-        "update boards set title=?, content=?, writer=? where board_no=?")) {
+      try (PreparedStatement pstmt = con.prepareStatement(
+          "update boards set title=?, content=?, writer=? where board_no=?")) {
 
-      pstmt.setString(1, board.getTitle());
-      pstmt.setString(2, board.getContent());
-      pstmt.setString(3, board.getWriter());
-      pstmt.setInt(4, board.getNo());
+        pstmt.setString(1, board.getTitle());
+        pstmt.setString(2, board.getContent());
+        pstmt.setString(3, board.getWriter());
+        pstmt.setInt(4, board.getNo());
 
-      return pstmt.executeUpdate();
-    }
+        return pstmt.executeUpdate();
+      }
+
     } catch (Exception e) {
       throw new DaoException("데이터 변경 오류", e);
     }

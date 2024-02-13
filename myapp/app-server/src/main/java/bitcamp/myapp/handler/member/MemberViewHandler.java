@@ -19,6 +19,9 @@ public class MemberViewHandler extends AbstractMenuHandler {
   @Override
   protected void action(Prompt prompt) {
     Connection con = null;
+    try{
+      con = connectionPool.getConnection();
+
     int no = prompt.inputInt("번호? ");
 
     Member member = memberDao.findBy(no);
@@ -31,5 +34,10 @@ public class MemberViewHandler extends AbstractMenuHandler {
     prompt.printf("이메일: %s\n", member.getEmail());
     prompt.printf("이름: %s\n", member.getName());
     prompt.printf("가입일: %1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS\n", member.getCreatedDate());
+  } catch (Exception e){
+      prompt.println("조회 오류!");
+    } finally {
+      connectionPool.returnConnection(con);
+    }
   }
 }

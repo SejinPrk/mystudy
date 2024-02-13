@@ -29,6 +29,8 @@ public class AssignmentDeleteHandler extends AbstractMenuHandler {
 
     } catch (Exception e) {
       prompt.println("삭제 오류!");
+    } finally {
+      connectionPool.returnConnection(con);
     }
   }
 }

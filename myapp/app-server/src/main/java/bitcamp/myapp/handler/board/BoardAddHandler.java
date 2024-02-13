@@ -41,8 +41,9 @@ public class BoardAddHandler extends AbstractMenuHandler {
       try {
         con.rollback();
       } catch (Exception e2) {
-
       }
+    } finally {
+      connectionPool.returnConnection(con);
     }
   }
 }
