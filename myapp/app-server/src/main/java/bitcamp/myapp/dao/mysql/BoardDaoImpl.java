@@ -24,7 +24,6 @@ public class BoardDaoImpl implements BoardDao {
     Connection con = null;
     try {
       con = threadConnection.get(); // 현재 스레드에 보관된 Connection 객체를 꺼낸다. 없으면 만들어준다.
-      con.setAutoCommit(false);
     try (PreparedStatement pstmt = con.prepareStatement(
         "insert into boards(title,content,writer,category) values(?,?,?,?)")) {
 
@@ -34,21 +33,10 @@ public class BoardDaoImpl implements BoardDao {
       pstmt.setInt(4, category);
 
       pstmt.executeUpdate();
-      pstmt.executeUpdate();
-      pstmt.executeUpdate();
       }
     con.commit();
     } catch (Exception e) {
-      try {
-        con.rollback();
-      } catch (Exception e2) {}
       throw new DaoException("데이터 입력 오류", e);
-    } finally {
-      try {
-        con.setAutoCommit(true);
-      } catch (Exception e) {
-
-      }
     }
   }
 

@@ -18,6 +18,16 @@ public class BoardAddHandler extends AbstractMenuHandler {
     board.setTitle(prompt.input("제목? "));
     board.setContent(prompt.input("내용? "));
     board.setWriter(prompt.input("작성자? "));
-    boardDao.add(board);
+    try {
+      con.setAutoCommit(false);
+
+      boardDao.add(board);
+      boardDao.add(board);
+      boardDao.add(board);
+
+      con.commit();
+    } catch (Exception e) {
+      try {con.rollback();} catch (Exception e2) {}
+    }
   }
 }
