@@ -25,15 +25,14 @@ import bitcamp.myapp.handler.member.MemberListHandler;
 import bitcamp.myapp.handler.member.MemberModifyHandler;
 import bitcamp.myapp.handler.member.MemberViewHandler;
 import bitcamp.util.Prompt;
+import bitcamp.util.ThreadConnection;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import org.checkerframework.checker.units.qual.A;
 
 public class ServerApp {
 
@@ -58,8 +57,10 @@ public class ServerApp {
   void prepareDatabase() {
     try {
      // Connection con = DriverManager.getConnection(
-         // "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
         //"jdbc:mysql://db-ld24q-kr.vpc-pub-cdb.ntruss.com/studydb","study", "Bitcamp!@#123");
+
+      ThreadConnection threadConnection = new ThreadConnection(
+          "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
 
       boardDao = new BoardDaoImpl(1);
       greetingDao = new BoardDaoImpl(2);
