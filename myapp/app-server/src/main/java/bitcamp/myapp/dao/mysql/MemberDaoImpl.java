@@ -138,9 +138,6 @@ public class MemberDaoImpl implements MemberDao {
       }
     } catch (Exception e) {
       throw new DaoException("데이터 변경 오류", e);
-    } finally {
-      try { con.close(); }
-      catch (Exception e) {}
     }
   }
 }

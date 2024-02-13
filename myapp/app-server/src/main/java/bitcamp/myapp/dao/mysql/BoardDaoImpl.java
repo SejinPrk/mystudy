@@ -5,7 +5,6 @@ import bitcamp.myapp.dao.DaoException;
 import bitcamp.myapp.vo.Board;
 import bitcamp.util.ThreadConnection;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -25,7 +24,6 @@ public class BoardDaoImpl implements BoardDao {
     Connection con = null;
     try {
       con = threadConnection.get(); // 현재 스레드에 보관된 Connection 객체를 꺼낸다. 없으면 만들어준다.
-
       con.setAutoCommit(false);
     try (PreparedStatement pstmt = con.prepareStatement(
         "insert into boards(title,content,writer,category) values(?,?,?,?)")) {
@@ -51,11 +49,6 @@ public class BoardDaoImpl implements BoardDao {
       } catch (Exception e) {
 
       }
-      try {
-        con.close();
-      } catch (Exception e){
-
-      }
     }
   }
 
@@ -73,9 +66,6 @@ public class BoardDaoImpl implements BoardDao {
 
     } catch (Exception e) {
       throw new DaoException("데이터 삭제 오류", e);
-    } finally {
-      try { con.close(); }
-      catch (Exception e) {}
     }
   }
 
@@ -109,9 +99,6 @@ public class BoardDaoImpl implements BoardDao {
 
     } catch (Exception e) {
       throw new DaoException("데이터 가져오기 오류", e);
-    } finally {
-      try { con.close(); }
-      catch (Exception e) {}
     }
   }
 
@@ -141,17 +128,14 @@ public class BoardDaoImpl implements BoardDao {
     } catch (Exception e) {
       throw new DaoException("데이터 가져오기 오류", e);
     }
-    finally {
-      try { con.close(); }
-      catch (Exception e) {}
-    }
   }
 
   @Override
   public int update(Board board) {
       Connection con = null;
       try {
-        con = threadConnection.get(); // 현재 스레드에 보관된 Connection 객체를 꺼낸다. 없으면 만들어준다.
+        con = threadConnection.get();
+
         try (PreparedStatement pstmt = con.prepareStatement(
         "update boards set title=?, content=?, writer=? where board_no=?")) {
 
@@ -164,10 +148,6 @@ public class BoardDaoImpl implements BoardDao {
     }
     } catch (Exception e) {
       throw new DaoException("데이터 변경 오류", e);
-    }
-    finally {
-      try { con.close(); }
-      catch (Exception e) {}
     }
   }
 }

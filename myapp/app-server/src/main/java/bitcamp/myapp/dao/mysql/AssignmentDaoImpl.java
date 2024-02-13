@@ -40,15 +40,6 @@ public class AssignmentDaoImpl implements AssignmentDao {
     } catch (Exception e) {
       throw new DaoException("데이터 입력 오류", e);
 
-    } finally {
-      try {
-        con.setAutoCommit(true);
-      } catch (Exception e) {
-      }
-      try {
-        con.close();
-      } catch (Exception e) {
-      }
     }
   }
 
@@ -66,11 +57,6 @@ public class AssignmentDaoImpl implements AssignmentDao {
       }
     } catch (Exception e) {
       throw new DaoException("데이터 삭제 오류", e);
-    } finally {
-      try {
-        con.close();
-      } catch (Exception e) {
-      }
     }
   }
 
@@ -98,12 +84,6 @@ public class AssignmentDaoImpl implements AssignmentDao {
       }
     } catch (Exception e) {
       throw new DaoException("데이터 가져오기 오류", e);
-    } finally {
-      try {
-        con.close();
-      } catch (Exception e) {
-      }
-    }
   }
 
   @Override
@@ -132,11 +112,6 @@ public class AssignmentDaoImpl implements AssignmentDao {
       }
     } catch (Exception e) {
       throw new DaoException("데이터 가져오기 오류", e);
-    } finally {
-      try {
-        con.close();
-      } catch (Exception e) {
-      }
     }
   }
 
@@ -158,11 +133,6 @@ public class AssignmentDaoImpl implements AssignmentDao {
       }
     } catch (Exception e) {
       throw new DaoException("데이터 변경 오류", e);
-    } finally {
-      try {
-        con.close();
-      } catch (Exception e) {
-      }
     }
   }
 }
