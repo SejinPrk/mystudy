@@ -1,5 +1,6 @@
 package bitcamp.util;
 
+import java.security.spec.ECField;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -29,7 +30,15 @@ public class ThreadConnection {
     return con;
   }
 
-  public void remove(Connection con) {
-    
+  public void remove() {
+    // 현재 스레드에 보관중인 Connection 객체를 제거한다.
+    Connection con = connectionThreadLocal.get();
+
+    if(con != null) {
+      try{
+        con.close();
+      } catch (Exception e){}
+      connectionThreadLocal.remove();
+    }
   }
 }
