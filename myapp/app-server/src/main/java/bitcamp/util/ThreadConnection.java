@@ -39,6 +39,7 @@ public class ThreadConnection {
         con.close();
       } catch (Exception e){}
       connectionThreadLocal.remove();
+      System.out.printf("%s: DB 커넥션 제거\n", Thread.currentThread().getName());
     }
   }
 }
