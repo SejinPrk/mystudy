@@ -29,7 +29,7 @@ public class AssignmentAddHandler extends AbstractMenuHandler {
 
       con = this.connectionPool.getConnection();
       con.setAutoCommit(false);
-      
+
       assignmentDao.add(assignment);
       assignmentDao.add(assignment);
 
@@ -40,7 +40,11 @@ public class AssignmentAddHandler extends AbstractMenuHandler {
       prompt.println("다시 시도하시기 바랍니다.");
 
     } finally {
-      connectionPool.returnConnection(con);
+      // Connection 은 다른 작업할 때 다시 사용해야 하기 때문에 원래 상태로 되돌린다.
+      try{
+        con.setAutoCommit(true);
+      } catch (Exception e) {
+      } connectionPool.returnConnection(con);
     }
   }
 }
