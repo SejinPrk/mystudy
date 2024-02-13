@@ -40,6 +40,8 @@ public class ThreadConnection {
       } catch (Exception e){}
       connectionThreadLocal.remove();
       System.out.printf("%s: DB 커넥션 제거\n", Thread.currentThread().getName());
+    } else {
+      System.out.printf("%s: 기존에 보관했던 DB 컬넥션 사용\n", Thread.currentThread().getName());
     }
   }
 }
