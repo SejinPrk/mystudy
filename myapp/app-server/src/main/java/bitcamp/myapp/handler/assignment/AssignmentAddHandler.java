@@ -4,16 +4,16 @@ import bitcamp.menu.AbstractMenuHandler;
 import bitcamp.myapp.dao.AssignmentDao;
 import bitcamp.myapp.vo.Assignment;
 import bitcamp.util.Prompt;
-import bitcamp.util.ThreadConnection;
+import bitcamp.util.DBConnectionPool;
 import java.sql.Connection;
 
 public class AssignmentAddHandler extends AbstractMenuHandler {
 
-  private ThreadConnection threadConnection;
+  private DBConnectionPool threadConnection;
   private AssignmentDao assignmentDao;
 
 
-  public AssignmentAddHandler(ThreadConnection threadConnection, AssignmentDao assignmentDao) {
+  public AssignmentAddHandler(DBConnectionPool threadConnection, AssignmentDao assignmentDao) {
     this.threadConnection = threadConnection;
     this.assignmentDao = assignmentDao;
   }
@@ -26,7 +26,7 @@ public class AssignmentAddHandler extends AbstractMenuHandler {
       assignment.setContent(prompt.input("내용? "));
       assignment.setDeadline(prompt.inputDate("제출 마감일?(예: 2023-12-25) "));
 
-      Connection con = this.threadConnection.get();
+      Connection con = this.threadConnection.getConnection();
       assignmentDao.add(assignment);
       assignmentDao.add(assignment);
       con.rollback();
