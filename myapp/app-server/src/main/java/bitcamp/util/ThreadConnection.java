@@ -1,15 +1,14 @@
 package bitcamp.util;
 
-import java.security.spec.ECField;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 public class ThreadConnection {
   // 개별 스레드용 커넥션 저장소
   private static final ThreadLocal<Connection> connectionThreadLocal = new ThreadLocal<>();
-  String jdbcUrl;
-  String username;
-  String password;
+  private String jdbcUrl;
+  private String username;
+  private String password;
 
   public ThreadConnection(String jdbcUrl, String username, String password) {
     this.jdbcUrl = jdbcUrl;
@@ -21,6 +20,7 @@ public class ThreadConnection {
     Connection con = connectionThreadLocal.get();
 
     if (con == null) {
+      System.out.printf("%s: DB 커넥션 생성\n", Thread.currentThread().getName());
       // 없다면, 새로 만든다.
       con = DriverManager.getConnection(jdbcUrl, username, password);
 
