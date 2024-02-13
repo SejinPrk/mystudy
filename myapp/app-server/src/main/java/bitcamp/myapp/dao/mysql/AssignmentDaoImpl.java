@@ -5,13 +5,13 @@ import bitcamp.myapp.dao.DaoException;
 import bitcamp.myapp.vo.Assignment;
 import bitcamp.util.ThreadConnection;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AssignmentDaoImpl implements AssignmentDao {
+
   ThreadConnection threadConnection;
 
   public AssignmentDaoImpl(ThreadConnection threadConnection) {
@@ -39,7 +39,6 @@ public class AssignmentDaoImpl implements AssignmentDao {
 
     } catch (Exception e) {
       throw new DaoException("데이터 입력 오류", e);
-
     }
   }
 
@@ -84,6 +83,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
       }
     } catch (Exception e) {
       throw new DaoException("데이터 가져오기 오류", e);
+    }
   }
 
   @Override
