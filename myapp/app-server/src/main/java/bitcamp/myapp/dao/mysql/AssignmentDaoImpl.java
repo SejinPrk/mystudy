@@ -18,25 +18,32 @@ public class AssignmentDaoImpl implements AssignmentDao {
     try {
       con = DriverManager.getConnection(
           "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
-      con.setAutoCommit(false);
-      try {
-        con.setAutoCommit(false);
-        try (PreparedStatement pstmt = con.prepareStatement(
-            "insert into assignments(title,content,deadline) values(?,?,?)")) {
-          pstmt.setString(1, assignment.getTitle());
-          pstmt.setString(2, assignment.getContent());
-          pstmt.setDate(3, assignment.getDeadline());
 
-          pstmt.executeUpdate();
-          pstmt.executeUpdate();
-        }
-        con.rollback();
+      con.setAutoCommit(false);
+      try (PreparedStatement pstmt = con.prepareStatement(
+          "insert into assignments(title,content,deadline) values(?,?,?)")) {
+
+        pstmt.setString(1, assignment.getTitle());
+        pstmt.setString(2, assignment.getContent());
+        pstmt.setDate(3, assignment.getDeadline());
+
+        pstmt.executeUpdate();
+        pstmt.executeUpdate();
       }
-    }catch (Exception e) {
+      con.rollback();
+
+    } catch (Exception e) {
       throw new DaoException("데이터 입력 오류", e);
+
     } finally {
-      try { con.close(); }
-      catch (Exception e) {}
+      try {
+        con.setAutoCommit(true);
+      } catch (Exception e) {
+      }
+      try {
+        con.close();
+      } catch (Exception e) {
+      }
     }
   }
 
@@ -46,18 +53,20 @@ public class AssignmentDaoImpl implements AssignmentDao {
     try {
       con = DriverManager.getConnection(
           "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
-      con.setAutoCommit(false);
+
       try (PreparedStatement pstmt = con.prepareStatement(
           "delete from assignments where assignment_no=?")) {
         pstmt.setInt(1, no);
-        return pstmt.executeUpdate();
 
+        return pstmt.executeUpdate();
       }
     } catch (Exception e) {
       throw new DaoException("데이터 삭제 오류", e);
-    }finally {
-      try { con.close(); }
-      catch (Exception e) {}
+    } finally {
+      try {
+        con.close();
+      } catch (Exception e) {
+      }
     }
   }
 
@@ -67,28 +76,30 @@ public class AssignmentDaoImpl implements AssignmentDao {
     try {
       con = DriverManager.getConnection(
           "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
-      con.setAutoCommit(false);
-    try (PreparedStatement pstmt = con.prepareStatement(
-        "select assignment_no, title, deadline from assignments order by assignment_no desc");
-        ResultSet rs = pstmt.executeQuery()) {
 
-      ArrayList<Assignment> list = new ArrayList<>();
+      try (PreparedStatement pstmt = con.prepareStatement(
+          "select assignment_no, title, deadline from assignments order by assignment_no desc");
+          ResultSet rs = pstmt.executeQuery()) {
 
-      while (rs.next()) {
-        Assignment assignment = new Assignment();
-        assignment.setNo(rs.getInt("assignment_no"));
-        assignment.setTitle(rs.getString("title"));
-        assignment.setDeadline(rs.getDate("deadline"));
+        ArrayList<Assignment> list = new ArrayList<>();
 
-        list.add(assignment);
+        while (rs.next()) {
+          Assignment assignment = new Assignment();
+          assignment.setNo(rs.getInt("assignment_no"));
+          assignment.setTitle(rs.getString("title"));
+          assignment.setDeadline(rs.getDate("deadline"));
+
+          list.add(assignment);
+        }
+        return list;
       }
-      return list;
-    }
     } catch (Exception e) {
       throw new DaoException("데이터 가져오기 오류", e);
-    }finally {
-      try { con.close(); }
-      catch (Exception e) {}
+    } finally {
+      try {
+        con.close();
+      } catch (Exception e) {
+      }
     }
   }
 
@@ -98,29 +109,32 @@ public class AssignmentDaoImpl implements AssignmentDao {
     try {
       con = DriverManager.getConnection(
           "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
-    try (PreparedStatement pstmt = con.prepareStatement(
-        "select * from assignments where assignment_no=?")) {
 
-      pstmt.setInt(1, no);
+      try (PreparedStatement pstmt = con.prepareStatement(
+          "select * from assignments where assignment_no=?")) {
 
-      try (ResultSet rs = pstmt.executeQuery()) {
+        pstmt.setInt(1, no);
 
-        if (rs.next()) {
-          Assignment assignment = new Assignment();
-          assignment.setNo(rs.getInt("assignment_no"));
-          assignment.setTitle(rs.getString("title"));
-          assignment.setContent(rs.getString("content"));
-          assignment.setDeadline(rs.getDate("deadline"));
-          return assignment;
+        try (ResultSet rs = pstmt.executeQuery()) {
+
+          if (rs.next()) {
+            Assignment assignment = new Assignment();
+            assignment.setNo(rs.getInt("assignment_no"));
+            assignment.setTitle(rs.getString("title"));
+            assignment.setContent(rs.getString("content"));
+            assignment.setDeadline(rs.getDate("deadline"));
+            return assignment;
+          }
+          return null;
         }
-        return null;
       }
-    }
     } catch (Exception e) {
       throw new DaoException("데이터 가져오기 오류", e);
-    }finally {
-      try { con.close(); }
-      catch (Exception e) {}
+    } finally {
+      try {
+        con.close();
+      } catch (Exception e) {
+      }
     }
   }
 
@@ -130,21 +144,23 @@ public class AssignmentDaoImpl implements AssignmentDao {
     try {
       con = DriverManager.getConnection(
           "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
-      con.setAutoCommit(false);
-    try (PreparedStatement pstmt = con.prepareStatement(
+      try (PreparedStatement pstmt = con.prepareStatement(
           "update assignments set title=?, content=?, deadline=? where assignment_no=?")) {
-      pstmt.setString(1, assignment.getTitle());
-      pstmt.setString(2, assignment.getContent());
-      pstmt.setDate(3, assignment.getDeadline());
-      pstmt.setInt(4, assignment.getNo());
-      return pstmt.executeUpdate();
-    }
+
+        pstmt.setString(1, assignment.getTitle());
+        pstmt.setString(2, assignment.getContent());
+        pstmt.setDate(3, assignment.getDeadline());
+        pstmt.setInt(4, assignment.getNo());
+
+        return pstmt.executeUpdate();
+      }
     } catch (Exception e) {
       throw new DaoException("데이터 변경 오류", e);
-    }
-    finally {
-      try { con.close(); }
-      catch (Exception e) {}
+    } finally {
+      try {
+        con.close();
+      } catch (Exception e) {
+      }
     }
   }
 }
