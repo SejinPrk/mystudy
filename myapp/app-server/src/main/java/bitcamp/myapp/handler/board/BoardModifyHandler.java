@@ -3,18 +3,22 @@ package bitcamp.myapp.handler.board;
 import bitcamp.menu.AbstractMenuHandler;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.vo.Board;
+import bitcamp.util.DBConnectionPool;
 import bitcamp.util.Prompt;
+import java.sql.Connection;
 
 public class BoardModifyHandler extends AbstractMenuHandler {
-
+  private DBConnectionPool connectionPool;
   private BoardDao boardDao;
 
-  public BoardModifyHandler(BoardDao boardDao) {
+  public BoardModifyHandler(DBConnectionPool connectionPool, BoardDao boardDao) {
+    this.connectionPool = connectionPool;
     this.boardDao = boardDao;
   }
 
   @Override
   protected void action(Prompt prompt) {
+    Connection con = null;
     int no = prompt.inputInt("번호? ");
 
     Board oldBoard = boardDao.findBy(no);

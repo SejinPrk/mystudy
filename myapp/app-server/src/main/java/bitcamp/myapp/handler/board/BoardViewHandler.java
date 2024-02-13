@@ -3,13 +3,16 @@ package bitcamp.myapp.handler.board;
 import bitcamp.menu.AbstractMenuHandler;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.vo.Board;
+import bitcamp.util.DBConnectionPool;
 import bitcamp.util.Prompt;
 
 public class BoardViewHandler extends AbstractMenuHandler {
 
+  private DBConnectionPool connectionPool;
   private BoardDao boardDao;
 
-  public BoardViewHandler(BoardDao boardDao) {
+  public BoardViewHandler(DBConnectionPool connectionPool, BoardDao boardDao) {
+    this.connectionPool = connectionPool;
     this.boardDao = boardDao;
   }
 

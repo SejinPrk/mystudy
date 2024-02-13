@@ -2,18 +2,23 @@ package bitcamp.myapp.handler.assignment;
 
 import bitcamp.menu.AbstractMenuHandler;
 import bitcamp.myapp.dao.AssignmentDao;
+import bitcamp.util.DBConnectionPool;
 import bitcamp.util.Prompt;
+import java.sql.Connection;
 
 public class AssignmentDeleteHandler extends AbstractMenuHandler {
 
+  private DBConnectionPool connectionPool;
   private AssignmentDao assignmentDao;
 
-  public AssignmentDeleteHandler(AssignmentDao assignmentDao) {
+  public AssignmentDeleteHandler(DBConnectionPool connectionPool, AssignmentDao assignmentDao) {
+    this.connectionPool = connectionPool;
     this.assignmentDao = assignmentDao;
   }
 
   @Override
   protected void action(Prompt prompt) {
+    Connection con = null;
     try {
       int no = prompt.inputInt("번호? ");
       if (assignmentDao.delete(no) == 0) {
