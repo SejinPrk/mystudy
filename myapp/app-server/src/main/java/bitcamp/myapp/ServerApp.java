@@ -57,15 +57,16 @@ public class ServerApp {
   void prepareDatabase() {
     try {
      // Connection con = DriverManager.getConnection(
+      //
         //"jdbc:mysql://db-ld24q-kr.vpc-pub-cdb.ntruss.com/studydb","study", "Bitcamp!@#123");
 
       ThreadConnection threadConnection = new ThreadConnection(
           "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
 
-      boardDao = new BoardDaoImpl(1);
-      greetingDao = new BoardDaoImpl(2);
-      assignmentDao = new AssignmentDaoImpl();
-      memberDao = new MemberDaoImpl();
+      boardDao = new BoardDaoImpl(threadConnection, 1);
+      greetingDao = new BoardDaoImpl(threadConnection, 2);
+      assignmentDao = new AssignmentDaoImpl(threadConnection);
+      memberDao = new MemberDaoImpl(threadConnection);
 
     } catch (Exception e) {
       System.out.println("통신 오류!");

@@ -3,6 +3,7 @@ package bitcamp.myapp.dao.mysql;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.dao.DaoException;
 import bitcamp.myapp.vo.Board;
+import bitcamp.util.ThreadConnection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,10 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BoardDaoImpl implements BoardDao {
-
+  ThreadConnection threadConnection;
   int category;
 
-  public BoardDaoImpl(int category) {
+  public BoardDaoImpl(ThreadConnection threadConnection, int category) {
+    this.threadConnection = threadConnection;
     this.category = category;
   }
 
@@ -22,9 +24,9 @@ public class BoardDaoImpl implements BoardDao {
   public void add(Board board) {
     Connection con = null;
     try {
-      con = DriverManager.getConnection(
-          "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
-    con.setAutoCommit(false);
+      con = threadConnection.get(); // 현재 스레드에 보관된 Connection 객체를 꺼낸다. 없으면 만들어준다.
+
+      con.setAutoCommit(false);
     try (PreparedStatement pstmt = con.prepareStatement(
         "insert into boards(title,content,writer,category) values(?,?,?,?)")) {
 
@@ -61,10 +63,9 @@ public class BoardDaoImpl implements BoardDao {
   public int delete(int no) {
     Connection con = null;
     try {
-      con = DriverManager.getConnection(
-          "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
+      con = threadConnection.get(); // 현재 스레드에 보관된 Connection 객체를 꺼낸다. 없으면 만들어준다.
 
-    try (PreparedStatement pstmt = con.prepareStatement(
+      try (PreparedStatement pstmt = con.prepareStatement(
         "delete from boards where board_no=?")) {
       pstmt.setInt(1, no);
       return pstmt.executeUpdate();
@@ -82,9 +83,8 @@ public class BoardDaoImpl implements BoardDao {
   public List<Board> findAll() {
     Connection con = null;
     try {
-      con = DriverManager.getConnection(
-          "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
-    try (PreparedStatement pstmt = con.prepareStatement(
+      con = threadConnection.get(); // 현재 스레드에 보관된 Connection 객체를 꺼낸다. 없으면 만들어준다.
+      try (PreparedStatement pstmt = con.prepareStatement(
         "select board_no, title, writer, created_date"
             + " from boards where category=? order by board_no desc")) {
 
@@ -119,9 +119,8 @@ public class BoardDaoImpl implements BoardDao {
   public Board findBy(int no) {
       Connection con = null;
       try {
-        con = DriverManager.getConnection(
-            "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
-    try (PreparedStatement pstmt = con.prepareStatement("select * from boards where board_no=?")) {
+        con = threadConnection.get(); // 현재 스레드에 보관된 Connection 객체를 꺼낸다. 없으면 만들어준다.
+        try (PreparedStatement pstmt = con.prepareStatement("select * from boards where board_no=?")) {
 
       pstmt.setInt(1, no);
 
@@ -152,9 +151,8 @@ public class BoardDaoImpl implements BoardDao {
   public int update(Board board) {
       Connection con = null;
       try {
-        con = DriverManager.getConnection(
-            "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
-    try (PreparedStatement pstmt = con.prepareStatement(
+        con = threadConnection.get(); // 현재 스레드에 보관된 Connection 객체를 꺼낸다. 없으면 만들어준다.
+        try (PreparedStatement pstmt = con.prepareStatement(
         "update boards set title=?, content=?, writer=? where board_no=?")) {
 
       pstmt.setString(1, board.getTitle());
