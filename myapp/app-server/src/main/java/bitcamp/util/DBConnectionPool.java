@@ -35,7 +35,7 @@ public class DBConnectionPool {
 
       } else {
         // 스레드풀에도 놀고 있는 Connection 이 없다면,
-        // 새로 Connection을 만든다.
+        // 새로 Connection 을 만든다.
         con = DriverManager.getConnection(jdbcUrl, username, password);
         System.out.printf("%s: DB 커넥션 생성\n", Thread.currentThread().getName());
       }
@@ -50,18 +50,14 @@ public class DBConnectionPool {
     return con;
   }
 
-  public void remove() {
+  public void returnConnection(Connection con) {
     // 현재 스레드에 보관중인 Connection 객체를 제거한다.
-    Connection con = connectionThreadLocal.get();
+    connectionThreadLocal.remove();
 
-    if(con != null) {
-      try{
-        con.close();
-      } catch (Exception e){}
-      connectionThreadLocal.remove();
-      System.out.printf("%s: DB 커넥션 제거\n", Thread.currentThread().getName());
-    } else {
-      System.out.printf("%s: 기존에 보관했던 DB 컬넥션 사용\n", Thread.currentThread().getName());
+    // Connection 을 커넥션풀에 반환
+    connections.add(con);
+
+    System.out.printf("%s: DB 커넥션을 커넥션풀에 반환\n", Thread.currentThread().getName());
     }
   }
 }
