@@ -29,7 +29,7 @@ public class AssignmentViewHandler extends AbstractMenuHandler {
       prompt.printf("제출 마감일: %s\n", assignment.getDeadline());
 
     } catch (Exception e) {
-      System.out.println("조회 오류!");
+      prompt.println("조회 오류!");
     }
   }
 

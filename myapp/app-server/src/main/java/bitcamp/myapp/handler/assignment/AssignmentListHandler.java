@@ -16,7 +16,7 @@ public class AssignmentListHandler extends AbstractMenuHandler {
 
   @Override
   protected void action(Prompt prompt) {
-    System.out.printf("%-4s\t%-20s\t%s\n", "번호", "과제", "제출마감일");
+    prompt.printf("%-4s\t%-20s\t%s\n", "번호", "과제", "제출마감일");
 
     List<Assignment> list = assignmentDao.findAll();
 
