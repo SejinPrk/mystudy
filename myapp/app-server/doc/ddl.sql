@@ -26,29 +26,27 @@ alter table board_files
   modify column file_no int not null auto_increment,
   add constraint board_files_fk foreign key (board_no) references boards(board_no);
 
-drop table assignments;
 
 create table assignments(
-  assignment_no int primary key auto_increment,
+  assignment_no int not null,
   title varchar(255) not null,
   content text not null,
   deadline date not null
 );
 
-drop table members;
+alter table assignments
+  add constraint primary key (assignment_no),
+  modify column assignment_no int not null auto_increment;
+
 
 create table members(
-  member_no int primary key auto_increment,
+  member_no int not null,
   email varchar(255) not null,
   name varchar(255) not null,
   password varchar(100) not null,
    created_date datetime null default now()
 );
 
-
-
-alter table boards
-  add column category int not null;
-
-update boards set category=1;
-
+alter table members
+  add constraint primary key (member_no),
+  modify column member_no int not null auto_increment;

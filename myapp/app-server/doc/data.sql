@@ -10,23 +10,6 @@ insert into boards(board_no,title,content,writer,category)
 insert into boards(board_no,title,content,writer,category)
   values(5, '제목5','내용5','윤봉길', 2);
 
-  select *
-  from boards;
-
-  select *
-  from boards
-  where board_no = 3;
-
-  update boards set
-    title='okok',
-    content='nono',
-    writer='hoho'
-  where board_no = 3;
-
-  delete from boards where board_no=3;
-
-
-
   -- assignments 테이블 데이터
   insert into assignments(assignment_no,title,content,deadline)
     values(1,'과제1','내용1','2024-1-1');
