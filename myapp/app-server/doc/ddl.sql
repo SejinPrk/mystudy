@@ -1,6 +1,9 @@
 -- DDL(Data Definition Language)
 
-drop table boards;
+drop table if exists boards restrict;
+drop table if exists board_files restrict;
+drop table if exists assignments restrict;
+drop table if exists members restrict;
 
 create table boards(
   board_no int not null,
