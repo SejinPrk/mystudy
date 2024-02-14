@@ -11,10 +11,20 @@ create table boards(
   created_date datetime null default now()
 );
 
-alter table borads
+alter table boards
   add constraint primary key (board_no),
   modify column board_no int not null auto_increment;
 
+create table board_files(
+  file_no int not null,
+  file_path varchar(255) not null,
+  board_no int not null
+)
+
+alter table board_files
+  add constraint primary key (file_no),
+  modify column file_no int not null auto_increment,
+  add constraint board_files_fk foreign key (board_no) references boards(board_no);
 
 drop table assignments;
 
