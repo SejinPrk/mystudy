@@ -7,19 +7,20 @@ create table boards(
   title varchar(255) not null,
   content text not null,
   writer varchar(30) not null,
+  category int not null,
   created_date datetime null default now()
 );
 
-insert into boards(board_no,title,content,writer) 
-  values(1, '제목1','내용1','홍길동');
-insert into boards(board_no,title,content,writer) 
-  values(2, '제목2','내용2','임꺽정');
-insert into boards(board_no,title,content,writer) 
-  values(3, '제목3','내용3','유관순');
-insert into boards(board_no,title,content,writer) 
-  values(4, '제목4','내용4','안중근');
-insert into boards(board_no,title,content,writer) 
-  values(5, '제목5','내용5','윤봉길');
+insert into boards(board_no,title,content,writer,category)
+  values(1, '제목1','내용1','홍길동', 1);
+insert into boards(board_no,title,content,writer,category)
+  values(2, '제목2','내용2','임꺽정', 1);
+insert into boards(board_no,title,content,writer,category)
+  values(3, '제목3','내용3','유관순', 2);
+insert into boards(board_no,title,content,writer,category)
+  values(4, '제목4','내용4','안중근', 2);
+insert into boards(board_no,title,content,writer,category)
+  values(5, '제목5','내용5','윤봉길', 2);
 
 select * 
 from boards;
@@ -64,7 +65,7 @@ create table members(
   email varchar(255) not null,
   name varchar(255) not null,
   password varchar(100) not null,
-  created_date datetime null default now()
+   created_date datetime null default now()
 );
 
 insert into members(email,name,password,created_date)
@@ -82,3 +83,4 @@ alter table boards
   add column category int not null;
 
 update boards set category=1;
+
