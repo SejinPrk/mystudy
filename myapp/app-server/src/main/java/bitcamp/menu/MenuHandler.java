@@ -4,5 +4,5 @@ import bitcamp.util.Prompt;
 
 public interface MenuHandler {
 
- void action(Menu menu, Prompt prompt);
+  void action(Menu menu, Prompt prompt);
 }

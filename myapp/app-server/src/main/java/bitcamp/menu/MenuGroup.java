@@ -6,8 +6,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class MenuGroup extends AbstractMenu {
+
   private List<Menu> menus = new LinkedList<>();
-  private MenuGroup(String title) { super(title); }
+
+  private MenuGroup(String title) {
+    super(title);
+  }
 
   public static MenuGroup getInstance(String title) {
     return new MenuGroup(title);
@@ -15,11 +19,13 @@ public class MenuGroup extends AbstractMenu {
 
   @Override
   public void execute(Prompt prompt) throws Exception {
+
     prompt.pushPath(this.title);
+
     this.printMenu(prompt);
 
     while (true) {
-      String input = prompt.input("%s> ", prompt.getFullPath());
+      String input = prompt.input("%s>", prompt.getFullPath());
 
       if (input.equals("menu")) {
         this.printMenu(prompt);
@@ -41,9 +47,10 @@ public class MenuGroup extends AbstractMenu {
         System.out.println("메뉴가 옳지 않습니다!");
       }
     }
-    prompt.popPath();
-      }
 
+    // 메뉴를 나갈 때 breadcrumb 메뉴 경로에서 메뉴 제목을 제거한다.
+    prompt.popPath();
+  }
 
   private void printMenu(Prompt prompt) {
     prompt.printf("[%s]\n", this.getTitle());

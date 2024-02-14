@@ -2,9 +2,7 @@ package bitcamp.myapp.handler.assignment;
 
 import bitcamp.menu.AbstractMenuHandler;
 import bitcamp.myapp.dao.AssignmentDao;
-import bitcamp.util.DBConnectionPool;
 import bitcamp.util.Prompt;
-import java.sql.Connection;
 
 public class AssignmentDeleteHandler extends AbstractMenuHandler {
 

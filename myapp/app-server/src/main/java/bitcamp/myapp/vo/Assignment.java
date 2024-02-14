@@ -1,11 +1,9 @@
 package bitcamp.myapp.vo;
 
-import bitcamp.util.DBConnectionPool;
 import java.io.Serializable;
 import java.sql.Date;
 
 public class Assignment implements Serializable {
-
 
   private static final long serialVersionUID = 100L;
 

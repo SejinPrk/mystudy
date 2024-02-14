@@ -94,7 +94,7 @@ public class ServerApp {
     boardMenu.addItem("목록", new BoardListHandler(boardDao));
 
     MenuGroup memberMenu = mainMenu.addGroup("회원");
-    memberMenu.addItem("등록", new MemberAddHandler(connectionPool, memberDao));
+    memberMenu.addItem("등록", new MemberAddHandler(memberDao));
     memberMenu.addItem("조회", new MemberViewHandler(memberDao));
     memberMenu.addItem("변경", new MemberModifyHandler(memberDao));
     memberMenu.addItem("삭제", new MemberDeleteHandler(memberDao));
