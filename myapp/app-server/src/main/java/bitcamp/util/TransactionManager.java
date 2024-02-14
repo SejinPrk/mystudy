@@ -14,15 +14,17 @@ public class TransactionManager {
     connectionPool.getConnection().setAutoCommit(false);
   }
   public void commit() throws Exception {
-    Connection con = connectionPool.getConnection();
-    con.commit();
-    con.setAutoCommit(true);
-    con.close();
+    connectionPool.getConnection().commit();
+    close();
   }
 
   public void rollback() throws Exception {
+    connectionPool.getConnection().rollback();
+    close();
+  }
+
+  private void close() throws Exception {
     Connection con = connectionPool.getConnection();
-    con.rollback();
     con.setAutoCommit(true);
     con.close();
   }
