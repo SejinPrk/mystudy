@@ -34,5 +34,5 @@ public class AssignmentViewHandler extends AbstractMenuHandler {
       prompt.println("조회 오류!");
     }
   }
-  
+
 }

@@ -9,20 +9,15 @@ import java.sql.Connection;
 
 public class BoardViewHandler extends AbstractMenuHandler {
 
-  private DBConnectionPool connectionPool;
   private BoardDao boardDao;
 
-  public BoardViewHandler(DBConnectionPool connectionPool, BoardDao boardDao) {
-    this.connectionPool = connectionPool;
+  public BoardViewHandler(BoardDao boardDao) {
     this.boardDao = boardDao;
   }
 
   @Override
   protected void action(Prompt prompt) {
-    Connection con = null;
     try {
-      con = connectionPool.getConnection();
-
     int no = prompt.inputInt("번호? ");
 
     Board board = boardDao.findBy(no);
@@ -39,8 +34,6 @@ public class BoardViewHandler extends AbstractMenuHandler {
   }
     catch (Exception e){
       prompt.println("조회 오류!");
-    } finally {
-      connectionPool.returnConnection(con);
     }
   }
 }
