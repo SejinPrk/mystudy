@@ -8,17 +8,14 @@ import java.sql.Connection;
 
 public class AssignmentDeleteHandler extends AbstractMenuHandler {
 
-  private DBConnectionPool connectionPool;
   private AssignmentDao assignmentDao;
 
-  public AssignmentDeleteHandler(DBConnectionPool connectionPool, AssignmentDao assignmentDao) {
-    this.connectionPool = connectionPool;
+  public AssignmentDeleteHandler(AssignmentDao assignmentDao) {
     this.assignmentDao = assignmentDao;
   }
 
   @Override
   protected void action(Prompt prompt) {
-    Connection con = null;
     try {
       int no = prompt.inputInt("번호? ");
       if (assignmentDao.delete(no) == 0) {
@@ -29,8 +26,6 @@ public class AssignmentDeleteHandler extends AbstractMenuHandler {
 
     } catch (Exception e) {
       prompt.println("삭제 오류!");
-    } finally {
-      connectionPool.returnConnection(con);
     }
   }
 }
