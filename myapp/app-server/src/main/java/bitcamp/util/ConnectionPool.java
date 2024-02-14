@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class DBConnectionPool {
+public class ConnectionPool {
 
   // DB 커넥션 목록
   ArrayList<Connection> connections = new ArrayList<>();
@@ -16,7 +16,7 @@ public class DBConnectionPool {
   private String username;
   private String password;
 
-  public DBConnectionPool(String jdbcUrl, String username, String password) {
+  public ConnectionPool(String jdbcUrl, String username, String password) {
     this.jdbcUrl = jdbcUrl;
     this.username = username;
     this.password = password;

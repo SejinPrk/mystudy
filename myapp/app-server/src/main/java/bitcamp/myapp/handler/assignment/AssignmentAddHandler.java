@@ -44,6 +44,7 @@ public class AssignmentAddHandler extends AbstractMenuHandler {
       try{
         con.setAutoCommit(true);
       } catch (Exception e) {
+
       } connectionPool.returnConnection(con);
     }
   }
