@@ -15,15 +15,15 @@ public class TransactionManager {
   }
   public void commit() throws Exception {
     connectionPool.getConnection().commit();
-    close();
+    complete();
   }
 
   public void rollback() throws Exception {
     connectionPool.getConnection().rollback();
-    close();
+    complete();
   }
 
-  private void close() throws Exception {
+  private void complete() throws Exception {
     Connection con = connectionPool.getConnection();
     con.setAutoCommit(true);
     con.close();

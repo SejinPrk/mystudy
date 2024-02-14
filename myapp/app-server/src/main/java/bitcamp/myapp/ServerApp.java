@@ -26,6 +26,7 @@ import bitcamp.myapp.handler.member.MemberModifyHandler;
 import bitcamp.myapp.handler.member.MemberViewHandler;
 import bitcamp.util.DBConnectionPool;
 import bitcamp.util.Prompt;
+import bitcamp.util.TransactionManager;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.ServerSocket;
@@ -37,6 +38,7 @@ public class ServerApp {
 
   ExecutorService executorService = Executors.newCachedThreadPool();
 
+  TransactionManager txManager;
   DBConnectionPool connectionPool;
 
   BoardDao boardDao;
@@ -64,7 +66,8 @@ public class ServerApp {
 
       connectionPool = new DBConnectionPool(
           "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
-
+      txManager = new TransactionManager(connectionPool);
+      
       boardDao = new BoardDaoImpl(connectionPool, 1);
       greetingDao = new BoardDaoImpl(connectionPool, 2);
       assignmentDao = new AssignmentDaoImpl(connectionPool);
