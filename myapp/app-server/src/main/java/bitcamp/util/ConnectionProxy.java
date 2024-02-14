@@ -1,6 +1,5 @@
 package bitcamp.util;
 
-import com.mysql.cj.xdevapi.DbDocValueFactory;
 import java.sql.Array;
 import java.sql.Blob;
 import java.sql.CallableStatement;
@@ -23,10 +22,10 @@ import java.util.concurrent.Executor;
 
 public class ConnectionProxy implements Connection {
 
-  private DBConnectionPool connectionPool;
+  private ConnectionPool connectionPool;
   private Connection original;
 
-  public ConnectionProxy(Connection original, DBConnectionPool connectionPool){
+  public ConnectionProxy(Connection original, ConnectionPool connectionPool){
     this.original = original;
     this.connectionPool = connectionPool;
   }
@@ -41,7 +40,7 @@ public class ConnectionProxy implements Connection {
 
   @Override
   public Statement createStatement() throws SQLException {
-    return original.createStatement();
+    return null;
   }
 
   @Override
@@ -301,6 +300,16 @@ public class ConnectionProxy implements Connection {
   }
 
   @Override
+  public <T> T unwrap(Class<T> iface) throws SQLException {
+    return null;
+  }
+
+  @Override
+  public boolean isWrapperFor(Class<?> iface) throws SQLException {
+    return false;
+  }
+
+  @Override
   public void beginRequest() throws SQLException {
     Connection.super.beginRequest();
   }
@@ -330,16 +339,5 @@ public class ConnectionProxy implements Connection {
   @Override
   public void setShardingKey(ShardingKey shardingKey) throws SQLException {
     Connection.super.setShardingKey(shardingKey);
-  }
-
-  @Override
-  public <T> T unwrap(Class<T> iface) throws SQLException {
-    return null;
-  }
-
-  @Override
-  public boolean isWrapperFor(Class<?> iface) throws SQLException {
-    return false;
-
   }
 }

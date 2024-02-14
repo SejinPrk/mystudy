@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class DBConnectionPool {
+public class DBConnectionPool implements ConnectionPool {
 
   // DB 커넥션 목록
   ArrayList<Connection> connections = new ArrayList<>();
