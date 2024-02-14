@@ -7,7 +7,6 @@ import bitcamp.myapp.vo.AttachedFile;
 import bitcamp.myapp.vo.Board;
 import bitcamp.util.Prompt;
 import bitcamp.util.TransactionManager;
-import java.sql.Connection;
 import java.util.ArrayList;
 
 public class BoardAddHandler extends AbstractMenuHandler {
@@ -58,6 +57,7 @@ public class BoardAddHandler extends AbstractMenuHandler {
         txManager.rollback();
       } catch (Exception e2) {
       }
+      prompt.println("게시글 등록 오류!");
     }
   }
 }
