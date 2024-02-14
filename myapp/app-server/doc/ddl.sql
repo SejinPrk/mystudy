@@ -22,7 +22,7 @@ create table board_files(
   file_no int not null,
   file_path varchar(255) not null,
   board_no int not null
-)
+);
 
 alter table board_files
   add constraint primary key (file_no),
