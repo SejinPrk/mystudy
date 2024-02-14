@@ -104,7 +104,7 @@ public class ServerApp {
     memberMenu.addItem("목록", new MemberListHandler(memberDao));
 
     MenuGroup greetingMenu = mainMenu.addGroup("가입인사");
-    greetingMenu.addItem("등록", new BoardAddHandler(connectionPool, greetingDao));
+    greetingMenu.addItem("등록", new BoardAddHandler(txManager, greetingDao));
     greetingMenu.addItem("조회", new BoardViewHandler(greetingDao));
     greetingMenu.addItem("변경", new BoardModifyHandler(greetingDao));
     greetingMenu.addItem("삭제", new BoardDeleteHandler(greetingDao));
