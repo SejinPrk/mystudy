@@ -62,8 +62,19 @@ public class BoardDaoImpl implements BoardDao {
   public List<Board> findAll() {
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
-            "select board_no, title, writer, created_date"
-                + " from boards where category=? order by board_no desc")) {
+            "  select\n"
+                + " b.board_no,\n"
+                + " b.title,\n"
+                + " b.writer,\n"
+                + " b.created_date,\n"
+                + " count(file_no) file_count\n"
+                + "from boards b left outer join board_files bf on b.board_no=bf.board_no\n"
+                + "where\n"
+                + " b.category=?\n"
+                + "group by\n"
+                + " board_no\n"
+                + "order by\n"
+                + " board_no desc")) {
 
       pstmt.setInt(1, category);
 
