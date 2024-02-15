@@ -11,18 +11,38 @@ public class Board implements Serializable {
   private int no;
   private String title;
   private String content;
-  private String writer;
+  private Member writer;
   private Date createdDate;
   private List<AttachedFile> files;
+  private int fileCount;
+
   @Override
   public String toString() {
     return "Board{" +
         "no=" + no +
         ", title='" + title + '\'' +
         ", content='" + content + '\'' +
-        ", writer='" + writer + '\'' +
+        ", writer=" + writer +
         ", createdDate=" + createdDate +
+        ", files=" + files +
+        ", fileCount=" + fileCount +
         '}';
+  }
+
+  public Member getWriter() {
+    return writer;
+  }
+
+  public void setWriter(Member writer) {
+    this.writer = writer;
+  }
+
+  public int getFileCount() {
+    return fileCount;
+  }
+
+  public void setFileCount(int fileCount) {
+    this.fileCount = fileCount;
   }
 
   public int getNo() {
@@ -47,14 +67,6 @@ public class Board implements Serializable {
 
   public void setContent(String content) {
     this.content = content;
-  }
-
-  public String getWriter() {
-    return writer;
-  }
-
-  public void setWriter(String writer) {
-    this.writer = writer;
   }
 
   public Date getCreatedDate() {

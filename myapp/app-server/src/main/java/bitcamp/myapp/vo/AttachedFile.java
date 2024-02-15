@@ -1,8 +1,7 @@
 package bitcamp.myapp.vo;
 
-import java.util.List;
-
 public class AttachedFile {
+
   private int no;
   private String filePath;
   private int boardNo;
@@ -31,8 +30,13 @@ public class AttachedFile {
     this.boardNo = boardNo;
   }
 
-public AttachedFile filePath(String filePath) {
+  public AttachedFile filePath(String filePath) {
     this.filePath = filePath;
+    return this;
+  }
+
+  public AttachedFile boardNo(int boardNo) {
+    this.boardNo = boardNo;
     return this;
   }
 }

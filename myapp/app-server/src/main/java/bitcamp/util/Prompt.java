@@ -15,6 +15,9 @@ public class Prompt implements AutoCloseable {
   private DataOutputStream out;
   private StringWriter stringWriter = new StringWriter();
   private PrintWriter writer = new PrintWriter(stringWriter);
+  //  private Member loginUser;
+//  private Map<String, Object> userMap = new HashMap<>();
+  private Session session = new Session();
 
   public Prompt(DataInputStream in, DataOutputStream out) {
     this.in = in;
@@ -91,4 +94,24 @@ public class Prompt implements AutoCloseable {
   public String getFullPath() {
     return String.join("/", breadcrumb.toArray(new String[0]));
   }
+
+  public Session getSession() {
+    return this.session;
+  }
+
+//  public Member getLoginUser() {
+//    return this.loginUser;
+//  }
+//
+//  public void setLoginUser(Member m) {
+//    this.loginUser = m;
+//  }
+
+//  public void setAttribute(String name, Object value) {
+//    userMap.put(name, value);
+//  }
+//
+//  public Object getAttribute(String name) {
+//    return userMap.get(name);
+//  }
 }

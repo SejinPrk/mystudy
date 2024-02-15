@@ -6,25 +6,27 @@ import java.io.DataOutputStream;
 import java.net.Socket;
 
 public class ClientApp {
+
   String serverAddress;
   int port;
 
   public static void main(String[] args) {
     new ClientApp()
-       // .server("192.168.0.49")
+        //.server("192.168.0.49")
         .server("localhost")
         .port(8888)
         .run();
   }
 
-  ClientApp server (String serverAddress) {
+  ClientApp server(String serverAddress) {
     this.serverAddress = serverAddress;
     return this;
   }
-   ClientApp port(int port) {
+
+  ClientApp port(int port) {
     this.port = port;
     return this;
-   }
+  }
 
   void run() {
     try (Socket socket = new Socket(serverAddress, port);
@@ -42,9 +44,10 @@ public class ClientApp {
         String input = prompt.input("");
         out.writeUTF(input);
       }
+
       System.out.println("서버 연결 종료!");
 
-    } catch (Exception e){
+    } catch (Exception e) {
       System.out.println("서버 통신 오류!");
       e.printStackTrace();
     }

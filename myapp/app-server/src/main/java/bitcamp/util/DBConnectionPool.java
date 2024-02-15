@@ -60,7 +60,7 @@ public class DBConnectionPool implements ConnectionPool {
   }
 
   public void closeAll() {
-    for (Connection con: connections) {
+    for (Connection con : connections) {
       ((ConnectionProxy) con).realClose();
     }
   }

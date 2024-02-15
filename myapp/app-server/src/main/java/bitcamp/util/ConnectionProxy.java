@@ -30,7 +30,7 @@ public class ConnectionProxy implements Connection {
     this.connectionPool = connectionPool;
   }
 
-  public void realClose(){
+  public void realClose() {
     try {
       original.close();
     } catch (Exception e) {

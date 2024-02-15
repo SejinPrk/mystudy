@@ -14,6 +14,7 @@ public class TransactionManager {
     connectionPool.getConnection().setAutoCommit(false);
     System.out.printf("[%s] 트랜잭션 시작\n", Thread.currentThread().getName());
   }
+
   public void commit() throws Exception {
     connectionPool.getConnection().commit();
     complete();
@@ -29,6 +30,5 @@ public class TransactionManager {
     con.setAutoCommit(true);
     con.close();
     System.out.printf("[%s] 트랜잭션 종료\n", Thread.currentThread().getName());
-
   }
 }
