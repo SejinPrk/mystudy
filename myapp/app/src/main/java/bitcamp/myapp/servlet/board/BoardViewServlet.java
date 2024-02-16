@@ -1,27 +1,33 @@
 package bitcamp.myapp.servlet.board;
 
-import bitcamp.menu.AbstractMenuHandler;
 import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.BoardDao;
+import bitcamp.myapp.dao.mysql.AttachedFileDaoImpl;
+import bitcamp.myapp.dao.mysql.BoardDaoImpl;
 import bitcamp.myapp.vo.AttachedFile;
 import bitcamp.myapp.vo.Board;
-import bitcamp.util.Prompt;
+import bitcamp.util.DBConnectionPool;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@WebServlet("/board/view")
 public class BoardViewServlet extends HttpServlet {
 
   private BoardDao boardDao;
   private AttachedFileDao attachedFileDao;
 
-  public BoardViewServlet(BoardDao boardDao, AttachedFileDao attachedFileDao) {
-    this.boardDao = boardDao;
-    this.attachedFileDao = attachedFileDao;
+  public BoardViewServlet() {
+    DBConnectionPool connectionPool = new DBConnectionPool(
+        "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
+
+    boardDao = new BoardDaoImpl(connectionPool, 1);
+    attachedFileDao = new AttachedFileDaoImpl(connectionPool);
   }
 
   @Override
