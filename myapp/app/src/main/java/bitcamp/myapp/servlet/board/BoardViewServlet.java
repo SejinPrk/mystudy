@@ -25,9 +25,8 @@ public class BoardViewServlet extends HttpServlet {
   public BoardViewServlet() {
     DBConnectionPool connectionPool = new DBConnectionPool(
         "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
-
-    boardDao = new BoardDaoImpl(connectionPool, 1);
-    attachedFileDao = new AttachedFileDaoImpl(connectionPool);
+    this.boardDao = new BoardDaoImpl(connectionPool, 1);
+    this.attachedFileDao = new AttachedFileDaoImpl(connectionPool);
   }
 
   @Override
@@ -58,28 +57,33 @@ public class BoardViewServlet extends HttpServlet {
       }
 
       List<AttachedFile> files = attachedFileDao.findAllByBoardNo(no);
-      out.println("<form action='/board/add'>");
+
+      out.println("<form action='/board/update'>");
+      out.println("<div>");
+      out.printf("  번호: <input readonly name='title' type='text' value='%s'>\n", board.getNo());
+      out.println("</div>");
       out.println("<div>");
       out.printf("  제목: <input name='title' type='text' value='%s'>\n", board.getTitle());
       out.println("</div>");
       out.println("<div>");
-      out.printf("  내용: <textarea name='content'></textarea>\n", board.getContent());
+      out.printf("  내용: <textarea name='content'>%s</textarea>\n", board.getContent());
       out.println("</div>");
       out.println("<div>");
-      out.printf("  작성자: <input type='text' value='%s'>\n", board.getWriter().getName());
+      out.printf("  작성자: <input readonly type='text' value='%s'>\n", board.getWriter().getName());
       out.println("</div>");
       out.println("<div>");
       out.println("  첨부파일: <input multiple name='files' type='file'>");
-      out.println(" <ul>");
+      out.println("  <ul>");
       for (AttachedFile file : files) {
-        out.printf("   <li>%s<a href='/board/file/delete?no=%d'>삭제</a></li>\n",
+        out.printf("    <li>%s <a href='/board/file/delete?no=%d'>삭제</a></li>\n",
             file.getFilePath(),
             file.getNo());
       }
-      out.println(" </ul>");
+      out.println("  </ul>");
       out.println("</div>");
       out.println("<div>");
-      out.println(" <button>변경</button>");
+      out.println("  <button>변경</button>");
+      out.printf("  <a href='/board/delete?no=%d'>[삭제]</a>\n", no);
       out.println("</div>");
       out.println("</form>");
 
@@ -89,6 +93,7 @@ public class BoardViewServlet extends HttpServlet {
       e.printStackTrace(out);
       out.println("</pre>");
     }
+
     out.println("</body>");
     out.println("</html>");
   }

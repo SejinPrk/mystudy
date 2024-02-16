@@ -38,7 +38,6 @@ public class BoardAddHandler extends AbstractMenuHandler {
     board.setWriter(loginUser);
 
     ArrayList<AttachedFile> files = new ArrayList<>();
-
     while (true) {
       String filepath = prompt.input("파일?(종료: 그냥 엔터) ");
       if (filepath.length() == 0) {

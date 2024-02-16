@@ -113,8 +113,7 @@ public class AttachedFileDaoImpl implements AttachedFileDao {
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
             "select file_no, file_path, board_no"
-                + " from board_files where board_no=? order by file_no asc")) {
-
+                + " from board_files where file_no=?")) {
       pstmt.setInt(1, no);
       try (ResultSet rs = pstmt.executeQuery()) {
         if (rs.next()) {

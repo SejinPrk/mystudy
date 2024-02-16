@@ -8,7 +8,6 @@ import bitcamp.myapp.vo.AttachedFile;
 import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.DBConnectionPool;
-import bitcamp.util.Prompt;
 import bitcamp.util.TransactionManager;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -30,9 +29,8 @@ public class BoardAddServlet extends HttpServlet {
     DBConnectionPool connectionPool = new DBConnectionPool(
         "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
     txManager = new TransactionManager(connectionPool);
-
-    boardDao = new BoardDaoImpl(connectionPool, 1);
-    attachedFileDao = new AttachedFileDaoImpl(connectionPool);
+    this.boardDao = new BoardDaoImpl(connectionPool, 1);
+    this.attachedFileDao = new AttachedFileDaoImpl(connectionPool);
   }
 
   @Override
@@ -65,16 +63,15 @@ public class BoardAddServlet extends HttpServlet {
     board.setWriter(loginUser);
 
     ArrayList<AttachedFile> attachedFiles = new ArrayList<>();
-
     String[] files = request.getParameterValues("files");
     if (files != null) {
-      for (String file : files ){
-        if(file.length() == 0) {
+      for (String file : files) {
+        if (file.length() == 0) {
           continue;
         }
-         attachedFiles.add(new AttachedFile().filePath(file));
-        }
+        attachedFiles.add(new AttachedFile().filePath(file));
       }
+    }
 
     try {
       txManager.startTransaction();
@@ -82,7 +79,6 @@ public class BoardAddServlet extends HttpServlet {
       boardDao.add(board);
 
       if (attachedFiles.size() > 0) {
-        // 첨부파일 객체에 게시글 번호 저장
         for (AttachedFile attachedFile : attachedFiles) {
           attachedFile.setBoardNo(board.getNo());
         }
@@ -98,7 +94,7 @@ public class BoardAddServlet extends HttpServlet {
         txManager.rollback();
       } catch (Exception e2) {
       }
-      out.println("게시글 등록 오류!");
+      out.println("<p>게시글 등록 오류!</p>");
       out.println("<pre>");
       e.printStackTrace(out);
       out.println("</pre>");
