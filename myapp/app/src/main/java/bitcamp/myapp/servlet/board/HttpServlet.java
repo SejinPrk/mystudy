@@ -16,7 +16,7 @@ public abstract class HttpServlet extends GenericServlet {
     HttpServletRequest request = (HttpServletRequest) servletRequest;
     HttpServletResponse response = (HttpServletResponse) servletResponse;
 
-    // this 가 가리키는 인스턴스의 클래스부터 service() 메서드를 찾아 올라간다.
+    // this에 저장된 인스턴스의 클래스부터 service() 메서드를 찾아 올라간다.
     service(request, response);
   }
 
