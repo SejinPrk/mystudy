@@ -44,10 +44,10 @@ public class BoardListServlet extends GenericServlet {
 
     try {
       out.println("<table border='1'>");
-      out.println("    <thead>");
+      out.println("    <thread>");
       out.println("    <tr> <th>번호</th> <th>제목</th> <th>작성자</th> <th>등록일</th> <th>첨부파일</th> </tr>");
-      out.println("    </thead>");
-      out.println("    <tbody>");
+      out.println("    </thread>");
+      out.println("    <body>");
 
       List<Board> list = boardDao.findAll();
 
@@ -60,7 +60,7 @@ public class BoardListServlet extends GenericServlet {
             board.getFileCount());
       }
 
-      out.println("    </tbody>");
+      out.println("    </body>");
       out.println("</table>");
 
     } catch (Exception e) {

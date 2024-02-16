@@ -8,7 +8,6 @@ import bitcamp.myapp.vo.Member;
 import bitcamp.util.DBConnectionPool;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -73,9 +72,18 @@ public class BoardFileDeleteServlet extends HttpServlet {
       }
 
       attachedFileDao.delete(fileNo);
-      <
+      out.println("<script>");
+      out.println("history.back();");
+      out.println("</script>");
+
     } catch (Exception e) {
-      out.println("삭제 오류!");
-    }
+      out.println("<p>삭제 오류!</p>");
+      out.println("<pre>");
+      e.printStackTrace(out);
+      out.println("</pre>");
+      }
+
+      out.println("</body>");
+      out.println("</html>");
   }
 }

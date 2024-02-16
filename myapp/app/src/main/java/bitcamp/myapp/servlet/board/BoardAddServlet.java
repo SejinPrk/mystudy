@@ -99,6 +99,9 @@ public class BoardAddServlet extends HttpServlet {
       } catch (Exception e2) {
       }
       out.println("게시글 등록 오류!");
+      out.println("<pre>");
+      e.printStackTrace(out);
+      out.println("</pre>");
     }
 
     out.println("</body>");

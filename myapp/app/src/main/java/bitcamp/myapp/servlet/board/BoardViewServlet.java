@@ -66,10 +66,13 @@ public class BoardViewServlet extends HttpServlet {
       out.printf("  내용: <textarea name='content'></textarea>\n", board.getContent());
       out.println("</div>");
       out.println("<div>");
+      out.printf("  작성자: <input type='text' value='%s'>\n", board.getWriter().getName());
+      out.println("</div>");
+      out.println("<div>");
       out.println("  첨부파일: <input multiple name='files' type='file'>");
       out.println(" <ul>");
       for (AttachedFile file : files) {
-        out.printf("   <li>%s<a href='/board/deleteFile?no=%d'>삭제</a></li>\n",
+        out.printf("   <li>%s<a href='/board/file/delete?no=%d'>삭제</a></li>\n",
             file.getFilePath(),
             file.getNo());
       }
@@ -78,10 +81,13 @@ public class BoardViewServlet extends HttpServlet {
       out.println("<div>");
       out.println(" <button>변경</button>");
       out.println("</div>");
-      out.println("</form>v");
+      out.println("</form>");
 
     } catch (Exception e) {
       out.println("<p>조회 오류!</p>");
+      out.println("<pre>");
+      e.printStackTrace(out);
+      out.println("</pre>");
     }
     out.println("</body>");
     out.println("</html>");
