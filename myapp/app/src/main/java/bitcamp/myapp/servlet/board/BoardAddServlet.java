@@ -76,15 +76,14 @@ public class BoardAddServlet extends HttpServlet {
         }
       }
 
-
     try {
       txManager.startTransaction();
 
       boardDao.add(board);
 
-      if (files.size() > 0) {
+      if (attachedFiles.size() > 0) {
         // 첨부파일 객체에 게시글 번호 저장
-        for (AttachedFile attachedFile : files) {
+        for (AttachedFile attachedFile : attachedFiles) {
           attachedFile.setBoardNo(board.getNo());
         }
         attachedFileDao.addAll(attachedFiles);
@@ -101,6 +100,7 @@ public class BoardAddServlet extends HttpServlet {
       }
       out.println("게시글 등록 오류!");
     }
+
     out.println("</body>");
     out.println("</html>");
   }
