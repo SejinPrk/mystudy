@@ -14,10 +14,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@WebServlet("/board/add")
 public class BoardAddServlet extends HttpServlet {
 
   private TransactionManager txManager;
@@ -63,25 +65,26 @@ public class BoardAddServlet extends HttpServlet {
     board.setWriter(loginUser);
 
     ArrayList<AttachedFile> files = new ArrayList<>();
-//    while (true) {
-//      String filepath = .input("파일?(종료: 그냥 엔터) ");
-//      if (filepath.length() == 0) {
-//        break;
-//      }
-//      files.add(new AttachedFile().filePath(filepath));
-//    }
+
+    String[] AttachedFiles = request.getParameterValues("files");
+    if (files != null) {
+      for (String attachedFiles : files ){
+         attachedFiles.add(new AttachedFile().filePath(attachedFiles));
+        }
+      }
+    }
 
     try {
       txManager.startTransaction();
 
       boardDao.add(board);
 
-      if (files.size() > 0) {
+      if (attachedFiles.size() > 0) {
         // 첨부파일 객체에 게시글 번호 저장
-        for (AttachedFile file : files) {
-          file.setBoardNo(board.getNo());
+        for (AttachedFile attachedFile : attachedFiles) {
+          attachedFile.setBoardNo(board.getNo());
         }
-        attachedFileDao.addAll(files);
+        attachedFileDao.addAll(attachedFiles);
       }
 
       txManager.commit();
