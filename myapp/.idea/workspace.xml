@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9160b05-d132-42d9-bdad-84098ff3ce04" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/auth/LoginServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/auth/form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/board/form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/board/BoardListServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/board/BoardListServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/webapp/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/auth/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/auth/LoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,13 +50,24 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="myapp" type="f1a62948:ProjectNode" />
-                <item name="app-client" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="myapp" type="f1a62948:ProjectNode" />
-                <item name="app-client" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="myapp" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="myapp" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
             <select />
@@ -147,7 +155,7 @@
       <recent name="bitcamp.myapp" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Gradle.myapp [run]">
     <configuration name="ServerApp" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="bitcamp.myapp.ServerApp" />
       <extension name="coverage">
@@ -296,11 +304,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.myapp [run]" />
+        <item itemvalue="Gradle.myapp [build]" />
         <item itemvalue="Gradle.myapp:app-client [run]" />
         <item itemvalue="Gradle.myapp:app-server [run]" />
-        <item itemvalue="Gradle.myapp [run]" />
         <item itemvalue="Gradle.myapp:app-api [build]" />
-        <item itemvalue="Gradle.myapp [build]" />
       </list>
     </recent_temporary>
   </component>

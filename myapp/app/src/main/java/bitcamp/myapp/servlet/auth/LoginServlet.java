@@ -1,16 +1,17 @@
-package bitcamp.myapp.handler.auth;
+package bitcamp.myapp.servlet.auth;
 
 import bitcamp.menu.AbstractMenuHandler;
 import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.Prompt;
+import javax.servlet.annotation.WebServlet;
 
-public class LoginHandler extends GenericServlet {
+@WebServlet("/auth/login")
+public class LoginServlet extends GenericServlet {
 
   MemberDao memberDao;
 
-  public LoginHandler() {
-
+  public LoginServlet() {
     DBConnectionPool connectionPool = new DBConnectionPool(
         "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
     this.memberDao = new MemberDaoImpl(connectionPool);
@@ -24,16 +25,35 @@ public class LoginHandler extends GenericServlet {
     HttpServletRequest request = (HttpServletRequest) servletRequest;
     HttpServletResponse response = (HttpServletResponse) servletResponse;
 
-    String email = servletRequest.getParameter("email");
-    String password = servletRequest.getParameter("password");
+    String email = request.getParameter("email");
+    String password = request.getParameter("password");
 
-    Member member = memberDao.findByEmailAndPassword(email, password);
-    if (member != null) {
-      servletRequest.getSession().setAttribute("loginUser", member);
-      prompt.printf("%s 님 환영합니다.\n", member.getName());
-    } else {
-      prompt.println("이메일 또는 암호가 맞지 않습니다.");
-    }
+    response.setContentType("text/html;charset=UTF-8");
+    PrintWriter out = response.getWriter();
+
+    out.println("<!DOCTYPE html>");
+    out.println("<html lang='en'>");
+    out.println("<head>");
+    out.println("  <meta charset='UTF-8'>");
+    out.println("  <title>비트캠프 데브옵스 5기</title>");
+    out.println("</head>");
+    out.println("<body>");
+    out.println("<h1>게시글</h1>");
+    out.println("<h2>로그인</h2>");
+
+    try {
+      Member member = memberDao.findByEmailAndPassword(email, password);
+      if (member != null) {
+        request.getSession().setAttribute("loginUser", member);
+        prompt.printf("<p>%s 님 환영합니다.</p>\n", member.getName());
+      } else {
+        prompt.println("이메일 또는 암호가 맞지 않습니다.");
+      }
+    } catch (Exception e) {
+      out.println("<p>로그인 오류!</p>");
+      out.println("<pre>");
+      e.printStackTrace(out);
+      out.println("</pre>");
   }
 }
 
