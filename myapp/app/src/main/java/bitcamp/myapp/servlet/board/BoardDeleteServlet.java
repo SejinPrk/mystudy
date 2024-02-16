@@ -4,7 +4,6 @@ import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.dao.mysql.AttachedFileDaoImpl;
 import bitcamp.myapp.dao.mysql.BoardDaoImpl;
-import bitcamp.myapp.vo.AttachedFile;
 import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.DBConnectionPool;
@@ -66,9 +65,12 @@ public class BoardDeleteServlet extends HttpServlet {
         out.println("<p>권한이 없습니다.</p>");
         out.println("</body>");
         out.println("</html>");
+        return;
       }
 
-      attachedFileDao.delete(no);
+      attachedFileDao.deleteAll(no);
+      boardDao.delete(no);
+
       out.println("<script>");
       out.println("  location.href ='/board/list'");
       out.println("</script>");
