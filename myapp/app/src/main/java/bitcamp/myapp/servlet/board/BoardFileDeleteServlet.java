@@ -46,6 +46,9 @@ public class BoardFileDeleteServlet extends HttpServlet {
 
     Member loginUser = (Member) request.getSession().getAttribute("loginUser");
     if (loginUser == null){
+      out.println("<script>");
+      out.println( " location.href = document.referrer;");
+      out.println("</script>");
       out.println("<p>로그인하시길 바랍니다!</p>");
       out.println("</body>");
       out.println("</html>");
@@ -73,7 +76,7 @@ public class BoardFileDeleteServlet extends HttpServlet {
 
       attachedFileDao.delete(fileNo);
       out.println("<script>");
-      out.println("history.back();");
+      out.println( " location.href = document.referrer;");
       out.println("</script>");
 
     } catch (Exception e) {
