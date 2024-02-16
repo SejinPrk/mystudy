@@ -64,24 +64,27 @@ public class BoardAddServlet extends HttpServlet {
     board.setContent(request.getParameter("content"));
     board.setWriter(loginUser);
 
-    ArrayList<AttachedFile> files = new ArrayList<>();
+    ArrayList<AttachedFile> attachedFiles = new ArrayList<>();
 
-    String[] AttachedFiles = request.getParameterValues("files");
+    String[] files = request.getParameterValues("files");
     if (files != null) {
-      for (String attachedFiles : files ){
-         attachedFiles.add(new AttachedFile().filePath(attachedFiles));
+      for (String file : files ){
+        if(file.length() == 0) {
+          continue;
+        }
+         attachedFiles.add(new AttachedFile().filePath(file));
         }
       }
-    }
+
 
     try {
       txManager.startTransaction();
 
       boardDao.add(board);
 
-      if (attachedFiles.size() > 0) {
+      if (files.size() > 0) {
         // 첨부파일 객체에 게시글 번호 저장
-        for (AttachedFile attachedFile : attachedFiles) {
+        for (AttachedFile attachedFile : files) {
           attachedFile.setBoardNo(board.getNo());
         }
         attachedFileDao.addAll(attachedFiles);
