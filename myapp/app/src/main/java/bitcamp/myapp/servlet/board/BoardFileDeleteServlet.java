@@ -2,8 +2,6 @@ package bitcamp.myapp.servlet.board;
 
 import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.BoardDao;
-import bitcamp.myapp.dao.mysql.AttachedFileDaoImpl;
-import bitcamp.myapp.dao.mysql.BoardDaoImpl;
 import bitcamp.myapp.vo.AttachedFile;
 import bitcamp.myapp.vo.Board;
 import bitcamp.util.DBConnectionPool;
@@ -16,18 +14,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/board/view")
-public class BoardViewServlet extends HttpServlet {
+@WebServlet("/board/fileDelete")
+public class BoardFileDeleteServlet extends HttpServlet {
 
   private BoardDao boardDao;
   private AttachedFileDao attachedFileDao;
 
-  public BoardViewServlet() {
+  public BoardFileDeleteServlet() {
     DBConnectionPool connectionPool = new DBConnectionPool(
         "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
 
-    boardDao = new BoardDaoImpl(connectionPool, 1);
-    attachedFileDao = new AttachedFileDaoImpl(connectionPool);
+    this.boardDao = boardDao;
+    this.attachedFileDao = attachedFileDao;
   }
 
   @Override
@@ -76,14 +74,15 @@ public class BoardViewServlet extends HttpServlet {
       out.println(" </ul>");
       out.println("</div>");
       out.println("<div>");
-      out.println(" <button>변경</button>");
+      out.println(" <button>삭제</button>");
       out.println("</div>");
       out.println("</form>v");
+      attachedFileDao.deleteAll(no);
+      boardDao.delete(no);
+      out.println("삭제했습니다!");
 
     } catch (Exception e) {
-      out.println("<p>조회 오류!</p>");
+      out.println("삭제 오류!");
     }
-    out.println("</body>");
-    out.println("</html>");
   }
 }
