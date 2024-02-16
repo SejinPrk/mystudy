@@ -4,6 +4,7 @@ import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.vo.AttachedFile;
 import bitcamp.myapp.vo.Board;
+import bitcamp.myapp.vo.Member;
 import bitcamp.util.DBConnectionPool;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,7 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/board/fileDelete")
+@WebServlet("/board/file/delete")
 public class BoardFileDeleteServlet extends HttpServlet {
 
   private BoardDao boardDao;
@@ -44,43 +45,35 @@ public class BoardFileDeleteServlet extends HttpServlet {
     out.println("<body>");
     out.println("<h1>게시글</h1>");
 
-    try {
-      int no = Integer.parseInt(request.getParameter("no"));
+    Member loginUser = (Member) request.getSession().getAttribute("loginUser");
+    if (loginUser == null){
+      out.println("<p>로그인하시길 바랍니다!</p>");
+      out.println("</body>");
+      out.println("</html>");
+      return;
+    }
 
-      Board board = boardDao.findBy(no);
-      if (board == null) {
-        out.println("<p>게시글 번호가 유효하지 않습니다.</p>");
+    try {
+      int fileNo = Integer.parseInt(request.getParameter("no"));
+
+      AttachedFile file = attachedFileDao.findByNo(fileNo);
+      if (file == null){
+        out.println("<p>첨부파일 번호가 유효하지 않습니다.</p>");
         out.println("</body>");
         out.println("</html>");
         return;
       }
 
-      List<AttachedFile> files = attachedFileDao.findAllByBoardNo(no);
-      out.println("<form action='/board/add'>");
-      out.println("<div>");
-      out.printf("  제목: <input name='title' type='text' value='%s'>\n", board.getTitle());
-      out.println("</div>");
-      out.println("<div>");
-      out.printf("  내용: <textarea name='content'></textarea>\n", board.getContent());
-      out.println("</div>");
-      out.println("<div>");
-      out.println("  첨부파일: <input multiple name='files' type='file'>");
-      out.println(" <ul>");
-      for (AttachedFile file : files) {
-        out.printf("   <li>%s<a href='/board/deleteFile?no=%d'>삭제</a></li>\n",
-            file.getFilePath(),
-            file.getNo());
+      Member writer = boardDao.findBy(file.getBoardNo()).getWriter();
+      if (writer.getNo() != loginUser.getNo()){
+        out.println("<p>게시글 권한이 없습니다.</p>");
+        out.println("</body>");
+        out.println("</html>");
+        return;
       }
-      out.println(" </ul>");
-      out.println("</div>");
-      out.println("<div>");
-      out.println(" <button>삭제</button>");
-      out.println("</div>");
-      out.println("</form>v");
-      attachedFileDao.deleteAll(no);
-      boardDao.delete(no);
-      out.println("삭제했습니다!");
 
+      attachedFileDao.delete(fileNo);
+      <
     } catch (Exception e) {
       out.println("삭제 오류!");
     }
