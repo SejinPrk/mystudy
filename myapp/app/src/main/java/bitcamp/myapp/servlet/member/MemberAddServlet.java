@@ -1,11 +1,10 @@
 package bitcamp.myapp.servlet.member;
 
 import bitcamp.myapp.dao.AttachedFileDao;
-import bitcamp.myapp.dao.BoardDao;
+import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.dao.mysql.AttachedFileDaoImpl;
-import bitcamp.myapp.dao.mysql.BoardDaoImpl;
+import bitcamp.myapp.dao.mysql.MemberDaoImpl;
 import bitcamp.myapp.vo.AttachedFile;
-import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.DBConnectionPool;
 import bitcamp.util.TransactionManager;
@@ -22,14 +21,14 @@ import javax.servlet.http.HttpServletResponse;
 public class MemberAddServlet extends HttpServlet {
 
   private TransactionManager txManager;
-  private BoardDao boardDao;
+  private MemberDao memberDao;
   private AttachedFileDao attachedFileDao;
 
   public MemberAddServlet() {
     DBConnectionPool connectionPool = new DBConnectionPool(
         "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
     txManager = new TransactionManager(connectionPool);
-    this.boardDao = new BoardDaoImpl(connectionPool, 1);
+    this.memberDao = new MemberDaoImpl(connectionPool);
     this.attachedFileDao = new AttachedFileDaoImpl(connectionPool);
   }
 
@@ -47,7 +46,7 @@ public class MemberAddServlet extends HttpServlet {
     out.println("  <title>비트캠프 데브옵스 5기</title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>게시글</h1>");
+    out.println("<h1>회원</h1>");
 
     Member loginUser = (Member) request.getSession().getAttribute("loginUser");
     if (loginUser == null) {
@@ -57,10 +56,10 @@ public class MemberAddServlet extends HttpServlet {
       return;
     }
 
-    Board board = new Board();
-    board.setTitle(request.getParameter("title"));
-    board.setContent(request.getParameter("content"));
-    board.setWriter(loginUser);
+    Member member = new Member();
+    member.setEmail(request.getParameter("email"));
+    member.setName(request.getParameter("name"));
+    member.setWriter(loginUser);
 
     ArrayList<AttachedFile> attachedFiles = new ArrayList<>();
     String[] files = request.getParameterValues("files");
@@ -76,25 +75,25 @@ public class MemberAddServlet extends HttpServlet {
     try {
       txManager.startTransaction();
 
-      boardDao.add(board);
+      memberDao.add(member);
 
       if (attachedFiles.size() > 0) {
         for (AttachedFile attachedFile : attachedFiles) {
-          attachedFile.setBoardNo(board.getNo());
+          attachedFile.setBoardNo(member.getNo());
         }
         attachedFileDao.addAll(attachedFiles);
       }
 
       txManager.commit();
 
-      out.println("<p>게시글을 등록했습니다.</p>");
+      out.println("<p>회원을 등록했습니다.</p>");
 
     } catch (Exception e) {
       try {
         txManager.rollback();
       } catch (Exception e2) {
       }
-      out.println("<p>게시글 등록 오류!</p>");
+      out.println("<p>회원 등록 오류!</p>");
       out.println("<pre>");
       e.printStackTrace(out);
       out.println("</pre>");

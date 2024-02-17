@@ -1,10 +1,9 @@
 package bitcamp.myapp.servlet.member;
 
 import bitcamp.myapp.dao.AttachedFileDao;
-import bitcamp.myapp.dao.BoardDao;
+import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.dao.mysql.AttachedFileDaoImpl;
-import bitcamp.myapp.dao.mysql.BoardDaoImpl;
-import bitcamp.myapp.vo.Board;
+import bitcamp.myapp.dao.mysql.MemberDaoImpl;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.DBConnectionPool;
 import java.io.IOException;
@@ -15,16 +14,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/board/delete")
+@WebServlet("/member/delete")
 public class MemberDeleteServlet extends HttpServlet {
 
-  private BoardDao boardDao;
+  private MemberDao memberDao;
   private AttachedFileDao attachedFileDao;
 
   public MemberDeleteServlet() {
     DBConnectionPool connectionPool = new DBConnectionPool(
         "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
-    this.boardDao = new BoardDaoImpl(connectionPool, 1);
+    this.memberDao = new MemberDaoImpl(connectionPool, 1);
     this.attachedFileDao = new AttachedFileDaoImpl(connectionPool);
   }
 
@@ -55,13 +54,13 @@ public class MemberDeleteServlet extends HttpServlet {
     try {
       int no = Integer.parseInt(request.getParameter("no"));
 
-      Board board = boardDao.findBy(no);
-      if (board == null) {
-        out.println("<p>게시글 번호가 유효하지 않습니다.</p>");
+      Member member = memberDao.findBy(no);
+      if (member == null) {
+        out.println("<p>회원 번호가 유효하지 않습니다.</p>");
         out.println("</body>");
         out.println("</html>");
         return;
-      } else if (board.getWriter().getNo() != loginUser.getNo()) {
+      } else if (member.getWriter().getNo() != loginUser.getNo()) {
         out.println("<p>권한이 없습니다.</p>");
         out.println("</body>");
         out.println("</html>");
@@ -69,10 +68,10 @@ public class MemberDeleteServlet extends HttpServlet {
       }
 
       attachedFileDao.deleteAll(no);
-      boardDao.delete(no);
+      memberDao.delete(no);
 
       out.println("<script>");
-      out.println("  location.href ='/board/list'");
+      out.println("  location.href ='/member/list'");
       out.println("</script>");
 
     } catch (Exception e) {

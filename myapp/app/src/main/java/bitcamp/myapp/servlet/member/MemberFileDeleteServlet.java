@@ -1,9 +1,9 @@
 package bitcamp.myapp.servlet.member;
 
 import bitcamp.myapp.dao.AttachedFileDao;
-import bitcamp.myapp.dao.BoardDao;
+import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.dao.mysql.AttachedFileDaoImpl;
-import bitcamp.myapp.dao.mysql.BoardDaoImpl;
+import bitcamp.myapp.dao.mysql.MemberDaoImpl;
 import bitcamp.myapp.vo.AttachedFile;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.DBConnectionPool;
@@ -15,16 +15,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/board/file/delete")
+@WebServlet("/member/file/delete")
 public class MemberFileDeleteServlet extends HttpServlet {
 
-  private BoardDao boardDao;
+  private MemberDao memberDao;
   private AttachedFileDao attachedFileDao;
 
   public MemberFileDeleteServlet() {
     DBConnectionPool connectionPool = new DBConnectionPool(
         "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
-    this.boardDao = new BoardDaoImpl(connectionPool, 1);
+    this.memberDao = new MemberDaoImpl(connectionPool);
     this.attachedFileDao = new AttachedFileDaoImpl(connectionPool);
   }
 
@@ -42,7 +42,7 @@ public class MemberFileDeleteServlet extends HttpServlet {
     out.println("  <title>비트캠프 데브옵스 5기</title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>게시글</h1>");
+    out.println("<h1>회원</h1>");
 
     Member loginUser = (Member) request.getSession().getAttribute("loginUser");
     if (loginUser == null) {
@@ -63,7 +63,7 @@ public class MemberFileDeleteServlet extends HttpServlet {
         return;
       }
 
-      Member writer = boardDao.findBy(file.getBoardNo()).getWriter();
+      Member writer = memberDao.findBy(file.getBoardNo()).getWriter();
       if (writer.getNo() != loginUser.getNo()) {
         out.println("<p>권한이 없습니다.</p>");
         out.println("</body>");

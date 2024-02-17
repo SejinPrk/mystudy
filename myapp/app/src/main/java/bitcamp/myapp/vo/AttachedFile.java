@@ -5,8 +5,6 @@ public class AttachedFile {
   private int no;
   private String filePath;
   private int boardNo;
-  private int assignmentNo;
-  private int memberNo;
 
   public int getNo() {
     return no;
@@ -35,21 +33,6 @@ public class AttachedFile {
   public AttachedFile filePath(String filePath) {
     this.filePath = filePath;
     return this;
-  }
-  public int getAssignmentNo() {
-    return assignmentNo;
-  }
-
-  public void setAssignmentNo(int assignmentNo) {
-    this.assignmentNo = assignmentNo;
-  }
-
-  public int getMemberNo() {
-    return memberNo;
-  }
-
-  public void setMemberNo(int memberNo) {
-    this.memberNo = memberNo;
   }
 
 }
