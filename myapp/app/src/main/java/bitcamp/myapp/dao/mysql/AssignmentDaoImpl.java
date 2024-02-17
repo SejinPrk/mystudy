@@ -3,6 +3,8 @@ package bitcamp.myapp.dao.mysql;
 import bitcamp.myapp.dao.AssignmentDao;
 import bitcamp.myapp.dao.DaoException;
 import bitcamp.myapp.vo.Assignment;
+import bitcamp.myapp.vo.Board;
+import bitcamp.myapp.vo.Member;
 import bitcamp.util.DBConnectionPool;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -77,23 +79,37 @@ public class AssignmentDaoImpl implements AssignmentDao {
   public Assignment findBy(int no) {
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
-            "select * from assignments where assignment_no=?")) {
+            "select"
+                + "  a.assignment_no,\n"
+                + "  a.title,\n"
+                + "  a.content,"
+                + "  a.deadline,\n"
+                + "  m.member_no,\n"
+                + "  m.name\n"
+                + " from "
+                + "  assignments a inner join members m on a.writer=m.member_no\n"
+                + " where assignment_no=?")) {
 
       pstmt.setInt(1, no);
 
       try (ResultSet rs = pstmt.executeQuery()) {
-
         if (rs.next()) {
           Assignment assignment = new Assignment();
           assignment.setNo(rs.getInt("assignment_no"));
           assignment.setTitle(rs.getString("title"));
           assignment.setContent(rs.getString("content"));
           assignment.setDeadline(rs.getDate("deadline"));
+
+          Member writer = new Member();
+          writer.setNo(rs.getInt("member_no"));
+          writer.setName(rs.getString("name"));
+
+          assignment.setWriter(writer);
+
           return assignment;
         }
         return null;
       }
-
     } catch (Exception e) {
       throw new DaoException("데이터 가져오기 오류", e);
     }

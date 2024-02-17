@@ -10,6 +10,7 @@ public class Assignment implements Serializable {
   private int no;
   private String title;
   private String content;
+  private Member writer;
   private Date deadline;
 
   @Override
@@ -18,10 +19,18 @@ public class Assignment implements Serializable {
         "no=" + no +
         ", title='" + title + '\'' +
         ", content='" + content + '\'' +
+        ", writer=" + writer +
         ", deadline=" + deadline +
         '}';
   }
 
+  public Member getWriter() {
+    return writer;
+  }
+
+  public void setWriter(Member writer) {
+    this.writer = writer;
+  }
   public int getNo() {
     return no;
   }

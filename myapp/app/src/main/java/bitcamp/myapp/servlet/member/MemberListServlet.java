@@ -1,4 +1,4 @@
-package bitcamp.myapp.servlet.board;
+package bitcamp.myapp.servlet.member;
 
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.dao.mysql.BoardDaoImpl;
@@ -14,11 +14,11 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 
 @WebServlet("/board/list")
-public class BoardListServlet extends GenericServlet {
+public class MemberListServlet extends GenericServlet {
 
   private BoardDao boardDao;
 
-  public BoardListServlet() {
+  public MemberListServlet() {
     DBConnectionPool connectionPool = new DBConnectionPool(
         "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
     this.boardDao = new BoardDaoImpl(connectionPool, 1);
@@ -44,10 +44,10 @@ public class BoardListServlet extends GenericServlet {
 
     try {
       out.println("<table border='1'>");
-      out.println("    <thread>");
+      out.println("    <thead>");
       out.println("    <tr> <th>번호</th> <th>제목</th> <th>작성자</th> <th>등록일</th> <th>첨부파일</th> </tr>");
-      out.println("    </thread>");
-      out.println("    <body>");
+      out.println("    </thead>");
+      out.println("    <tbody>");
 
       List<Board> list = boardDao.findAll();
 
@@ -61,7 +61,7 @@ public class BoardListServlet extends GenericServlet {
             board.getFileCount());
       }
 
-      out.println("    </body>");
+      out.println("    </tbody>");
       out.println("</table>");
 
     } catch (Exception e) {
