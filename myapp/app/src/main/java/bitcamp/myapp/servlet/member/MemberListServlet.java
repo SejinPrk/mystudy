@@ -2,7 +2,9 @@ package bitcamp.myapp.servlet.member;
 
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.dao.mysql.BoardDaoImpl;
+import bitcamp.myapp.dao.mysql.MemberDaoImpl;
 import bitcamp.myapp.vo.Board;
+import bitcamp.myapp.vo.Member;
 import bitcamp.util.DBConnectionPool;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,15 +15,15 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet("/board/list")
+@WebServlet("/member/list")
 public class MemberListServlet extends GenericServlet {
 
-  private BoardDao boardDao;
+  private MemberDao memberDao;
 
   public MemberListServlet() {
     DBConnectionPool connectionPool = new DBConnectionPool(
         "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
-    this.boardDao = new BoardDaoImpl(connectionPool, 1);
+    this.memberDao = new MemberDaoImpl(connectionPool);
   }
 
   @Override
@@ -38,27 +40,28 @@ public class MemberListServlet extends GenericServlet {
     out.println("  <title>비트캠프 데브옵스 5기</title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>게시글</h1>");
+    out.println("<h1>회원</h1>");
 
-    out.println("<a href='/board/form.html'>새 글</a>");
+    out.println("<a href='/member/form.html'>새 글</a>");
 
     try {
       out.println("<table border='1'>");
       out.println("    <thead>");
-      out.println("    <tr> <th>번호</th> <th>제목</th> <th>작성자</th> <th>등록일</th> <th>첨부파일</th> </tr>");
+      out.println("    <tr> <th>번호</th> <th>이름</th> <th>이메일</th> <th>가입일</th> <th>첨부파일</th> </tr>");
       out.println("    </thead>");
       out.println("    <tbody>");
 
-      List<Board> list = boardDao.findAll();
+      List<Member> list = memberDao.findAll();
 
-      for (Board board : list) {
+      for (Member member : list) {
         out.printf(
-            "<tr> <td>%d</td> <td><a href='/board/view?no=%1$d'>%s</a></td> <td>%s</td> <td>%s</td> <td>%d</td> </tr>\n",
-            board.getNo(),
-            board.getTitle(),
-            board.getWriter().getName(),
-            board.getCreatedDate(),
-            board.getFileCount());
+            "<tr> <td>%d</td> <td><a href='/member/view?no=%1$d'>%s</a></td> <td>%s</td> <td>%s</td> <td>%d</td> </tr>\n",
+            member.getNo(),
+            member.getName(),
+            member.getEmail(),
+            member.getWriter().getName(),
+            member.getCreatedDate(),
+            member.getFileCount());
       }
 
       out.println("    </tbody>");

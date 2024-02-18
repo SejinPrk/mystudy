@@ -63,7 +63,7 @@ public class MemberFileDeleteServlet extends HttpServlet {
         return;
       }
 
-      Member writer = memberDao.findBy(file.getBoardNo()).getWriter();
+      Member writer = memberDao.findBy(file.getMemberNo()).getWriter();
       if (writer.getNo() != loginUser.getNo()) {
         out.println("<p>권한이 없습니다.</p>");
         out.println("</body>");

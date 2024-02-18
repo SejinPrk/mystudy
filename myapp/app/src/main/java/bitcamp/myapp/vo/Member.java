@@ -11,6 +11,7 @@ public class Member implements Serializable {
   private String email;
   private String name;
   private String password;
+  private Member writer;
   private Date createdDate;
 
   @Override
@@ -20,8 +21,17 @@ public class Member implements Serializable {
         ", email='" + email + '\'' +
         ", name='" + name + '\'' +
         ", password='" + password + '\'' +
+        ", writer=" + writer +
         ", createdDate=" + createdDate +
         '}';
+  }
+
+  public Member getWriter() {
+    return writer;
+  }
+
+  public void setWriter(Member writer) {
+    this.writer = writer;
   }
 
   public int getNo() {

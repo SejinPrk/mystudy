@@ -23,7 +23,7 @@ public class MemberDeleteServlet extends HttpServlet {
   public MemberDeleteServlet() {
     DBConnectionPool connectionPool = new DBConnectionPool(
         "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
-    this.memberDao = new MemberDaoImpl(connectionPool, 1);
+    this.memberDao = new MemberDaoImpl(connectionPool);
     this.attachedFileDao = new AttachedFileDaoImpl(connectionPool);
   }
 
@@ -41,7 +41,7 @@ public class MemberDeleteServlet extends HttpServlet {
     out.println("  <title>비트캠프 데브옵스 5기</title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>게시글</h1>");
+    out.println("<h1>회원</h1>");
 
     Member loginUser = (Member) request.getSession().getAttribute("loginUser");
     if (loginUser == null) {
