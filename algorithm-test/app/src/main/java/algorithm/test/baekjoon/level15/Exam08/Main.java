@@ -1,17 +1,22 @@
 package algorithm.test.baekjoon.level15.Exam08;
-
+// 11478 서로 다른 부분 문자열의 개수
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
-import java.util.StringTokenizer;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Main {
   public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    StringTokenizer st = new StringTokenizer(br.readLine());
-    int n = Integer.parseInt(st.nextToken());
-    int m = Integer.parseInt(st.nextToken());
-    HashMap<String, Integer> hm = new HashMap<>();
+    String str = br.readLine();
+    Set<String> set = new HashSet<>();
+
+    for (int i = 0; i < str.length(); i++) {
+      for (int j = i+1; j <= str.length(); j++) {
+        set.add(str.substring(i, j));
+      }
+    }
+    System.out.println(set.size());
   }
 }
