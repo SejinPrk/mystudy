@@ -9,17 +9,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/about/view")
-public class AboutServlet extends HttpServlet {
-  public AboutServlet() {
+@WebServlet("/help/view")
+public class HelpServlet extends HttpServlet {
+  public HelpServlet() {
     DBConnectionPool connectionPool = new DBConnectionPool(
         "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
   }
+}
+@Override
   protected void action(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
-    out.println("비트캠프 네이버 데브옵스 과정 5기");
-    out.println("MyAPP ver. 49");
-    out.println("모든 권리는 비트캠프에 있습니다.");
+    try {
+      out.println("도움말입니다.");
+    } catch (Exception e) {
+        out.println("<p>조회 오류!</p>");
+        out.println("<pre>");
+        e.printStackTrace(out);
+        out.println("</pre>");
+    }
   }
-}
+
