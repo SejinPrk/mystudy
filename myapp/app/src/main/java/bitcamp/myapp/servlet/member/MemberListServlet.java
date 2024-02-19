@@ -27,26 +27,27 @@ public class MemberListServlet extends HttpServlet {
   @Override
   protected void service(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-      response.setContentType("text/html;charset=UTF-8");
-      PrintWriter out = response.getWriter();
 
-      out.println("<!DOCTYPE html>");
-      out.println("<html lang='en'>");
-      out.println("<head>");
-      out.println("  <meta charset='UTF-8'>");
-      out.println("  <title>비트캠프 데브옵스 5기</title>");
-      out.println("</head>");
-      out.println("<body>");
-      out.println("<h1>회원</h1>");
+    response.setContentType("text/html;charset=UTF-8");
+    PrintWriter out = response.getWriter();
 
-      out.println("<a href='/member/form.html'>새 회원</a>");
+    out.println("<!DOCTYPE html>");
+    out.println("<html lang='en'>");
+    out.println("<head>");
+    out.println("  <meta charset='UTF-8'>");
+    out.println("  <title>비트캠프 데브옵스 5기</title>");
+    out.println("</head>");
+    out.println("<body>");
+    out.println("<h1>회원</h1>");
+
+    out.println("<a href='/member/form.html'>새 회원</a>");
 
     try {
       out.println("<table border='1'>");
-      out.println("    <thread>");
+      out.println("    <thead>");
       out.println("    <tr> <th>번호</th> <th>이름</th> <th>이메일</th> <th>가입일</th> </tr>");
-      out.println("    </thread>");
-      out.println("    <body>");
+      out.println("    </thead>");
+      out.println("    <tbody>");
 
       List<Member> list = memberDao.findAll();
 
@@ -58,7 +59,7 @@ public class MemberListServlet extends HttpServlet {
             member.getEmail(),
             member.getCreatedDate());
       }
-      out.println("    </body>");
+      out.println("    </tbody>");
       out.println("</table>");
 
     } catch (Exception e) {

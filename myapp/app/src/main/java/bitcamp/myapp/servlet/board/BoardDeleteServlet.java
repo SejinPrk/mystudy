@@ -72,7 +72,7 @@ public class BoardDeleteServlet extends HttpServlet {
       boardDao.delete(no);
 
       out.println("<script>");
-      out.println("  location.href ='/board/list'");
+      out.println("  location.href = '/board/list'");
       out.println("</script>");
 
     } catch (Exception e) {

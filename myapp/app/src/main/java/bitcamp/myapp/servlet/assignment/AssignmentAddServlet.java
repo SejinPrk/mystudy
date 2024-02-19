@@ -1,16 +1,18 @@
 package bitcamp.myapp.servlet.assignment;
 
+import bitcamp.menu.AbstractMenuHandler;
 import bitcamp.myapp.dao.AssignmentDao;
 import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.mysql.AssignmentDaoImpl;
 import bitcamp.myapp.dao.mysql.AttachedFileDaoImpl;
+import bitcamp.myapp.dao.mysql.BoardDaoImpl;
 import bitcamp.myapp.vo.Assignment;
-import bitcamp.myapp.vo.AttachedFile;
 import bitcamp.util.DBConnectionPool;
+import bitcamp.util.Prompt;
 import bitcamp.util.TransactionManager;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,18 +26,20 @@ public class AssignmentAddServlet extends HttpServlet {
   private AssignmentDao assignmentDao;
   private AttachedFileDao attachedFileDao;
 
-  public AssignmentAddServlet() {
+
+
+  public AssignmentAddServlet(TransactionManager txManager, AssignmentDao assignmentDao) {
     DBConnectionPool connectionPool = new DBConnectionPool(
         "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
     txManager = new TransactionManager(connectionPool);
     this.assignmentDao = new AssignmentDaoImpl(connectionPool);
     this.attachedFileDao = new AttachedFileDaoImpl(connectionPool);
+
   }
 
   @Override
   protected void service(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
 
@@ -46,46 +50,24 @@ public class AssignmentAddServlet extends HttpServlet {
     out.println("  <title>비트캠프 데브옵스 5기</title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>게시글</h1>");
-
-
-    Assignment assignment = new Assignment();
-    assignment.setTitle(request.getParameter("title"));
-    assignment.setContent(request.getParameter("content"));
-
-    ArrayList<AttachedFile> attachedFiles = new ArrayList<>();
-    String[] files = request.getParameterValues("files");
-    if (files != null) {
-      for (String file : files) {
-        if (file.length() == 0) {
-          continue;
-        }
-        attachedFiles.add(new AttachedFile().filePath(file));
-      }
-    }
+    out.println("<h1>과제</h1>");
 
     try {
+      Assignment assignment = new Assignment();
+      assignment.setTitle(request.getParameter("title"));
+      assignment.setContent(request.getParameter("content"));
+      assignment.setDeadline(Date.valueOf(request.getParameter(" "));
+
       txManager.startTransaction();
 
       assignmentDao.add(assignment);
-
-//      if (attachedFiles.size() > 0) {
-//        for (AttachedFile attachedFile : attachedFiles) {
-//          attachedFile.setAssignmentNo(assignment.getNo());
-//        }
-//        attachedFileDao.addAll(attachedFiles);
-//      }
-
       txManager.commit();
+      out.println("<p>게시글을 등록했습니다.</p>");
 
-      out.println("<p>과제를 등록했습니다.</p>");
-
-    } catch (Exception e) {
-      try {
-        txManager.rollback();
-      } catch (Exception e2) {
-      }
-      out.println("<p>과제 등록 오류!</p>");
+      //txManager.rollback();
+    }
+      } catch (Exception e) {
+      out.println("<p>게시글 등록 오류!</p>");
       out.println("<pre>");
       e.printStackTrace(out);
       out.println("</pre>");
@@ -94,4 +76,3 @@ public class AssignmentAddServlet extends HttpServlet {
     out.println("</body>");
     out.println("</html>");
   }
-}

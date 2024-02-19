@@ -57,7 +57,7 @@ public class BoardUpdateServlet extends HttpServlet {
       return;
     }
 
-    try{
+    try {
       int no = Integer.parseInt(request.getParameter("no"));
 
       Board board = boardDao.findBy(no);
@@ -66,21 +66,21 @@ public class BoardUpdateServlet extends HttpServlet {
         out.println("</body>");
         out.println("</html>");
         return;
-    }
-
-    board.setTitle(request.getParameter("title"));
-    board.setContent(request.getParameter("content"));
-
-    ArrayList<AttachedFile> attachedFiles = new ArrayList<>();
-    String[] files = request.getParameterValues("files");
-    if (files != null) {
-      for (String file : files) {
-        if (file.length() == 0) {
-          continue;
-        }
-        attachedFiles.add(new AttachedFile().filePath(file));
       }
-    }
+
+      board.setTitle(request.getParameter("title"));
+      board.setContent(request.getParameter("content"));
+
+      ArrayList<AttachedFile> attachedFiles = new ArrayList<>();
+      String[] files = request.getParameterValues("files");
+      if (files != null) {
+        for (String file : files) {
+          if (file.length() == 0) {
+            continue;
+          }
+          attachedFiles.add(new AttachedFile().filePath(file));
+        }
+      }
 
       txManager.startTransaction();
 
@@ -102,7 +102,7 @@ public class BoardUpdateServlet extends HttpServlet {
         txManager.rollback();
       } catch (Exception e2) {
       }
-      out.println("<p>게시글 변경 오류!</p>");
+      out.println("<p>게시글 등록 오류!</p>");
       out.println("<pre>");
       e.printStackTrace(out);
       out.println("</pre>");

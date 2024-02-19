@@ -62,7 +62,7 @@ public class BoardModifyHandler extends AbstractMenuHandler {
         if (filepath.length() == 0) {
           break;
         }
-        //newFiles.add(new AttachedFile().filePath(filepath).boardNo(no));
+        newFiles.add(new AttachedFile().filePath(filepath).boardNo(no));
       }
 
       boardDao.update(board);

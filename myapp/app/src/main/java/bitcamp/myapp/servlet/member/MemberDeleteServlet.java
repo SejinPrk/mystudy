@@ -45,7 +45,7 @@ public class MemberDeleteServlet extends HttpServlet {
         out.println("<p>회원 번호가 유효하지 않습니다.</p>");
       } else {
         out.println("<p>회원을 삭제했습니다.</p>");
-    }
+      }
 
     } catch (Exception e) {
       out.println("<p>삭제 오류!</p>");

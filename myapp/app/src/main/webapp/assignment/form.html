@@ -9,15 +9,15 @@
 
 <h2>과제</h2>
 
-<form action="/assignment/add">
+<form action="/member/add">
   <div>
-    제목: <input name="title" type="text">
+    과제: <input name="title" type="text">
   </div>
   <div>
-    내용: <textarea name="content"></textarea>
+    내용: <input name="content" type="text">
   </div>
   <div>
-    첨부파일: <input multiple name="files" type="file">
+    제출 마감일?(예: 2023-12-25): <input name="deadline" type="date">
   </div>
   <div>
     <button>등록</button>

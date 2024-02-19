@@ -50,18 +50,23 @@ public class MemberViewServlet extends HttpServlet {
         return;
       }
 
-      out.println("<form action='/board/update'>");
+      out.println("<form action='/member/update'>");
       out.println("<div>");
-      out.printf("  번호: <input readonly name='name' type='text' value='%s'>\n", member.getNo());
+      out.printf("  번호: <input readonly name='no' type='text' value='%d'>\n", member.getNo());
+      out.println("</div>");
+      out.println("<div>");
+      out.printf("  이메일: <input name='email' type='text' value='%s'>\n", member.getEmail());
       out.println("</div>");
       out.println("<div>");
       out.printf("  이름: <input name='name' type='text' value='%s'>\n", member.getName());
       out.println("</div>");
       out.println("<div>");
-      out.printf("  이메일: <textarea name='email'>%s</textarea>\n", member.getEmail());
+      out.println("  암호: <input name='password' type='password'>");
       out.println("</div>");
       out.println("<div>");
-      out.printf("  작성자: <input readonly type='text' value='%s'>\n", member.getWriter().getName());
+      out.printf(
+          "  가입일: <input readonly type='text' value='%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS'>\n",
+          member.getCreatedDate());
       out.println("</div>");
       out.println("<div>");
       out.println("  <button>변경</button>");

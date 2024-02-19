@@ -3,7 +3,6 @@ package bitcamp.myapp.dao.mysql;
 import bitcamp.myapp.dao.AssignmentDao;
 import bitcamp.myapp.dao.DaoException;
 import bitcamp.myapp.vo.Assignment;
-import bitcamp.myapp.vo.Member;
 import bitcamp.util.DBConnectionPool;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -54,84 +53,47 @@ public class AssignmentDaoImpl implements AssignmentDao {
   public List<Assignment> findAll() {
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
-            "select\n"
-                + "  a.assignment_no,\n"
-                + "  a.title,\n"
-                + "  a.deadline,\n"
-                + "  count(file_no) file_count,\n"
-                + "  m.member_no,\n"
-                + "  m.name\n"
-                + "from\n"
-                + "  assignments a left outer join assignment_files af on a.assignment_no=af.assignment_no\n"
-                + "  inner join members m on a.writer=m.member_no\n"
-                + "where\n"
-                + "  a.category=?\n"
-                + "group by\n"
-                + "  assignment_no\n"
-                + "order by\n"
-                + "  assignment_no desc")) {
+            "select assignment_no, title, deadline from assignments order by assignment_no desc");
+        ResultSet rs = pstmt.executeQuery()) {
 
-      try (ResultSet rs = pstmt.executeQuery()) {
+      ArrayList<Assignment> list = new ArrayList<>();
 
-        ArrayList<Assignment> list = new ArrayList<>();
+      while (rs.next()) {
+        Assignment assignment = new Assignment();
+        assignment.setNo(rs.getInt("assignment_no"));
+        assignment.setTitle(rs.getString("title"));
+        assignment.setDeadline(rs.getDate("deadline"));
 
-        while (rs.next()) {
-          Assignment assignment = new Assignment();
-          assignment.setNo(rs.getInt("assignment_no"));
-          assignment.setTitle(rs.getString("title"));
-          assignment.setDeadline(rs.getDate("deadline"));
-         // assignment.setFileCount(rs.getInt("file_count"));
-
-          Member writer = new Member();
-          writer.setNo(rs.getInt("member_no"));
-          writer.setName(rs.getString("name"));
-
-          assignment.setWriter(writer);
-
-          list.add(assignment);
-        }
-        return list;
+        list.add(assignment);
       }
+      return list;
 
     } catch (Exception e) {
       throw new DaoException("데이터 가져오기 오류", e);
     }
   }
+
   @Override
   public Assignment findBy(int no) {
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
-            "select"
-                + "  a.assignment_no,\n"
-                + "  a.title,\n"
-                + "  a.content,"
-                + "  a.deadline,\n"
-                + "  m.member_no,\n"
-                + "  m.name\n"
-                + " from "
-                + "  assignments a inner join members m on a.writer=m.member_no\n"
-                + " where assignment_no=?")) {
+            "select * from assignments where assignment_no=?")) {
 
       pstmt.setInt(1, no);
 
       try (ResultSet rs = pstmt.executeQuery()) {
+
         if (rs.next()) {
           Assignment assignment = new Assignment();
           assignment.setNo(rs.getInt("assignment_no"));
           assignment.setTitle(rs.getString("title"));
           assignment.setContent(rs.getString("content"));
           assignment.setDeadline(rs.getDate("deadline"));
-
-          Member writer = new Member();
-          writer.setNo(rs.getInt("member_no"));
-          writer.setName(rs.getString("name"));
-
-          assignment.setWriter(writer);
-
           return assignment;
         }
         return null;
       }
+
     } catch (Exception e) {
       throw new DaoException("데이터 가져오기 오류", e);
     }
