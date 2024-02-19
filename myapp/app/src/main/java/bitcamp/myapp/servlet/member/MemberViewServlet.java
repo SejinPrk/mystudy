@@ -64,9 +64,7 @@ public class MemberViewServlet extends HttpServlet {
       out.println("  암호: <input name='password' type='password'>");
       out.println("</div>");
       out.println("<div>");
-      out.printf(
-          "  가입일: <input readonly type='text' value='%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS'>\n",
-          member.getCreatedDate());
+      out.printf("  가입일: <input readonly type='text' value='%s'>\n", member.getCreatedDate());
       out.println("</div>");
       out.println("<div>");
       out.println("  <button>변경</button>");

@@ -1,4 +1,3 @@
-
 package bitcamp.myapp.servlet.assignment;
 
 import bitcamp.myapp.dao.AssignmentDao;
@@ -19,7 +18,7 @@ public class AssignmentUpdateServlet extends HttpServlet {
 
   private AssignmentDao assignmentDao;
 
-  public AssignmentUpdateServlet(AssignmentDao assignmentDao) {
+  public AssignmentUpdateServlet() {
     DBConnectionPool connectionPool = new DBConnectionPool(
         "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
     this.assignmentDao = new AssignmentDaoImpl(connectionPool);
@@ -55,7 +54,7 @@ public class AssignmentUpdateServlet extends HttpServlet {
       Assignment assignment = new Assignment();
       assignment.setNo(old.getNo());
       assignment.setTitle(request.getParameter("title"));
-      assignment.setContent(request.getParameter("content "));
+      assignment.setContent(request.getParameter("content"));
       assignment.setDeadline(Date.valueOf(request.getParameter("deadline")));
 
       assignmentDao.update(assignment);
@@ -70,5 +69,6 @@ public class AssignmentUpdateServlet extends HttpServlet {
 
     out.println("</body>");
     out.println("</html>");
+
   }
 }

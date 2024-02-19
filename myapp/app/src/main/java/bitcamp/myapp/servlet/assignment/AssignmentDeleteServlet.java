@@ -1,9 +1,7 @@
 package bitcamp.myapp.servlet.assignment;
 
 import bitcamp.myapp.dao.AssignmentDao;
-import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.mysql.AssignmentDaoImpl;
-import bitcamp.myapp.dao.mysql.AttachedFileDaoImpl;
 import bitcamp.util.DBConnectionPool;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,14 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 public class AssignmentDeleteServlet extends HttpServlet {
 
   private AssignmentDao assignmentDao;
-  private AttachedFileDao attachedFileDao;
 
-  public AssignmentDeleteServlet(AssignmentDao assignmentDao) {
+  public AssignmentDeleteServlet() {
     DBConnectionPool connectionPool = new DBConnectionPool(
         "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
     this.assignmentDao = new AssignmentDaoImpl(connectionPool);
-    this.attachedFileDao = new AttachedFileDaoImpl(connectionPool);
   }
+
   @Override
   protected void service(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
@@ -44,7 +41,7 @@ public class AssignmentDeleteServlet extends HttpServlet {
     try {
       int no = Integer.parseInt(request.getParameter("no"));
 
-      if (assignmentDao.delete(no) == -1) {
+      if (assignmentDao.delete(no) == 0) {
         out.println("<p>과제 번호가 유효하지 않습니다.</p>");
       } else {
         out.println("<p>과제를 삭제했습니다.</p>");
