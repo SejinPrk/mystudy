@@ -3,7 +3,6 @@ package app.myapp.handler.subscription;
 import app.menu.AbstractMenuHandler;
 import app.myapp.dao.SubscriptionDao;
 import app.myapp.vo.Subscription;
-import app.util.Prompt;
 import java.util.List;
 
 public class SubscriptionListHandler extends AbstractMenuHandler {

@@ -8,7 +8,6 @@ public class Member implements Serializable {
   private static final long serialVersionUID = 100L;
 
   private int no;
-  private String id;
   private String password;
   private String name;
   private String tel;
@@ -23,12 +22,11 @@ public class Member implements Serializable {
   public String toString() {
     return "Member{" +
         "no=" + no +
-        "id=" + id + '\'' +
-        ", password='" + password + '\'' +
-        ", name='" + name + '\'' +
-        ", tel='" + tel + '\'' +
         ", email='" + email + '\'' +
+        ", name='" + name + '\'' +
+        ", password='" + password + '\'' +
         ", createdDate=" + createdDate + '\'' +
+        ", tel='" + tel + '\'' +
         ", creditNo=" + creditNo + '\'' +
         ", creditDate=" + creditDate + '\'' +
         ", notification=" + notification +
@@ -43,20 +41,12 @@ public class Member implements Serializable {
     this.no = no;
   }
 
-  public String getId() {
-    return id;
+  public String getEmail() {
+    return email;
   }
 
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
+  public void setEmail(String email) {
+    this.email = email;
   }
 
   public String getName() {
@@ -67,6 +57,15 @@ public class Member implements Serializable {
     this.name = name;
   }
 
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+
   public String getTel() {
     return tel;
   }
@@ -75,15 +74,7 @@ public class Member implements Serializable {
     this.tel = tel;
   }
 
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  public Date getCreatedDate() {
+  public java.sql.Date getCreatedDate() {
     return createdDate;
   }
 

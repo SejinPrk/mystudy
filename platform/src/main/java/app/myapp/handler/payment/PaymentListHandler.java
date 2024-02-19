@@ -3,7 +3,6 @@ package app.myapp.handler.payment;
 import app.menu.AbstractMenuHandler;
 import app.myapp.dao.PaymentDao;
 import app.myapp.vo.Payment;
-import app.util.Prompt;
 import java.util.List;
 
 public class PaymentListHandler extends AbstractMenuHandler {

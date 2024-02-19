@@ -2,7 +2,6 @@ package app.myapp.handler.payment;
 
 import app.menu.AbstractMenuHandler;
 import app.myapp.dao.PaymentDao;
-import app.util.Prompt;
 
 public class PaymentDeleteHandler extends AbstractMenuHandler {
 

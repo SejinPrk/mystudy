@@ -2,7 +2,6 @@ package app.myapp.handler.notification;
 
 import app.menu.AbstractMenuHandler;
 import app.myapp.dao.NotificationDao;
-import app.util.Prompt;
 
 public class NotificationDeleteHandler extends AbstractMenuHandler {
 

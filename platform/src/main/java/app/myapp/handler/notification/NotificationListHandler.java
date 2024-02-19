@@ -3,7 +3,6 @@ package app.myapp.handler.notification;
 import app.menu.AbstractMenuHandler;
 import app.myapp.dao.NotificationDao;
 import app.myapp.vo.Notification;
-import app.util.Prompt;
 import java.util.List;
 
 public class NotificationListHandler extends AbstractMenuHandler {

@@ -8,6 +8,7 @@ public class Platform implements Serializable {
   private static final long serialVersionUID = 100L;
 
   private int no;
+  private String category;
   private String name;
   private int price;
   private String term;
@@ -16,11 +17,20 @@ public class Platform implements Serializable {
   @Override
   public String toString() {
     return "Platform{" +
-        "no=" + no +
+        "category=" + category +
+        ", no=" + no +
         ", name='" + name + '\'' +
         ", price='" + price + '\'' +
         ", term=" + term +
         '}';
+  }
+
+  public String getCategory() {
+    return category;
+  }
+
+  public void setCategory(String category) {
+    this.category = category;
   }
 
   public int getNo() {

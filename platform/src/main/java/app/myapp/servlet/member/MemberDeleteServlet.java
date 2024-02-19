@@ -1,6 +1,6 @@
-package bitcamp.myapp.servlet.assignment;
+package app.myapp.servlet.member;
 
-import bitcamp.myapp.dao.AssignmentDao;
+import app.myapp.dao.MemberDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -9,13 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/assignment/delete")
-public class AssignmentDeleteServlet extends HttpServlet {
+@WebServlet("/member/delete")
+public class MemberDeleteServlet extends HttpServlet {
 
-  private AssignmentDao assignmentDao;
+  private MemberDao memberDao;
+
   @Override
   public void init() {
-    assignmentDao = (AssignmentDao) this.getServletContext().getAttribute("assignmentDao");
+    memberDao =(MemberDao) this.getServletContext().getAttribute("memberDao");
   }
 
   @Override
@@ -29,18 +30,18 @@ public class AssignmentDeleteServlet extends HttpServlet {
     out.println("<html lang='en'>");
     out.println("<head>");
     out.println("  <meta charset='UTF-8'>");
-    out.println("  <title>비트캠프 데브옵스 5기</title>");
+    out.println("  <title>개인과제</title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>과제</h1>");
+    out.println("<h1>회원</h1>");
 
     try {
       int no = Integer.parseInt(request.getParameter("no"));
 
-      if (assignmentDao.delete(no) == 0) {
-        out.println("<p>과제 번호가 유효하지 않습니다.</p>");
+      if (memberDao.delete(no) == -1) {
+        out.println("<p>회원 번호가 유효하지 않습니다.</p>");
       } else {
-        out.println("<p>과제를 삭제했습니다.</p>");
+        out.println("<p>삭제했습니다.</p>");
       }
 
     } catch (Exception e) {

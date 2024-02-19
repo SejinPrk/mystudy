@@ -1,6 +1,7 @@
-package bitcamp.myapp.servlet.assignment;
+package app.myapp.servlet.platform;
 
-import bitcamp.myapp.dao.AssignmentDao;
+import app.myapp.dao.PlatformDao;
+import app.myapp.vo.Platform;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -9,13 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/assignment/delete")
-public class AssignmentDeleteServlet extends HttpServlet {
+@WebServlet("/platform/add")
+public class PlatformViewServlet extends HttpServlet {
 
-  private AssignmentDao assignmentDao;
+  private PlatformDao platformDao;
+
   @Override
   public void init() {
-    assignmentDao = (AssignmentDao) this.getServletContext().getAttribute("assignmentDao");
+    platformDao = (PlatformDao) this.getServletContext().getAttribute("platformDao");
   }
 
   @Override
@@ -29,22 +31,23 @@ public class AssignmentDeleteServlet extends HttpServlet {
     out.println("<html lang='en'>");
     out.println("<head>");
     out.println("  <meta charset='UTF-8'>");
-    out.println("  <title>비트캠프 데브옵스 5기</title>");
+    out.println("  <title>개인과제</title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>과제</h1>");
+    out.println("<h1>플랫폼</h1>");
 
     try {
-      int no = Integer.parseInt(request.getParameter("no"));
+      Platform platform = new Platform();
+      platform.setName(request.getParameter("name"));
+      platform.setPrice(request.getParameter("price"));
+      platform.setTerm(request.getParameter("term"));
 
-      if (assignmentDao.delete(no) == 0) {
-        out.println("<p>과제 번호가 유효하지 않습니다.</p>");
-      } else {
-        out.println("<p>과제를 삭제했습니다.</p>");
-      }
+      platformDao.add(platform);
+
+      out.println("<p>등록했습니다.</p>");
 
     } catch (Exception e) {
-      out.println("<p>삭제 오류!</p>");
+      out.println("<p>등록 오류!</p>");
       out.println("<pre>");
       e.printStackTrace(out);
       out.println("</pre>");
