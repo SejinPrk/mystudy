@@ -10,6 +10,7 @@ public class ContextLoaderListener implements ServletContextListener {
   @Override
   public void contextInitialized(ServletContextEvent sce) {
     System.out.println("웹애플리케이션 자원 준비!");
+    // DB 커넥션, DAO, 트랜잭션 관리자 생성
   }
 
   @Override
