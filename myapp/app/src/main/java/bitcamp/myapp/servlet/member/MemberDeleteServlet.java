@@ -1,10 +1,7 @@
 package bitcamp.myapp.servlet.member;
 
-import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.MemberDao;
-import bitcamp.myapp.dao.mysql.AttachedFileDaoImpl;
 import bitcamp.myapp.dao.mysql.MemberDaoImpl;
-import bitcamp.myapp.vo.Member;
 import bitcamp.util.DBConnectionPool;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,13 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 public class MemberDeleteServlet extends HttpServlet {
 
   private MemberDao memberDao;
-  private AttachedFileDao attachedFileDao;
 
   public MemberDeleteServlet() {
     DBConnectionPool connectionPool = new DBConnectionPool(
         "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
     this.memberDao = new MemberDaoImpl(connectionPool);
-    this.attachedFileDao = new AttachedFileDaoImpl(connectionPool);
   }
 
   @Override
@@ -43,36 +38,14 @@ public class MemberDeleteServlet extends HttpServlet {
     out.println("<body>");
     out.println("<h1>회원</h1>");
 
-    Member loginUser = (Member) request.getSession().getAttribute("loginUser");
-    if (loginUser == null) {
-      out.println("<p>로그인하시기 바랍니다!</p>");
-      out.println("</body>");
-      out.println("</html>");
-      return;
-    }
-
     try {
       int no = Integer.parseInt(request.getParameter("no"));
 
-      Member member = memberDao.findBy(no);
-      if (member == null) {
+      if (memberDao.delete(no) == -1) {
         out.println("<p>회원 번호가 유효하지 않습니다.</p>");
-        out.println("</body>");
-        out.println("</html>");
-        return;
-      } else if (member.getWriter().getNo() != loginUser.getNo()) {
-        out.println("<p>권한이 없습니다.</p>");
-        out.println("</body>");
-        out.println("</html>");
-        return;
-      }
-
-      attachedFileDao.deleteAll(no);
-      memberDao.delete(no);
-
-      out.println("<script>");
-      out.println("  location.href ='/member/list'");
-      out.println("</script>");
+      } else {
+        out.println("<p>회원을 삭제했습니다.</p>");
+    }
 
     } catch (Exception e) {
       out.println("<p>삭제 오류!</p>");

@@ -6,7 +6,6 @@ import bitcamp.myapp.dao.mysql.AssignmentDaoImpl;
 import bitcamp.myapp.dao.mysql.AttachedFileDaoImpl;
 import bitcamp.myapp.vo.Assignment;
 import bitcamp.myapp.vo.AttachedFile;
-import bitcamp.myapp.vo.Member;
 import bitcamp.util.DBConnectionPool;
 import bitcamp.util.TransactionManager;
 import java.io.IOException;
@@ -49,13 +48,6 @@ public class AssignmentAddServlet extends HttpServlet {
     out.println("<body>");
     out.println("<h1>게시글</h1>");
 
-    Member loginUser = (Member) request.getSession().getAttribute("loginUser");
-    if (loginUser == null) {
-      out.println("<p>로그인하시기 바랍니다!</p>");
-      out.println("</body>");
-      out.println("</html>");
-      return;
-    }
 
     Assignment assignment = new Assignment();
     assignment.setTitle(request.getParameter("title"));
@@ -77,12 +69,12 @@ public class AssignmentAddServlet extends HttpServlet {
 
       assignmentDao.add(assignment);
 
-      if (attachedFiles.size() > 0) {
-        for (AttachedFile attachedFile : attachedFiles) {
-          attachedFile.setAssignmentNo(assignment.getNo());
-        }
-        attachedFileDao.addAll(attachedFiles);
-      }
+//      if (attachedFiles.size() > 0) {
+//        for (AttachedFile attachedFile : attachedFiles) {
+//          attachedFile.setAssignmentNo(assignment.getNo());
+//        }
+//        attachedFileDao.addAll(attachedFiles);
+//      }
 
       txManager.commit();
 

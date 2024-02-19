@@ -1,19 +1,12 @@
 package bitcamp.myapp.servlet.member;
 
-import bitcamp.myapp.dao.AttachedFileDao;
-import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.dao.MemberDao;
-import bitcamp.myapp.dao.mysql.AttachedFileDaoImpl;
-import bitcamp.myapp.dao.mysql.BoardDaoImpl;
 import bitcamp.myapp.dao.mysql.MemberDaoImpl;
-import bitcamp.myapp.vo.AttachedFile;
-import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.DBConnectionPool;
 import bitcamp.util.TransactionManager;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,14 +18,12 @@ public class MemberUpdateServlet extends HttpServlet {
 
   private TransactionManager txManager;
   private MemberDao memberDao;
-  private AttachedFileDao attachedFileDao;
 
   public MemberUpdateServlet() {
     DBConnectionPool connectionPool = new DBConnectionPool(
         "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
     txManager = new TransactionManager(connectionPool);
     this.memberDao = new MemberDaoImpl(connectionPool);
-    this.attachedFileDao = new AttachedFileDaoImpl(connectionPool);
   }
 
   @Override
@@ -73,27 +64,10 @@ public class MemberUpdateServlet extends HttpServlet {
     member.setName(request.getParameter("name"));
     member.setEmail(request.getParameter("email"));
 
-    ArrayList<AttachedFile> attachedFiles = new ArrayList<>();
-    String[] files = request.getParameterValues("files");
-    if (files != null) {
-      for (String file : files) {
-        if (file.length() == 0) {
-          continue;
-        }
-        attachedFiles.add(new AttachedFile().filePath(file));
-      }
-    }
 
       txManager.startTransaction();
 
       memberDao.update(member);
-
-      if (attachedFiles.size() > 0) {
-        for (AttachedFile attachedFile : attachedFiles) {
-          attachedFile.setBoardNo(member.getNo());
-        }
-        attachedFileDao.addAll(attachedFiles);
-      }
 
       txManager.commit();
 

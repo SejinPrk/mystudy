@@ -80,7 +80,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
           assignment.setNo(rs.getInt("assignment_no"));
           assignment.setTitle(rs.getString("title"));
           assignment.setDeadline(rs.getDate("deadline"));
-          assignment.setFileCount(rs.getInt("file_count"));
+         // assignment.setFileCount(rs.getInt("file_count"));
 
           Member writer = new Member();
           writer.setNo(rs.getInt("member_no"));

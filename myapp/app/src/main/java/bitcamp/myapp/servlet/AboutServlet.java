@@ -1,6 +1,7 @@
 package bitcamp.myapp.servlet;
 
 import bitcamp.util.DBConnectionPool;
+import bitcamp.util.TransactionManager;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/about/view")
 public class AboutServlet extends HttpServlet {
+  private TransactionManager txManager;
   public AboutServlet() {
     DBConnectionPool connectionPool = new DBConnectionPool(
         "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");

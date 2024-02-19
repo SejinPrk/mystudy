@@ -44,13 +44,6 @@ public class AssignmentDeleteServlet extends HttpServlet {
     out.println("<body>");
     out.println("<h1>과제</h1>");
 
-    Member loginUser = (Member) request.getSession().getAttribute("loginUser");
-    if (loginUser == null) {
-      out.println("<p>로그인하시기 바랍니다!</p>");
-      out.println("</body>");
-      out.println("</html>");
-      return;
-    }
 
     try {
       int no = Integer.parseInt(request.getParameter("no"));
@@ -58,11 +51,6 @@ public class AssignmentDeleteServlet extends HttpServlet {
       Assignment assignment = assignmentDao.findBy(no);
       if (assignment == null) {
         out.println("<p>과제 번호가 유효하지 않습니다.</p>");
-        out.println("</body>");
-        out.println("</html>");
-        return;
-      } else if (assignment.getWriter().getNo() != loginUser.getNo()) {
-        out.println("<p>권한이 없습니다.</p>");
         out.println("</body>");
         out.println("</html>");
         return;

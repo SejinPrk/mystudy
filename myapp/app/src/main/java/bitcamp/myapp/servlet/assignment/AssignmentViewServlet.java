@@ -2,13 +2,10 @@ package bitcamp.myapp.servlet.assignment;
 
 import bitcamp.myapp.dao.AssignmentDao;
 import bitcamp.myapp.dao.AttachedFileDao;
-import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.dao.mysql.AssignmentDaoImpl;
 import bitcamp.myapp.dao.mysql.AttachedFileDaoImpl;
-import bitcamp.myapp.dao.mysql.BoardDaoImpl;
 import bitcamp.myapp.vo.Assignment;
 import bitcamp.myapp.vo.AttachedFile;
-import bitcamp.myapp.vo.Board;
 import bitcamp.util.DBConnectionPool;
 import java.io.IOException;
 import java.io.PrintWriter;

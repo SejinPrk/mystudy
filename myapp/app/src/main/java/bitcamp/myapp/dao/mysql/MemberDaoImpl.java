@@ -97,6 +97,7 @@ public class MemberDaoImpl implements MemberDao {
 
   @Override
   public int update(Member member) {
+    String sql = null;
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
             "update members set email=?, name=?, password=sha2(?,256) where member_no=?")) {

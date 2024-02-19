@@ -1,15 +1,11 @@
 package bitcamp.myapp.servlet.member;
 
-import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.MemberDao;
-import bitcamp.myapp.dao.mysql.AttachedFileDaoImpl;
 import bitcamp.myapp.dao.mysql.MemberDaoImpl;
-import bitcamp.myapp.vo.AttachedFile;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.DBConnectionPool;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,13 +16,11 @@ import javax.servlet.http.HttpServletResponse;
 public class MemberViewServlet extends HttpServlet {
 
   private MemberDao memberDao;
-  private AttachedFileDao attachedFileDao;
 
   public MemberViewServlet() {
     DBConnectionPool connectionPool = new DBConnectionPool(
         "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
     this.memberDao = new MemberDaoImpl(connectionPool);
-    this.attachedFileDao = new AttachedFileDaoImpl(connectionPool);
   }
 
   @Override
@@ -56,8 +50,6 @@ public class MemberViewServlet extends HttpServlet {
         return;
       }
 
-      List<AttachedFile> files = attachedFileDao.findAllByBoardNo(no);
-
       out.println("<form action='/board/update'>");
       out.println("<div>");
       out.printf("  번호: <input readonly name='name' type='text' value='%s'>\n", member.getNo());
@@ -70,16 +62,6 @@ public class MemberViewServlet extends HttpServlet {
       out.println("</div>");
       out.println("<div>");
       out.printf("  작성자: <input readonly type='text' value='%s'>\n", member.getWriter().getName());
-      out.println("</div>");
-      out.println("<div>");
-      out.println("  첨부파일: <input multiple name='files' type='file'>");
-      out.println("  <ul>");
-      for (AttachedFile file : files) {
-        out.printf("    <li>%s <a href='/member/file/delete?no=%d'>삭제</a></li>\n",
-            file.getFilePath(),
-            file.getNo());
-      }
-      out.println("  </ul>");
       out.println("</div>");
       out.println("<div>");
       out.println("  <button>변경</button>");

@@ -1,11 +1,8 @@
 package bitcamp.myapp.servlet.assignment;
 
 import bitcamp.myapp.dao.AssignmentDao;
-import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.dao.mysql.AssignmentDaoImpl;
-import bitcamp.myapp.dao.mysql.BoardDaoImpl;
 import bitcamp.myapp.vo.Assignment;
-import bitcamp.myapp.vo.Board;
 import bitcamp.util.DBConnectionPool;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -43,7 +40,7 @@ public class AssignmentListServlet extends GenericServlet {
     out.println("<body>");
     out.println("<h1>과제</h1>");
 
-    out.println("<a href='/assignment/form.html'>새 글</a>");
+    out.println("<a href='/assignment/form.html'>새 과제</a>");
 
     try {
       out.println("<table border='1'>");
@@ -56,12 +53,11 @@ public class AssignmentListServlet extends GenericServlet {
 
       for (Assignment assignment: list) {
         out.printf(
-            "<tr> <td>%d</td> <td><a href='/assignment/view?no=%1$d'>%s</a></td> <td>%s</td> <td>%s</td> <td>%d</td> </tr>\n",
+            "<tr> <td>%d</td> <td><a href='/assignment/view?no=%1$d'>%s</a></td> <td>%s</td> <td>%s</td> </tr>\n",
             assignment.getNo(),
             assignment.getTitle(),
             assignment.getWriter().getName(),
-            assignment.getDeadline(),
-            assignment.getFileCount());
+            assignment.getDeadline());
       }
 
       out.println("    </body>");

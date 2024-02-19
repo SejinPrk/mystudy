@@ -1,10 +1,7 @@
 package bitcamp.myapp.servlet.member;
 
-import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.MemberDao;
-import bitcamp.myapp.dao.mysql.AttachedFileDaoImpl;
 import bitcamp.myapp.dao.mysql.MemberDaoImpl;
-import bitcamp.myapp.vo.AttachedFile;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.DBConnectionPool;
 import bitcamp.util.TransactionManager;
@@ -22,14 +19,12 @@ public class MemberAddServlet extends HttpServlet {
 
   private TransactionManager txManager;
   private MemberDao memberDao;
-  private AttachedFileDao attachedFileDao;
 
   public MemberAddServlet() {
     DBConnectionPool connectionPool = new DBConnectionPool(
         "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
     txManager = new TransactionManager(connectionPool);
     this.memberDao = new MemberDaoImpl(connectionPool);
-    this.attachedFileDao = new AttachedFileDaoImpl(connectionPool);
   }
 
   @Override
@@ -48,41 +43,16 @@ public class MemberAddServlet extends HttpServlet {
     out.println("<body>");
     out.println("<h1>회원</h1>");
 
-    Member loginUser = (Member) request.getSession().getAttribute("loginUser");
-    if (loginUser == null) {
-      out.println("<p>로그인하시기 바랍니다!</p>");
-      out.println("</body>");
-      out.println("</html>");
-      return;
-    }
 
     Member member = new Member();
     member.setEmail(request.getParameter("email"));
     member.setName(request.getParameter("name"));
-    member.setWriter(loginUser);
 
-    ArrayList<AttachedFile> attachedFiles = new ArrayList<>();
-    String[] files = request.getParameterValues("files");
-    if (files != null) {
-      for (String file : files) {
-        if (file.length() == 0) {
-          continue;
-        }
-        attachedFiles.add(new AttachedFile().filePath(file));
-      }
-    }
 
     try {
       txManager.startTransaction();
 
       memberDao.add(member);
-
-      if (attachedFiles.size() > 0) {
-        for (AttachedFile attachedFile : attachedFiles) {
-          attachedFile.setBoardNo(member.getNo());
-        }
-        attachedFileDao.addAll(attachedFiles);
-      }
 
       txManager.commit();
 
