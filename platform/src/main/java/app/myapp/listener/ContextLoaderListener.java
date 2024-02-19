@@ -1,15 +1,14 @@
 package app.myapp.listener;
 
-import bitcamp.myapp.dao.AssignmentDao;
-import bitcamp.myapp.dao.AttachedFileDao;
-import bitcamp.myapp.dao.BoardDao;
-import bitcamp.myapp.dao.MemberDao;
-import bitcamp.myapp.dao.mysql.AssignmentDaoImpl;
-import bitcamp.myapp.dao.mysql.AttachedFileDaoImpl;
-import bitcamp.myapp.dao.mysql.BoardDaoImpl;
-import bitcamp.myapp.dao.mysql.MemberDaoImpl;
-import bitcamp.util.DBConnectionPool;
-import bitcamp.util.TransactionManager;
+import app.myapp.dao.PaymentDao;
+import app.myapp.dao.mysql.PaymentDaoImpl;
+import app.myapp.dao.mysql.PlatformDaoImpl;
+import app.myapp.dao.PlatformDao;
+import app.myapp.dao.PaymentDao;
+import app.myapp.dao.MemberDao;
+import app.myapp.dao.mysql.MemberDaoImpl;
+import app.util.DBConnectionPool;
+import app.util.TransactionManager;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -26,18 +25,16 @@ public class ContextLoaderListener implements ServletContextListener {
     DBConnectionPool connectionPool = new DBConnectionPool(
         "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
 
-    AssignmentDao assignmentDao = new AssignmentDaoImpl(connectionPool);
+    PlatformDao platformDao = new PlatformDaoImpl(connectionPool);
     MemberDao memberDao = new MemberDaoImpl(connectionPool);
-    BoardDao boardDao = new BoardDaoImpl(connectionPool);
-    AttachedFileDao attachedFileDao = new AttachedFileDaoImpl(connectionPool);
+    PaymentDao paymentDao = new PaymentDaoImpl(connectionPool);
     TransactionManager txManager = new TransactionManager(connectionPool);
 
     // 서블릿에서 사용할 수 있도록 웹 애플리케이션 저장소에 보관한다.
     ServletContext 웹애플리케이션저장소 = sce.getServletContext();
-    웹애플리케이션저장소.setAttribute("assignmentDao", assignmentDao);
+    웹애플리케이션저장소.setAttribute("platformDao", platformDao);
     웹애플리케이션저장소.setAttribute("memberDao", memberDao);
-    웹애플리케이션저장소.setAttribute("boardDao", boardDao);
-    웹애플리케이션저장소.setAttribute("attachedFileDao", attachedFileDao);
+    웹애플리케이션저장소.setAttribute("paymentDao", paymentDao);
     웹애플리케이션저장소.setAttribute("txManager", txManager);
   }
 }
