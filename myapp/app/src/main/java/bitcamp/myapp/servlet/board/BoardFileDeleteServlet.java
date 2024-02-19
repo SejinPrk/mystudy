@@ -24,7 +24,7 @@ public class BoardFileDeleteServlet extends HttpServlet {
   public BoardFileDeleteServlet() {
     DBConnectionPool connectionPool = new DBConnectionPool(
         "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
-    this.boardDao = new BoardDaoImpl(connectionPool, 1);
+    this.boardDao = new BoardDaoImpl(connectionPool);
     this.attachedFileDao = new AttachedFileDaoImpl(connectionPool);
   }
 

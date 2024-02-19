@@ -25,13 +25,15 @@ public class BoardViewServlet extends HttpServlet {
   public BoardViewServlet() {
     DBConnectionPool connectionPool = new DBConnectionPool(
         "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
-    this.boardDao = new BoardDaoImpl(connectionPool, 1);
+    this.boardDao = new BoardDaoImpl(connectionPool);
     this.attachedFileDao = new AttachedFileDaoImpl(connectionPool);
   }
 
   @Override
   protected void service(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+    int category = Integer.parseInt(request.getParameter("category"));
+    String title = category == 1 ? "게시글" : "가입인사";
 
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
@@ -43,14 +45,14 @@ public class BoardViewServlet extends HttpServlet {
     out.println("  <title>비트캠프 데브옵스 5기</title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>게시글</h1>");
+    out.printf("<h1>%s</h1>\n", title);
 
     try {
       int no = Integer.parseInt(request.getParameter("no"));
 
       Board board = boardDao.findBy(no);
       if (board == null) {
-        out.println("<p>게시글 번호가 유효하지 않습니다.</p>");
+        out.println("<p>번호가 유효하지 않습니다.</p>");
         out.println("</body>");
         out.println("</html>");
         return;
@@ -59,6 +61,7 @@ public class BoardViewServlet extends HttpServlet {
       List<AttachedFile> files = attachedFileDao.findAllByBoardNo(no);
 
       out.println("<form action='/board/update'>");
+
       out.println("<div>");
       out.printf("  번호: <input readonly name='no' type='text' value='%d'>\n", board.getNo());
       out.println("</div>");
