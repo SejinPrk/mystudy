@@ -18,10 +18,9 @@ public class AssignmentUpdateServlet extends HttpServlet {
 
   private AssignmentDao assignmentDao;
 
-  public AssignmentUpdateServlet() {
-    DBConnectionPool connectionPool = new DBConnectionPool(
-        "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
-    this.assignmentDao = new AssignmentDaoImpl(connectionPool);
+  @Override
+  public void init() {
+    assignmentDao = (AssignmentDao) this.getServletContext().getAttribute("assignmentDao");
   }
 
   @Override

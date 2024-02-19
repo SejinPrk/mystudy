@@ -5,7 +5,6 @@ import bitcamp.myapp.vo.Assignment;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,8 +18,7 @@ public class AssignmentAddServlet extends HttpServlet {
 
   @Override
   public void init() {
-    ServletContext 웹애플리케이션저장소 = this.getServletContext();
-    assignmentDao = (AssignmentDao) 웹애플리케이션저장소.getAttribute("assignmentDao");
+    assignmentDao = (AssignmentDao) this.getServletContext().getAttribute("assignmentDao");
   }
 
   @Override
