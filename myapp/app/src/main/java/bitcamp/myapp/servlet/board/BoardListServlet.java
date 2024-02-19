@@ -28,6 +28,9 @@ public class BoardListServlet extends GenericServlet {
   public void service(ServletRequest servletRequest, ServletResponse servletResponse)
       throws ServletException, IOException {
 
+    int category = Integer.parseInt(servletRequest.getParameter("category"));
+    String title = category == 1 ? "게시글" : "가입인사";
+
     servletResponse.setContentType("text/html;charset=UTF-8");
     PrintWriter out = servletResponse.getWriter();
 
@@ -38,7 +41,8 @@ public class BoardListServlet extends GenericServlet {
     out.println("  <title>비트캠프 데브옵스 5기</title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>게시글</h1>");
+    out.printf("<h1>%s</h1>\n", title);
+
 
     out.println("<a href='/board/form.html'>새 글</a>");
 
@@ -49,7 +53,7 @@ public class BoardListServlet extends GenericServlet {
       out.println("    </thead>");
       out.println("    <tbody>");
 
-      List<Board> list = boardDao.findAll();
+      List<Board> list = boardDao.findAll(category);
 
       for (Board board : list) {
         out.printf(
