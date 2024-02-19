@@ -25,7 +25,7 @@ public class ContextLoaderListener implements ServletContextListener {
 
     AssignmentDao assignmentDao = new AssignmentDaoImpl(connectionPool);
     MemberDao memberDao = new MemberDaoImpl(connectionPool);
-    BoardDao boardDao = new BoardDaoImpl(connectionPool, 1);
+    BoardDao boardDao = new BoardDaoImpl(connectionPool);
   }
 
   @Override
