@@ -66,15 +66,18 @@ public class BoardAddServlet extends HttpServlet {
     board.setWriter(loginUser);
 
     ArrayList<AttachedFile> attachedFiles = new ArrayList<>();
-    String[] files = request.getParameterValues("files");
-    if (files != null) {
-      for (String file : files) {
-        if (file.length() == 0) {
-          continue;
-        }
-        attachedFiles.add(new AttachedFile().filePath(file));
-      }
-    }
+
+     if(category == 1) {
+       String[] files = request.getParameterValues("files");
+       if (files != null) {
+         for (String file : files) {
+           if (file.length() == 0) {
+             continue;
+           }
+           attachedFiles.add(new AttachedFile().filePath(file));
+         }
+       }
+     }
 
     try {
       txManager.startTransaction();

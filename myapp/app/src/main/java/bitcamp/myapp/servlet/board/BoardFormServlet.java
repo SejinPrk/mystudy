@@ -37,9 +37,13 @@ public class BoardFormServlet extends HttpServlet {
     out.printf("<div>");
     out.printf("    내용: <textarea name='content'></textarea>");
     out.printf("</div>");
-    out.printf("<div>");
-    out.printf("    첨부파일: <input multiple name='files' type='file'>");
-    out.printf("</div>");
+
+    if (category == 1) {
+      out.printf("<div>");
+      out.printf("    첨부파일: <input multiple name='files' type='file'>");
+      out.printf("</div>");
+    }
+
     out.printf("<div>");
     out.printf(" <button>등록</button>");
     out.printf("</div>");

@@ -68,19 +68,27 @@ public class BoardUpdateServlet extends HttpServlet {
         out.println("</body>");
         out.println("</html>");
         return;
+      } else if (board.getWriter().getNo() != loginUser.getNo()) {
+        out.println("<p>권한이 없습니다.</p>");
+        out.println("</body>");
+        out.println("</html>");
+        return;
       }
 
       board.setTitle(request.getParameter("title"));
       board.setContent(request.getParameter("content"));
 
       ArrayList<AttachedFile> attachedFiles = new ArrayList<>();
-      String[] files = request.getParameterValues("files");
-      if (files != null) {
-        for (String file : files) {
-          if (file.length() == 0) {
-            continue;
+
+      if(category == 1) {
+        String[] files = request.getParameterValues("files");
+        if (files != null) {
+          for (String file : files) {
+            if (file.length() == 0) {
+              continue;
+            }
+            attachedFiles.add(new AttachedFile().filePath(file));
           }
-          attachedFiles.add(new AttachedFile().filePath(file));
         }
       }
 
