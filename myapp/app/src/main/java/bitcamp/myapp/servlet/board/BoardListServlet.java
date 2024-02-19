@@ -28,7 +28,7 @@ public class BoardListServlet extends GenericServlet {
   public void service(ServletRequest servletRequest, ServletResponse servletResponse)
       throws ServletException, IOException {
 
-    int category = Integer.parseInt(servletRequest.getParameter("category"));
+    int category = Integer.valueOf(servletRequest.getParameter("category"));
     String title = category == 1 ? "게시글" : "가입인사";
 
     servletResponse.setContentType("text/html;charset=UTF-8");
@@ -42,7 +42,6 @@ public class BoardListServlet extends GenericServlet {
     out.println("</head>");
     out.println("<body>");
     out.printf("<h1>%s</h1>\n", title);
-
 
     out.printf("<a href='/board/form?category=%d'>새 글</a>\n", category);
 

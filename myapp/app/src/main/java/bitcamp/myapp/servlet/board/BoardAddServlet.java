@@ -36,7 +36,8 @@ public class BoardAddServlet extends HttpServlet {
   @Override
   protected void service(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    int category = Integer.parseInt(request.getParameter("category"));
+
+    int category = Integer.valueOf(request.getParameter("category"));
     String title = category == 1 ? "게시글" : "가입인사";
 
     response.setContentType("text/html;charset=UTF-8");
@@ -67,17 +68,17 @@ public class BoardAddServlet extends HttpServlet {
 
     ArrayList<AttachedFile> attachedFiles = new ArrayList<>();
 
-     if(category == 1) {
-       String[] files = request.getParameterValues("files");
-       if (files != null) {
-         for (String file : files) {
-           if (file.length() == 0) {
-             continue;
-           }
-           attachedFiles.add(new AttachedFile().filePath(file));
-         }
-       }
-     }
+    if (category == 1) {
+      String[] files = request.getParameterValues("files");
+      if (files != null) {
+        for (String file : files) {
+          if (file.length() == 0) {
+            continue;
+          }
+          attachedFiles.add(new AttachedFile().filePath(file));
+        }
+      }
+    }
 
     try {
       txManager.startTransaction();

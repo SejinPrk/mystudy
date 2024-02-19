@@ -14,7 +14,8 @@ public class BoardFormServlet extends HttpServlet {
   @Override
   protected void service(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    int category = Integer.parseInt(request.getParameter("category"));
+
+    int category = Integer.valueOf(request.getParameter("category"));
     String title = category == 1 ? "게시글" : "가입인사";
 
     response.setContentType("text/html;charset=UTF-8");
@@ -29,26 +30,25 @@ public class BoardFormServlet extends HttpServlet {
     out.println("<body>");
     out.printf("<h1>%s</h1>\n", title);
 
-    out.printf("<form action='/board/add?category=%d'>\n",category);
+    out.printf("<form action='/board/add?category=%d'>\n", category);
     out.printf("<input name='category' type='text' value='%d'>\n", category);
-    out.printf("<div>");
-    out.printf("    제목: <input name='title' type='text'>");
-    out.printf("</div>");
-    out.printf("<div>");
-    out.printf("    내용: <textarea name='content'></textarea>");
-    out.printf("</div>");
+    out.println("<div>");
+    out.println("      제목: <input name='title' type='text'>");
+    out.println("</div>");
+    out.println("<div>");
+    out.println("      내용: <textarea name='content'></textarea>");
+    out.println("</div>");
 
     if (category == 1) {
-      out.printf("<div>");
-      out.printf("    첨부파일: <input multiple name='files' type='file'>");
-      out.printf("</div>");
+      out.println("<div>");
+      out.println("      첨부파일: <input multiple name='files' type='file'>");
+      out.println("</div>");
     }
-
-    out.printf("<div>");
-    out.printf(" <button>등록</button>");
-    out.printf("</div>");
-    out.printf("</form>");
-
+    
+    out.println("<div>");
+    out.println("  <button>등록</button>");
+    out.println("</div>");
+    out.println("</form>");
 
     out.println("</body>");
     out.println("</html>");

@@ -31,7 +31,8 @@ public class BoardDeleteServlet extends HttpServlet {
   @Override
   protected void service(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    int category = Integer.parseInt(request.getParameter("category"));
+
+    int category = Integer.valueOf(request.getParameter("category"));
     String title = category == 1 ? "게시글" : "가입인사";
 
     response.setContentType("text/html;charset=UTF-8");
