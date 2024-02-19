@@ -1,9 +1,7 @@
 package bitcamp.myapp.servlet.member;
 
 import bitcamp.myapp.dao.MemberDao;
-import bitcamp.myapp.dao.mysql.MemberDaoImpl;
 import bitcamp.myapp.vo.Member;
-import bitcamp.util.DBConnectionPool;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -18,11 +16,11 @@ public class MemberListServlet extends HttpServlet {
 
   private MemberDao memberDao;
 
-  public MemberListServlet() {
-    DBConnectionPool connectionPool = new DBConnectionPool(
-        "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
-    this.memberDao = new MemberDaoImpl(connectionPool);
+  @Override
+  public void init() {
+    memberDao =(MemberDao) this.getServletContext().getAttribute("memberDao");
   }
+
 
   @Override
   protected void service(HttpServletRequest request, HttpServletResponse response)
