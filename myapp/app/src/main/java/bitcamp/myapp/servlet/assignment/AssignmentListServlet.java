@@ -57,10 +57,20 @@ public class AssignmentListServlet extends HttpServlet {
             assignment.getNo(),
             assignment.getTitle(),
             assignment.getDeadline());
+        out.println("    </tbody>");
+        out.println("</table>");
+      }
+      out.println("    </tbody>");
+      out.println("</table>");
+
+      } catch (Exception e) {
+        out.println("<p>목록 오류!</p>");
+        out.println("<pre>");
+        e.printStackTrace(out);
+        out.println("</pre>");
       }
 
-    } catch (Exception e) {
-      prompt.println("목록 오류!");
+      out.println("</body>");
+      out.println("</html>");
     }
   }
-}
