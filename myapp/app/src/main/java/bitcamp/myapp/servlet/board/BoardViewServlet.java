@@ -74,17 +74,21 @@ public class BoardViewServlet extends HttpServlet {
       out.println("<div>");
       out.printf("  작성자: <input readonly type='text' value='%s'>\n", board.getWriter().getName());
       out.println("</div>");
-      out.println("<div>");
-      out.println("  첨부파일: <input multiple name='files' type='file'>");
-      out.println("  <ul>");
-      for (AttachedFile file : files) {
-        out.printf("    <li>%s <a href='/board/file/delete?category=%d&no=%d'>[삭제]</a></li>\n",
-            file.getFilePath(),
-            category,
-            file.getNo());
+
+      if(category == 1) {
+        out.println("<div>");
+        out.println("  첨부파일: <input multiple name='files' type='file'>");
+        out.println("  <ul>");
+        for (AttachedFile file : files) {
+          out.printf("    <li>%s <a href='/board/file/delete?category=%d&no=%d'>[삭제]</a></li>\n",
+              file.getFilePath(),
+              category,
+              file.getNo());
+        }
+        out.println("  </ul>");
+        out.println("</div>");
       }
-      out.println("  </ul>");
-      out.println("</div>");
+
       out.println("<div>");
       out.println("  <button>변경</button>");
       out.printf("  <a href='/board/delete?category=%d&no=%d'>[삭제]</a>\n", category, no);
