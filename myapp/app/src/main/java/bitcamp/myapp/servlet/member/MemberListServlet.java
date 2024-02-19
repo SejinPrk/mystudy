@@ -1,22 +1,20 @@
 package bitcamp.myapp.servlet.member;
 
-import bitcamp.myapp.dao.BoardDao;
-import bitcamp.myapp.dao.mysql.BoardDaoImpl;
+import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.dao.mysql.MemberDaoImpl;
-import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.DBConnectionPool;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import javax.servlet.GenericServlet;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/member/list")
-public class MemberListServlet extends GenericServlet {
+public class MemberListServlet extends HttpServlet {
 
   private MemberDao memberDao;
 
@@ -27,44 +25,40 @@ public class MemberListServlet extends GenericServlet {
   }
 
   @Override
-  public void service(ServletRequest servletRequest, ServletResponse servletResponse)
+  protected void service(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+      response.setContentType("text/html;charset=UTF-8");
+      PrintWriter out = response.getWriter();
 
-    servletResponse.setContentType("text/html;charset=UTF-8");
-    PrintWriter out = servletResponse.getWriter();
+      out.println("<!DOCTYPE html>");
+      out.println("<html lang='en'>");
+      out.println("<head>");
+      out.println("  <meta charset='UTF-8'>");
+      out.println("  <title>비트캠프 데브옵스 5기</title>");
+      out.println("</head>");
+      out.println("<body>");
+      out.println("<h1>회원</h1>");
 
-    out.println("<!DOCTYPE html>");
-    out.println("<html lang='en'>");
-    out.println("<head>");
-    out.println("  <meta charset='UTF-8'>");
-    out.println("  <title>비트캠프 데브옵스 5기</title>");
-    out.println("</head>");
-    out.println("<body>");
-    out.println("<h1>회원</h1>");
-
-    out.println("<a href='/member/form.html'>새 글</a>");
+      out.println("<a href='/member/form.html'>새 회원</a>");
 
     try {
       out.println("<table border='1'>");
-      out.println("    <thead>");
-      out.println("    <tr> <th>번호</th> <th>이름</th> <th>이메일</th> <th>가입일</th> <th>첨부파일</th> </tr>");
-      out.println("    </thead>");
-      out.println("    <tbody>");
+      out.println("    <thread>");
+      out.println("    <tr> <th>번호</th> <th>이름</th> <th>이메일</th> <th>가입일</th> </tr>");
+      out.println("    </thread>");
+      out.println("    <body>");
 
       List<Member> list = memberDao.findAll();
 
       for (Member member : list) {
         out.printf(
-            "<tr> <td>%d</td> <td><a href='/member/view?no=%1$d'>%s</a></td> <td>%s</td> <td>%s</td> <td>%d</td> </tr>\n",
+            "<tr> <td>%d</td> <td><a href='/member/view?no=%1$d'>%s</a></td> <td>%s</td> <td>%s</td> </tr>\n",
             member.getNo(),
             member.getName(),
             member.getEmail(),
-            member.getWriter().getName(),
-            member.getCreatedDate(),
-            member.getFileCount());
+            member.getCreatedDate());
       }
-
-      out.println("    </tbody>");
+      out.println("    </body>");
       out.println("</table>");
 
     } catch (Exception e) {
