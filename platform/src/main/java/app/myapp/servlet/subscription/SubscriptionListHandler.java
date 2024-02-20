@@ -1,4 +1,4 @@
-package app.myapp.handler.subscription;
+package app.myapp.servlet.subscription;
 
 import app.myapp.dao.SubscriptionDao;
 import app.myapp.vo.Subscription;

@@ -1,9 +1,9 @@
-package app.myapp.handler.notification;
+package app.myapp.servlet.notification;
 
-import app.menu.AbstractMenuHandler;
 import app.myapp.dao.NotificationDao;
+import javax.servlet.http.HttpServlet;
 
-public class NotificationDeleteHandler extends AbstractMenuHandler {
+public class NotificationDeleteHandler extends HttpServlet {
 
   private NotificationDao notificationDao;
 

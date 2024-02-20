@@ -1,11 +1,11 @@
-package app.myapp.handler.notification;
+package app.myapp.servlet.notification;
 
-import app.menu.AbstractMenuHandler;
 import app.myapp.dao.NotificationDao;
 import app.myapp.vo.Notification;
 import java.util.List;
+import javax.servlet.http.HttpServlet;
 
-public class NotificationListHandler extends AbstractMenuHandler {
+public class NotificationListHandler extends HttpServlet {
 
   private NotificationDao notificationDao;
 

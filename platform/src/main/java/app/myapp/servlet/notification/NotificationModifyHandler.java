@@ -1,4 +1,4 @@
-package app.myapp.handler.notification;
+package app.myapp.servlet.notification;
 
 import app.menu.AbstractMenuHandler;
 import app.myapp.dao.NotificationDao;

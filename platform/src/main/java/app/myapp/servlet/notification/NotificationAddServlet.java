@@ -1,15 +1,15 @@
-package app.myapp.handler.notification;
+package app.myapp.servlet.notification;
 
-import app.menu.AbstractMenuHandler;
 import app.myapp.dao.NotificationDao;
 import app.myapp.vo.Notification;
 import java.util.Date;
+import javax.servlet.http.HttpServlet;
 
-public class NotificationAddHandler extends AbstractMenuHandler {
+public class NotificationAddServlet extends HttpServlet {
 
   private NotificationDao notificationDao;
 
-  public NotificationAddHandler(NotificationDao notificationDao, Prompt prompt) {
+  public NotificationAddServlet(NotificationDao notificationDao, Prompt prompt) {
     super(prompt);
     this.notificationDao = notificationDao;
   }
