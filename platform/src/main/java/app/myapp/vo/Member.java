@@ -14,7 +14,7 @@ public class Member implements Serializable {
   private String email;
   private Date createdDate;
   private int creditNo;
-  private Date creditDate;
+  private String creditDate;
   private boolean notification;
 
 
@@ -90,7 +90,7 @@ public class Member implements Serializable {
     this.creditNo = creditNo;
   }
 
-  public Date getCreditDate() {
+  public String getCreditDate() {
     return creditDate;
   }
 

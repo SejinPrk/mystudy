@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MemberDaoImpl implements MemberDao {
+public class MemberDaoImpl implements MemberDao{
 
  DBConnectionPool connectionPool;
 
@@ -33,7 +33,6 @@ public class MemberDaoImpl implements MemberDao {
         throw new DaoException("데이터 입력 오류", e);
       }
     }
-  }
 
   @Override
   public int delete(int no) {

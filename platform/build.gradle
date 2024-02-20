@@ -15,6 +15,7 @@ dependencies {
 
     // 임베디드 Tomcat 서버
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.85'
+
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     implementation 'com.google.guava:guava:32.1.1-jre'
@@ -27,7 +28,7 @@ java {
 }
 
 application {
-    mainClass = 'app.myapp.Main'
+    mainClass = 'app.myapp.App'
 }
 
 tasks.named('test') {
@@ -36,7 +37,7 @@ tasks.named('test') {
 
 // 자바 소스를 컴파일 할 때 적용할 옵션(Gradle 로 컴파일 할 때)
 tasks.withType(JavaCompile).configureEach {
-    // 프로젝트의 소스 파일 인코딩을 gradle에게 알려준다.
+    // 프로젝트의 소스 파일 인코딩을 gradle 에게 알려준다.
     // $javac -encoding UTF-8 ..
     options.encoding = 'UTF-8'
 }

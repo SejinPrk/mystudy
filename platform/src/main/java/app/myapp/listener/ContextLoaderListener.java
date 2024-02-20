@@ -1,14 +1,14 @@
 package app.myapp.listener;
 
-import app.myapp.dao.PaymentDao;
+import app.myapp.dao.NotificationDao;
+import app.myapp.dao.mysql.MemberDaoImpl;
+import app.myapp.dao.mysql.NotificationDaoImpl;
 import app.myapp.dao.mysql.PaymentDaoImpl;
 import app.myapp.dao.mysql.PlatformDaoImpl;
-import app.myapp.dao.PlatformDao;
 import app.myapp.dao.PaymentDao;
+import app.myapp.dao.PlatformDao;
 import app.myapp.dao.MemberDao;
-import app.myapp.dao.mysql.MemberDaoImpl;
 import app.util.DBConnectionPool;
-import app.util.TransactionManager;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -27,14 +27,14 @@ public class ContextLoaderListener implements ServletContextListener {
 
     PlatformDao platformDao = new PlatformDaoImpl(connectionPool);
     MemberDao memberDao = new MemberDaoImpl(connectionPool);
+    NotificationDao notificationDao = new NotificationDaoImpl(connectionPool);
     PaymentDao paymentDao = new PaymentDaoImpl(connectionPool);
-    TransactionManager txManager = new TransactionManager(connectionPool);
 
     // 서블릿에서 사용할 수 있도록 웹 애플리케이션 저장소에 보관한다.
     ServletContext 웹애플리케이션저장소 = sce.getServletContext();
     웹애플리케이션저장소.setAttribute("platformDao", platformDao);
+    웹애플리케이션저장소.setAttribute("notificationDao", notificationDao);
     웹애플리케이션저장소.setAttribute("memberDao", memberDao);
     웹애플리케이션저장소.setAttribute("paymentDao", paymentDao);
-    웹애플리케이션저장소.setAttribute("txManager", txManager);
   }
 }

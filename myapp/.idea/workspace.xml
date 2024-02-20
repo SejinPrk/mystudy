@@ -6,72 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="b9160b05-d132-42d9-bdad-84098ff3ce04" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/doc/ddl.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/doc/ddl.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/DaoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/dao/DaoException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/MemberDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/dao/MemberDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/NotificationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/dao/NotificationDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/PaymentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/dao/PaymentDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/PlatformDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/dao/PlatformDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/SubscriptionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/dao/SubscriptionDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/MemberDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/dao/mysql/MemberDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/NotificationDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/dao/mysql/NotificationDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/PaymentDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/dao/mysql/PaymentDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/PlatformDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/dao/mysql/PlatformDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/SubscriptionDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/dao/mysql/SubscriptionDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/handler/notification/NotificationAddHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/handler/notification/NotificationAddHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/handler/notification/NotificationDeleteHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/handler/notification/NotificationDeleteHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/handler/notification/NotificationListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/handler/notification/NotificationListHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/handler/notification/NotificationModifyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/handler/notification/NotificationModifyHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/handler/notification/NotificationViewHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/handler/notification/NotificationViewHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/handler/subscription/SubscriptionListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/handler/subscription/SubscriptionListHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/handler/subscription/SubscriptionViewHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/handler/subscription/SubscriptionViewHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/listener/ContextLoaderListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/listener/ContextLoaderListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/auth/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/servlet/auth/LoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/auth/LogoutServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/servlet/auth/LogoutServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/member/MemberAddServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/servlet/member/MemberAddServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/member/MemberDeleteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/servlet/member/MemberDeleteServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/member/MemberListServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/servlet/member/MemberListServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/member/MemberUpdateServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/servlet/member/MemberUpdateServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/member/MemberViewServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/servlet/member/MemberViewServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/payment/PaymentAddServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/servlet/payment/PaymentAddServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/payment/PaymentDeleteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/servlet/payment/PaymentDeleteServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/payment/PaymentListServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/servlet/payment/PaymentListServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/payment/PaymentUpdateServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/servlet/payment/PaymentUpdateServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/payment/PaymentViewServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/servlet/payment/PaymentViewServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/platform/PlatformAddServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/servlet/platform/PlatformAddServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/platform/PlatformDeleteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/servlet/platform/PlatformDeleteServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/platform/PlatformListServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/servlet/platform/PlatformListServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/platform/PlatformUpdateServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/servlet/platform/PlatformUpdateServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/platform/PlatformViewServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/servlet/platform/PlatformViewServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/vo/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/vo/Notification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/vo/Payment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Platform.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/vo/Platform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Subscription.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/myapp/vo/Subscription.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/util/ConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/util/ConnectionPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/util/ConnectionProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/util/ConnectionProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/util/DBConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/util/DBConnectionPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/util/TransactionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/java/app/util/TransactionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/webapp/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/auth/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/webapp/auth/form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/webapp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/member/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/webapp/member/form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/payment/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/webapp/payment/form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/platform/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/app/src/main/webapp/platform/form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/SubscriptionDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/MemberDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/MemberDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/PaymentDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/PaymentDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/SubscriptionDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/listener/ContextLoaderListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/listener/ContextLoaderListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/notification/NotificationDeleteHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/notification/NotificationDeleteHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionListHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionViewHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/subscription/form.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

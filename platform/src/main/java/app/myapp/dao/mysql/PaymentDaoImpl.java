@@ -3,6 +3,7 @@ package app.myapp.dao.mysql;
 import app.myapp.dao.DaoException;
 import app.myapp.dao.PaymentDao;
 import app.myapp.vo.Payment;
+import app.util.DBConnectionPool;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,16 +12,17 @@ import java.util.List;
 
 public class PaymentDaoImpl implements PaymentDao {
 
-  Connection con;
+  DBConnectionPool connectionPool;
 
-  public PaymentDaoImpl(Connection con) {
-    this.con = con;
+  public PaymentDaoImpl(DBConnectionPool connectionPool) {
+    this.connectionPool = connectionPool;
   }
 
   @Override
   public void add(Payment payment) {
-    try (PreparedStatement pstmt = con.prepareStatement(
-          "insert into payments(start,end,amount) values(?,?,?)")){
+    try (Connection con = connectionPool.getConnection();
+        PreparedStatement pstmt = con.prepareStatement(
+            "insert into payments(start,end,amount) values(?,?,?)")){
       pstmt.setDate(1, payment.getStart());
       pstmt.setDate(2, payment.getEnd());
       pstmt.setInt(3, payment.getAmount());
@@ -33,8 +35,9 @@ public class PaymentDaoImpl implements PaymentDao {
 
   @Override
   public int delete(int no) {
-    try (PreparedStatement pstmt = con.prepareStatement(
-        "delete from payments where payment_no=?")) {
+    try (Connection con = connectionPool.getConnection();
+        PreparedStatement pstmt = con.prepareStatement(
+            "delete from payments where payment_no=?")) {
       pstmt.setInt(1, no);
       return pstmt.executeUpdate();
 
@@ -45,8 +48,9 @@ public class PaymentDaoImpl implements PaymentDao {
 
   @Override
   public List<Payment> findAll() {
-    try (PreparedStatement pstmt = con.prepareStatement(
-        "select payment_no, start, end, amount from payments");
+    try (Connection con = connectionPool.getConnection();
+        PreparedStatement pstmt = con.prepareStatement(
+            "select payment_no, start, end, amount from payments");
       ResultSet rs = pstmt.executeQuery()) {
 
       ArrayList<Payment> list = new ArrayList<>();
@@ -69,8 +73,9 @@ public class PaymentDaoImpl implements PaymentDao {
 
   @Override
   public Payment findBy(int no) {
-    try (PreparedStatement pstmt = con.prepareStatement(
-        "select payment_no, start, end, amount from payments where payment_no=?")){
+    try (Connection con = connectionPool.getConnection();
+        PreparedStatement pstmt = con.prepareStatement(
+            "select payment_no, start, end, amount from payments where payment_no=?")){
       pstmt.setInt(1, no);
 
       try(ResultSet rs = pstmt.executeQuery()) {
@@ -93,12 +98,15 @@ public class PaymentDaoImpl implements PaymentDao {
 
   @Override
   public int update(Payment payment) {
-    try (PreparedStatement pstmt = con.prepareStatement(
-        "update payments set start=?, end=?, amount=? where payment_no=?")){
+    try (Connection con = connectionPool.getConnection();
+        PreparedStatement pstmt = con.prepareStatement(
+            "update payments set start=?, end=?, amount=? where payment_no=?")){
       pstmt.setDate(1, payment.getStart());
       pstmt.setDate(2, payment.getEnd());
       pstmt.setInt(3, payment.getAmount());
+
       return pstmt.executeUpdate();
+
     } catch (Exception e) {
       throw new DaoException("데이터 변경 오류", e);
     }
