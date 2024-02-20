@@ -13,9 +13,8 @@ import java.util.List;
 public class MemberDaoImpl implements MemberDao {
 
  DBConnectionPool connectionPool;
-  public MemberDaoImpl(DBConnectionPool connectionPool) {
-    this.connectionPool = connectionPool;
-  }
+
+  public MemberDaoImpl(DBConnectionPool connectionPool) { this.connectionPool = connectionPool;}
 
   @Override
   public void add(Member member) {

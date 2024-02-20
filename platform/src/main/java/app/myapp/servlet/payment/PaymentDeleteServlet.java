@@ -1,7 +1,6 @@
-package app.myapp.servlet.platform;
+package app.myapp.servlet.payment;
 
-import app.myapp.dao.PlatformDao;
-import app.myapp.vo.Platform;
+import app.myapp.dao.PaymentDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -10,16 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/platform/add")
-public class PlatformAddServlet extends HttpServlet {
 
-  private PlatformDao platformDao;
+@WebServlet("/payment/delete")
+public class PaymentDeleteServlet extends HttpServlet {
+
+  private PaymentDao paymentDao;
 
   @Override
   public void init() {
-    platformDao = (PlatformDao) this.getServletContext().getAttribute("platformDao");
+    paymentDao = (PaymentDao) this.getServletContext().getAttribute("paymentDao");
   }
-
   @Override
   protected void service(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
@@ -31,23 +30,22 @@ public class PlatformAddServlet extends HttpServlet {
     out.println("<html lang='en'>");
     out.println("<head>");
     out.println("  <meta charset='UTF-8'>");
-    out.println("  <title>개인과제</title>");
+    out.println("  <title>비트캠프 데브옵스 5기</title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>플랫폼</h1>");
+    out.println("<h1>결제내역</h1>");
 
     try {
-      Platform platform = new Platform();
-      platform.setName(request.getParameter("name"));
-      platform.setPrice(Integer.parseInt(request.getParameter("price")));
-      platform.setTerm(request.getParameter("term"));
+      int no = Integer.parseInt(request.getParameter("no"));
 
-      platformDao.add(platform);
-
-      out.println("<p>등록했습니다.</p>");
+      if (paymentDao.delete(no) == 0) {
+        out.println("<p>결제내역 번호가 유효하지 않습니다.</p>");
+      } else {
+        out.println("<p>삭제했습니다.</p>");
+      }
 
     } catch (Exception e) {
-      out.println("<p>등록 오류!</p>");
+      out.println("<p>삭제 오류!</p>");
       out.println("<pre>");
       e.printStackTrace(out);
       out.println("</pre>");

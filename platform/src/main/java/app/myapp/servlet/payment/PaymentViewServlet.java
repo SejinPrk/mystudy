@@ -1,14 +1,14 @@
-package app.myapp.handler.payment;
+package app.myapp.servlet.payment;
 
-import app.menu.AbstractMenuHandler;
 import app.myapp.dao.PaymentDao;
 import app.myapp.vo.Payment;
+import javax.servlet.http.HttpServlet;
 
-public class PaymentViewHandler extends AbstractMenuHandler {
+public class PaymentViewServlet extends HttpServlet {
 
   private PaymentDao paymentDao;
 
-  public PaymentViewHandler(PaymentDao paymentDao, Prompt prompt) {
+  public PaymentViewServlet(PaymentDao paymentDao, Prompt prompt) {
     super(prompt);
     this.paymentDao = paymentDao;
   }

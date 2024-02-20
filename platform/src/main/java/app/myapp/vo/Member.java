@@ -75,7 +75,7 @@ public class Member implements Serializable {
   }
 
   public java.sql.Date getCreatedDate() {
-    return createdDate;
+    return (java.sql.Date) createdDate;
   }
 
   public void setCreatedDate(Date createdDate) {
@@ -94,7 +94,7 @@ public class Member implements Serializable {
     return creditDate;
   }
 
-  public void setCreditDate(Date creditDate) {
+  public void setCreditDate(String creditDate) {
     this.creditDate = creditDate;
   }
 
