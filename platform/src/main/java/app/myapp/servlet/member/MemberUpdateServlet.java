@@ -58,7 +58,7 @@ public class MemberUpdateServlet extends HttpServlet {
       memberDao.update(member);
       System.out.println("회원을 변경했습니다.");
     } catch (Exception e) {
-      out.println("<p>회원 변경 오류!</p>");
+      out.println("<p>변경 오류!</p>");
       out.println("<pre>");
       e.printStackTrace(out);
       out.println("</pre>");

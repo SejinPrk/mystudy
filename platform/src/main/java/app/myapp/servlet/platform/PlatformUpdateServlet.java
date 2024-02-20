@@ -51,7 +51,7 @@ public class PlatformUpdateServlet extends HttpServlet {
       Platform platform = new Platform();
       platform.setNo(old.getNo());
       platform.setName(request.getParameter("name"));
-      platform.setPrice(request.getParameter("price"));
+      platform.setPrice(Integer.parseInt(request.getParameter("price")));
       platform.setTerm(request.getParameter("term"));
 
       platformDao.update(platform);
