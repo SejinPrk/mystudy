@@ -1,11 +1,11 @@
 package app.myapp.handler.subscription;
 
-import app.menu.AbstractMenuHandler;
 import app.myapp.dao.SubscriptionDao;
 import app.myapp.vo.Subscription;
 import java.util.List;
+import javax.servlet.http.HttpServlet;
 
-public class SubscriptionListHandler extends AbstractMenuHandler {
+public class SubscriptionListHandler extends HttpServlet {
 
   private SubscriptionDao subscriptionDao;
 
