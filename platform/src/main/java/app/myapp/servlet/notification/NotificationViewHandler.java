@@ -25,15 +25,56 @@ public class NotificationViewHandler extends HttpServlet {
 
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
-    Notification notification = notificationDao.findBy(no);
+
+    out.println("<!DOCTYPE html>");
+    out.println("<html lang='en'>");
+    out.println("<head>");
+    out.println("  <meta charset='UTF-8'>");
+    out.println("  <title>비트캠프 데브옵스 5기</title>");
+    out.println("</head>");
+    out.println("<body>");
+    out.println("<h1>알림</h1>");
+
+    try {
+      int no = Integer.parseInt(request.getParameter("no"));
+
+
+      Notification notification = notificationDao.findBy(no);
     if (notification == null) {
-      System.out.println("알림 번호가 유효하지 않습니다!");
+      System.out.println("<p>알림 번호가 유효하지 않습니다!</p>");
+      out.println("</body>");
+      out.println("</html>");
       return;
     }
 
-    System.out.printf("번호: %d\n", notification.getNo());
-    System.out.printf("내용: %s\n", notification.getContent());
-    System.out.printf("날짜: %1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS\n", notification.getDate());
-    System.out.printf("조회여부: %s\n", notification.isCheck());
+      out.println("<form action='/notification/update'>");
+      out.println("<div>");
+      out.printf("  번호: <input readonly name='no' type='text' value='%d'>\n", notification.getNo());
+      out.println("</div>");
+      out.println("<div>");
+      out.printf("  내용: <textarea name='content'>%s</textarea>\n", notification.getContent());
+      out.println("</div>");
+      out.println("<div>");
+      out.printf("  날짜: <input name='date' type='Date' value='%s'>\n", notification.getDate());
+      out.println("</div>");
+      out.println("<div>");
+      out.printf("  조회여부: <input name='check' type='boolean' value='%s'>\n", notification.isCheck());
+      out.println("</div>");
+      out.println("<div>");
+      out.println("  <button>변경</button>");
+      out.printf("  <a href='/notification/delete?no=%d'>[삭제]</a>\n", no);
+      out.println("</div>");
+      out.println("</form>");
+
+    } catch (Exception e) {
+      out.println("<p>조회 오류!</p>");
+      out.println("<pre>");
+      e.printStackTrace(out);
+      out.println("</pre>");
+    }
+
+    out.println("</body>");
+    out.println("</html>");
   }
+
 }
