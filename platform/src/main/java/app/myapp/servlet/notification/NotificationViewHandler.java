@@ -1,23 +1,30 @@
 package app.myapp.servlet.notification;
 
-import app.menu.AbstractMenuHandler;
 import app.myapp.dao.NotificationDao;
 import app.myapp.vo.Notification;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-
-public class NotificationViewHandler extends AbstractMenuHandler {
+@WebServlet("/notification/view")
+public class NotificationViewHandler extends HttpServlet {
 
   private NotificationDao notificationDao;
-
-  public NotificationViewHandler(NotificationDao notificationDao, Prompt prompt) {
-    super(prompt);
-    this.notificationDao = notificationDao;
+  @Override
+  public void init() {
+    notificationDao = (NotificationDao) this.getServletContext().getAttribute("notificationDao");
   }
 
   @Override
-  protected void action() {
-    int no = this.prompt.inputInt("번호? ");
+  protected void service(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
 
+    response.setContentType("text/html;charset=UTF-8");
+    PrintWriter out = response.getWriter();
     Notification notification = notificationDao.findBy(no);
     if (notification == null) {
       System.out.println("알림 번호가 유효하지 않습니다!");

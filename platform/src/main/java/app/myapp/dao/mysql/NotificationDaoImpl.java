@@ -3,6 +3,7 @@ package app.myapp.dao.mysql;
 import app.myapp.dao.NotificationDao;
 import app.myapp.dao.DaoException;
 import app.myapp.vo.Notification;
+import app.util.DBConnectionPool;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,16 +12,17 @@ import java.util.List;
 
 public class NotificationDaoImpl implements NotificationDao {
 
-  Connection con;
+  DBConnectionPool connectionPool;
 
-  public NotificationDaoImpl(Connection con) {
-    this.con = con;
+  public NotificationDaoImpl(DBConnectionPool connectionPool) {
+    this.connectionPool = connectionPool;
   }
 
   @Override
   public void add(Notification notification) {
-    try (PreparedStatement pstmt = con.prepareStatement(
-        "insert into notifications(content,date,check) values(?,?,?)")) {
+    try (Connection con = connectionPool.getConnection();
+        PreparedStatement pstmt = con.prepareStatement(
+            "insert into notifications(content,date,check) values(?,?,?)")) {
 
       pstmt.setString(1, notification.getContent());
       pstmt.setDate(2, notification.getDate());
@@ -35,8 +37,9 @@ public class NotificationDaoImpl implements NotificationDao {
 
   @Override
   public int delete(int no) {
-    try (PreparedStatement pstmt = con.prepareStatement(
-        "delete from notifications where notification_no=?")) {
+    try (Connection con = connectionPool.getConnection();
+        PreparedStatement pstmt = con.prepareStatement(
+            "delete from notifications where notification_no=?")) {
 
       pstmt.setInt(1, no);
 
@@ -49,46 +52,45 @@ public class NotificationDaoImpl implements NotificationDao {
 
   @Override
   public List<Notification> findAll() {
-    try (PreparedStatement pstmt = con.prepareStatement(
-        "select notification_no, content, date, check"
-            + " from notifications order by notification_no desc")) {
+    try (Connection con = connectionPool.getConnection();
+        PreparedStatement pstmt = con.prepareStatement(
+            "select notification_no, content, date, check from notifications order by notification_no desc");
+        ResultSet rs = pstmt.executeQuery()) {
 
-      pstmt.setInt(1, no);
-      try (ResultSet rs = pstmt.executeQuery()) {
+      ArrayList<Notification> list = new ArrayList<>();
 
-        ArrayList<Notification> list = new ArrayList<>();
+      while (rs.next()) {
+        Notification notification = new Notification();
+        notification.setNo(rs.getInt("notification_no"));
+        notification.setContent(rs.getString("content"));
+        notification.setDate(rs.getDate("date"));
+        notification.setCheck(rs.getBoolean("check"));
 
-        while (rs.next()) {
-          Notification notification = new Notification();
-          notification.setNo(rs.getInt("notification_no"));
-          notification.setContent(rs.getString("content"));
-          notification.setDate(rs.getDate("date"));
-          notification.setCheck(rs.getBoolean("check"));
-
-          list.add(notification);
-        }
-        return list;
+        list.add(notification);
       }
+      return list;
 
-    } catch (Exception e) {
-      throw new DaoException("데이터 가져오기 오류", e);
-    }
+  } catch(Exception e) {
+    throw new DaoException("데이터 가져오기 오류", e);
   }
+}
 
   @Override
   public Notification findBy(int no) {
-    try (PreparedStatement pstmt = con.prepareStatement("select * from notifications where notification_no=?")) {
+    try (Connection con = connectionPool.getConnection();
+        PreparedStatement pstmt = con.prepareStatement
+            ("select * from notifications where notification_no=?")) {
 
       pstmt.setInt(1, no);
 
       try (ResultSet rs = pstmt.executeQuery()) {
+
         if (rs.next()) {
           Notification notification = new Notification();
           notification.setNo(rs.getInt("notification_no"));
           notification.setContent(rs.getString("content"));
           notification.setDate(rs.getDate("date"));
           notification.setCheck(rs.getBoolean("check"));
-
           return notification;
         }
         return null;
@@ -101,7 +103,8 @@ public class NotificationDaoImpl implements NotificationDao {
 
   @Override
   public int update(Notification notification) {
-    try (PreparedStatement pstmt = con.prepareStatement(
+    try (Connection con = connectionPool.getConnection();
+        PreparedStatement pstmt = con.prepareStatement(
         "update notifications set content=?, date=?, check=? where notification_no=?")) {
 
       pstmt.setString(1, notification.getContent());
