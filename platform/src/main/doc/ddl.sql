@@ -33,10 +33,8 @@ values(10, '쿠팡 로켓와우','4990','month');
 select * from platforms;
 
 
-drop table assignments;
-
-create table assignments(
-  assignment_no int primary key auto_increment,
+create table payments(
+  payment int primary key auto_increment,
   title varchar(255) not null,
   content text not null,
   deadline date not null
@@ -57,25 +55,30 @@ select * from assignments;
 
 select * from assignments where assignment_no = 3;
 
+drop table members;
 
 create table members(
   member_no int primary key auto_increment,
   email varchar(255) not null,
   name varchar(255) not null,
   password varchar(100) not null,
-  created_date datetime null default now()
+  created_date datetime null default now(),
+  tel varchar(100) not null,
+  credit_no INTEGER not null,
+  credit_date varchar(100) not null,
+  notification tinyint(1) not null
   );
 
-insert into members(email,name,password, created_date) 
-values('user1@test.com', 'user1',sha2('1111',256),'2024-1-1');
-insert into members(email,name,password,created_date) 
-values('user2@test.com', 'user2',sha2('1111',256),'2024-2-2');
-insert into members(email,name,password,created_date) 
-values('user3@test.com', 'user3',sha2('1111',256),'2024-3-3');
-insert into members(email,name,password,created_date) 
-values('user4@test.com', 'user4',sha2('1111',256),'2024-4-4');
-insert into members(email,name,password,created_date) 
-values('user5@test.com', 'user5',sha2('1111',256),'2024-5-5');
+insert into members(email,name,password,created_date,tel,credit_no,credit_date,notification)
+values('user1@test.com', 'user1',sha2('1111',256),'2024-1-1','010-0000-0000','12341234','01/30','0');
+insert into members(email,name,password,created_date,tel,credit_no,credit_date,notification)
+values('user2@test.com', 'user2',sha2('1111',256),'2024-2-2','010-0000-0000','12341234','02/28','1');
+insert into members(email,name,password,created_date,tel,credit_no,credit_date,notification)
+values('user3@test.com', 'user3',sha2('1111',256),'2024-3-3','010-0000-0000','12341234','03/26','1');
+insert into members(email,name,password,created_date,tel,credit_no,credit_date,notification)
+values('user4@test.com', 'user4',sha2('1111',256),'2024-4-4','010-0000-0000','12341234','10/30','0');
+insert into members(email,name,password,created_date,tel,credit_no,credit_date,notification)
+values('user5@test.com', 'user5',sha2('1111',256),'2024-5-5','010-0000-0000','12341234','12/27','1');
 
 
 select * from members;
