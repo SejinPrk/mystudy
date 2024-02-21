@@ -16,10 +16,4 @@ public class HelloServlet3 extends HttpServlet {
     System.out.println("Hello3!");
   }
 
-  @Override
-  protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-      throws ServletException, IOException {
-    System.out.println();
-  }
-
 }
