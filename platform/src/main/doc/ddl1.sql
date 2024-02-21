@@ -1,36 +1,40 @@
 -- DDL(Data Definition Language)
 
-drop table platforms;
+drop table boards;
 
-create table platforms(
-  platform_no int primary key auto_increment,
-  name varchar(255) not null,
-  price INTEGER not null,
-  term text not null
+create table boards(
+  board_no int primary key auto_increment,
+  title varchar(255) not null,
+  content text not null,
+  writer varchar(30) not null,
+  created_date datetime null default now()
 );
 
-insert into platforms(platform_no,name,price,term)
-values(1, '광고형 넷플릭스','5500','month');
-insert into platforms(platform_no,name,price,term)
-values(2, '넷플릭스 프리미엄','17000','month');
-insert into platforms(platform_no,name,price,term)
-values(3, '넷플릭스 스탠다드','13500','month');
-insert into platforms(platform_no,name,price,term)
-values(4, 'Spotify 개인','10900','month');
-insert into platforms(platform_no,name,price,term)
-values(5, 'Spotify 듀오','16350','month');
-insert into platforms(platform_no,name,price,term)
-values(6, 'Spotify 베이직','7900','month');
-insert into platforms(platform_no,name,price,term)
-values(7, '요기패스X','4900','month');
-insert into platforms(platform_no,name,price,term)
-values(8, '밀리의서재 월 정기구독','9900','month');
-insert into platforms(platform_no,name,price,term)
-values(9, '밀리의서재 연 정기구독','99000','year');
-insert into platforms(platform_no,name,price,term)
-values(10, '쿠팡 로켓와우','4990','month');
+insert into boards(board_no,title,content,writer) 
+values(1, '제목1','내용1','홍길동');
+insert into boards(board_no,title,content,writer) 
+values(2, '제목2','내용2','임꺽정');
+insert into boards(board_no,title,content,writer) 
+alues(3, '제목3','내용3','유관순');
+insert into boards(board_no,title,content,writer) 
+values(4, '제목4','내용4','안중근');
+insert into boards(board_no,title,content,writer) 
+values(5, '제목5','내용5','윤봉길');
 
-select * from platforms;
+select * 
+from boards;
+
+select * 
+from boards 
+where board_no = 3;
+
+update boards set 
+title='okok', 
+content='nono', 
+writer='hoho' 
+where board_no = 3;
+
+delete from boards where board_no=3;
 
 
 drop table assignments;
