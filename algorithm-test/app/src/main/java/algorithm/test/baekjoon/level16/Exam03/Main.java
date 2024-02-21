@@ -1,28 +1,47 @@
 package algorithm.test.baekjoon.level16.Exam03;
 // 1735 분수 합
-import java.util.Scanner;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
 
 public class Main {
-  public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    int n = sc.nextInt();
-    String str[] = new String[n];
-    int cnt = 0;
-    int sum = 0;
+  public static void main(String[] args) throws IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    StringTokenizer st = new StringTokenizer(br.readLine());
+    int a = Integer.parseInt(st.nextToken());
+    int b = Integer.parseInt(st.nextToken());
 
-    for(int i = 0; i < n; i++) {
-      str[i] = sc.next();
-      sum += str[i].length();
+    st = new StringTokenizer(br.readLine());
+    int c = Integer.parseInt(st.nextToken());
+    int d = Integer.parseInt(st.nextToken());
+
+    int num = a * d + b * c;
+    int den = b * d;
+
+    int mod = gcd(num, den);
+    num /= mod;
+    den /= mod;
+
+    bw.write(num + " " + den + "\n");
+    bw.flush();
+    bw.close();
+    br.close();
+  }
+
+  public static int gcd(int a, int b){
+  if(a <= b) {
+    int tmp = a;
+    a = b;
+    b = tmp;
     }
-
-    for(int i = 0; i < n; i++) {
-      for (int j = 0; j < str[i].length(); j++) {
-        if(str[n].charAt(j) == str[0].charAt(0)){
-          cnt++;
-        }
-      }
+  if (b == 0) {
+    return a;
     }
-
-    System.out.println(sum + " " + cnt);
+    return gcd(b, a%b);
   }
 }
