@@ -5,7 +5,7 @@
   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
   version="4.0"
-  metadata-complete="true">
+  metadata-complete="false">
 
 
 
@@ -19,7 +19,7 @@
     <description>
       서블릿 설명
     </description>
-    <servlet-class>com.eomcs.web.01.Servlet01</servlet-class>
+    <servlet-class>com.eomcs.web.ex01.Servlet01</servlet-class>
   </servlet>
 
   <servlet-mapping>
