@@ -74,6 +74,7 @@ public class Servlet01 extends GenericServlet {
 //    예) /java-web/ex04/s1?name=%ED%99%8D%EA%B8%B8%EB%8F%99&age=20
 //    서블릿 URL : /java-web/ex04/s1
 //    데이터(Query String) : ?name=%ED%99%8D%EA%B8%B8%EB%8F%99&age=20
+//    ?는 빼도 ok
 // => 데이터 형식
 //    이름=값&이름=값&이름=값
 // => request-URI는 URI 규칙에 따라 인코딩되어야 한다.
