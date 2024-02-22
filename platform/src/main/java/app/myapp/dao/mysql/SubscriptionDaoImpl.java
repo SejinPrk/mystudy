@@ -1,8 +1,8 @@
 package app.myapp.dao.mysql;
 
-import app.myapp.dao.PlatformDao;
 import app.myapp.dao.DaoException;
-import app.myapp.vo.Platform;
+import app.myapp.dao.SubscriptionDao;
+import app.myapp.vo.Subscription;
 import app.util.DBConnectionPool;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,29 +10,28 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlatformDaoImpl implements PlatformDao {
+public class SubscriptionDaoImpl implements SubscriptionDao {
 
   DBConnectionPool connectionPool;
 
-  public PlatformDaoImpl(DBConnectionPool connectionPool) {
+  public SubscriptionDaoImpl(DBConnectionPool connectionPool) {
     this.connectionPool = connectionPool;
   }
 
   @Override
-  public void add(Platform platform) {
+  public void add(Subscription subscription) {
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
-          "insert into platforms(name,price,term) values(?,?,?)",
+          "insert into subscriptions(start, end) values(?,?)",
             PreparedStatement.RETURN_GENERATED_KEYS)) {
-        pstmt.setString(1, platform.getName());
-        pstmt.setInt(2, platform.getPrice());
-        pstmt.setString(3, platform.getTerm());
+        pstmt.setDate(1, subscription.getStart());
+        pstmt.setDate(2, subscription.getEnd());
 
         pstmt.executeUpdate();
 
       try (ResultSet keyRs = pstmt.getGeneratedKeys()) {
         keyRs.next();
-        platform.setNo(keyRs.getInt(1));
+        subscription.setNo(keyRs.getInt(1));
       }
 
     } catch (Exception e) {
@@ -44,7 +43,7 @@ public class PlatformDaoImpl implements PlatformDao {
   public int delete(int no) {
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
-        "delete from platforms where platform_no=?")) {
+        "delete from subscriptions where subscription_no=?")) {
       pstmt.setInt(1, no);
         return pstmt.executeUpdate();
 
@@ -54,22 +53,21 @@ public class PlatformDaoImpl implements PlatformDao {
   }
 
   @Override
-  public List<Platform> findAll() {
+  public List<Subscription> findAll() {
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
-        "select platform_no, name, price, term  from platforms order by platform_no asc");
+        "select subscription_no, start, end from subscriptions order by subscription_no desc");
         ResultSet rs = pstmt.executeQuery()) {
 
-      ArrayList<Platform> list = new ArrayList<>();
+      ArrayList<Subscription> list = new ArrayList<>();
 
       while (rs.next()) {
-        Platform platform = new Platform();
-        platform.setNo(rs.getInt("platform_no"));
-        platform.setName(rs.getString("name"));
-        platform.setPrice(rs.getInt("price"));
-        platform.setTerm(rs.getString("term"));
+        Subscription subscription = new Subscription();
+        subscription.setNo(rs.getInt("subscription_no"));
+        subscription.setStart(rs.getDate("start"));
+        subscription.setEnd(rs.getDate("end"));
 
-        list.add(platform);
+        list.add(subscription);
       }
       return list;
 
@@ -79,22 +77,21 @@ public class PlatformDaoImpl implements PlatformDao {
   }
 
   @Override
-  public Platform findBy(int no) {
+  public Subscription findBy(int no) {
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
-        "select * from platforms where platform_no=?")){
+        "select * from subscriptions where subscription_no=?")){
 
       pstmt.setInt(1, no);
 
       try(ResultSet rs = pstmt.executeQuery()) {
 
         if (rs.next()) {
-          Platform platform = new Platform();
-          platform.setNo(rs.getInt("platform_no"));
-          platform.setName(rs.getString("name"));
-          platform.setPrice(rs.getInt("price"));
-          platform.setTerm(rs.getString("term"));
-          return platform;
+          Subscription subscription = new Subscription();
+          subscription.setNo(rs.getInt("subscription_no"));
+          subscription.setStart(rs.getDate("start"));
+          subscription.setEnd(rs.getDate("end"));
+          return subscription;
         }
         return null;
       }
@@ -105,14 +102,13 @@ public class PlatformDaoImpl implements PlatformDao {
   }
 
   @Override
-  public int update(Platform platform) {
+  public int update(Subscription subscription) {
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
-          "update platforms set name=?, price=?, term=? where platform_no=?")) {
-      pstmt.setString(1, platform.getName());
-      pstmt.setInt(2, platform.getPrice());
-      pstmt.setString(3, platform.getTerm());
-      pstmt.setInt(4, platform.getNo());
+          "update subscriptions set start=?, end=? where subscription_no=?")) {
+      pstmt.setDate(1, subscription.getStart());
+      pstmt.setDate(2, subscription.getEnd());
+      pstmt.setInt(3, subscription.getNo());
       return pstmt.executeUpdate();
 
     } catch (Exception e) {

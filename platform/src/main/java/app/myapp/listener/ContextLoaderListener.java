@@ -2,6 +2,7 @@ package app.myapp.listener;
 
 import app.myapp.dao.CategoryDao;
 import app.myapp.dao.NotificationDao;
+import app.myapp.dao.SubscriptionDao;
 import app.myapp.dao.mysql.CategoryDaoImpl;
 import app.myapp.dao.mysql.MemberDaoImpl;
 import app.myapp.dao.mysql.NotificationDaoImpl;
@@ -10,6 +11,8 @@ import app.myapp.dao.mysql.PlatformDaoImpl;
 import app.myapp.dao.PaymentDao;
 import app.myapp.dao.PlatformDao;
 import app.myapp.dao.MemberDao;
+import app.myapp.dao.mysql.SubscriptionDaoImpl;
+import app.myapp.vo.Subscription;
 import app.util.DBConnectionPool;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -32,6 +35,7 @@ public class ContextLoaderListener implements ServletContextListener {
     NotificationDao notificationDao = new NotificationDaoImpl(connectionPool);
     PaymentDao paymentDao = new PaymentDaoImpl(connectionPool);
     CategoryDao categoryDao = new CategoryDaoImpl(connectionPool);
+    SubscriptionDao subscriptionDao = new SubscriptionDaoImpl(connectionPool);
 
     // 서블릿에서 사용할 수 있도록 웹 애플리케이션 저장소에 보관한다.
     ServletContext 웹애플리케이션저장소 = sce.getServletContext();
@@ -40,6 +44,7 @@ public class ContextLoaderListener implements ServletContextListener {
     웹애플리케이션저장소.setAttribute("memberDao", memberDao);
     웹애플리케이션저장소.setAttribute("paymentDao", paymentDao);
     웹애플리케이션저장소.setAttribute("categoryDao", categoryDao);
+    웹애플리케이션저장소.setAttribute("subscriptionDao", subscriptionDao);
 
   }
 }

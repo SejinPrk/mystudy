@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/notification/list")
 
-public class NotificationListHandler extends HttpServlet {
+public class NotificationListServlet extends HttpServlet {
 
   private NotificationDao notificationDao;
 
@@ -50,7 +50,8 @@ public class NotificationListHandler extends HttpServlet {
     List<Notification> list = notificationDao.findAll();
 
     for (Notification notification : list) {
-      out.printf("<tr> <td>%d</td> <td><a href='/notification/view?no=%1$d'>%s</a></td> <td>%s</td> </tr>\n",
+      out.printf("<tr> <td>%d</td> <td><a href='/notification/view?no=%1$d'>%s</a></td> <td>%s</td> <td>%s</td> </tr>\n",
+          notification.getNo(),
           notification.getContent(),
           notification.getDate(),
           notification.isCheck());

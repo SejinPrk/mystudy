@@ -54,7 +54,7 @@ public class NotificationDaoImpl implements NotificationDao {
   public List<Notification> findAll() {
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
-            "select notification_no, content, date, checked from notifications order by notification_no desc");
+            "select notification_no, content, date, checked from notifications order by notification_no asc");
         ResultSet rs = pstmt.executeQuery()) {
 
       ArrayList<Notification> list = new ArrayList<>();
@@ -120,12 +120,12 @@ public class NotificationDaoImpl implements NotificationDao {
   }
 
   // 회원 번호를 통해 회원 이름을 가져오는 메서드
-  private static String getMemberName(int memberNo) {
-    try (Connection con = connectionPool.getConnection();
-        PreparedStatement pstmt = con.prepareStatement(
-            "select name from members where member_no=?")) {
-      pstmt.setString(1, name);
-      pstmt.setInt(2, no);
-    return name;
-  }
+//  private static String getMemberName(int memberNo) {
+//    try (Connection con = connectionPool.getConnection();
+//        PreparedStatement pstmt = con.prepareStatement(
+//            "select name from members where member_no=?")) {
+//      pstmt.setString(1, name);
+//      pstmt.setInt(2, no);
+//    return name;
+// }
 }

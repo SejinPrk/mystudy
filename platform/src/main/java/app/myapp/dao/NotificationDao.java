@@ -16,6 +16,6 @@ public interface NotificationDao {
 
   int update(Notification notification);
 
-  Member getMemberName(int memberNo);
+//  Member getMemberName(int memberNo);
 
 }

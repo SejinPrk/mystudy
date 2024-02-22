@@ -5,7 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9160b05-d132-42d9-bdad-84098ff3ce04" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/SubscriptionDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/SubscriptionDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionAddServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionDeleteServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionListServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionUpdateServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionViewServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/webapp/subscription/form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java-basic/app/doc/modeling/박세진.exerd" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/doc/modeling/박세진.exerd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../mystudy" beforeDir="false" afterPath="$PROJECT_DIR$/../mystudy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/doc/ddl.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/doc/ddl.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/NotificationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/NotificationDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/NotificationDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/NotificationDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/PlatformDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/PlatformDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/listener/ContextLoaderListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/listener/ContextLoaderListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/category/CategoryViewServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/category/CategoryViewServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/notification/NotificationDeleteHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/notification/NotificationDeleteServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/notification/NotificationListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/notification/NotificationListServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/notification/NotificationUpdateHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/notification/NotificationUpdateServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/notification/NotificationViewHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/notification/NotificationViewServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Subscription.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Subscription.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/webapp/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

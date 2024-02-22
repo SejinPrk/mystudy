@@ -119,13 +119,13 @@ select * from notifications;
 
 -- 결제내역
 create table payments(
-  payment int primary key auto_increment,
-  title varchar(255) not null,
-  content text not null,
-  deadline date not null
+  payment_no int primary key auto_increment,
+  start Date not null,
+  end Date,
+  amount int
   );
 
-insert into assignments(assignment_no,title,content,deadline)
+insert into payments(payment_no,start,end,amount)
 values(1, '과제1','내용1','2024-1-1');
 insert into assignments(assignment_no,title,content,deadline)
 values(2, '과제2','내용2','2024-2-2');
@@ -133,10 +133,10 @@ insert into assignments(assignment_no,title,content,deadline)
 values(3, '과제3','내용3','2024-3-3');
 insert into assignments(assignment_no,title,content,deadline)
 values(4, '과제4','내용4','2024-4-4');
-insert into assignments(assignment_no,title,content,deadline)
+insert into payments(assignment_no,title,content,deadline)
 values(5, '과제5','내용5','2024-5-5');
 
-select * from platforms;
+select * from payments;
 
 
 -- 구독내역

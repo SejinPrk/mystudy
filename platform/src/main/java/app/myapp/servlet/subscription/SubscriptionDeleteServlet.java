@@ -1,6 +1,6 @@
-package app.myapp.servlet.notification;
+package app.myapp.servlet.subscription;
 
-import app.myapp.dao.NotificationDao;
+import app.myapp.dao.SubscriptionDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/notification/delete")
-public class NotificationDeleteHandler extends HttpServlet {
+@WebServlet("/subscription/delete")
+public class SubscriptionDeleteServlet extends HttpServlet {
 
-  private NotificationDao notificationDao;
+  private SubscriptionDao subscriptionDao;
 
   @Override
   public void init() {
-    notificationDao = (NotificationDao) this.getServletContext().getAttribute("notificationDao");
+    subscriptionDao = (SubscriptionDao) this.getServletContext().getAttribute("subscriptionDao");
   }
 
   @Override
@@ -33,13 +33,13 @@ public class NotificationDeleteHandler extends HttpServlet {
     out.println("  <title>개인과제</title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>알림</h1>");
+    out.println("<h1>구독내역</h1>");
 
     try {
       int no = Integer.parseInt(request.getParameter("no"));
 
-      if (notificationDao.delete(no) == 0) {
-        out.println("<p>알림 번호가 유효하지 않습니다.</p>");
+      if (subscriptionDao.delete(no) == 0) {
+        out.println("<p>구독내역 번호가 유효하지 않습니다.</p>");
       } else {
         out.println("<p>삭제했습니다.</p>");
       }

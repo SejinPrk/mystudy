@@ -1,23 +1,25 @@
-package app.myapp.servlet.category;
+package app.myapp.servlet.subscription;
 
-import app.myapp.dao.CategoryDao;
-import app.myapp.vo.Category;
+import app.myapp.dao.SubscriptionDao;
+import app.myapp.vo.Subscription;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/category/view")
-public class CategoryViewServlet extends HttpServlet {
+@WebServlet("/subscription/update")
 
-  private CategoryDao categoryDao;
+public class SubscriptionUpdateServlet extends HttpServlet {
+
+  private SubscriptionDao subscriptionDao;
 
   @Override
   public void init() {
-    categoryDao =(CategoryDao) this.getServletContext().getAttribute("categoryDao");
+    subscriptionDao = (SubscriptionDao) this.getServletContext().getAttribute("subscriptionDao");
   }
 
   @Override
@@ -34,34 +36,29 @@ public class CategoryViewServlet extends HttpServlet {
     out.println("  <title>개인과제</title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>분류</h1>");
+    out.println("<h1>구독내역</h1>");
 
     try {
       int no = Integer.parseInt(request.getParameter("no"));
 
-      Category category = categoryDao.findBy(no);
-      if (category == null) {
-        out.println("<p>분류 번호가 유효하지 않습니다.</p>");
+      Subscription old = subscriptionDao.findBy(no);
+      if (old == null) {
+        out.println("<p>구독내역 번호가 유효하지 않습니다.</p>");
         out.println("</body>");
         out.println("</html>");
         return;
       }
 
-      out.println("<form action='/category/update'>");
-      out.println("<div>");
-      out.printf("  번호: <input readonly name='no' type='text' value='%d'>\n", category.getNo());
-      out.println("</div>");
-      out.println("<div>");
-      out.printf("  이름: <input name='name' type='text' value='%s'>\n", category.getName());
-      out.println("</div>");
-      out.println("<div>");
-      out.println("  <button>변경</button>");
-      out.printf("  <a href='/category/delete?no=%d'>[삭제]</a>\n", no);
-      out.println("</div>");
-      out.println("</form>");
+      Subscription subscription = new Subscription();
+      subscription.setNo(old.getNo());
+      subscription.setStart(Date.valueOf(request.getParameter("start")));
+      subscription.setEnd(Date.valueOf((request.getParameter("end"))));
+
+      subscriptionDao.update(subscription);
+      System.out.println("</p>변경했습니다.</p>");
 
     } catch (Exception e) {
-      out.println("<p>조회 오류!</p>");
+      out.println("<p>변경 오류!</p>");
       out.println("<pre>");
       e.printStackTrace(out);
       out.println("</pre>");
@@ -69,5 +66,7 @@ public class CategoryViewServlet extends HttpServlet {
 
     out.println("</body>");
     out.println("</html>");
+
   }
 }
+
