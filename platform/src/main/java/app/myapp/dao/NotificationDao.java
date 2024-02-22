@@ -1,5 +1,6 @@
 package app.myapp.dao;
 
+import app.myapp.vo.Member;
 import app.myapp.vo.Notification;
 import java.util.List;
 
@@ -14,5 +15,7 @@ public interface NotificationDao {
   Notification findBy(int no);
 
   int update(Notification notification);
+
+  Member getMemberName(int memberNo);
 
 }
