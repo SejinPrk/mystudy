@@ -20,13 +20,13 @@ public class Servlet04 extends GenericServlet {
   public void service(ServletRequest req, ServletResponse res)
       throws ServletException, IOException {
 
-    // photo.jpeg 파일의 실제 경로 알아내기
+    // photo.jpg 파일의 실제 경로 알아내기
     // 1) 서블릿의 환경 정보를 다루는 객체를 먼저 얻는다.
     ServletContext ctx = req.getServletContext();
 
     // 2) ServletContext를 통해 웹 자원의 실제 경로를 알아낸다.
     // => getRealPath(현재 웹 애플리케이션의 파일 경로) : 실제 전체 경로를 리턴한다.
-    String path = ctx.getRealPath("/photo.jpeg");
+    String path = ctx.getRealPath("/photo.jpg");
     System.out.println(path);
 
     FileInputStream in = new FileInputStream(path);
