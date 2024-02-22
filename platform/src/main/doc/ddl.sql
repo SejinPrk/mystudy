@@ -55,9 +55,8 @@ values(4, '과제4','내용4','2024-4-4');
 insert into assignments(assignment_no,title,content,deadline) 
 values(5, '과제5','내용5','2024-5-5');
 
-select * from assignments;
+select * from platforms;
 
-select * from assignments where assignment_no = 3;
 
 drop table members;
 
@@ -87,7 +86,23 @@ values('user5@test.com', 'user5',sha2('1111',256),'2024-5-5','010-0000-0000','12
 
 select * from members;
 
-alter table boards
-  add column category int not null;
 
-update boards set category=1;
+drop table category;
+
+create table category(
+  category_no int primary key auto_increment,
+  name varchar(255) not null
+  );
+
+insert into category(name)
+values('Shopping');
+insert into category(name)
+values('OTT Contents');
+insert into category(name)
+values('Music');
+insert into category(name)
+values('Lifestyle');
+insert into category(name)
+values('Newsletter');
+insert into category(name)
+values('기타');
