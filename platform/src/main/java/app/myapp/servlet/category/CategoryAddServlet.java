@@ -1,24 +1,23 @@
 package app.myapp.servlet.category;
 
-import app.myapp.dao.MemberDao;
-import app.myapp.vo.Member;
+import app.myapp.dao.CategoryDao;
+import app.myapp.vo.Category;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/member/add")
-public class MemberAddServlet extends HttpServlet {
+@WebServlet("/category/add")
+public class CategoryAddServlet extends HttpServlet {
 
-  private MemberDao memberDao;
+  private CategoryDao categoryDao;
 
   @Override
   public void init() {
-    memberDao =(MemberDao) this.getServletContext().getAttribute("memberDao");
+    categoryDao =(CategoryDao) this.getServletContext().getAttribute("categoryDao");
   }
 
   @Override
@@ -35,19 +34,13 @@ public class MemberAddServlet extends HttpServlet {
     out.println("  <title>개인과제</title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>회원</h1>");
+    out.println("<h1>분류</h1>");
 
     try {
-      Member member = new Member();
-      member.setEmail(request.getParameter("email"));
-      member.setName(request.getParameter("name"));
-      member.setPassword(request.getParameter("password"));
-      member.setTel(request.getParameter("tel"));
-      member.setCreatedDate(new Date());
-      member.setCreditNo(Integer.parseInt(request.getParameter("credit_no")));
-      member.setCreditDate(request.getParameter("credit_date"));
+      Category category = new Category();
+      category.setName(request.getParameter("name"));
 
-      memberDao.add(member);
+      categoryDao.add(category);
       out.println("<p>등록했습니다.</p>");
 
     } catch (Exception e) {

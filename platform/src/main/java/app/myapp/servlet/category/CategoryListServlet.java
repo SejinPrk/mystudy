@@ -1,7 +1,7 @@
 package app.myapp.servlet.category;
 
-import app.myapp.dao.MemberDao;
-import app.myapp.vo.Member;
+import app.myapp.dao.CategoryDao;
+import app.myapp.vo.Category;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/member/list")
-public class MemberListServlet extends HttpServlet {
+@WebServlet("/category/list")
+public class CategoryListServlet extends HttpServlet {
 
-  private MemberDao memberDao;
+  private CategoryDao categoryDao;
 
   @Override
   public void init() {
-    memberDao =(MemberDao) this.getServletContext().getAttribute("memberDao");
+    categoryDao =(CategoryDao) this.getServletContext().getAttribute("categoryDao");
   }
 
   @Override
@@ -35,27 +35,24 @@ public class MemberListServlet extends HttpServlet {
     out.println("  <title>개인과제</title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>회원</h1>");
+    out.println("<h1>분류</h1>");
 
-    out.println("<a href='/member/form.html'>새 회원</a>");
+    out.println("<a href='/member/form.html'>새 분류</a>");
 
     try {
       out.println("<table border='1'>");
       out.println("    <thead>");
-      out.println("    <tr> <th>번호</th> <th>이름</th> <th>이메일</th> <th>전화번호</th> <th>가입일</th> </tr>");
+      out.println("    <tr> <th>번호</th> <th>이름</th> </tr>");
       out.println("    </thead>");
       out.println("    <tbody>");
 
-      List<Member> list = memberDao.findAll();
+      List<Category> list = categoryDao.findAll();
 
-      for (Member member : list) {
+      for (Category category : list) {
         out.printf(
-            "<tr> <td>%d</td> <td><a href='/member/view?no=%1$d'>%s</a></td> <td>%s</td> <td>%s</td> <td>%s</td> </tr>\n",
-            member.getNo(),
-            member.getName(),
-            member.getEmail(),
-            member.getTel(),
-            member.getCreatedDate());
+            "<tr> <td>%d</td> <td><a href='/category/view?no=%1$d'>%s</a></td> </tr>\n",
+            category.getNo(),
+            category.getName());
       }
       out.println("    </tbody>");
       out.println("</table>");

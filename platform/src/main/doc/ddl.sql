@@ -106,3 +106,6 @@ insert into category(name)
 values('Newsletter');
 insert into category(name)
 values('기타');
+
+
+select * from category;

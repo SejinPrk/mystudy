@@ -1,7 +1,7 @@
 package app.myapp.servlet.category;
 
-import app.myapp.dao.MemberDao;
-import app.myapp.vo.Member;
+import app.myapp.dao.CategoryDao;
+import app.myapp.vo.Category;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/member/update")
-public class MemberUpdateServlet extends HttpServlet {
+@WebServlet("/category/update")
+public class CategoryUpdateServlet extends HttpServlet {
 
-  private MemberDao memberDao;
+  private CategoryDao categoryDao;
 
   @Override
   public void init() {
-    memberDao =(MemberDao) this.getServletContext().getAttribute("memberDao");
+    categoryDao =(CategoryDao) this.getServletContext().getAttribute("categoryDao");
   }
 
   @Override
@@ -35,28 +35,25 @@ public class MemberUpdateServlet extends HttpServlet {
     out.println("  <title>개인과제</title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>회원</h1>");
+    out.println("<h1>분류</h1>");
     try {
       int no = Integer.parseInt(request.getParameter("no"));
 
-      Member old = memberDao.findBy(no);
+      Category old = categoryDao.findBy(no);
       if (old == null) {
-        out.println("<p>회원 번호가 유효하지 않습니다.</p>");
+        out.println("<p>분류 번호가 유효하지 않습니다.</p>");
         out.println("</body>");
         out.println("</html>");
         return;
       }
 
-      Member member = new Member();
-      member.setNo(old.getNo());
-      member.setEmail(request.getParameter("email"));
-      member.setName(request.getParameter("name"));
-      member.setPassword(request.getParameter("password"));
-      member.setTel(request.getParameter("tel"));
-      member.setCreatedDate(old.getCreatedDate());
+      Category category = new Category();
+      category.setNo(old.getNo());
+      category.setName(request.getParameter("name"));
 
-      memberDao.update(member);
-      System.out.println("회원을 변경했습니다.");
+      categoryDao.update(category);
+      System.out.println("변경했습니다.");
+
     } catch (Exception e) {
       out.println("<p>변경 오류!</p>");
       out.println("<pre>");

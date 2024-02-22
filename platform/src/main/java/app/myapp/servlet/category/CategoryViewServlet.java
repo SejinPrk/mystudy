@@ -1,7 +1,7 @@
 package app.myapp.servlet.category;
 
-import app.myapp.dao.MemberDao;
-import app.myapp.vo.Member;
+import app.myapp.dao.CategoryDao;
+import app.myapp.vo.Category;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/member/view")
-public class MemberViewServlet extends HttpServlet {
+@WebServlet("/category/view")
+public class CategoryViewServlet extends HttpServlet {
 
-  private MemberDao memberDao;
+  private CategoryDao categoryDao;
 
   @Override
   public void init() {
-    memberDao =(MemberDao) this.getServletContext().getAttribute("memberDao");
+    categoryDao =(CategoryDao) this.getServletContext().getAttribute("categoryDao");
   }
 
   @Override
@@ -34,14 +34,14 @@ public class MemberViewServlet extends HttpServlet {
     out.println("  <title>개인과제</title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>회원</h1>");
+    out.println("<h1>분류</h1>");
 
     try {
       int no = Integer.parseInt(request.getParameter("no"));
 
-      Member member = memberDao.findBy(no);
-      if (member == null) {
-        out.println("<p>회원 번호가 유효하지 않습니다.</p>");
+      Category category = categoryDao.findBy(no);
+      if (category == null) {
+        out.println("<p>분류 번호가 유효하지 않습니다.</p>");
         out.println("</body>");
         out.println("</html>");
         return;
@@ -49,26 +49,14 @@ public class MemberViewServlet extends HttpServlet {
 
       out.println("<form action='/member/update'>");
       out.println("<div>");
-      out.printf("  번호: <input readonly name='no' type='text' value='%d'>\n", member.getNo());
+      out.printf("  번호: <input readonly name='no' type='text' value='%d'>\n", category.getNo());
       out.println("</div>");
       out.println("<div>");
-      out.printf("  이메일: <input name='email' type='text' value='%s'>\n", member.getEmail());
-      out.println("</div>");
-      out.println("<div>");
-      out.printf("  이름: <input name='name' type='text' value='%s'>\n", member.getName());
-      out.println("</div>");
-      out.println("<div>");
-      out.println("  암호: <input name='password' type='password'>");
-      out.println("</div>");
-      out.println("<div>");
-      out.printf("  가입일: <input readonly type='text' value='%s'>\n", member.getCreatedDate());
-      out.println("</div>");
-      out.println("<div>");
-      out.println("  전화번호: <input name='tel' type='tel'>");
+      out.printf("  이름: <input name='name' type='text' value='%s'>\n", category.getName());
       out.println("</div>");
       out.println("<div>");
       out.println("  <button>변경</button>");
-      out.printf("  <a href='/member/delete?no=%d'>[삭제]</a>\n", no);
+      out.printf("  <a href='/category/delete?no=%d'>[삭제]</a>\n", no);
       out.println("</div>");
       out.println("</form>");
 

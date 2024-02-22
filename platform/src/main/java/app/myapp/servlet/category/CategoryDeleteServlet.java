@@ -1,6 +1,6 @@
 package app.myapp.servlet.category;
 
-import app.myapp.dao.MemberDao;
+import app.myapp.dao.CategoryDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/member/delete")
-public class MemberDeleteServlet extends HttpServlet {
+@WebServlet("/category/delete")
+public class CategoryDeleteServlet extends HttpServlet {
 
-  private MemberDao memberDao;
+  private CategoryDao categoryDao;
 
   @Override
   public void init() {
-    memberDao =(MemberDao) this.getServletContext().getAttribute("memberDao");
+    categoryDao =(CategoryDao) this.getServletContext().getAttribute("categoryDao");
   }
 
   @Override
@@ -33,13 +33,13 @@ public class MemberDeleteServlet extends HttpServlet {
     out.println("  <title>개인과제</title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>회원</h1>");
+    out.println("<h1>분류</h1>");
 
     try {
       int no = Integer.parseInt(request.getParameter("no"));
 
-      if (memberDao.delete(no) == -1) {
-        out.println("<p>회원 번호가 유효하지 않습니다.</p>");
+      if (categoryDao.delete(no) == -1) {
+        out.println("<p>분류 번호가 유효하지 않습니다.</p>");
       } else {
         out.println("<p>삭제했습니다.</p>");
       }
