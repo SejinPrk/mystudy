@@ -4,10 +4,14 @@ drop table platforms;
 
 create table platforms(
   platform_no int primary key auto_increment,
+  category_no int,
+    FOREIGN KEY (category_no) REFERENCES Category(id),
   name varchar(255) not null,
   price INTEGER not null,
   term text not null
 );
+
+SELECT * FROM PlatformHandler WHERE category_id = <카테고리 no>;
 
 insert into platforms(platform_no,name,price,term)
 values(1, '광고형 넷플릭스','5500','month');
