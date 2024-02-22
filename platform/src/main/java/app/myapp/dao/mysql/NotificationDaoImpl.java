@@ -22,7 +22,7 @@ public class NotificationDaoImpl implements NotificationDao {
   public void add(Notification notification) {
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
-            "insert into notifications(content,date,check) values(?,?,?)")) {
+            "insert into notifications(content,date,checked) values(?,?,?)")) {
 
       pstmt.setString(1, notification.getContent());
       pstmt.setDate(2, notification.getDate());
@@ -54,7 +54,7 @@ public class NotificationDaoImpl implements NotificationDao {
   public List<Notification> findAll() {
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
-            "select notification_no, content, date, check from notifications order by notification_no desc");
+            "select notification_no, content, date, checked from notifications order by notification_no desc");
         ResultSet rs = pstmt.executeQuery()) {
 
       ArrayList<Notification> list = new ArrayList<>();
@@ -64,7 +64,7 @@ public class NotificationDaoImpl implements NotificationDao {
         notification.setNo(rs.getInt("notification_no"));
         notification.setContent(rs.getString("content"));
         notification.setDate(rs.getDate("date"));
-        notification.setCheck(rs.getBoolean("check"));
+        notification.setCheck(rs.getBoolean("checked"));
 
         list.add(notification);
       }
@@ -90,7 +90,7 @@ public class NotificationDaoImpl implements NotificationDao {
           notification.setNo(rs.getInt("notification_no"));
           notification.setContent(rs.getString("content"));
           notification.setDate(rs.getDate("date"));
-          notification.setCheck(rs.getBoolean("check"));
+          notification.setCheck(rs.getBoolean("checked"));
           return notification;
         }
         return null;
@@ -105,7 +105,7 @@ public class NotificationDaoImpl implements NotificationDao {
   public int update(Notification notification) {
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
-        "update notifications set content=?, date=?, check=? where notification_no=?")) {
+        "update notifications set content=?, date=?, checked=? where notification_no=?")) {
 
       pstmt.setString(1, notification.getContent());
       pstmt.setDate(2, notification.getDate());

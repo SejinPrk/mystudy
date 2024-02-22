@@ -53,7 +53,7 @@ public class NotificationUpdateHandler extends HttpServlet {
     notification.setNo(old.getNo());
     notification.setContent(request.getParameter("content"));
     notification.setDate(Date.valueOf(request.getParameter("date")));
-    notification.setCheck(Boolean.parseBoolean(request.getParameter("check")));
+    notification.setCheck(Boolean.parseBoolean(request.getParameter("checked")));
 
     notificationDao.update(notification);
     System.out.println("<p>변경했습니다.</p>");

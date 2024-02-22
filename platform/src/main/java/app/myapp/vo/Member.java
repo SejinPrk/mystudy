@@ -1,5 +1,5 @@
 package app.myapp.vo;
-
+// 회원
 import java.io.Serializable;
 import java.util.Date;
 

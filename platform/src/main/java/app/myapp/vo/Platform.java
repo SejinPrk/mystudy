@@ -1,7 +1,6 @@
 package app.myapp.vo;
-
+// 플랫폼
 import java.io.Serializable;
-import java.sql.Date;
 
 public class Platform implements Serializable {
 

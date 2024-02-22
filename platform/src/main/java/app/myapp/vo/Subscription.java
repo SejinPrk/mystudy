@@ -1,5 +1,5 @@
 package app.myapp.vo;
-
+// 구독내역
 import java.io.Serializable;
 import java.sql.Date;
 

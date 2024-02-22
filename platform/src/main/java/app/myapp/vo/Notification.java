@@ -1,5 +1,5 @@
 package app.myapp.vo;
-
+// 알림
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,7 +10,7 @@ public class Notification implements Serializable {
   private int no;
   private String content;
   private Date date;
-  private boolean check;
+  private boolean checked;
 
   @Override
   public String toString() {
@@ -18,7 +18,7 @@ public class Notification implements Serializable {
         "no=" + no +
         ", content='" + content + '\'' +
         ", date='" + date + '\'' +
-        ", check='" + check +
+        ", check='" + checked +
         '}';
   }
 
@@ -47,10 +47,10 @@ public class Notification implements Serializable {
   }
 
   public boolean isCheck() {
-    return check;
+    return checked;
   }
 
   public void setCheck(boolean check) {
-    this.check = check;
+    this.checked = check;
   }
 }

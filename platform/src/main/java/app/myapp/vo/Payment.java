@@ -1,5 +1,5 @@
 package app.myapp.vo;
-
+// 결제내역
 import java.io.Serializable;
 import java.util.Date;
 

@@ -58,7 +58,7 @@ public class NotificationViewHandler extends HttpServlet {
       out.printf("  날짜: <input name='date' type='Date' value='%s'>\n", notification.getDate());
       out.println("</div>");
       out.println("<div>");
-      out.printf("  조회여부: <input name='check' type='boolean' value='%s'>\n", notification.isCheck());
+      out.printf("  조회여부: <input name='checked' type='boolean' value='%s'>\n", notification.isCheck());
       out.println("</div>");
       out.println("<div>");
       out.println("  <button>변경</button>");
