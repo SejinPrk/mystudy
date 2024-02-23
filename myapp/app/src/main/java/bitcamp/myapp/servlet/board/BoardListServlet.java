@@ -5,14 +5,16 @@ import bitcamp.myapp.vo.Board;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import javax.servlet.GenericServlet;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/board/list")
-public class BoardListServlet extends GenericServlet {
+public class BoardListServlet extends HttpServlet {
 
   private BoardDao boardDao;
 
@@ -22,14 +24,14 @@ public class BoardListServlet extends GenericServlet {
   }
 
   @Override
-  public void service(ServletRequest servletRequest, ServletResponse servletResponse)
+  public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
-    int category = Integer.valueOf(servletRequest.getParameter("category"));
+    int category = Integer.valueOf(request.getParameter("category"));
     String title = category == 1 ? "게시글" : "가입인사";
 
-    servletResponse.setContentType("text/html;charset=UTF-8");
-    PrintWriter out = servletResponse.getWriter();
+    response.setContentType("text/html;charset=UTF-8");
+    PrintWriter out = response.getWriter();
 
     out.println("<!DOCTYPE html>");
     out.println("<html lang='en'>");
