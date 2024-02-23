@@ -103,7 +103,7 @@ public class BoardUpdateServlet extends HttpServlet {
 
       txManager.commit();
 
-      response.sendRedirect("/board/list/category=" + category);
+      response.sendRedirect("/board/list?category=" + category);
       return;
 
     } catch (Exception e) {

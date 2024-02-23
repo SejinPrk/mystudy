@@ -27,15 +27,6 @@ public class MemberAddServlet extends HttpServlet {
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
 
-    out.println("<!DOCTYPE html>");
-    out.println("<html lang='en'>");
-    out.println("<head>");
-    out.println("  <meta charset='UTF-8'>");
-    out.println("  <title>비트캠프 데브옵스 5기</title>");
-    out.println("</head>");
-    out.println("<body>");
-    out.println("<h1>회원</h1>");
-
     try {
       Member member = new Member();
       member.setEmail(request.getParameter("email"));
@@ -43,16 +34,18 @@ public class MemberAddServlet extends HttpServlet {
       member.setPassword(request.getParameter("password"));
 
       memberDao.add(member);
-      out.println("<p>회원을 등록했습니다.</p>");
+
+      response.sendRedirect("/member/list");
+      return;
 
     } catch (Exception e) {
       out.println("<p>회원등록 오류!</p>");
       out.println("<pre>");
       e.printStackTrace(out);
       out.println("</pre>");
-    }
 
-    out.println("</body>");
-    out.println("</html>");
+      out.println("</body>");
+      out.println("</html>");
+    }
   }
 }
