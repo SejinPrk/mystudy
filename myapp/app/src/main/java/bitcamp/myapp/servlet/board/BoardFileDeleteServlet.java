@@ -2,12 +2,8 @@ package bitcamp.myapp.servlet.board;
 
 import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.BoardDao;
-import bitcamp.myapp.dao.mysql.AttachedFileDaoImpl;
-import bitcamp.myapp.dao.mysql.BoardDaoImpl;
 import bitcamp.myapp.vo.AttachedFile;
 import bitcamp.myapp.vo.Member;
-import bitcamp.util.DBConnectionPool;
-import bitcamp.util.TransactionManager;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -24,12 +20,13 @@ public class BoardFileDeleteServlet extends HttpServlet {
 
   @Override
   public void init() {
-    boardDao = (BoardDao) this.getServletContext().getAttribute("boardDao");
-    attachedFileDao = (AttachedFileDao) this.getServletContext().getAttribute("attachedFileDao");
+    this.boardDao = (BoardDao) this.getServletContext().getAttribute("boardDao");
+    this.attachedFileDao = (AttachedFileDao) this.getServletContext()
+        .getAttribute("attachedFileDao");
   }
 
   @Override
-  protected void service(HttpServletRequest request, HttpServletResponse response)
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
     int category = Integer.valueOf(request.getParameter("category"));

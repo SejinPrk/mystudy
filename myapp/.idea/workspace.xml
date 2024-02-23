@@ -5,28 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9160b05-d132-42d9-bdad-84098ff3ce04" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/SubscriptionDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/SubscriptionDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionAddServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionDeleteServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionListServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionUpdateServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionViewServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../platform/src/main/webapp/subscription/form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../java-basic/app/doc/modeling/박세진.exerd" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/doc/modeling/박세진.exerd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/listener/ContextLoaderListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/listener/ContextLoaderListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/assignment/AssignmentAddServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/assignment/AssignmentAddServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/assignment/AssignmentDeleteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/assignment/AssignmentDeleteServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/assignment/AssignmentListServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/assignment/AssignmentListServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/assignment/AssignmentUpdateServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/assignment/AssignmentUpdateServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/assignment/AssignmentViewServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/assignment/AssignmentViewServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/auth/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/auth/LoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/auth/LogoutServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/auth/LogoutServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/board/BoardAddServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/board/BoardAddServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/board/BoardDeleteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/board/BoardDeleteServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/board/BoardFileDeleteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/board/BoardFileDeleteServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/board/BoardFormServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/board/BoardListServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/board/BoardListServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/board/BoardUpdateServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/board/BoardUpdateServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/board/BoardViewServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/board/BoardViewServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/member/MemberAddServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/member/MemberAddServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/member/MemberDeleteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/member/MemberDeleteServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/member/MemberListServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/member/MemberListServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/member/MemberUpdateServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/member/MemberUpdateServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/member/MemberViewServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/member/MemberViewServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/assignment/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/webapp/assignment/form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/auth/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/webapp/auth/form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/member/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/webapp/member/form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../mystudy" beforeDir="false" afterPath="$PROJECT_DIR$/../mystudy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/doc/ddl.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/doc/ddl.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/NotificationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/NotificationDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/NotificationDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/NotificationDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/PlatformDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/PlatformDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/listener/ContextLoaderListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/listener/ContextLoaderListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/category/CategoryViewServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/category/CategoryViewServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/notification/NotificationDeleteHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/notification/NotificationDeleteServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/notification/NotificationListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/notification/NotificationListServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/notification/NotificationUpdateHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/notification/NotificationUpdateServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/notification/NotificationViewHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/notification/NotificationViewServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Subscription.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Subscription.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../servlet-app/app/src/main/java/com/eomcs/web/ex08/Servlet03.java" beforeDir="false" afterPath="$PROJECT_DIR$/../servlet-app/app/src/main/java/com/eomcs/web/ex08/Servlet03.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

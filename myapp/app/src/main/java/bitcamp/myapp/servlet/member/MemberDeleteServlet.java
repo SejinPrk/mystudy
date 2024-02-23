@@ -16,12 +16,11 @@ public class MemberDeleteServlet extends HttpServlet {
 
   @Override
   public void init() {
-    memberDao =(MemberDao) this.getServletContext().getAttribute("memberDao");
+    this.memberDao = (MemberDao) this.getServletContext().getAttribute("memberDao");
   }
 
-
   @Override
-  protected void service(HttpServletRequest request, HttpServletResponse response)
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
     response.setContentType("text/html;charset=UTF-8");

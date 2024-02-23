@@ -17,12 +17,11 @@ public class MemberViewServlet extends HttpServlet {
 
   @Override
   public void init() {
-    memberDao =(MemberDao) this.getServletContext().getAttribute("memberDao");
+    this.memberDao = (MemberDao) this.getServletContext().getAttribute("memberDao");
   }
 
-
   @Override
-  protected void service(HttpServletRequest request, HttpServletResponse response)
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
     response.setContentType("text/html;charset=UTF-8");
@@ -48,7 +47,7 @@ public class MemberViewServlet extends HttpServlet {
         return;
       }
 
-      out.println("<form action='/member/update'>");
+      out.println("<form action='/member/update' method='post'>");
       out.println("<div>");
       out.printf("  번호: <input readonly name='no' type='text' value='%d'>\n", member.getNo());
       out.println("</div>");

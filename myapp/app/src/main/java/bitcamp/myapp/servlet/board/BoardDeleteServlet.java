@@ -20,12 +20,13 @@ public class BoardDeleteServlet extends HttpServlet {
 
   @Override
   public void init() {
-    boardDao = (BoardDao) this.getServletContext().getAttribute("boardDao");
-    attachedFileDao = (AttachedFileDao) this.getServletContext().getAttribute("attachedFileDao");
+    this.boardDao = (BoardDao) this.getServletContext().getAttribute("boardDao");
+    this.attachedFileDao = (AttachedFileDao) this.getServletContext()
+        .getAttribute("attachedFileDao");
   }
 
   @Override
-  protected void service(HttpServletRequest request, HttpServletResponse response)
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
     int category = Integer.valueOf(request.getParameter("category"));
