@@ -34,6 +34,8 @@ insert into platforms(platform_no,name,price,term)
 values(9, '밀리의서재 연 정기구독','99000','year');
 insert into platforms(platform_no,name,price,term)
 values(10, '쿠팡 로켓와우','4990','month');
+insert into platforms(platform_no,name,price,term)
+values(11, '유튜브 프리미엄','14900','month');
 
 select * from platforms;
 
@@ -114,6 +116,8 @@ INSERT INTO notifications(content, date, checked, member_no)
 VALUES('구독 기간이 만료되었습니다. 갱신이 필요합니다.',  NOW(), 0, 3);
 INSERT INTO notifications(content, date, checked, member_no)
 VALUES('무료 체험 기간이 만료되었습니다. 연장하시겠습니까?',  NOW(), 0, 4);
+INSERT INTO notifications(content, date, checked, member_no)
+VALUES('구독하시던 유튜브 프리미엄의 구독료가 인상되었습니다. 연장하시겠습니까?',  NOW(), 0, 5);
 
 select * from notifications;
 
