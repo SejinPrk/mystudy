@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/ex05/s3")
-public class Servlet03 extends MyHttpServlet2 {
+public class Servlet04 extends MyHttpServlet2 {
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
