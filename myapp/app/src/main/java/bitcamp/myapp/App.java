@@ -1,97 +1,58 @@
 package bitcamp.myapp;
 
-import bitcamp.menu.MenuGroup;
-import bitcamp.myapp.dao.AssignmentDao;
-import bitcamp.myapp.dao.BoardDao;
-import bitcamp.myapp.dao.MemberDao;
-import bitcamp.myapp.dao.json.AssignmentDaoImpl;
-import bitcamp.myapp.dao.json.BoardDaoImpl;
-import bitcamp.myapp.dao.json.MemberDaoImpl;
-import bitcamp.myapp.handler.HelpHandler;
-import bitcamp.myapp.handler.assignment.AssignmentAddHandler;
-import bitcamp.myapp.handler.assignment.AssignmentDeleteHandler;
-import bitcamp.myapp.handler.assignment.AssignmentListHandler;
-import bitcamp.myapp.handler.assignment.AssignmentModifyHandler;
-import bitcamp.myapp.handler.assignment.AssignmentViewHandler;
-import bitcamp.myapp.handler.board.BoardAddHandler;
-import bitcamp.myapp.handler.board.BoardDeleteHandler;
-import bitcamp.myapp.handler.board.BoardListHandler;
-import bitcamp.myapp.handler.board.BoardModifyHandler;
-import bitcamp.myapp.handler.board.BoardViewHandler;
-import bitcamp.myapp.handler.member.MemberAddHandler;
-import bitcamp.myapp.handler.member.MemberDeleteHandler;
-import bitcamp.myapp.handler.member.MemberListHandler;
-import bitcamp.myapp.handler.member.MemberModifyHandler;
-import bitcamp.myapp.handler.member.MemberViewHandler;
-import bitcamp.myapp.vo.Member;
-import bitcamp.util.Prompt;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
+import org.apache.catalina.WebResourceRoot;
+import org.apache.catalina.connector.Connector;
+import org.apache.catalina.core.StandardContext;
+import org.apache.catalina.startup.Tomcat;
+import org.apache.catalina.webresources.DirResourceSet;
+import org.apache.catalina.webresources.StandardRoot;
 
 public class App {
 
-  Prompt prompt = new Prompt(System.in);
+  public static void main(String[] args) throws Exception {
+    System.out.println("과제관리 시스템 서버 실행!");
 
-  List<Member> memberRepository = new ArrayList<>();
+    // 톰캣 서버를 구동시키는 객체 준비
+    Tomcat tomcat = new Tomcat();
 
-  BoardDao boardDao = new BoardDaoImpl("board.json");
-  BoardDao greetingDao = new BoardDaoImpl("greeting.json");
-  AssignmentDao assignmentDao = new AssignmentDaoImpl("assignment.json");
-  MemberDao memberDao = new MemberDaoImpl("member.json");
+    // 서버의 포트 번호 설정
+    tomcat.setPort(8888);
 
-  MenuGroup mainMenu;
+    // 톰캣 서버를 실행하는 동안 사용할 임시 폴더 지정
+    tomcat.setBaseDir("./temp");
 
-  App() {
-    prepareMenu();
-  }
+    // 톰캣 서버의 연결 정보를 설정
+    Connector connector = tomcat.getConnector();
+    connector.setURIEncoding("UTF-8");
 
-  public static void main(String[] args) {
-    new App().run();
-  }
+    // 톰캣 서버에 배포할 웹 애플리케이션의 환경 정보 준비
+    StandardContext ctx = (StandardContext) tomcat.addWebapp(
+        "/", // 컨텍스트 경로(웹 애플리케이션 경로)
+        new File("src/main/webapp").getAbsolutePath() // 웹 애플리케이션 파일이 있는 실제 경로
+    );
+    ctx.setReloadable(true);
 
-  void prepareMenu() {
-    mainMenu = MenuGroup.getInstance("메인");
+    // 웹 애플리케이션 기타 정보 설정
+    WebResourceRoot resources = new StandardRoot(ctx);
 
-    MenuGroup assignmentMenu = mainMenu.addGroup("과제");
-    assignmentMenu.addItem("등록", new AssignmentAddHandler(assignmentDao, prompt));
-    assignmentMenu.addItem("조회", new AssignmentViewHandler(assignmentDao, prompt));
-    assignmentMenu.addItem("변경", new AssignmentModifyHandler(assignmentDao, prompt));
-    assignmentMenu.addItem("삭제", new AssignmentDeleteHandler(assignmentDao, prompt));
-    assignmentMenu.addItem("목록", new AssignmentListHandler(assignmentDao, prompt));
+    // 웹 애플리케이션의 서블릿 클래스 등록
+    resources.addPreResources(new DirResourceSet(
+        resources, // 루트 웹 애플리케이션 정보
+        "/WEB-INF/classes", // 서블릿 클래스 파일의 위치 정보
+        new File("build/classes/java/main").getAbsolutePath(), // 서블릿 클래스 파일이 있는 실제 경로
+        "/" // 웹 애플리케이션 내부 경로
+    ));
 
-    MenuGroup boardMenu = mainMenu.addGroup("게시글");
-    boardMenu.addItem("등록", new BoardAddHandler(boardDao, prompt));
-    boardMenu.addItem("조회", new BoardViewHandler(boardDao, prompt));
-    boardMenu.addItem("변경", new BoardModifyHandler(boardDao, prompt));
-    boardMenu.addItem("삭제", new BoardDeleteHandler(boardDao, prompt));
-    boardMenu.addItem("목록", new BoardListHandler(boardDao, prompt));
+    // 웹 애플리케이션 설정 정보를 웹 애플리케이션 환경 정보에 등록
+    ctx.setResources(resources);
 
-    MenuGroup memberMenu = mainMenu.addGroup("회원");
-    memberMenu.addItem("등록", new MemberAddHandler(memberDao, prompt));
-    memberMenu.addItem("조회", new MemberViewHandler(memberDao, prompt));
-    memberMenu.addItem("변경", new MemberModifyHandler(memberDao, prompt));
-    memberMenu.addItem("삭제", new MemberDeleteHandler(memberDao, prompt));
-    memberMenu.addItem("목록", new MemberListHandler(memberDao, prompt));
+    // 톰캣 서버 구동
+    tomcat.start();
 
-    MenuGroup greetingMenu = mainMenu.addGroup("가입인사");
-    greetingMenu.addItem("등록", new BoardAddHandler(greetingDao, prompt));
-    greetingMenu.addItem("조회", new BoardViewHandler(greetingDao, prompt));
-    greetingMenu.addItem("변경", new BoardModifyHandler(greetingDao, prompt));
-    greetingMenu.addItem("삭제", new BoardDeleteHandler(greetingDao, prompt));
-    greetingMenu.addItem("목록", new BoardListHandler(greetingDao, prompt));
+    // 톰캣 서버를 구동한 후 종료될 때까지 JVM을 끝내지 말고 기다린다.
+    tomcat.getServer().await();
 
-    mainMenu.addItem("도움말", new HelpHandler(prompt));
-  }
-
-  void run() {
-    while (true) {
-      try {
-        mainMenu.execute(prompt);
-        prompt.close();
-        break;
-      } catch (Exception e) {
-        System.out.println("예외 발생!");
-      }
-    }
+    System.out.println("서버 종료!");
   }
 }

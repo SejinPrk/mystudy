@@ -61,6 +61,7 @@ public class Exam0110 {
       // => DriverManager.getDriver(jdbcUrl);
       // => jdbcUrl
       // jdbc:[DBMS]://서버주소:포트번호/데이터베이스명
+      // 언어마다 문법이 조금씩 다르니 주의할 것!
       java.sql.Driver driver = DriverManager.getDriver("jdbc:mariadb://");
       System.out.println(driver);
 

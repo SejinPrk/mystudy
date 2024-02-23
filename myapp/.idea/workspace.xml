@@ -5,41 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9160b05-d132-42d9-bdad-84098ff3ce04" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/menu/AbstractMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/menu/AbstractMenuHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/menu/Menu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/menu/MenuGroup.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/menu/MenuHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/menu/MenuItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/ClientApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/dao/AssignmentDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/dao/BoardDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/dao/DaoException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/dao/MemberDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/dao/mysql/AssignmentDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/dao/mysql/BoardDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/dao/mysql/MemberDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/HelpHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/assignment/AssignmentAddHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/assignment/AssignmentDeleteHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/assignment/AssignmentListHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/assignment/AssignmentModifyHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/assignment/AssignmentViewHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/board/BoardAddHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/board/BoardDeleteHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/board/BoardListHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/board/BoardModifyHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/board/BoardViewHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/member/MemberAddHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/member/MemberDeleteHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/member/MemberListHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/member/MemberModifyHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/handler/member/MemberViewHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/vo/Assignment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/vo/Board.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/myapp/vo/Member.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/util/AnsiEscape.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../testapp/src/main/java/book/util/Prompt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/SubscriptionDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/SubscriptionDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionAddServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionDeleteServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionListServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionUpdateServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionViewServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/webapp/subscription/form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java-basic/app/doc/modeling/박세진.exerd" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/doc/modeling/박세진.exerd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mystudy" beforeDir="false" afterPath="$PROJECT_DIR$/../mystudy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/doc/ddl.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/doc/ddl.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/NotificationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/NotificationDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/NotificationDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/NotificationDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/PlatformDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/PlatformDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/listener/ContextLoaderListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/listener/ContextLoaderListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/category/CategoryViewServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/category/CategoryViewServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/notification/NotificationDeleteHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/notification/NotificationDeleteServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/notification/NotificationListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/notification/NotificationListServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/notification/NotificationUpdateHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/notification/NotificationUpdateServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/notification/NotificationViewHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/notification/NotificationViewServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Subscription.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Subscription.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/webapp/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +56,9 @@
         <task path="$PROJECT_DIR$/app-api">
           <activation />
         </task>
+        <task path="$PROJECT_DIR$/app">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
@@ -79,20 +69,49 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="myapp" type="f1a62948:ProjectNode" />
-                <item name="app-client" type="2d1252cf:ModuleNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="myapp" type="f1a62948:ProjectNode" />
-                <item name="app-client" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="myapp" type="f1a62948:ProjectNode" />
-                <item name="app-client" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="myapp" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="myapp" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="myapp" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="myapp" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="myapp" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="myapp" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -130,6 +149,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Application.ServerApp.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.Build myapp.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.myapp [build].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.myapp [classes].executor&quot;: &quot;Run&quot;,
@@ -139,6 +159,7 @@
     &quot;Gradle.myapp:app [:app:QueueTest.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.myapp:app [:app:StackTest.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.myapp:app [:app:Test.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app [build].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.myapp:app-api [build].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.myapp:app-client [:app-client:ClientApp.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.myapp:app-client [build].executor&quot;: &quot;Run&quot;,
@@ -153,29 +174,45 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/sejinpark/git/mystudy/myapp&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/sejinpark/git/mystudy/myapp/app/src/main/webapp/assignment&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="bitcamp.myapp" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp" />
-      <recent name="$PROJECT_DIR$/app-common/src/main/java/bitcamp/myapp/dao" />
-      <recent name="$PROJECT_DIR$/app-common" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/app-server" />
+      <recent name="$PROJECT_DIR$/app/src/main/webapp/assignment" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/member" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/assignment" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet" />
+      <recent name="$PROJECT_DIR$/app/src/main/webapp" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="bitcamp.myapp" />
-      <recent name="bitcamp.myapp.dao.network" />
-      <recent name="bitcamp.myapp.dao.json" />
-      <recent name="bitcamp.util" />
+      <recent name="bitcamp.myapp.servlet.board" />
+      <recent name="bitcamp.myapp.servlet.assignment" />
+      <recent name="bitcamp.myapp.servlet.member" />
+      <recent name="bitcamp.myapp.servlet" />
+      <recent name="bitcamp.myapp.servlet.auth" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.myapp:app-client [run]">
+  <component name="RunManager" selected="Gradle.myapp [run]">
+    <configuration name="ServerApp" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="bitcamp.myapp.ServerApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="bitcamp.myapp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Test" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="bitcamp.util.Test" />
       <module name="myapp.app.main" />
@@ -216,7 +253,7 @@
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -233,10 +270,10 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="myapp:app-api [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="myapp:app [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/app-api" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/app" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
@@ -260,7 +297,7 @@
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/app-client" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -310,13 +347,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.ServerApp" />
+      <item itemvalue="Application.Test" />
+      <item itemvalue="Gradle.myapp [build]" />
+      <item itemvalue="Gradle.myapp [run]" />
+      <item itemvalue="Gradle.myapp:app-client [run]" />
+      <item itemvalue="Gradle.myapp:app-server [run]" />
+      <item itemvalue="Gradle.myapp:app [build]" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.myapp [run]" />
+        <item itemvalue="Gradle.myapp:app [build]" />
+        <item itemvalue="Gradle.myapp [build]" />
         <item itemvalue="Gradle.myapp:app-client [run]" />
         <item itemvalue="Gradle.myapp:app-server [run]" />
-        <item itemvalue="Gradle.myapp [run]" />
-        <item itemvalue="Gradle.myapp:app-api [build]" />
-        <item itemvalue="Gradle.myapp [build]" />
       </list>
     </recent_temporary>
   </component>
@@ -338,6 +384,10 @@
     </task>
     <servers />
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="executable:docker" />
+    <option featureType="dependencySupport" implementationName="java:com.google.protobuf:protobuf-java" />
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -354,47 +404,29 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/App.java</url>
-          <line>45</line>
+          <line>56</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/App.java</url>
-          <line>89</line>
-          <option name="timeStamp" value="16" />
+          <url>file://$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/handler/board/BoardAddHandler.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/ServerApp.java</url>
-          <line>99</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/ServerApp.java</url>
-          <line>89</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/ServerApp.java</url>
-          <line>75</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app-server/src/main/java/bitcamp/myapp/ServerApp.java</url>
-          <line>117</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-field">
-          <url>file://$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/App.java</url>
-          <line>41</line>
-          <properties field="mainMenu" class="bitcamp.myapp.App" />
-          <option name="timeStamp" value="12" />
+          <url>file://$PROJECT_DIR$/app-server/src/main/java/bitcamp/util/Prompt.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Board.java</url>
-          <line>12</line>
+          <line>14</line>
           <properties field="writer" class="bitcamp.myapp.vo.Board" />
           <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/myapp$myapp__run_.ic" NAME="myapp [run] Coverage Results" MODIFIED="1708315084742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
