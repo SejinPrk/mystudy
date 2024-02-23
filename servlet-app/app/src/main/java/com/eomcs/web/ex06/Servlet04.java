@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 
 // 서블릿이 사용할 값을 DD 설정으로 지정할 수 있다.
 //
-@WebServlet(value="/ex06/s4", loadOnStartup = 1)
+//@WebServlet(value="/ex06/s4", loadOnStartup = 1)
 @SuppressWarnings("serial")
 public class Servlet04 extends HttpServlet {
 

@@ -39,15 +39,17 @@
       <param-value>1111</param-value>
     </context-param>
 
-
+<!--
   <servlet-mapping>
-    <servlet-name>Servlet01</servlet-name>
-    <url-pattern>/ex01/first</url-pattern>
+    <servlet-name>Servlet03</servlet-name>
+    <url-pattern>/ex03/first</url-pattern>
   </servlet-mapping>
 
   <servlet-mapping>
     <servlet-name>Servlet01</servlet-name>
     <url-pattern>/first</url-pattern>
   </servlet-mapping>
+  -->
+
 
 </web-app>
