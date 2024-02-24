@@ -49,6 +49,8 @@ public class BoardUpdateServlet extends HttpServlet {
     out.println("<body>");
     out.printf("<h1>%s</h1>\n", title);
 
+    request.getRequestDispatcher("/header").include(request, response);
+
     Member loginUser = (Member) request.getSession().getAttribute("loginUser");
     if (loginUser == null) {
       out.println("<p>로그인하시기 바랍니다!</p>");
@@ -116,6 +118,8 @@ public class BoardUpdateServlet extends HttpServlet {
       e.printStackTrace(out);
       out.println("</pre>");
     }
+
+    request.getRequestDispatcher("/footer").include(request, response);
 
     out.println("</body>");
     out.println("</html>");

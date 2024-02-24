@@ -93,6 +93,7 @@ public class LoginServlet extends HttpServlet {
       e.printStackTrace(out);
       out.println("</pre>");
     }
+
     request.getRequestDispatcher("/footer").include(request, response);
 
     out.println("</body>");

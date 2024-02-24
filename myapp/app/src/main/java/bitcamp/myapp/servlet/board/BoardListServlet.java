@@ -42,6 +42,8 @@ public class BoardListServlet extends HttpServlet {
     out.println("<body>");
     out.printf("<h1>%s</h1>\n", title);
 
+    request.getRequestDispatcher("/header").include(request, response);
+
     out.printf("<a href='/board/add?category=%d'>새 글</a>\n", category);
 
     try {
@@ -73,6 +75,8 @@ public class BoardListServlet extends HttpServlet {
       e.printStackTrace(out);
       out.println("</pre>");
     }
+
+    request.getRequestDispatcher("/footer").include(request, response);
 
     out.println("</body>");
     out.println("</html>");

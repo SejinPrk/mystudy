@@ -52,6 +52,8 @@ public class BoardFileDeleteServlet extends HttpServlet {
       return;
     }
 
+    request.getRequestDispatcher("/header").include(request, response);
+
     try {
       int fileNo = Integer.parseInt(request.getParameter("no"));
 
@@ -83,6 +85,8 @@ public class BoardFileDeleteServlet extends HttpServlet {
       e.printStackTrace(out);
       out.println("</pre>");
     }
+
+    request.getRequestDispatcher("/footer").include(request, response);
 
     out.println("</body>");
     out.println("</html>");

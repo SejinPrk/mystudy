@@ -35,6 +35,9 @@ public class MemberListServlet extends HttpServlet {
     out.println("  <title>비트캠프 데브옵스 5기</title>");
     out.println("</head>");
     out.println("<body>");
+
+    request.getRequestDispatcher("/header").include(request, response);
+
     out.println("<h1>회원</h1>");
 
     out.println("<a href='/member/form.html'>새 회원</a>");
@@ -65,6 +68,7 @@ public class MemberListServlet extends HttpServlet {
       e.printStackTrace(out);
       out.println("</pre>");
     }
+    request.getRequestDispatcher("/footer").include(request, response);
 
     out.println("</body>");
     out.println("</html>");

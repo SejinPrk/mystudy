@@ -65,6 +65,8 @@ public class AssignmentUpdateServlet extends HttpServlet {
       out.println("</pre>");
     }
 
+    request.getRequestDispatcher("/footer").include(request, response);
+
     out.println("</body>");
     out.println("</html>");
 
