@@ -35,6 +35,9 @@ public class AssignmentUpdateServlet extends HttpServlet {
     out.println("  <title>비트캠프 데브옵스 5기</title>");
     out.println("</head>");
     out.println("<body>");
+
+    request.getRequestDispatcher("/header").include(request, response);
+
     out.println("<h1>과제</h1>");
 
     try {
