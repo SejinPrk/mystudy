@@ -84,34 +84,33 @@ public class BoardAddServlet extends HttpServlet {
 
     String title = "";
     try {
-    int category = Integer.valueOf(request.getParameter("category"));
-    title = category == 1 ? "게시글" : "가입인사";
+      int category = Integer.valueOf(request.getParameter("category"));
+      title = category == 1 ? "게시글" : "가입인사";
 
-    Member loginUser = (Member) request.getSession().getAttribute("loginUser");
-    if (loginUser == null) {
-      throw new Exception("<p>로그인하시기 바랍니다!</p>");
+      Member loginUser = (Member) request.getSession().getAttribute("loginUser");
+      if (loginUser == null) {
+        throw new Exception("로그인하시기 바랍니다!");
+      }
 
-    }
+      Board board = new Board();
+      board.setCategory(category);
+      board.setTitle(request.getParameter("title"));
+      board.setContent(request.getParameter("content"));
+      board.setWriter(loginUser);
 
-    Board board = new Board();
-    board.setCategory(category);
-    board.setTitle(request.getParameter("title"));
-    board.setContent(request.getParameter("content"));
-    board.setWriter(loginUser);
+      ArrayList<AttachedFile> attachedFiles = new ArrayList<>();
 
-    ArrayList<AttachedFile> attachedFiles = new ArrayList<>();
-
-    if (category == 1) {
-      String[] files = request.getParameterValues("files");
-      if (files != null) {
-        for (String file : files) {
-          if (file.length() == 0) {
-            continue;
+      if (category == 1) {
+        String[] files = request.getParameterValues("files");
+        if (files != null) {
+          for (String file : files) {
+            if (file.length() == 0) {
+              continue;
+            }
+            attachedFiles.add(new AttachedFile().filePath(file));
           }
-          attachedFiles.add(new AttachedFile().filePath(file));
         }
       }
-    }
 
       txManager.startTransaction();
 
@@ -127,7 +126,6 @@ public class BoardAddServlet extends HttpServlet {
       txManager.commit();
 
       response.sendRedirect("/board/list?category=" + category);
-      return;
 
     } catch (Exception e) {
       try {

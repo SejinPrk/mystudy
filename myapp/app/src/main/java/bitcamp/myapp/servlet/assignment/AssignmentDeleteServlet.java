@@ -21,13 +21,14 @@ public class AssignmentDeleteServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+
     try {
       int no = Integer.parseInt(request.getParameter("no"));
       if (assignmentDao.delete(no) == 0) {
         throw new Exception("과제 번호가 유효하지 않습니다.");
       }
 
-        response.sendRedirect("list");
+      response.sendRedirect("list");
 
     } catch (Exception e) {
       request.setAttribute("message", "삭제 오류!");

@@ -23,12 +23,13 @@ public class AssignmentUpdateServlet extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+
     try {
       int no = Integer.parseInt(request.getParameter("no"));
 
       Assignment old = assignmentDao.findBy(no);
       if (old == null) {
-       throw new Exception("과제 번호가 유효하지 않습니다.");
+        throw new Exception("과제 번호가 유효하지 않습니다.");
       }
 
       Assignment assignment = new Assignment();

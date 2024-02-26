@@ -23,6 +23,7 @@ public class AssignmentViewServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+
     try {
       int no = Integer.parseInt(request.getParameter("no"));
       Assignment assignment = assignmentDao.findBy(no);
@@ -69,11 +70,11 @@ public class AssignmentViewServlet extends HttpServlet {
       out.println("</body>");
       out.println("</html>");
 
-
     } catch (Exception e) {
       request.setAttribute("message", "조회 오류!");
       request.setAttribute("exception", e);
       request.getRequestDispatcher("/error").forward(request, response);
     }
   }
+
 }
