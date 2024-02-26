@@ -19,7 +19,6 @@ public class BoardFileDeleteServlet extends HttpServlet {
   private AttachedFileDao attachedFileDao;
   private String uploadDir;
 
-
   @Override
   public void init() {
     this.boardDao = (BoardDao) this.getServletContext().getAttribute("boardDao");
@@ -56,7 +55,7 @@ public class BoardFileDeleteServlet extends HttpServlet {
 
       attachedFileDao.delete(fileNo);
       new File(this.uploadDir + "/" + file.getFilePath()).delete();
-
+      
       response.sendRedirect(request.getHeader("Referer"));
 
     } catch (Exception e) {
