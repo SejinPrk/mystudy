@@ -103,6 +103,9 @@ public class BoardAddServlet extends HttpServlet {
     Member loginUser = (Member) request.getSession().getAttribute("loginUser");
     if (loginUser == null) {
       out.println("<p>로그인하시기 바랍니다!</p>");
+
+      request.getRequestDispatcher("/footer").include(request, response);
+
       out.println("</body>");
       out.println("</html>");
       return;

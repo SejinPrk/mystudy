@@ -45,6 +45,9 @@ public class MemberViewServlet extends HttpServlet {
       Member member = memberDao.findBy(no);
       if (member == null) {
         out.println("<p>회원 번호가 유효하지 않습니다.</p>");
+
+        request.getRequestDispatcher("/footer").include(request, response);
+
         out.println("</body>");
         out.println("</html>");
         return;
@@ -80,7 +83,7 @@ public class MemberViewServlet extends HttpServlet {
     }
 
     request.getRequestDispatcher("/footer").include(request, response);
-
+    
     out.println("</body>");
     out.println("</html>");
   }

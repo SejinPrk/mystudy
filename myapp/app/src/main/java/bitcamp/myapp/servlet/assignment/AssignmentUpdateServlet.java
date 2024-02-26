@@ -46,6 +46,9 @@ public class AssignmentUpdateServlet extends HttpServlet {
       Assignment old = assignmentDao.findBy(no);
       if (old == null) {
         out.println("<p>과제 번호가 유효하지 않습니다.</p>");
+
+        request.getRequestDispatcher("/footer").include(request, response);
+
         out.println("</body>");
         out.println("</html>");
         return;

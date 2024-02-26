@@ -40,7 +40,7 @@ public class AssignmentListServlet extends HttpServlet {
 
     out.println("<h1>과제</h1>");
 
-    out.println("<a href='/assignment/form.html'>새 과제</a>");
+    out.println("<a href='/assignment/add'>새 과제</a>");
 
     try {
       out.println("<table border='1'>");

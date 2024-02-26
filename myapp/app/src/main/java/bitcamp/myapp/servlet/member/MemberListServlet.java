@@ -40,7 +40,7 @@ public class MemberListServlet extends HttpServlet {
 
     out.println("<h1>회원</h1>");
 
-    out.println("<a href='/member/form.html'>새 회원</a>");
+    out.println("<a href='/member/add'>새 회원</a>");
 
     try {
       out.println("<table border='1'>");
@@ -68,6 +68,7 @@ public class MemberListServlet extends HttpServlet {
       e.printStackTrace(out);
       out.println("</pre>");
     }
+
     request.getRequestDispatcher("/footer").include(request, response);
 
     out.println("</body>");

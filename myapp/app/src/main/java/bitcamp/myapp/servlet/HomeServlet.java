@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 public class HomeServlet extends HttpServlet {
 
   @Override
-  public void service(HttpServletRequest request, HttpServletResponse response)
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
     response.setContentType("text/html;charset=UTF-8");
@@ -28,7 +28,7 @@ public class HomeServlet extends HttpServlet {
 
     request.getRequestDispatcher("/header").include(request, response);
 
-    out.printf("<h1>과제 관리 시스템</h1>");
+    out.println("<h1>과제 관리 시스템</h1>");
     out.println("<p>환영합니다! 교육 센터 과제 관리 시스템입니다.</p>");
 
     request.getRequestDispatcher("/footer").include(request, response);

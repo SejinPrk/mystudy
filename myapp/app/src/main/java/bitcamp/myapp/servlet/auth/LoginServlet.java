@@ -30,8 +30,8 @@ public class LoginServlet extends HttpServlet {
     out.println("<!DOCTYPE html>");
     out.println("<html lang='en'>");
     out.println("<head>");
-    out.println("<meta charset='UTF-8'>");
-    out.println("<title>비트캠프 데브옵스 5기</title>");
+    out.println("  <meta charset='UTF-8'>");
+    out.println("  <title>비트캠프 데브옵스 5기</title>");
     out.println("</head>");
     out.println("<body>");
 
@@ -41,10 +41,10 @@ public class LoginServlet extends HttpServlet {
 
     out.println("<form action='/auth/login' method='post'>");
     out.println("<div>");
-    out.println("   이메일: <input name='email' type='text'>");
+    out.println("    이메일: <input name='email' type='text'>");
     out.println("</div>");
     out.println("<div>");
-    out.println("   암호: <input name='password' type='password'>");
+    out.println("      암호: <input name='password' type='password'>");
     out.println("</div>");
     out.println("<button>로그인</button>");
     out.println("</form>");

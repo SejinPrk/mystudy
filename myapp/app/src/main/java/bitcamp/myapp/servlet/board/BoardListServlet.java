@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -40,9 +38,10 @@ public class BoardListServlet extends HttpServlet {
     out.println("  <title>비트캠프 데브옵스 5기</title>");
     out.println("</head>");
     out.println("<body>");
-    out.printf("<h1>%s</h1>\n", title);
 
     request.getRequestDispatcher("/header").include(request, response);
+
+    out.printf("<h1>%s</h1>\n", title);
 
     out.printf("<a href='/board/add?category=%d'>새 글</a>\n", category);
 
