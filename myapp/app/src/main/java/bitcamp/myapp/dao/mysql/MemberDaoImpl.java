@@ -77,7 +77,7 @@ public class MemberDaoImpl implements MemberDao {
   public Member findBy(int no) {
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
-            "select member_no, email, name, created_date from members where member_no=?")) {
+            "select member_no, email, name, photo, created_date from members where member_no=?")) {
       pstmt.setInt(1, no);
 
       try (ResultSet rs = pstmt.executeQuery()) {
@@ -86,6 +86,7 @@ public class MemberDaoImpl implements MemberDao {
           member.setNo(rs.getInt("member_no"));
           member.setEmail(rs.getString("email"));
           member.setName(rs.getString("name"));
+          member.setPhoto(rs.getString("photo"));
           member.setCreatedDate(rs.getDate("created_date"));
           return member;
         }
