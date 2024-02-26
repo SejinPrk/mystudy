@@ -59,7 +59,9 @@ public class BoardAddServlet extends HttpServlet {
 
     out.printf("<h1>%s</h1>\n", title);
 
-    out.printf("<form action='/board/add?category=%d' method='post' enctype='multipart/form-data'>\n", category);
+    out.printf(
+        "<form action='/board/add?category=%d' method='post' enctype='multipart/form-data'>\n",
+        category);
     out.printf("<input name='category' type='hidden' value='%d'>\n", category);
     out.println("<div>");
     out.println("      제목: <input name='title' type='text'>");
@@ -111,14 +113,14 @@ public class BoardAddServlet extends HttpServlet {
 
       if (category == 1) {
         Collection<Part> parts = request.getParts();
-          for (Part part : parts) {
-            if (!part.getName().equals("files") || part.getSize() == 0) {
-              continue;
-            }
-            String filename = UUID.randomUUID().toString();
-            part.write(this.uploadDir + "/" + filename);
-            attachedFiles.add(new AttachedFile().filePath(filename));
+        for (Part part : parts) {
+          if (!part.getName().equals("files") || part.getSize() == 0) {
+            continue;
           }
+          String filename = UUID.randomUUID().toString();
+          part.write(this.uploadDir + "/" + filename);
+          attachedFiles.add(new AttachedFile().filePath(filename));
+        }
       }
 
       txManager.startTransaction();

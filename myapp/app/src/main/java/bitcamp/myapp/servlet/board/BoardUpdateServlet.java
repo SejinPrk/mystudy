@@ -27,7 +27,6 @@ public class BoardUpdateServlet extends HttpServlet {
   private AttachedFileDao attachedFileDao;
   private String uploadDir;
 
-
   @Override
   public void init() {
     txManager = (TransactionManager) this.getServletContext().getAttribute("txManager");
@@ -64,6 +63,7 @@ public class BoardUpdateServlet extends HttpServlet {
 
       board.setTitle(request.getParameter("title"));
       board.setContent(request.getParameter("content"));
+
       ArrayList<AttachedFile> attachedFiles = new ArrayList<>();
       if (category == 1) {
         Collection<Part> parts = request.getParts();
