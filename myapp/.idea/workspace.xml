@@ -5,8 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9160b05-d132-42d9-bdad-84098ff3ce04" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/doc/data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/ErrorServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/FooterServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/HeaderServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/HomeServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/webapp/img/default-photo.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/webapp/upload/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../platform/src/main/webapp/upload/board/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/auth/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/auth/LoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/doc/ddl.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/doc/ddl.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/MemberDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/MemberDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/member/MemberAddServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/member/MemberAddServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/member/MemberDeleteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/member/MemberDeleteServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/member/MemberListServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/member/MemberListServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/member/MemberUpdateServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/member/MemberUpdateServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/member/MemberViewServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/member/MemberViewServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/member/form.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

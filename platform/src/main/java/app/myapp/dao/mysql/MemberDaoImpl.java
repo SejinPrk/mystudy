@@ -20,13 +20,14 @@ public class MemberDaoImpl implements MemberDao{
   public void add(Member member) {
       try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
-            "insert into members(email,name,password,tel,creditNo,creditDate) values(?,?,sha2(?,256),?,?,?)")) {
+            "insert into members(email,name,password,photo,tel,credit_no,credit_date) values(?,?,sha2(?,256),?,?,?,?)")) {
         pstmt.setString(1, member.getEmail());
         pstmt.setString(2, member.getName());
         pstmt.setString(3, member.getPassword());
-        pstmt.setString(4, member.getTel());
-        pstmt.setInt(5, member.getCreditNo());
-        pstmt.setDate(6, member.getCreatedDate());
+        pstmt.setString(4, member.getPhoto());
+        pstmt.setString(5, member.getTel());
+        pstmt.setInt(6, member.getCreditNo());
+        pstmt.setString(7, member.getCreditDate());
         pstmt.executeUpdate();
 
       } catch (Exception e) {
@@ -51,7 +52,7 @@ public class MemberDaoImpl implements MemberDao{
   public List<Member> findAll() {
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
-        "select member_no, email, name, tel, created_date from members");
+        "select member_no, email, name, photo, tel, created_date from members");
       ResultSet rs = pstmt.executeQuery()) {
 
       ArrayList<Member> list = new ArrayList<>();
@@ -61,6 +62,7 @@ public class MemberDaoImpl implements MemberDao{
         member.setNo(rs.getInt("member_no"));
         member.setEmail(rs.getString("email"));
         member.setName(rs.getString("name"));
+        member.setPhoto(rs.getString("photo"));
         member.setTel(rs.getString("tel"));
         member.setCreatedDate(rs.getDate("created_date"));
 
@@ -77,7 +79,7 @@ public class MemberDaoImpl implements MemberDao{
   public Member findBy(int no) {
     try (Connection con = connectionPool.getConnection();
     PreparedStatement pstmt = con.prepareStatement(
-        "select member_no, email, name, tel, created_date from members where member_no=?")){
+        "select member_no, email, name, photo, tel, created_date, credit_no, credit_date from members where member_no=?")){
       pstmt.setInt(1, no);
 
       try(ResultSet rs = pstmt.executeQuery()) {
@@ -87,8 +89,11 @@ public class MemberDaoImpl implements MemberDao{
           member.setNo(rs.getInt("member_no"));
           member.setEmail(rs.getString("email"));
           member.setName(rs.getString("name"));
+          member.setPhoto(rs.getString("photo"));
           member.setTel(rs.getString("tel"));
           member.setCreatedDate(rs.getDate("created_date"));
+          member.setCreditNo(rs.getInt("credit_no"));
+          member.setCreditDate(rs.getString("credit_date"));
           return member;
         }
         return null;
@@ -103,18 +108,27 @@ public class MemberDaoImpl implements MemberDao{
   public int update(Member member) {
   String sql = null;
     if (member.getPassword().length() == 0) {
-      sql = "update members set email=?, name=?, tel=? where member_no=?";
+      sql = "update members set email=?, name=?, photo=?, tel=?, credit_no=?, credit_date=? "
+          + "where member_no=?";
     } else {
-      sql = "update members set email=?, name=?, tel=?, password=sha2(?,256) where member_no=?";
+      sql = "update members set email=?, name=?, photo=?, tel=?, credit_no=?, credit_date=?, "
+          + "password=sha2(?,256), where member_no=?";
     }
 
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(sql)) {
       pstmt.setString(1, member.getEmail());
       pstmt.setString(2, member.getName());
-      pstmt.setString(3, member.getPassword());
+      pstmt.setString(3, member.getPhoto());
       pstmt.setString(4, member.getTel());
-      pstmt.setInt(5, member.getNo());
+      pstmt.setInt(5, member.getCreditNo());
+      pstmt.setString(6, member.getCreditDate());
+      if (member.getPassword().length() == 0) {
+        pstmt.setInt(7, member.getNo());
+      } else {
+        pstmt.setString(7, member.getPassword());
+        pstmt.setInt(8, member.getNo());
+      }
       return pstmt.executeUpdate();
 
     } catch (Exception e) {
@@ -125,7 +139,7 @@ public class MemberDaoImpl implements MemberDao{
 public Member findByEmailAndPassword(String email, String password) {
   try (Connection con = connectionPool.getConnection();
       PreparedStatement pstmt = con.prepareStatement(
-          "select member_no, email, name, tel, created_date from members where email=? and password=sha2(?,256)")) {
+          "select member_no, email, name, tel, created_date  from members where email=? and password=sha2(?,256)")) {
     pstmt.setString(1, email);
     pstmt.setString(2, password);
 

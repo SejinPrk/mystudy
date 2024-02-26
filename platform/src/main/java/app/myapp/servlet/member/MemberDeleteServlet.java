@@ -1,6 +1,8 @@
 package app.myapp.servlet.member;
 
 import app.myapp.dao.MemberDao;
+import app.myapp.vo.Member;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,45 +15,35 @@ import javax.servlet.http.HttpServletResponse;
 public class MemberDeleteServlet extends HttpServlet {
 
   private MemberDao memberDao;
+  private String uploadDir;
 
   @Override
   public void init() {
     memberDao =(MemberDao) this.getServletContext().getAttribute("memberDao");
+    uploadDir = this.getServletContext().getRealPath("/upload");
   }
 
   @Override
-  protected void service(HttpServletRequest request, HttpServletResponse response)
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-
-    response.setContentType("text/html;charset=UTF-8");
-    PrintWriter out = response.getWriter();
-
-    out.println("<!DOCTYPE html>");
-    out.println("<html lang='en'>");
-    out.println("<head>");
-    out.println("  <meta charset='UTF-8'>");
-    out.println("  <title>개인과제</title>");
-    out.println("</head>");
-    out.println("<body>");
-    out.println("<h1>회원</h1>");
-
     try {
       int no = Integer.parseInt(request.getParameter("no"));
-
-      if (memberDao.delete(no) == -1) {
-        out.println("<p>회원 번호가 유효하지 않습니다.</p>");
-      } else {
-        out.println("<p>삭제했습니다.</p>");
+      Member member = memberDao.findBy(no);
+      if (member == null) {
+        throw new Exception("회원 번호가 유효하지 않습니다.");
       }
 
-    } catch (Exception e) {
-      out.println("<p>삭제 오류!</p>");
-      out.println("<pre>");
-      e.printStackTrace(out);
-      out.println("</pre>");
-    }
+      memberDao.delete(no);
+      String filename = member.getPhoto();
+      if (filename != null) {
+        new File(this.uploadDir + "/" + filename).delete();
+      }
+      response.sendRedirect("list");
 
-    out.println("</body>");
-    out.println("</html>");
+    } catch (Exception e) {
+      request.setAttribute("message", "삭제 오류!");
+      request.setAttribute("exception", e);
+      request.getRequestDispatcher("/error").forward(request, response);
+    }
   }
 }

@@ -4,11 +4,13 @@ import app.myapp.dao.MemberDao;
 import app.myapp.vo.Member;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.UUID;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 @WebServlet("/member/view")
 public class MemberViewServlet extends HttpServlet {
@@ -17,37 +19,40 @@ public class MemberViewServlet extends HttpServlet {
 
   @Override
   public void init() {
-    memberDao =(MemberDao) this.getServletContext().getAttribute("memberDao");
+    memberDao = (MemberDao) this.getServletContext().getAttribute("memberDao");
   }
 
   @Override
-  protected void service(HttpServletRequest request, HttpServletResponse response)
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-
-    response.setContentType("text/html;charset=UTF-8");
-    PrintWriter out = response.getWriter();
-
-    out.println("<!DOCTYPE html>");
-    out.println("<html lang='en'>");
-    out.println("<head>");
-    out.println("  <meta charset='UTF-8'>");
-    out.println("  <title>개인과제</title>");
-    out.println("</head>");
-    out.println("<body>");
-    out.println("<h1>회원</h1>");
 
     try {
       int no = Integer.parseInt(request.getParameter("no"));
-
       Member member = memberDao.findBy(no);
       if (member == null) {
-        out.println("<p>회원 번호가 유효하지 않습니다.</p>");
-        out.println("</body>");
-        out.println("</html>");
-        return;
+        throw new Exception("회원 번호가 유효하지 않습니다. ");
       }
 
-      out.println("<form action='/member/update'>");
+      response.setContentType("text/html;charset=UTF-8");
+      PrintWriter out = response.getWriter();
+
+      out.println("<!DOCTYPE html>");
+      out.println("<html lang='en'>");
+      out.println("<head>");
+      out.println("  <meta charset='UTF-8'>");
+      out.println("  <title>개인과제</title>");
+      out.println("</head>");
+      out.println("<body>");
+
+      request.getRequestDispatcher("/header").include(request, response);
+
+      out.println("<h1>회원</h1>");
+      out.println("<form action='/member/update' method='post' enctype='multipart/form-data'>");
+      out.println("<div>");
+      out.printf(
+          "  사진: <a href='%s'><img src='%1$s' height='80px'></a><br> <input name='photo' type='file'>\n",
+          member.getPhoto() != null ? "/upload/" + member.getPhoto() : "/img/default-photo.jpeg");
+      out.println("</div>");
       out.println("<div>");
       out.printf("  번호: <input readonly name='no' type='text' value='%d'>\n", member.getNo());
       out.println("</div>");
@@ -61,10 +66,16 @@ public class MemberViewServlet extends HttpServlet {
       out.println("  암호: <input name='password' type='password'>");
       out.println("</div>");
       out.println("<div>");
+      out.printf("  전화번호: <input name='tel' type='tel' value='%s>\n", member.getTel());
+      out.println("</div>");
+      out.println("<div>");
       out.printf("  가입일: <input readonly type='text' value='%s'>\n", member.getCreatedDate());
       out.println("</div>");
       out.println("<div>");
-      out.println("  전화번호: <input name='tel' type='tel'>");
+      out.printf("  카드번호: <input name='credit_no' type='int'>");
+      out.println("</div>");
+      out.println("<div>");
+      out.printf("  유효기간: <input name='credit_date' type='text'>");
       out.println("</div>");
       out.println("<div>");
       out.println("  <button>변경</button>");
@@ -72,14 +83,15 @@ public class MemberViewServlet extends HttpServlet {
       out.println("</div>");
       out.println("</form>");
 
-    } catch (Exception e) {
-      out.println("<p>조회 오류!</p>");
-      out.println("<pre>");
-      e.printStackTrace(out);
-      out.println("</pre>");
-    }
+      request.getRequestDispatcher("/footer").include(request, response);
 
-    out.println("</body>");
-    out.println("</html>");
+      out.println("</body>");
+      out.println("</html>");
+
+    } catch (Exception e) {
+      request.setAttribute("message", "조회 오류!");
+      request.setAttribute("exception", e);
+      request.getRequestDispatcher("/error").forward(request, response);
+    }
   }
 }

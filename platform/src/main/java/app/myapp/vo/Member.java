@@ -12,6 +12,7 @@ public class Member implements Serializable {
   private String name;
   private String tel;
   private String email;
+  private String photo;
   private Date createdDate;
   private int creditNo;
   private String creditDate;
@@ -25,12 +26,21 @@ public class Member implements Serializable {
         ", email='" + email + '\'' +
         ", name='" + name + '\'' +
         ", password='" + password + '\'' +
+        ", photo='" + photo + '\'' +
         ", createdDate=" + createdDate + '\'' +
         ", tel='" + tel + '\'' +
         ", creditNo=" + creditNo + '\'' +
         ", creditDate=" + creditDate + '\'' +
         ", notification=" + notification +
         '}';
+  }
+
+  public String getPhoto() {
+    return photo;
+  }
+
+  public void setPhoto(String photo) {
+    this.photo = photo;
   }
 
   public int getNo() {
