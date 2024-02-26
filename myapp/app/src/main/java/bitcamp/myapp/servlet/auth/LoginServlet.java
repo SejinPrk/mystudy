@@ -53,7 +53,7 @@ public class LoginServlet extends HttpServlet {
 
     out.println("<form action='/auth/login' method='post'>");
     out.println("<div>");
-    out.printf("    이메일: <input name='email' type='tex value='%s'>\n", email);
+    out.printf("    이메일: <input name='email' type='text' value='%s'>\n", email);
     out.println("</div>");
     out.println("<div>");
     out.println("      암호: <input name='password' type='password'>");
@@ -75,6 +75,7 @@ public class LoginServlet extends HttpServlet {
     try {
       String email = request.getParameter("email");
       String password = request.getParameter("password");
+
       String saveEmail = request.getParameter("saveEmail");
       if (saveEmail != null) {
         Cookie cookie = new Cookie("email", email);
