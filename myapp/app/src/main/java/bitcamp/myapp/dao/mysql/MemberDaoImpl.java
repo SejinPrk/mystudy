@@ -50,7 +50,7 @@ public class MemberDaoImpl implements MemberDao {
   public List<Member> findAll() {
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
-            "select member_no, email, name, created_date from members");
+            "select member_no, email, name, photo, created_date from members");
         ResultSet rs = pstmt.executeQuery();) {
 
       ArrayList<Member> list = new ArrayList<>();
@@ -60,6 +60,7 @@ public class MemberDaoImpl implements MemberDao {
         member.setNo(rs.getInt("member_no"));
         member.setEmail(rs.getString("email"));
         member.setName(rs.getString("name"));
+        member.setPhoto(rs.getString("photo"));
         member.setCreatedDate(rs.getDate("created_date"));
 
         list.add(member);
