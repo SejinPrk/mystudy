@@ -102,9 +102,9 @@ public class MemberDaoImpl implements MemberDao {
   public int update(Member member) {
     String sql = null;
     if (member.getPassword().length() == 0) {
-      sql = "update members set email=?, name=? where member_no=?";
+      sql = "update members set email=?, name=? photo=? where member_no=?";
     } else {
-      sql = "update members set email=?, name=?, password=sha2(?,256) where member_no=?";
+      sql = "update members set email=?, name=?, password=sha2(?,256) photo=? where member_no=?";
     }
 
     try (Connection con = connectionPool.getConnection();
@@ -112,6 +112,7 @@ public class MemberDaoImpl implements MemberDao {
       pstmt.setString(1, member.getEmail());
       pstmt.setString(2, member.getName());
       pstmt.setString(3, member.getPassword());
+      
       pstmt.setInt(4, member.getNo());
       return pstmt.executeUpdate();
 
