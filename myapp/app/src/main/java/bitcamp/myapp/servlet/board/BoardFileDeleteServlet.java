@@ -42,6 +42,9 @@ public class BoardFileDeleteServlet extends HttpServlet {
     out.println("  <title>비트캠프 데브옵스 5기</title>");
     out.println("</head>");
     out.println("<body>");
+
+    request.getRequestDispatcher("/header").include(request, response);
+
     out.printf("<h1>%s</h1>\n", title);
 
     Member loginUser = (Member) request.getSession().getAttribute("loginUser");
@@ -51,8 +54,6 @@ public class BoardFileDeleteServlet extends HttpServlet {
       out.println("</html>");
       return;
     }
-
-    request.getRequestDispatcher("/header").include(request, response);
 
     try {
       int fileNo = Integer.parseInt(request.getParameter("no"));
