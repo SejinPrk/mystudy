@@ -25,6 +25,8 @@ public class AssignmentListServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
+    String title = "";
+    try{
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
 
@@ -42,7 +44,7 @@ public class AssignmentListServlet extends HttpServlet {
 
     out.println("<a href='/assignment/add'>새 과제</a>");
 
-    try {
+
       out.println("<table border='1'>");
       out.println("    <thead>");
       out.println("    <tr> <th>번호</th> <th>과제</th> <th>제출마감일</th> </tr>");
@@ -63,14 +65,9 @@ public class AssignmentListServlet extends HttpServlet {
       out.println("</table>");
 
     } catch (Exception e) {
-      request.setAttribute("message", "목록 오류!");
+      request.setAttribute("message", String.format("%s 목록 오류!", title));
       request.setAttribute("exception", e);
       request.getRequestDispatcher("/error").forward(request, response);
     }
-
-    request.getRequestDispatcher("/footer").include(request, response);
-
-    out.println("</body>");
-    out.println("</html>");
   }
 }

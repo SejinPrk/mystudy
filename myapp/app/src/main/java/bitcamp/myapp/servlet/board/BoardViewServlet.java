@@ -30,8 +30,11 @@ public class BoardViewServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
+    String title = "";
+
+    try{
     int category = Integer.valueOf(request.getParameter("category"));
-    String title = category == 1 ? "게시글" : "가입인사";
+    title = category == 1 ? "게시글" : "가입인사";
 
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
@@ -48,18 +51,10 @@ public class BoardViewServlet extends HttpServlet {
 
     out.printf("<h1>%s</h1>\n", title);
 
-    try {
       int no = Integer.parseInt(request.getParameter("no"));
-
       Board board = boardDao.findBy(no);
       if (board == null) {
-        out.println("<p>번호가 유효하지 않습니다.</p>");
-
-        request.getRequestDispatcher("/footer").include(request, response);
-
-        out.println("</body>");
-        out.println("</html>");
-        return;
+        throw new Exception("번호가 유효하지 않습니다.");
       }
 
       List<AttachedFile> files = attachedFileDao.findAllByBoardNo(no);
@@ -100,15 +95,9 @@ public class BoardViewServlet extends HttpServlet {
       out.println("</form>");
 
     } catch (Exception e) {
-      out.println("<p>조회 오류!</p>");
-      out.println("<pre>");
-      e.printStackTrace(out);
-      out.println("</pre>");
+      request.setAttribute("message", String.format("%s 조회 오류!", title));
+      request.setAttribute("exception", e);
+      request.getRequestDispatcher("/error").forward(request, response);
     }
-
-    request.getRequestDispatcher("/footer").include(request, response);
-
-    out.println("</body>");
-    out.println("</html>");
   }
 }
