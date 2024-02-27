@@ -26,7 +26,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 // => 'gradle eclipse'를 실행하여 라이브러리를 가져온다.
 // => 이클립스 프로젝트를 refresh 한다.
 //
-@WebServlet("/ex04/s4")
+//@WebServlet("/ex04/s4")
 public class Servlet04 extends GenericServlet {
 
   private static final long serialVersionUID = 1L;
