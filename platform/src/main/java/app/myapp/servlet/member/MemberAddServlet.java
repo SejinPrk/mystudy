@@ -69,6 +69,9 @@ public class MemberAddServlet extends HttpServlet {
     out.println("  <div>");
     out.println("        유효기간: <input name='credit_date' type='text'>");
     out.println("  </div>");
+    out.println("  <div>");
+    out.println("        알림설정: <input name='notification' type='tinyint'>");
+    out.println("  </div>");
     out.println("<div>");
     out.println("<button>등록</button>");
     out.println("</div>");
@@ -93,6 +96,7 @@ public class MemberAddServlet extends HttpServlet {
       member.setTel(request.getParameter("tel"));
       member.setCreditNo(Integer.parseInt(request.getParameter("credit_no")));
       member.setCreditDate(request.getParameter("credit_date"));
+      member.setNotification(Boolean.parseBoolean(request.getParameter("notification")));
 
       Part photoPart = request.getPart("photo");
       if (photoPart.getSize() > 0) {

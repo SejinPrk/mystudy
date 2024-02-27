@@ -6,7 +6,7 @@ drop table platforms;
 create table platforms(
   platform_no int primary key auto_increment,
   category_no int,
-    FOREIGN KEY (category_no) REFERENCES Category(id),
+    FOREIGN KEY (category_no) REFERENCES Category(category_no),
   name varchar(255) not null,
   price INTEGER not null,
   term text not null

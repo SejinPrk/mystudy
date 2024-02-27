@@ -45,8 +45,9 @@ public class MemberUpdateServlet extends HttpServlet {
       member.setPassword(request.getParameter("password"));
       member.setTel(request.getParameter("tel"));
       member.setCreatedDate(old.getCreatedDate());
-      member.setCreditNo(old.getCreditNo());
-      member.setCreditDate(old.getCreditDate());
+      member.setCreditNo(Integer.parseInt(request.getParameter("credit_no")));
+      member.setCreditDate(request.getParameter("credit_date"));
+      member.setNotification(Boolean.parseBoolean(request.getParameter("notification")));
 
       Part photoPart = request.getPart("photo");
       if (photoPart.getSize() > 0) {

@@ -26,6 +26,7 @@ public class PlatformUpdateServlet extends HttpServlet {
       throws ServletException, IOException {
 
     try {
+      request.setCharacterEncoding("UTF-8");
       int no = Integer.parseInt(request.getParameter("no"));
 
       Platform old = platformDao.findBy(no);

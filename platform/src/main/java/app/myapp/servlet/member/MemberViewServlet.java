@@ -78,6 +78,9 @@ public class MemberViewServlet extends HttpServlet {
       out.printf("  유효기간: <input name='credit_date' type='text'>");
       out.println("</div>");
       out.println("<div>");
+      out.printf("  알림설정: <input name='notification' type='tinyint'>");
+      out.println("</div>");
+      out.println("<div>");
       out.println("  <button>변경</button>");
       out.printf("  <a href='/member/delete?no=%d'>[삭제]</a>\n", no);
       out.println("</div>");

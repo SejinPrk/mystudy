@@ -44,19 +44,22 @@ public class MemberListServlet extends HttpServlet {
       out.println("<a href='/member/add'>새 회원</a>");
       out.println("<table border='1'>");
       out.println("    <thead>");
-      out.println("    <tr> <th>번호</th> <th>이름</th> <th>이메일</th> <th>전화번호</th> <th>가입일</th> </tr>");
+      out.println("    <tr> <th>번호</th> <th>이름</th> <th>이메일</th> <th>전화번호</th>"
+          + " <th>가입일</th> <th>알림설정</th> </tr>");
       out.println("    </thead>");
       out.println("    <tbody>");
 
       for (Member member : list) {
         out.printf(
-            "<tr> <td>%d</td> <td><img src='%s' height='20px'> <a href='/member/view?no=%1$d'>%s</a></td> <td>%s</td> <td>%s</td> <td>%s</td> </tr>\n",
+            "<tr> <td>%d</td> <td><img src='%s' height='20px'> <a href='/member/view?no=%1$d'>"
+                + "%s</a></td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> </tr>\n",
             member.getNo(),
             member.getPhoto() != null ? "/upload/" + member.getPhoto() : "/img/default-photo.jpeg",
             member.getName(),
             member.getEmail(),
             member.getTel(),
-            member.getCreatedDate());
+            member.getCreatedDate(),
+            member.isNotification());
       }
       out.println("    </tbody>");
       out.println("</table>");

@@ -1,26 +1,26 @@
 -- 플랫폼
-insert into platforms(platform_no,name,price,term)
-values(1, '광고형 넷플릭스','5500','month');
-insert into platforms(platform_no,name,price,term)
-values(2, '넷플릭스 프리미엄','17000','month');
-insert into platforms(platform_no,name,price,term)
-values(3, '넷플릭스 스탠다드','13500','month');
-insert into platforms(platform_no,name,price,term)
-values(4, 'Spotify 개인','10900','month');
-insert into platforms(platform_no,name,price,term)
-values(5, 'Spotify 듀오','16350','month');
-insert into platforms(platform_no,name,price,term)
-values(6, 'Spotify 베이직','7900','month');
-insert into platforms(platform_no,name,price,term)
-values(7, '요기패스X','4900','month');
-insert into platforms(platform_no,name,price,term)
-values(8, '밀리의서재 월 정기구독','9900','month');
-insert into platforms(platform_no,name,price,term)
-values(9, '밀리의서재 연 정기구독','99000','year');
-insert into platforms(platform_no,name,price,term)
-values(10, '쿠팡 로켓와우','4990','month');
-insert into platforms(platform_no,name,price,term)
-values(11, '유튜브 프리미엄','14900','month');
+insert into platforms(platform_no,category_no,name,price,term)
+values(1,2,'광고형 넷플릭스','5500','month');
+insert into platforms(platform_no,category_no,name,price,term)
+values(2,2,'넷플릭스 프리미엄','17000','month');
+insert into platforms(platform_no,category_no,name,price,term)
+values(3,2,'넷플릭스 스탠다드','13500','month');
+insert into platforms(platform_no,category_no,name,price,term)
+values(4,3,'Spotify 개인','10900','month');
+insert into platforms(platform_no,category_no,name,price,term)
+values(5,3,'Spotify 듀오','16350','month');
+insert into platforms(platform_no,category_no,name,price,term)
+values(6,3,'Spotify 베이직','7900','month');
+insert into platforms(platform_no,category_no,name,price,term)
+values(7,4,'요기패스X','4900','month');
+insert into platforms(platform_no,category_no,name,price,term)
+values(8,4,'밀리의서재 월 정기구독','9900','month');
+insert into platforms(platform_no,category_no,name,price,term)
+values(9,4,'밀리의서재 연 정기구독','99000','year');
+insert into platforms(platform_no,category_no,name,price,term)
+values(10,1,'쿠팡 로켓와우','4990','month');
+insert into platforms(platform_no,category_no,name,price,term)
+values(11,2,'유튜브 프리미엄','14900','month');
 
 select * from platforms;
 
