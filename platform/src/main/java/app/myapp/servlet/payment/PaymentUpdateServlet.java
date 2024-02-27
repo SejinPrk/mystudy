@@ -22,29 +22,16 @@ public class PaymentUpdateServlet extends HttpServlet {
   }
 
   @Override
-  protected void service(HttpServletRequest request, HttpServletResponse response)
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
-    response.setContentType("text/html;charset=UTF-8");
-    PrintWriter out = response.getWriter();
-
-    out.println("<!DOCTYPE html>");
-    out.println("<head>");
-    out.println("  <meta charset='UTF-8'>");
-    out.println("  <title>개인과</title>");
-    out.println("</head>");
-    out.println("<body>");
-    out.println("<h1>결제내역</h1>");
-
     try {
+      request.setCharacterEncoding("UTF-8");
       int no = Integer.parseInt(request.getParameter("no"));
 
       Payment old = paymentDao.findBy(no);
       if (old == null) {
-        out.println("<p>결제내역 번호가 유효하지 않습니다.</p>");
-        out.println("</body>");
-        out.println("</html>");
-        return;
+        throw new Exception("결제내역 번호가 유효하지 않습니다.");
       }
 
     Payment payment = new Payment();
@@ -54,16 +41,12 @@ public class PaymentUpdateServlet extends HttpServlet {
     payment.setAmount(Integer.parseInt(request.getParameter("amount")));
 
     paymentDao.update(payment);
-    out.println("결제내역을 변경했습니다.");
+    response.sendRedirect("list");
+
     } catch (Exception e) {
-      out.println("<p>변경 오류!</p>");
-      out.println("<pre>");
-      e.printStackTrace(out);
-      out.println("</pre>");
+      request.setAttribute("message", "변경 오류!");
+      request.setAttribute("exception", e);
+      request.getRequestDispatcher("/error").forward(request, response);
     }
-
-    out.println("</body>");
-    out.println("</html>");
-
   }
 }

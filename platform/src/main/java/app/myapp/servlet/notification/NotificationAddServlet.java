@@ -5,6 +5,7 @@ import app.myapp.vo.Notification;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,11 +20,10 @@ public class NotificationAddServlet extends HttpServlet {
   @Override
   public void init() throws ServletException {
     notificationDao = (NotificationDao) this.getServletContext().getAttribute("notificationDao");
-
   }
 
   @Override
-  protected void service(HttpServletRequest request, HttpServletResponse response)
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
     response.setContentType("text/html;charset=UTF-8");
@@ -36,8 +36,37 @@ public class NotificationAddServlet extends HttpServlet {
     out.println("  <title>개인과제</title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>알림</h1>");
 
+    request.getRequestDispatcher("/header").include(request, response);
+
+    out.println("<h1>플랫폼 관리 시스템</h1>");
+
+    out.println("<h2>알림</h2>");
+
+    out.println("<form action='/notification/add' method='post'>");
+    out.println("<div>");
+    out.println("     내용:  <textarea name='content'></textarea>");
+    out.println("</div>");
+    out.println("<div>");
+    out.println("    날짜: <input name='date' type='date'>");
+    out.println("</div>");
+    out.println("<div>");
+    out.println("   조회여부: <input name='check' type='checkbox'>");
+    out.println("</div>");
+    out.println("<div>");
+    out.println(" <button>등록</button>");
+    out.println("</div>");
+    out.println("</form>");
+
+    request.getRequestDispatcher("/footer").include(request, response);
+
+    out.println("</body>");
+    out.println("</html>");
+  }
+
+  @Override
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
     try {
       Notification notification = new Notification();
       notification.setContent(request.getParameter("content"));
@@ -45,17 +74,12 @@ public class NotificationAddServlet extends HttpServlet {
       notification.setCheck(Boolean.parseBoolean(request.getParameter("checked")));
 
       notificationDao.add(notification);
-
-      out.println("<p>등록했습니다.</p>");
+      response.sendRedirect("/notification/list");
 
     } catch (Exception e) {
-      out.println("<p>등록 오류!</p>");
-      out.println("<pre>");
-      e.printStackTrace(out);
-      out.println("</pre>");
+      request.setAttribute("message", "등록 오류!");
+      request.setAttribute("exception", e);
+      request.getRequestDispatcher("/error").forward(request, response);
     }
-
-    out.println("</body>");
-    out.println("</html>");
   }
 }

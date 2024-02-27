@@ -22,7 +22,7 @@ public class PaymentListServlet extends HttpServlet {
   }
 
   @Override
-  protected void service(HttpServletRequest request, HttpServletResponse response)
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
     response.setContentType("text/html;charset=UTF-8");
@@ -35,9 +35,12 @@ public class PaymentListServlet extends HttpServlet {
     out.println("  <title>개인과제</title>");
     out.println("</head>");
     out.println("<body>");
+
+    request.getRequestDispatcher("/header").include(request, response);
+
     out.println("<h1>결제내역</h1>");
 
-    out.println("<a href='/payment/form.html'>새 결제내역</a>");
+    out.println("<a href='/payment/add'>새 결제내역</a>");
 
     try {
       out.println("<table border='1'>");
@@ -60,11 +63,12 @@ public class PaymentListServlet extends HttpServlet {
       out.println("</table>");
 
     } catch (Exception e) {
-      out.println("<p>목록 오류!</p>");
-      out.println("<pre>");
-      e.printStackTrace(out);
-      out.println("</pre>");
+      request.setAttribute("message", "목록 오류!");
+      request.setAttribute("exception", e);
+      request.getRequestDispatcher("/error").forward(request, response);
     }
+
+    request.getRequestDispatcher("/footer").include(request, response);
 
     out.println("</body>");
     out.println("</html>");

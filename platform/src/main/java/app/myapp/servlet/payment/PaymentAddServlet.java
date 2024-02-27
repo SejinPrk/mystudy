@@ -22,7 +22,7 @@ public class PaymentAddServlet extends HttpServlet {
   }
 
   @Override
-  protected void service(HttpServletRequest request, HttpServletResponse response)
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
     response.setContentType("text/html;charset=UTF-8");
@@ -35,25 +35,50 @@ public class PaymentAddServlet extends HttpServlet {
     out.println("  <title>개인과제</title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>결제내역</h1>");
 
-    try{
-    Payment payment = new Payment();
+    request.getRequestDispatcher("/header").include(request, response);
 
-      payment.setStart(Date.valueOf(request.getParameter("start")));
-    payment.setEnd(Date.valueOf(request.getParameter("end")));
-    payment.setAmount(Integer.parseInt(request.getParameter("amount")));
+    out.println("<h1>플랫폼 관리 시스템</h1>");
 
-    paymentDao.add(payment); out.println("<p>등록했습니다.</p>");
+    out.println("<h2>결제내역</h2>");
 
-    } catch (Exception e) {
-      out.println("<p>등록 오류!</p>");
-      out.println("<pre>");
-      e.printStackTrace(out);
-      out.println("</pre>");
-    }
+    out.println("<form action='/payment/add' method='post'>");
+    out.println("<div>");
+    out.println("    시작일: <input name='start' type='date'>");
+    out.println("</div>");
+    out.println("<div>");
+    out.println("    종료일: <input name='end' type='date'>");
+    out.println("</div>");
+    out.println("<div>");
+    out.println("    가격: <input name='amount' type='number'>");
+    out.println("</div>");
+    out.println(" <div>");
+    out.println("<button>등록</button>");
+    out.println("</div>");
+    out.println("</form>");
+
+    request.getRequestDispatcher("/footer").include(request, response);
 
     out.println("</body>");
     out.println("</html>");
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+    try{
+    Payment payment = new Payment();
+    payment.setStart(Date.valueOf(request.getParameter("start")));
+    payment.setEnd(Date.valueOf(request.getParameter("end")));
+    payment.setAmount(Integer.parseInt(request.getParameter("amount")));
+
+    paymentDao.add(payment);
+    response.sendRedirect("/payment/list");
+
+    } catch (Exception e) {
+      request.setAttribute("message", "등록 오류!");
+      request.setAttribute("exception", e);
+      request.getRequestDispatcher("/error").forward(request, response);
+    }
   }
 }

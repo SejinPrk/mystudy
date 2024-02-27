@@ -22,7 +22,7 @@ public class SubscriptionAddServlet extends HttpServlet {
   }
 
   @Override
-  protected void service(HttpServletRequest request, HttpServletResponse response)
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
     response.setContentType("text/html;charset=UTF-8");
@@ -35,7 +35,37 @@ public class SubscriptionAddServlet extends HttpServlet {
     out.println("  <title>개인과제</title>");
     out.println("</head>");
     out.println("<body>");
+    
+    request.getRequestDispatcher("/header").include(request, response);
+
     out.println("<h1>구독내역</h1>");
+
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>개인과제</title>
+</head>
+<body>
+<h1>플랫폼 관리 시스템</h1>
+
+<h2>구독내역</h2>
+
+<form action="/subscription/add">
+  <div>
+        시작일: <input name="start" type="date">
+  </div>
+  <div>
+        종료일: <input name="end" type="date">
+  </div>
+  <div>
+    <button>등록</button>
+  </div>
+</form>
+
+</body>
+</html>
 
     try {
       Subscription subscription = new Subscription();
