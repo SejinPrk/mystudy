@@ -21,33 +21,33 @@ public class SubscriptionViewServlet extends HttpServlet {
   }
 
   @Override
-  protected void service(HttpServletRequest request, HttpServletResponse response)
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-
-    response.setContentType("text/html;charset=UTF-8");
-    PrintWriter out = response.getWriter();
-
-    out.println("<!DOCTYPE html>");
-    out.println("<html lang='en'>");
-    out.println("<head>");
-    out.println("  <meta charset='UTF-8'>");
-    out.println("  <title>개인과제</title>");
-    out.println("</head>");
-    out.println("<body>");
-    out.println("<h1>구독내역</h1>");
 
     try {
       int no = Integer.parseInt(request.getParameter("no"));
 
       Subscription subscription = subscriptionDao.findBy(no);
       if (subscription == null) {
-        out.println("<p>구독내역 번호가 유효하지 않습니다.</p>");
-        out.println("</body>");
-        out.println("</html>");
-        return;
+        throw new Exception("구독내역 번호가 유효하지 않습니다.");
       }
 
-      out.println("<form action='/subscription/update'>");
+      response.setContentType("text/html;charset=UTF-8");
+      PrintWriter out = response.getWriter();
+
+      out.println("<!DOCTYPE html>");
+      out.println("<html lang='en'>");
+      out.println("<head>");
+      out.println("  <meta charset='UTF-8'>");
+      out.println("  <title>개인과제</title>");
+      out.println("</head>");
+      out.println("<body>");
+
+      request.getRequestDispatcher("/header").include(request, response);
+
+      out.println("<h1>구독내역</h1>");
+
+      out.println("<form action='/subscription/update' method='post'>");
       out.println("<div>");
       out.printf("  번호: <input readonly name='no' type='text' value='%d'>\n", subscription.getNo());
       out.println("</div>");
@@ -63,15 +63,15 @@ public class SubscriptionViewServlet extends HttpServlet {
       out.println("</div>");
       out.println("</form>");
 
+      request.getRequestDispatcher("/footer").include(request, response);
+
+      out.println("</body>");
+      out.println("</html>");
+
     } catch (Exception e) {
-      out.println("<p>조회 오류!</p>");
-      out.println("<pre>");
-      e.printStackTrace(out);
-      out.println("</pre>");
+      request.setAttribute("message", "조회 오류!");
+      request.setAttribute("exception", e);
+      request.getRequestDispatcher("/error").forward(request, response);
     }
-
-    out.println("</body>");
-    out.println("</html>");
   }
-
 }

@@ -35,37 +35,34 @@ public class SubscriptionAddServlet extends HttpServlet {
     out.println("  <title>개인과제</title>");
     out.println("</head>");
     out.println("<body>");
-    
+
     request.getRequestDispatcher("/header").include(request, response);
 
-    out.println("<h1>구독내역</h1>");
+    out.println("<h1>플랫폼 관리 시스템</h1>");
 
+    out.println("<h2>구독내역</h2>");
 
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>개인과제</title>
-</head>
-<body>
-<h1>플랫폼 관리 시스템</h1>
+    out.println("<form action='/subscription/add' method='post'>");
+    out.println("<div>");
+    out.println("    시작일: <input name='start' type='date'>");
+    out.println("</div>");
+    out.println("<div>");
+    out.println("    종료일: <input name='end' type='date'>");
+    out.println("</div>");
+    out.println(" <div>");
+    out.println(" <button>등록</button>");
+    out.println("</div>");
+    out.println("</form>");
 
-<h2>구독내역</h2>
+    request.getRequestDispatcher("/footer").include(request, response);
 
-<form action="/subscription/add">
-  <div>
-        시작일: <input name="start" type="date">
-  </div>
-  <div>
-        종료일: <input name="end" type="date">
-  </div>
-  <div>
-    <button>등록</button>
-  </div>
-</form>
+    out.println("</body>");
+    out.println("</html>");
+  }
 
-</body>
-</html>
+  @Override
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
 
     try {
       Subscription subscription = new Subscription();
@@ -73,17 +70,12 @@ public class SubscriptionAddServlet extends HttpServlet {
       subscription.setEnd(Date.valueOf(request.getParameter("end")));
 
       subscriptionDao.add(subscription);
-
-      out.println("<p>등록했습니다.</p>");
+      response.sendRedirect("/assignment/list");
 
     } catch (Exception e) {
-      out.println("<p>등록 오류!</p>");
-      out.println("<pre>");
-      e.printStackTrace(out);
-      out.println("</pre>");
+      request.setAttribute("message", "등록 오류!");
+      request.setAttribute("exception", e);
+      request.getRequestDispatcher("/error").forward(request, response);
     }
-
-    out.println("</body>");
-    out.println("</html>");
   }
 }
