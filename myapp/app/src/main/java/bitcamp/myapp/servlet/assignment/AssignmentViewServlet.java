@@ -76,5 +76,4 @@ public class AssignmentViewServlet extends HttpServlet {
       request.getRequestDispatcher("/error").forward(request, response);
     }
   }
-
 }

@@ -73,15 +73,15 @@ select * from notifications;
 -- 결제내역
 
 insert into payments(payment_no,start,end,amount)
-values(1, '과제1','내용1','2024-1-1');
-insert into assignments(assignment_no,title,content,deadline)
-values(2, '과제2','내용2','2024-2-2');
-insert into assignments(assignment_no,title,content,deadline)
-values(3, '과제3','내용3','2024-3-3');
-insert into assignments(assignment_no,title,content,deadline)
-values(4, '과제4','내용4','2024-4-4');
-insert into payments(assignment_no,title,content,deadline)
-values(5, '과제5','내용5','2024-5-5');
+values(1, '2022-1-15',NOW(), '129000');
+insert into payments(payment_no,start,end,amount)
+values(2, '2024-2-2',NOW(),'25000');
+insert into payments(payment_no,start,end,amount)
+values(3, '2019-3-3',NOW(),'580000');
+insert into payments(payment_no,start,end,amount)
+values(4, '2023-4-4',NOW(),'60000');
+insert into payments(payment_no,start,end,amount)
+values(5, '2020-5-5',NOW(),'15700');
 
 select * from payments;
 
@@ -90,8 +90,10 @@ select * from payments;
 insert into subscriptions(subscription_no, start, end)
 values(1, '2020-1-1','2020-2-1');
 insert into subscriptions(subscription_no, start, end)
-values(1, '2021-8-9','2021-9-8');
+values(2, '2021-8-9','2021-9-8');
 insert into subscriptions(subscription_no, start, end)
-values(1, '2022-3-15','2022-4-14');
+values(3, '2022-3-15','2022-4-14');
 insert into subscriptions(subscription_no, start, end)
-values(1, '2023-12-5','2024-1-4');
+values(4, '2023-12-5','2024-1-4');
+
+select * from subscriptions;

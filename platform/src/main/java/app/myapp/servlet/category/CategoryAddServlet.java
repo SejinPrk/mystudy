@@ -21,7 +21,7 @@ public class CategoryAddServlet extends HttpServlet {
   }
 
   @Override
-  protected void service(HttpServletRequest request, HttpServletResponse response)
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
     response.setContentType("text/html;charset=UTF-8");
@@ -34,26 +34,43 @@ public class CategoryAddServlet extends HttpServlet {
     out.println("  <title>개인과제</title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>분류</h1>");
 
+    request.getRequestDispatcher("/header").include(request, response);
+
+    out.println("<h1>플랫폼 관리 시스템</h1>");
+
+    out.println("<h2>분류</h2>");
+
+    out.println("<form action='/category/add' method='post'>");
+    out.println("<div>");
+    out.println("    이름: <input name='name' type='text'>");
+    out.println("</div>");
+    out.println("<div>");
+    out.println("<button>등록</button>");
+    out.println("</div>");
+    out.println("</form>");
+
+    request.getRequestDispatcher("/footer").include(request, response);
+
+    out.println("</body>");
+    out.println("</html>");
+  }
+
+  @Override
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
     try {
       Category category = new Category();
       category.setName(request.getParameter("name"));
 
       categoryDao.add(category);
-      out.println("<p>등록했습니다.</p>");
+      response.sendRedirect("/category/list");
 
     } catch (Exception e) {
-      out.println("<p>등록 오류!</p>");
-      out.println("<pre>");
-      e.printStackTrace(out);
-      out.println("</pre>");
+      request.setAttribute("message", "등록 오류!");
+      request.setAttribute("exception", e);
+      request.getRequestDispatcher("/error").forward(request, response);
     }
-
-    out.println("</body>");
-    out.println("</html>");
   }
 }
-
-
 

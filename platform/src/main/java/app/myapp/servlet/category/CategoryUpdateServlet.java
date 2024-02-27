@@ -22,29 +22,15 @@ public class CategoryUpdateServlet extends HttpServlet {
   }
 
   @Override
-  protected void service(HttpServletRequest request, HttpServletResponse response)
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-
-    response.setContentType("text/html;charset=UTF-8");
-    PrintWriter out = response.getWriter();
-
-    out.println("<!DOCTYPE html>");
-    out.println("<html lang='en'>");
-    out.println("<head>");
-    out.println("  <meta charset='UTF-8'>");
-    out.println("  <title>개인과제</title>");
-    out.println("</head>");
-    out.println("<body>");
-    out.println("<h1>분류</h1>");
     try {
+      request.setCharacterEncoding("UTF-8");
       int no = Integer.parseInt(request.getParameter("no"));
 
       Category old = categoryDao.findBy(no);
       if (old == null) {
-        out.println("<p>분류 번호가 유효하지 않습니다.</p>");
-        out.println("</body>");
-        out.println("</html>");
-        return;
+        throw new Exception("분류 번호가 유효하지 않습니다.");
       }
 
       Category category = new Category();
@@ -52,16 +38,12 @@ public class CategoryUpdateServlet extends HttpServlet {
       category.setName(request.getParameter("name"));
 
       categoryDao.update(category);
-      System.out.println("변경했습니다.");
+      response.sendRedirect("list");
 
     } catch (Exception e) {
-      out.println("<p>변경 오류!</p>");
-      out.println("<pre>");
-      e.printStackTrace(out);
-      out.println("</pre>");
+      request.setAttribute("message", "변경 오류!");
+      request.setAttribute("exception", e);
+      request.getRequestDispatcher("/error").forward(request, response);
     }
-
-    out.println("</body>");
-    out.println("</html>");
   }
 }
