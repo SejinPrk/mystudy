@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9160b05-d132-42d9-bdad-84098ff3ce04" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/error.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/FooterServlet.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/auth/form.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/auth/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/auth/LoginServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +119,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/sejinpark/git/mystudy/myapp/app/src/main/webapp",
+    "last_opened_file_path": "/Users/sejinpark/git/mystudy/myapp/app/src/main/webapp/auth",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.0",
@@ -130,11 +131,11 @@
       <recent name="bitcamp.myapp" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/webapp/auth" />
       <recent name="$PROJECT_DIR$/app/src/main/webapp" />
       <recent name="$PROJECT_DIR$/app/src/main/webapp/assignment" />
       <recent name="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/member" />
       <recent name="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/assignment" />
-      <recent name="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/webapp/image" />
