@@ -101,7 +101,7 @@ public class BoardViewServlet extends HttpServlet {
     } catch (Exception e) {
       request.setAttribute("message", String.format("%s 조회 오류!", title));
       request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error").forward(request, response);
+      request.getRequestDispatcher("/error.jsp").forward(request, response);
     }
   }
 }

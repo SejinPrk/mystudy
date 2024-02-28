@@ -24,7 +24,7 @@ public class BoardFileDeleteServlet extends HttpServlet {
     this.boardDao = (BoardDao) this.getServletContext().getAttribute("boardDao");
     this.attachedFileDao = (AttachedFileDao) this.getServletContext()
         .getAttribute("attachedFileDao");
-    uploadDir = this.getServletContext().getRealPath("/upload/board");
+    uploadDir = this.getServletContext().getRealPath("/upload/board.jsp");
   }
 
   @Override
@@ -61,7 +61,7 @@ public class BoardFileDeleteServlet extends HttpServlet {
     } catch (Exception e) {
       request.setAttribute("message", String.format("%s 첨부파일 삭제 오류!", title));
       request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error").forward(request, response);
+      request.getRequestDispatcher("/error.jsp").forward(request, response);
     }
   }
 }
