@@ -1,7 +1,6 @@
 package bitcamp.myapp.servlet.board;
 
 import bitcamp.myapp.dao.BoardDao;
-import bitcamp.myapp.vo.Board;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,11 +21,13 @@ public class BoardListServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+
     String boardName = "";
     try {
       int category = Integer.valueOf(request.getParameter("category"));
       request.setAttribute("boardName", category == 1 ? "게시글" : "가입인사");
       request.setAttribute("list", boardDao.findAll(category));
+      request.setAttribute("category", category);
       request.getRequestDispatcher("/board/list.jsp").forward(request, response);
 
     } catch (Exception e) {

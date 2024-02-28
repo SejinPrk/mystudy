@@ -7,7 +7,6 @@ import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.TransactionManager;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.UUID;
@@ -43,9 +42,8 @@ public class BoardAddServlet extends HttpServlet {
 
     int category = Integer.valueOf(request.getParameter("category"));
     request.setAttribute("boardName", category == 1 ? "게시글" : "가입인사");
-
+    request.setAttribute("category", category);
     request.getRequestDispatcher("/board/form.jsp").forward(request, response);
-
   }
 
   @Override

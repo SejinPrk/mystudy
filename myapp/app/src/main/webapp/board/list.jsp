@@ -13,29 +13,29 @@
 
 <%
   String boardName = (String) request.getAttribute("boardName");
-  int category = Integer.valueOf(request.getParameter("category"));
+  int category = (int) request.getAttribute("category");
 %>
 
-<h1><%boardName%></h1>
-<a href='/board/add?category=%d'>새 글</a>
+<h1><%=boardName%></h1>
+<a href='/board/add?category=<%=category%>'>새 글</a>
 <table border='1'>
-     <thead>
-     <tr> <th>번호</th> <th>제목</th> <th>작성자</th> <th>등록일</th> <th>첨부파일</th> </tr>
-     </thead>
-     <tbody>
+  <thead>
+    <tr> <th>번호</th> <th>제목</th> <th>작성자</th> <th>등록일</th> <th>첨부파일</th> </tr>
+  </thead>
+  <tbody>
 <%
-
+List<Board> list = (List<Board>) request.getAttribute("list");
 for (Board board : list) {%>
-            <tr>
-            <td><%=board.getNo()%></td>
-            <td><a href='/board/view?category=<%=category%>&no=<%=board.getNo()%>'><%=board.getTitle()%></a></td>
-            <td><%=board.getWriter().getName()%></td>
-            <td><%=board.getCreatedDate()%></td>
-            <td><%=board.getFileCount()%></td>
-            </tr>
+    <tr>
+      <td><%=board.getNo()%></td>
+      <td><a href='/board/view?category=<%=category%>&no=<%=board.getNo()%>'><%=board.getTitle()%></a></td>
+      <td><%=board.getWriter().getName()%></td>
+      <td><%=board.getCreatedDate()%></td>
+      <td><%=board.getFileCount()%></td>
+    </tr>
 <%}%>
-           </tbody>
-       </table>
+  </tbody>
+</table>
 
 <jsp:include page="/footer.jsp"></jsp:include>
 
