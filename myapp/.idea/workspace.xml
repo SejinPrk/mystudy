@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9160b05-d132-42d9-bdad-84098ff3ce04" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionAddServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionAddServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionDeleteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionDeleteServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionListServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionListServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionUpdateServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionUpdateServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionViewServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/servlet/subscription/SubscriptionViewServlet.java" afterDir="false" />
-    </list>
+    <list default="true" id="b9160b05-d132-42d9-bdad-84098ff3ce04" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
