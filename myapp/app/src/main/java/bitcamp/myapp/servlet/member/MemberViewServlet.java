@@ -31,7 +31,7 @@ public class MemberViewServlet extends HttpServlet {
       }
 
       request.setAttribute("member", member);
-      request.getRequestDispatcher("/member/view.jsp").include(request, response);
+      request.getRequestDispatcher("/member/view.jsp").forward(request, response);
 
     } catch (Exception e) {
       request.setAttribute("message", "조회 오류!");

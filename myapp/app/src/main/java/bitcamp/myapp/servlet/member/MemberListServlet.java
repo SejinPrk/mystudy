@@ -1,10 +1,7 @@
 package bitcamp.myapp.servlet.member;
 
 import bitcamp.myapp.dao.MemberDao;
-import bitcamp.myapp.vo.Member;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +23,7 @@ public class MemberListServlet extends HttpServlet {
       throws ServletException, IOException {
 
     try {
-      request.setAttribute("list",memberDao.findAll());
+      request.setAttribute("list", memberDao.findAll());
       request.getRequestDispatcher("/member/list.jsp").forward(request, response);
 
     } catch (Exception e) {
