@@ -12,10 +12,7 @@
 <h1>로그인</h1>
 <form action='/auth/login' method='post'>
 <div>
-    이메일: <input name='email' type='text' value='<%=request.getAttribute("email")%>'>
-    out.write("이메일 <input name='email' type='text' value='");
-    out.print("request.getAttribute("email"));
-    out.write(">");
+    이메일: <input name='email' type='text' value='<%=request.getAttribute("email") != null ? request.getAttribute("email") : ""%>'>
 </div>
 <div>
     암호: <input name='password' type='password'>
