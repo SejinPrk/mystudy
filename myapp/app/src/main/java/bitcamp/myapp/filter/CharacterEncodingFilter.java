@@ -10,7 +10,8 @@ import javax.servlet.ServletResponse;
 
 public class CharacterEncodingFilter implements Filter {
 
- private String encoding;
+  private String encoding;
+
   @Override
   public void init(FilterConfig filterConfig) throws ServletException {
     encoding = filterConfig.getInitParameter("encoding");
@@ -23,7 +24,7 @@ public class CharacterEncodingFilter implements Filter {
   public void doFilter(ServletRequest request, ServletResponse response,
       FilterChain filterChain) throws IOException, ServletException {
 
-      request.setCharacterEncoding(encoding);
+    request.setCharacterEncoding(encoding);
 
     filterChain.doFilter(request, response);
   }

@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9160b05-d132-42d9-bdad-84098ff3ce04" name="Changes" comment="" />
+    <list default="true" id="b9160b05-d132-42d9-bdad-84098ff3ce04" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/footer.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/header.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/home.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/member/form.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/filter/CharacterEncodingFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/filter/CharacterEncodingFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/HeaderServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/assignment/AssignmentAddServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/assignment/AssignmentAddServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/assignment/AssignmentViewServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/assignment/AssignmentViewServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/member/MemberAddServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/member/MemberAddServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/member/MemberUpdateServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/member/MemberUpdateServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,42 +69,6 @@
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="application" type="c8890929:TasksNode$1" />
               </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="myapp" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="myapp" type="f1a62948:ProjectNode" />
-                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="myapp" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="myapp" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="myapp" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="application" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="myapp" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
             </expand>
             <select />
           </tree_state>
@@ -124,50 +103,50 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.ServerApp.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Build myapp.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.myapp [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.myapp [classes].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.myapp [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.myapp [run].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.myapp:app [:app:DaoTest.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.myapp:app [:app:QueueTest.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.myapp:app [:app:StackTest.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.myapp:app [:app:Test.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.myapp:app [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.myapp:app-api [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.myapp:app-client [:app-client:ClientApp.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.myapp:app-client [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.myapp:app-client [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.myapp:app-client [run].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.myapp:app-common [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.myapp:app-server [:app-server:ServerApp.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.myapp:app-server [:app-server:ServerApp02.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.myapp:app-server [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.myapp:app-server [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.myapp:app-server [run].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/sejinpark/git/mystudy/myapp/app/src/main/webapp/assignment&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ServerApp.executor": "Run",
+    "Gradle.Build myapp.executor": "Run",
+    "Gradle.myapp [build].executor": "Run",
+    "Gradle.myapp [classes].executor": "Run",
+    "Gradle.myapp [clean].executor": "Run",
+    "Gradle.myapp [run].executor": "Run",
+    "Gradle.myapp:app [:app:DaoTest.main()].executor": "Run",
+    "Gradle.myapp:app [:app:QueueTest.main()].executor": "Run",
+    "Gradle.myapp:app [:app:StackTest.main()].executor": "Run",
+    "Gradle.myapp:app [:app:Test.main()].executor": "Run",
+    "Gradle.myapp:app [build].executor": "Run",
+    "Gradle.myapp:app-api [build].executor": "Run",
+    "Gradle.myapp:app-client [:app-client:ClientApp.main()].executor": "Run",
+    "Gradle.myapp:app-client [build].executor": "Run",
+    "Gradle.myapp:app-client [clean].executor": "Run",
+    "Gradle.myapp:app-client [run].executor": "Run",
+    "Gradle.myapp:app-common [build].executor": "Run",
+    "Gradle.myapp:app-server [:app-server:ServerApp.main()].executor": "Run",
+    "Gradle.myapp:app-server [:app-server:ServerApp02.main()].executor": "Run",
+    "Gradle.myapp:app-server [build].executor": "Run",
+    "Gradle.myapp:app-server [clean].executor": "Run",
+    "Gradle.myapp:app-server [run].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/sejinpark/git/mystudy/myapp/app/src/main/webapp",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "Errors"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="bitcamp.myapp" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/webapp" />
       <recent name="$PROJECT_DIR$/app/src/main/webapp/assignment" />
       <recent name="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/member" />
       <recent name="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/assignment" />
       <recent name="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet" />
-      <recent name="$PROJECT_DIR$/app/src/main/webapp" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/webapp/image" />
@@ -396,11 +375,6 @@
           <url>file://$PROJECT_DIR$/app-server/src/main/java/bitcamp/util/Prompt.java</url>
           <line>73</line>
           <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/HeaderServlet.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Board.java</url>
