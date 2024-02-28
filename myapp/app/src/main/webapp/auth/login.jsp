@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ page import="bitcamp.myapp.vo.Member"%>
 
 <!DOCTYPE html>
  <html lang='en'>
@@ -12,7 +13,7 @@
 
  <h1>로그인</h1>
  <%
-        Member member = session.getAttribute("loginUser");
+        Member member = (Member) session.getAttribute("loginUser");
        if (member != null) {%>
          request.getSession().setAttribute("loginUser", member);
          <p><%=member.getName()%> 님 환영합니다.</p>

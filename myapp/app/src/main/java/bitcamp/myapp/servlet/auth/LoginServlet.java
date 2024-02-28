@@ -64,7 +64,7 @@ public class LoginServlet extends HttpServlet {
     } catch (Exception e) {
       request.setAttribute("message", "로그인 오류!");
       request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error").forward(request, response);
+      request.getRequestDispatcher("/error.jsp").forward(request, response);
     }
   }
 }
