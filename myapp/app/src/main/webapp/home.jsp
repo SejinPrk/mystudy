@@ -8,12 +8,12 @@
  </head>
  <body>
 
-    request.getRequestDispatcher("/header").include(request, response);
+ <jsp:include page="/header.jsp"></jsp:include>
 
  <h1>과제 관리 시스템</h1>
  <p>환영합니다! 교육 센터 과제 관리 시스템입니다.</p>
 
-    request.getRequestDispatcher("/footer").include(request, response);
+ <jsp:include page="/footer.jsp"></jsp:include>
 
-   </body>
-   </html>
+</body>
+</html>
