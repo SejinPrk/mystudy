@@ -12,17 +12,19 @@
 <jsp:include page="/header.jsp"></jsp:include>
 
 <%
-        String title = category == 1 ? "게시글" : "가입인사";
+  String boardName = (String) request.getAttribute("boardName");
+  int category = Integer.valueOf(request.getParameter("category"));
 %>
-       <h1><%title%></h1>
-       <a href='/board/add?category=%d'>새 글</a>\n", category);
-       <table border='1'>
-           <thead>
-           <tr> <th>번호</th> <th>제목</th> <th>작성자</th> <th>등록일</th> <th>첨부파일</th> </tr>
-           </thead>
-           <tbody>
+
+<h1><%boardName%></h1>
+<a href='/board/add?category=%d'>새 글</a>
+<table border='1'>
+     <thead>
+     <tr> <th>번호</th> <th>제목</th> <th>작성자</th> <th>등록일</th> <th>첨부파일</th> </tr>
+     </thead>
+     <tbody>
 <%
-List<Board> list = (List<Board>) request.getAttribute("list");
+
 for (Board board : list) {%>
             <tr>
             <td><%=board.getNo()%></td>

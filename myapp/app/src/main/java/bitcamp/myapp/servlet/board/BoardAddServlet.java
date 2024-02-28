@@ -42,7 +42,7 @@ public class BoardAddServlet extends HttpServlet {
       throws ServletException, IOException {
 
     int category = Integer.valueOf(request.getParameter("category"));
-    request.setAttribute("boardName" == 1 ? "게시글" : "가입인사";
+    request.setAttribute("boardName", category == 1 ? "게시글" : "가입인사");
 
     request.getRequestDispatcher("/board/form.jsp").forward(request, response);
 
@@ -56,7 +56,7 @@ public class BoardAddServlet extends HttpServlet {
 
     try {
       int category = Integer.valueOf(request.getParameter("category"));
-      title = category == 1 ? "게시글" : "가입인사";
+      boardName = category == 1 ? "게시글" : "가입인사";
 
       Member loginUser = (Member) request.getSession().getAttribute("loginUser");
       if (loginUser == null) {

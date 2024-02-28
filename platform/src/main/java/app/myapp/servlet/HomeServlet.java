@@ -22,7 +22,7 @@ public class HomeServlet extends HttpServlet {
     out.println("<html lang='en'>");
     out.println("<head>");
     out.println("  <meta charset='UTF-8'>");
-    out.println("  <title>비트캠프 데브옵스 5기</title>");
+    out.println("  <title>개인과제</title>");
     out.println("</head>");
     out.println("<body>");
 
