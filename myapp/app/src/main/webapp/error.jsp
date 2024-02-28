@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ page import="java.io.PrintWriter"%>
 <!DOCTYPE html>
 <html lang='en'>
@@ -10,12 +10,12 @@
 
 <jsp:include page="/header.jsp"></jsp:include>
 
-<h1>오류!</h1
+<h1>오류!</h1>
 <%
     String message = (String) request.getAttribute("message");
     if (message != null) {%>
       <p><%=message%></p>
-<%    }
+<%  }
     Throwable exception = (Throwable) request.getAttribute("exception");
     if (exception != null) {%>
       <pre>
@@ -24,7 +24,7 @@
       exception.printStackTrace(new PrintWriter(out));
 %>
       </pre>
-<%    }%>
+<%  }%>
 
 <jsp:include page="/footer.jsp"></jsp:include>
 

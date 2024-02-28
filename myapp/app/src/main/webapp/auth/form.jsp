@@ -1,18 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
- <html lang='en'>
- <head>
+<html lang='en'>
+  <head>
   <meta charset='UTF-8'>
   <title>비트캠프 데브옵스 5기</title>
- </head>
- <body>
+</head>
+<body>
 
- <jsp:include page="/header.jsp"></jsp:include>
+<jsp:include page="/header.jsp"></jsp:include>
+
 <h1>로그인</h1>
+
 <form action='/auth/login' method='post'>
 <div>
-    이메일: <input name='email' type='text' value='<%=request.getAttribute("email") != null ? request.getAttribute("email") : ""%>'>
+    이메일: <input name='email' type='text'
+    value='<%=request.getAttribute("email") != null ? request.getAttribute("email") : ""%>'>
 </div>
 <div>
     암호: <input name='password' type='password'>
@@ -21,7 +23,7 @@
 <input type='checkbox' name='saveEmail'> 이메일 저장
 </form>
 
- <jsp:include page="/footer.jsp"></jsp:include>
+<jsp:include page="/footer.jsp"></jsp:include>
 
 </body>
 </html>
