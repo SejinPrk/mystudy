@@ -1,5 +1,6 @@
-package bitcamp.myapp.servlet.board;
+package bitcamp.myapp.controller.board;
 
+import bitcamp.myapp.controller.PageController;
 import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.vo.AttachedFile;
@@ -18,41 +19,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-@MultipartConfig(maxFileSize = 1024 * 1024 * 10)
-@WebServlet("/board/add")
-public class BoardAddServlet extends HttpServlet {
+public class BoardUpdateController implements PageController {
 
   private TransactionManager txManager;
   private BoardDao boardDao;
   private AttachedFileDao attachedFileDao;
   private String uploadDir;
 
-  @Override
-  public void init() {
-    txManager = (TransactionManager) this.getServletContext().getAttribute("txManager");
-    this.boardDao = (BoardDao) this.getServletContext().getAttribute("boardDao");
-    this.attachedFileDao = (AttachedFileDao) this.getServletContext()
-        .getAttribute("attachedFileDao");
-    uploadDir = this.getServletContext().getRealPath("/upload/board");
+  public BoardUpdateController(TransactionManager txManager, BoardDao boardDao, AttachedFileDao attachedFileDao, String uploadDir){
+    this.txManager = txManager;
+    this.boardDao = boardDao;
+    this.attachedFileDao = attachedFileDao;
+    this.uploadDir = uploadDir;
   }
 
   @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-
-    int category = Integer.valueOf(request.getParameter("category"));
-    request.setAttribute("boardName", category == 1 ? "게시글" : "가입인사");
-    request.setAttribute("category", category);
-    request.setAttribute("viewUrl", "/board/form.jsp");
-  }
-
-  @Override
-  protected void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-
+  public String execute(HttpServletRequest request, HttpServletResponse response)
+      throws Exception {
     String boardName = "";
-
-    try {
       int category = Integer.valueOf(request.getParameter("category"));
       boardName = category == 1 ? "게시글" : "가입인사";
 
@@ -61,14 +45,19 @@ public class BoardAddServlet extends HttpServlet {
         throw new Exception("로그인하시기 바랍니다!");
       }
 
-      Board board = new Board();
-      board.setCategory(category);
+      int no = Integer.parseInt(request.getParameter("no"));
+      Board board = boardDao.findBy(no);
+      if (board == null) {
+        throw new Exception("번호가 유효하지 않습니다.");
+
+      } else if (board.getWriter().getNo() != loginUser.getNo()) {
+        throw new Exception("권한이 없습니다.");
+      }
+
       board.setTitle(request.getParameter("title"));
       board.setContent(request.getParameter("content"));
-      board.setWriter(loginUser);
 
       ArrayList<AttachedFile> attachedFiles = new ArrayList<>();
-
       if (category == 1) {
         Collection<Part> parts = request.getParts();
         for (Part part : parts) {
@@ -82,26 +71,19 @@ public class BoardAddServlet extends HttpServlet {
       }
 
       txManager.startTransaction();
-
-      boardDao.add(board);
-
+      boardDao.update(board);
       if (attachedFiles.size() > 0) {
         for (AttachedFile attachedFile : attachedFiles) {
           attachedFile.setBoardNo(board.getNo());
         }
         attachedFileDao.addAll(attachedFiles);
       }
-
       txManager.commit();
-
-      request.setAttribute("viewUrl", "redirect:list?category=" + category);
-
-    } catch (Exception e) {
+      return "redirect:list?category=\" + category";
       try {
         txManager.rollback();
       } catch (Exception e2) {
       }
       request.setAttribute("exception", e);
     }
-  }
 }

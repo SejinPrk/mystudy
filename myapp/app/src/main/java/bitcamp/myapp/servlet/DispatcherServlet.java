@@ -9,6 +9,10 @@ import bitcamp.myapp.controller.assignment.AssignmentUpdateController;
 import bitcamp.myapp.controller.assignment.AssignmentViewController;
 import bitcamp.myapp.controller.auth.LoginController;
 import bitcamp.myapp.controller.auth.LogoutController;
+import bitcamp.myapp.controller.board.BoardAddController;
+import bitcamp.myapp.controller.board.BoardListController;
+import bitcamp.myapp.controller.board.BoardUpdateController;
+import bitcamp.myapp.controller.board.BoardViewController;
 import bitcamp.myapp.controller.member.MemberAddController;
 import bitcamp.myapp.controller.member.MemberDeleteController;
 import bitcamp.myapp.controller.member.MemberListController;
@@ -18,6 +22,7 @@ import bitcamp.myapp.dao.AssignmentDao;
 import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.dao.MemberDao;
+import bitcamp.util.TransactionManager;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -59,6 +64,13 @@ public class DispatcherServlet extends HttpServlet {
     controllerMap.put("/assignment/add", new AssignmentAddController(assignmentDao));
     controllerMap.put("/assignment/update", new AssignmentUpdateController(assignmentDao));
     controllerMap.put("/assignment/delete", new AssignmentDeleteController(assignmentDao));
+
+    String boardUploadDir = this.getServletContext().getRealPath("/upload");
+    controllerMap.put("/board/list", new BoardListController(boardDao));
+    controllerMap.put("/board/view", new BoardViewController(boardDao,attachedFileDao));
+    controllerMap.put("/board/add", new BoardAddController(txManager, boardDao, attachedFileDao, boardUploadDir));
+    controllerMap.put("/board/update", new BoardUpdateController());
+    controllerMap.put("/board/delete", new BoardDeleteController());
 
     controllerMap.put("/auth/login", new LoginController(memberDao));
     controllerMap.put("/auth/logout", new LogoutController());
