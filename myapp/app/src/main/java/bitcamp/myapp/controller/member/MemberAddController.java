@@ -21,6 +21,10 @@ public class MemberAddController implements PageController {
   @Override
   public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
+    if (request.getMethod().equals("GET")) {
+      return "/member/form.jsp";
+    }
+
     Member member = new Member();
     member.setEmail(request.getParameter("email"));
     member.setName(request.getParameter("name"));
