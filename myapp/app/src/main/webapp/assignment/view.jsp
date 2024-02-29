@@ -9,22 +9,21 @@
 <body>
 
 <jsp:include page="/header.jsp"></jsp:include>
-<%
-  Assignment assignment = (Assignment) request.getAttribute("assignment");
-%>
+
 <h1>과제</h1>
+
 <form action='/assignment/update' method='post'>
 <div>
-    번호: <input readonly name='no' type='text' value='${assignment.no}'>
+  번호: <input readonly name='no' type='text' value='${assignment.no}'>
 </div>
 <div>
-   과제명: <input name='title' type='text' value='${assignment.title}'>
+  과제명: <input name='title' type='text' value='${assignment.title}'>
 </div>
 <div>
-   내용: <textarea name='content'>${assignment.content}</textarea>
+  내용: <textarea name='content'>${assignment.content}</textarea>
 </div>
 <div>
-   제출마감일: <input name='deadline' type='date' value='${assignment.deadline}'>
+  제출마감일: <input name='deadline' type='date' value='${assignment.deadline}'>
 </div>
 <div>
   <button>변경</button>

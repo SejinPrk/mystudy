@@ -12,11 +12,6 @@
 
 <h1>${boardName}</h1>
 
-<%
-  String boardName = (String) request.getAttribute("boardName");
-  int category = (int) request.getAttribute("category");
-%>
-
 <form action='/board/add?category=${category}' method='post' enctype='multipart/form-data'>
   <input name='category' type='hidden' value='${category}'>
   <div>
@@ -25,7 +20,7 @@
   <div>
         내용: <textarea name='content'></textarea>
   </div>
-<c:if test="%{category == 1}">
+<c:if test="${category == 1}">
   <div>
         첨부파일: <input multiple name='files' type='file'>
   </div>

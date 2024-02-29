@@ -9,20 +9,18 @@
 <body>
 
 <jsp:include page="/header.jsp"></jsp:include>
-<% 
-  Member member = (Member) request.getAttribute("member");
-%>
+
 <h1>회원</h1>
 <form action='/member/update' method='post' enctype='multipart/form-data'>
 <div>
     사진:
     <c:if test="${not empty member.photo}">
-       <a href='/upload/${member.photo}'> <img src='/upload/${member.photo}' height='80px'></a><br>
+      <a href='/upload/${member.photo}'> <img src='/upload/${member.photo}' height='80px'></a><br>
     </c:if>
     <c:if test="${empty member.photo}">
-       <a href='/img/default-photo.jpeg'> <img src='/img/default-photo.jpeg' height='80px'></a><br>
+      <a href='/img/default-photo.jpeg'> <img src='/img/default-photo.jpeg' height='80px'></a><br>
     </c:if>
-       <input name='photo' type='file'>
+      <input name='photo' type='file'>
 </div>
 <div>
     번호: <input readonly name='no' type='text' value='${member.no}'>

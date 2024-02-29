@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="bitcamp.myapp.vo.AttachedFile"%>
 <!DOCTYPE html>
 <html lang='en'>
   <head>
@@ -11,13 +10,7 @@
 
 <jsp:include page="/header.jsp"></jsp:include>
 
-<%
-  String boardName = (String) request.getAttribute("boardName");
-  int category = (int) request.getAttribute("category");
-  Board board = (Board) request.getAttribute("board");
-%>
-
-<h1><%=boardName%></h1>
+<h1>${boardName}</h1>
 <form action='/board/update' method='post' enctype='multipart/form-data'>
   <input name='category' type='hidden' value='${category}'>
   <div>
@@ -32,16 +25,15 @@
   <div>
     작성자: <input readonly type='text' value='${board.writer.name}'>
   </div>
-<c:if test="%{category == 1}">
+
+<c:if test="${category == 1}">
     <div>
       첨부파일: <input multiple name='files' type='file'>
-    <ul>
-<%
-    List<AttachedFile> files = (List<AttachedFile>) request.getAttribute("files");
-    <c:forEach items="${files}" var="file"
+      <ul>
+    <c:forEach items="${files}" var="file">
         <li><a href='/upload/board/${file.filePath}'>${file.filePath}</a>
           [<a href='/board/file/delete?category=${category}&no=${file.no}'>삭제</a>]</li>
-</c:forEach>
+    </c:forEach>
       </ul>
     </div>
 </c:if>

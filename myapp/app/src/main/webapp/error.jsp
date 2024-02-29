@@ -12,20 +12,24 @@
 <jsp:include page="/header.jsp"></jsp:include>
 
 <h1>오류!</h1>
+
 <c:if test="${not empty message}">
-      <p>${message}</p>
+  <p>${message}</p>
 </c:if>
+
 <%
-<c:if test="${not empty exception}">
-    Throwable exception = (Throwable) request.getAttribute("exception");
-    if (exception != null) {%>
-      <pre>
-<%
-      out.flush();
-      exception.printStackTrace(new PrintWriter(out));
+Throwable exception = (Throwable) request.getAttribute("exception");
+if (exception != null) {
 %>
-      </pre>
-<%  }%>
+
+  <pre>
+<%
+  out.flush();
+  exception.printStackTrace(new PrintWriter(out));
+%>
+  </pre>
+<%}%>
+
 
 <jsp:include page="/footer.jsp"></jsp:include>
 
