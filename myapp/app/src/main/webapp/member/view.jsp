@@ -39,7 +39,7 @@
 </div>
 <div>
   <button>변경</button>
-  <a href='/member/delete?no=${member.no}'>[삭제]</a>
+  <a href='/app/member/delete?no=${member.no}'>[삭제]</a>
 </div>
 </form>
 
