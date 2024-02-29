@@ -2,11 +2,9 @@ package bitcamp.myapp.controller.member;
 
 import bitcamp.myapp.controller.PageController;
 import bitcamp.myapp.dao.MemberDao;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/member/list")
 public class MemberListController implements PageController {
 
   private MemberDao memberDao;
@@ -16,9 +14,9 @@ public class MemberListController implements PageController {
   }
 
   @Override
-public String execute(HttpServletRequest request, HttpServletResponse response)
+  public String execute(HttpServletRequest request, HttpServletResponse response)
       throws Exception {
-      request.setAttribute("list", memberDao.findAll());
-      return "/member/list.jsp";
-    }
+    request.setAttribute("list", memberDao.findAll());
+    return "/member/list.jsp";
+  }
 }
