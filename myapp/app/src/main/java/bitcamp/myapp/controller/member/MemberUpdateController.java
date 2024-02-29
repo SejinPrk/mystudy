@@ -1,5 +1,6 @@
-package bitcamp.myapp.servlet.member;
+package bitcamp.myapp.controller.member;
 
+import bitcamp.myapp.controller.PageController;
 import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.vo.Member;
 import java.io.File;
@@ -15,21 +16,19 @@ import javax.servlet.http.Part;
 
 @MultipartConfig(maxFileSize = 1024 * 1024 * 10)
 @WebServlet("/member/update")
-public class MemberUpdateServlet extends HttpServlet {
+public class MemberUpdateController implements PageController {
 
   private MemberDao memberDao;
   private String uploadDir;
 
-  @Override
-  public void init() {
-    this.memberDao = (MemberDao) this.getServletContext().getAttribute("memberDao");
-    uploadDir = this.getServletContext().getRealPath("/upload");
+  public MemberUpdateController(MemberDao memberDao, String uploadDir) {
+    this.memberDao = memberDao;
+    this.uploadDir = uploadDir;
   }
 
   @Override
-  protected void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-    try {
+  public String execute(HttpServletRequest request, HttpServletResponse response)
+      throws Exception {
       int no = Integer.parseInt(request.getParameter("no"));
       Member old = memberDao.findBy(no);
       if (old == null) {
@@ -54,10 +53,6 @@ public class MemberUpdateServlet extends HttpServlet {
       }
 
       memberDao.update(member);
-      request.setAttribute("viewUrl", "redirect:list");
-
-    } catch (Exception e) {
-      request.setAttribute("exception", e);
-    }
+      return "redirect:list";
   }
 }
