@@ -1,5 +1,6 @@
 package bitcamp.myapp.controller.board;
 
+import bitcamp.myapp.controller.PageController;
 import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.vo.AttachedFile;
@@ -12,30 +13,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/board/file/delete")
-public class BoardFileDeleteController extends HttpServlet {
+
+public class BoardFileDeleteController implements PageController {
 
   private BoardDao boardDao;
   private AttachedFileDao attachedFileDao;
   private String uploadDir;
 
-  @Override
-  public void init() {
-    this.boardDao = (BoardDao) this.getServletContext().getAttribute("boardDao");
-    this.attachedFileDao = (AttachedFileDao) this.getServletContext()
-        .getAttribute("attachedFileDao");
-    uploadDir = this.getServletContext().getRealPath("/upload/board");
+  public BoardFileDeleteController(BoardDao boardDao, AttachedFileDao attachedFileDao, String uploadDir) {
+    this.boardDao = boardDao;
+    this.attachedFileDao = attachedFileDao;
+    this.uploadDir = uploadDir;
   }
 
   @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+  public String execute(HttpServletRequest request, HttpServletResponse response)
+      throws Exception {
 
-    String boardName = "";
-
-    try {
       int category = Integer.valueOf(request.getParameter("category"));
-      boardName = category == 1 ? "게시글" : "가입인사";
+      String boardName = category == 1 ? "게시글" : "가입인사";
 
       Member loginUser = (Member) request.getSession().getAttribute("loginUser");
       if (loginUser == null) {
@@ -56,11 +52,7 @@ public class BoardFileDeleteController extends HttpServlet {
       attachedFileDao.delete(fileNo);
       new File(this.uploadDir + "/" + file.getFilePath()).delete();
 
-      request.setAttribute("viewUrl",
-          "redirect:../view?category=" + category + "&no=" + file.getBoardNo());
+    return "redirect:../view?category=" + category + "&no=" + file.getBoardNo();
 
-    } catch (Exception e) {
-      request.setAttribute("exception", e);
-    }
   }
 }
