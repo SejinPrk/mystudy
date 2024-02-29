@@ -2,6 +2,7 @@ package bitcamp.myapp.servlet;
 
 import bitcamp.myapp.controller.HomeController;
 import bitcamp.myapp.controller.PageController;
+import bitcamp.myapp.controller.member.MemberListController;
 import bitcamp.myapp.dao.AssignmentDao;
 import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.BoardDao;
@@ -34,6 +35,7 @@ public class DispatcherServlet extends HttpServlet {
     AttachedFileDao attachedFileDao = (AttachedFileDao) ctx.getAttribute("attachedFileDao");
 
     controllerMap.put("/home", new HomeController());
+    controllerMap.put("/member/list", new MemberListController(memberDao));
   }
 
   @Override
