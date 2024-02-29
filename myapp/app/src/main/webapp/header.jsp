@@ -16,5 +16,5 @@
   <a href='/app/auth/login'>로그인</a>
 </c:if>
 
-  <a href='/app/about.html'>소개</a>
+  <a href='/about.html'>소개</a>
 </header>

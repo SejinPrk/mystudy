@@ -21,14 +21,12 @@ public class AssignmentListServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    try{
-    request.setAttribute("list", assignmentDao.findAll());
-    request.getRequestDispatcher("/assignment/list.jsp").forward(request, response);
+    try {
+      request.setAttribute("list", assignmentDao.findAll());
+      request.setAttribute("viewUrl", "/assignment/list.jsp");
 
     } catch (Exception e) {
-      request.setAttribute("message", "목록 오류!");
       request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error.jsp").forward(request, response);
     }
   }
 }

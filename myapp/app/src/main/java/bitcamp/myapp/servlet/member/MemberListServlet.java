@@ -24,7 +24,7 @@ public class MemberListServlet extends HttpServlet {
 
     try {
       request.setAttribute("list", memberDao.findAll());
-      request.setAttribute("viewUrl","/member/list.jsp");
+      request.setAttribute("viewUrl", "/member/list.jsp");
 
     } catch (Exception e) {
       request.setAttribute("exception", e);

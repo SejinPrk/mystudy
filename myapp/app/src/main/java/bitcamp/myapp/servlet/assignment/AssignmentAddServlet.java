@@ -3,7 +3,6 @@ package bitcamp.myapp.servlet.assignment;
 import bitcamp.myapp.dao.AssignmentDao;
 import bitcamp.myapp.vo.Assignment;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,9 +23,7 @@ public class AssignmentAddServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-
-    request.getRequestDispatcher("/assignment/form.jsp").forward(request, response);
-
+    request.setAttribute("viewUrl", "/assignment/form.jsp");
   }
 
   @Override
@@ -39,12 +36,10 @@ public class AssignmentAddServlet extends HttpServlet {
       assignment.setDeadline(Date.valueOf(request.getParameter("deadline")));
 
       assignmentDao.add(assignment);
-      response.sendRedirect("/assignment/list");
+      request.setAttribute("viewUrl", "redirect:list");
 
     } catch (Exception e) {
-      request.setAttribute("message", "과제 등록 오류!");
       request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error.jsp").forward(request, response);
     }
   }
 }
