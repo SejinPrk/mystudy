@@ -23,7 +23,7 @@ pageContext.setAttribute("s4", "윤봉길");
 <%-- 자바코드로 표현해보면,
   String s1 = (String)application.getAttribute("s1");
    if (s1 == null) {
-      throw new Exception("..."); // 해당 이름으로 저장된 객체가 없다면 예외를 발생시킨다. 
+      throw new Exception("..."); // 해당 이름으로 저장된 객체가 없다면 예외를 발생시킨다.
     }
  --%>
  
