@@ -1,6 +1,5 @@
 package bitcamp.myapp.controller;
 
-import bitcamp.myapp.controller.RequestMapping;
 import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.vo.AttachedFile;
@@ -90,6 +89,7 @@ public class BoardController {
       throw e;
     }
   }
+
   @RequestMapping("/board/list")
   public String list(HttpServletRequest request, HttpServletResponse response) throws Exception {
     int category = Integer.valueOf(request.getParameter("category"));
@@ -117,6 +117,7 @@ public class BoardController {
     }
     return "/board/view.jsp";
   }
+
   @RequestMapping("/board/update")
   public String update(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
@@ -171,6 +172,7 @@ public class BoardController {
       throw e;
     }
   }
+
   @RequestMapping("/board/delete")
   public String delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
@@ -212,8 +214,10 @@ public class BoardController {
       throw e;
     }
   }
-  @RequestMapping("/board/fileDelete")
-  public String fileDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+  @RequestMapping("/board/file/delete")
+  public String fileDelete(HttpServletRequest request, HttpServletResponse response)
+      throws Exception {
     int category = Integer.valueOf(request.getParameter("category"));
 
     Member loginUser = (Member) request.getSession().getAttribute("loginUser");

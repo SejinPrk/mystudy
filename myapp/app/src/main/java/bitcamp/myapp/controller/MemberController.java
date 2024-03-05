@@ -1,6 +1,5 @@
 package bitcamp.myapp.controller;
 
-import bitcamp.myapp.controller.RequestMapping;
 import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.vo.Member;
 import java.io.File;
@@ -40,6 +39,7 @@ public class MemberController {
     memberDao.add(member);
     return "redirect:list";
   }
+
   @RequestMapping("/member/list")
   public String list(HttpServletRequest request, HttpServletResponse response)
       throws Exception {
@@ -86,6 +86,7 @@ public class MemberController {
     memberDao.update(member);
     return "redirect:list";
   }
+
   @RequestMapping("/member/delete")
   public String delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
     int no = Integer.parseInt(request.getParameter("no"));
