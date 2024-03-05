@@ -100,6 +100,7 @@ public class DispatcherServlet extends HttpServlet {
       if (requestHandler == null) {
         throw new Exception(request.getPathInfo() + " 요청 페이지를 찾을 수 없습니다.");
       }
+
       String viewUrl = (String) requestHandler.invoke(controller, request, response);
 
       // 페이지 컨트롤러가 알려준 JSP로 포워딩 한다.
@@ -132,4 +133,5 @@ public class DispatcherServlet extends HttpServlet {
     }
     return null;
   }
+
 }

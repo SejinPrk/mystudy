@@ -28,13 +28,11 @@ public class BoardDeleteController {
   }
 
   @RequestMapping
-  public String execute(HttpServletRequest request, HttpServletResponse response)
-      throws Exception {
+  public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-      int category = Integer.valueOf(request.getParameter("category"));
-      String boardName = category == 1 ? "게시글" : "가입인사";
+    int category = Integer.valueOf(request.getParameter("category"));
 
-      try{
+    try {
       Member loginUser = (Member) request.getSession().getAttribute("loginUser");
       if (loginUser == null) {
         throw new Exception("로그인하시기 바랍니다!");
@@ -60,7 +58,7 @@ public class BoardDeleteController {
         new File(this.uploadDir + "/" + file.getFilePath()).delete();
       }
 
-      return"redirect:list?category=" + category;
+      return "redirect:list?category=" + category;
 
     } catch (Exception e) {
       try {

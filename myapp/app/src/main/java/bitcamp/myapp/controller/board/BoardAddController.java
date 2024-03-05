@@ -21,9 +21,8 @@ public class BoardAddController {
   private AttachedFileDao attachedFileDao;
   private String uploadDir;
 
-
   public BoardAddController(TransactionManager txManager, BoardDao boardDao,
-      AttachedFileDao attachedFileDao, String uploadDir){
+      AttachedFileDao attachedFileDao, String uploadDir) {
     this.txManager = txManager;
     this.boardDao = boardDao;
     this.attachedFileDao = attachedFileDao;
@@ -31,12 +30,10 @@ public class BoardAddController {
   }
 
   @RequestMapping
-  public String execute(HttpServletRequest request, HttpServletResponse response)
-      throws Exception {
+  public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
     int category = Integer.valueOf(request.getParameter("category"));
-    String boardName = category == 1 ? "게시글" : "가입인사";
-    request.setAttribute("boardName", boardName);
+    request.setAttribute("boardName", category == 1 ? "게시글" : "가입인사");
     request.setAttribute("category", category);
 
     if (request.getMethod().equals("GET")) {

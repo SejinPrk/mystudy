@@ -21,7 +21,8 @@ public class BoardUpdateController {
   private AttachedFileDao attachedFileDao;
   private String uploadDir;
 
-  public BoardUpdateController(TransactionManager txManager, BoardDao boardDao, AttachedFileDao attachedFileDao, String uploadDir){
+  public BoardUpdateController(TransactionManager txManager, BoardDao boardDao,
+      AttachedFileDao attachedFileDao, String uploadDir) {
     this.txManager = txManager;
     this.boardDao = boardDao;
     this.attachedFileDao = attachedFileDao;
@@ -29,13 +30,10 @@ public class BoardUpdateController {
   }
 
   @RequestMapping
-  public String execute(HttpServletRequest request, HttpServletResponse response)
-      throws Exception {
+  public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-      int category = Integer.valueOf(request.getParameter("category"));
-      String boardName = category == 1 ? "게시글" : "가입인사";
-
-      try{
+    int category = Integer.valueOf(request.getParameter("category"));
+    try {
       Member loginUser = (Member) request.getSession().getAttribute("loginUser");
       if (loginUser == null) {
         throw new Exception("로그인하시기 바랍니다!");
@@ -75,14 +73,14 @@ public class BoardUpdateController {
         attachedFileDao.addAll(attachedFiles);
       }
       txManager.commit();
-      return "redirect:list?category=\" + category";
+      return "redirect:list?category=" + category;
 
-  } catch (Exception e) {
-    try {
-      txManager.rollback();
-    } catch (Exception e2) {
-    }
-    throw e;
+    } catch (Exception e) {
+      try {
+        txManager.rollback();
+      } catch (Exception e2) {
+      }
+      throw e;
     }
   }
 }
