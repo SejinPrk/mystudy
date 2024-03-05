@@ -16,7 +16,7 @@ public class AssignmentController {
 
   @RequestMapping("/assignment/form")
   public String form() throws Exception {
-    return "assignment/form.jsp";
+    return "/assignment/form.jsp";
   }
 
   @RequestMapping("/assignment/add")
@@ -51,12 +51,11 @@ public class AssignmentController {
   }
 
   @RequestMapping("/assignment/update")
-  public String update(HttpServletRequest request,
+  public String update(
       @RequestParam("no") int no,
       @RequestParam("title") String title,
       @RequestParam("content") String content,
       @RequestParam("deadline") Date deadline) throws Exception {
-    no = Integer.parseInt(request.getParameter("no"));
 
     Assignment old = assignmentDao.findBy(no);
     if (old == null) {
