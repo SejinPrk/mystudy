@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9160b05-d132-42d9-bdad-84098ff3ce04" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../servlet-app/app/src/main/webapp/jsp/ex07.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../servlet-app/app/src/main/webapp/jsp/ex07.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="b9160b05-d132-42d9-bdad-84098ff3ce04" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,6 +67,7 @@
         <option value="package-info" />
         <option value="Class" />
         <option value="Interface" />
+        <option value="AnnotationType" />
       </list>
     </option>
   </component>
@@ -92,6 +91,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;Application.ServerApp.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.Build myapp.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.myapp [build].executor&quot;: &quot;Run&quot;,
@@ -139,9 +139,9 @@
       <recent name="$PROJECT_DIR$/app/src/main/webapp/image" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="bitcamp.myapp.controller.member" />
       <recent name="bitcamp.myapp.controller.board" />
       <recent name="bitcamp.myapp.controller.assignment" />
-      <recent name="bitcamp.myapp.controller.member" />
       <recent name="bitcamp.myapp.controller" />
       <recent name="bitcamp.myapp.servlet" />
     </key>
