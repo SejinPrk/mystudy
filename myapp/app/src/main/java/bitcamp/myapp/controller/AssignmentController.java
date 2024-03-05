@@ -1,4 +1,4 @@
-package bitcamp.myapp.controller.assignment;
+package bitcamp.myapp.controller;
 
 import bitcamp.myapp.controller.RequestMapping;
 import bitcamp.myapp.dao.AssignmentDao;

@@ -1,4 +1,4 @@
-package bitcamp.myapp.controller.member;
+package bitcamp.myapp.controller;
 
 import bitcamp.myapp.controller.RequestMapping;
 import bitcamp.myapp.dao.MemberDao;
