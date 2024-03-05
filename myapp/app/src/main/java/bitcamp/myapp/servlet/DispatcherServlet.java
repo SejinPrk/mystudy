@@ -57,20 +57,12 @@ public class DispatcherServlet extends HttpServlet {
 
     try {
       // URL 요청을 처리할 request handler를 찾는다.
-      Object controller = null;
-      Method requestHandler = null;
-      for (Object obj : controllers) {
-        requestHandler = findRequestHandler(obj, request.getPathInfo());
-        if (requestHandler != null) {
-          controller = obj;
-          break;
-        }
-      }
+      RequestHandler requestHandler = findRequestHandler(request.getPathInfo());
       if (requestHandler == null) {
         throw new Exception(request.getPathInfo() + " 요청 페이지를 찾을 수 없습니다.");
       }
 
-      String viewUrl = (String) requestHandler.invoke(controller, request, response);
+      String viewUrl = (String) requestHandler.handler.invoke(requestHandler.controller, request, response);
 
       // 페이지 컨트롤러가 알려준 JSP로 포워딩 한다.
       if (viewUrl.startsWith("redirect:")) {
@@ -92,15 +84,16 @@ public class DispatcherServlet extends HttpServlet {
     }
   }
 
-  private Method findRequestHandler(Object controller, String path) {
-    Method[] methods = controller.getClass().getDeclaredMethods();
-    for (Method m : methods) {
-      RequestMapping requestMapping = m.getAnnotation(RequestMapping.class);
-      if (requestMapping != null && requestMapping.value().equals(path)) {
-        return m;
+  private RequestHandler findRequestHandler(String path) {
+    for (Object controller : controllers) {
+      Method[] methods = controller.getClass().getDeclaredMethods();
+      for (Method m : methods) {
+        RequestMapping requestMapping = m.getAnnotation(RequestMapping.class);
+        if (requestMapping != null && requestMapping.value().equals(path)) {
+          return new RequestHandler(controller, m);
+        }
       }
     }
     return null;
   }
-
 }
