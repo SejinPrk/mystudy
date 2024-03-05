@@ -16,7 +16,7 @@
 - 문자열로 지정된 날짜 값을 java.util.Date 객체로 만들기
 </pre>
 
-<fmt:parseDate value="2020-04-14" pattern="yyyy-MM-dd" var="d1"/>
+<fmt:parseDate value="2024-3-5" pattern="yyyy-MM-dd" var="d1"/>
 <fmt:parseDate value="04/14/2020" pattern="MM/dd/yyyy" var="d2"/>
 
 <%
