@@ -2,11 +2,6 @@ package bitcamp.myapp.servlet;
 
 import bitcamp.myapp.controller.HomeController;
 import bitcamp.myapp.controller.RequestMapping;
-import bitcamp.myapp.controller.assignment.AssignmentAddController;
-import bitcamp.myapp.controller.assignment.AssignmentDeleteController;
-import bitcamp.myapp.controller.assignment.AssignmentListController;
-import bitcamp.myapp.controller.assignment.AssignmentUpdateController;
-import bitcamp.myapp.controller.assignment.AssignmentViewController;
 import bitcamp.myapp.controller.auth.LoginController;
 import bitcamp.myapp.controller.auth.LogoutController;
 import bitcamp.myapp.controller.board.BoardAddController;

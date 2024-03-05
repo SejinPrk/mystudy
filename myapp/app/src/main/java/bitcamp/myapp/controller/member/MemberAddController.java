@@ -20,6 +20,9 @@ public class MemberAddController {
 
   @RequestMapping
   public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    if (request.getMethod().equals("GET")) {
+      return "/member/form.jsp";
+    }
 
     Member member = new Member();
     member.setEmail(request.getParameter("email"));
