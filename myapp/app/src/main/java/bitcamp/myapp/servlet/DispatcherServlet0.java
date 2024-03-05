@@ -16,13 +16,9 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,7 +27,6 @@ import javax.servlet.http.HttpServletResponse;
 //@WebServlet("/app/*")
 public class DispatcherServlet0 extends HttpServlet {
 
-  private Map<String, RequestHandler> requestHandlerMap = new HashMap<>();
   private List<Object> controllers = new ArrayList<>();
 
   @Override
@@ -52,8 +47,6 @@ public class DispatcherServlet0 extends HttpServlet {
 
     String memberUploadDir = this.getServletContext().getRealPath("/upload");
     controllers.add(new MemberController(memberDao, memberUploadDir));
-
-    prepareRequestHandlers(controllers);
   }
 
   @Override
@@ -67,7 +60,8 @@ public class DispatcherServlet0 extends HttpServlet {
         throw new Exception(request.getPathInfo() + " 요청 페이지를 찾을 수 없습니다.");
       }
 
-      String viewUrl = (String) requestHandler.handler.invoke(requestHandler.controller, request, response);
+      String viewUrl = (String) requestHandler.handler.invoke(requestHandler.controller, request,
+          response);
 
       // 페이지 컨트롤러가 알려준 JSP로 포워딩 한다.
       if (viewUrl.startsWith("redirect:")) {
@@ -89,15 +83,17 @@ public class DispatcherServlet0 extends HttpServlet {
     }
   }
 
-  private void prepareRequestHandlers(List<Object> controllers) {
+  private RequestHandler findRequestHandler(String path) {
     for (Object controller : controllers) {
       Method[] methods = controller.getClass().getDeclaredMethods();
       for (Method m : methods) {
         RequestMapping requestMapping = m.getAnnotation(RequestMapping.class);
-        if (requestMapping != null) {
-          requestHandlerMap.put(requestMapping.value(),  new RequestHandler(controller, m));
+        if (requestMapping != null && requestMapping.value().equals(path)) {
+          return new RequestHandler(controller, m);
         }
       }
     }
+    return null;
   }
+
 }

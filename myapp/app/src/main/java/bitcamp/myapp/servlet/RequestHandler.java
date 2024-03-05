@@ -3,6 +3,7 @@ package bitcamp.myapp.servlet;
 import java.lang.reflect.Method;
 
 public class RequestHandler {
+
   Object controller;
   Method handler;
 
