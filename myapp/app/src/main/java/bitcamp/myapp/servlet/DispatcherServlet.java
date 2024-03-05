@@ -1,7 +1,6 @@
 package bitcamp.myapp.servlet;
 
 import bitcamp.myapp.controller.HomeController;
-import bitcamp.myapp.controller.PageController;
 import bitcamp.myapp.controller.RequestMapping;
 import bitcamp.myapp.controller.assignment.AssignmentAddController;
 import bitcamp.myapp.controller.assignment.AssignmentDeleteController;
@@ -97,16 +96,7 @@ public class DispatcherServlet extends HttpServlet {
     }
 
     try {
-      Method requestHandler = findRequestHandler()
-      Method[] methods = controller.getClass().getDeclaredMethods();
-      for (Method m : methods) {
-        RequestMapping requestMapping = m.getAnnotation(RequestMapping.class);
-        if (requestMapping != null) {
-          requestHandler = m;
-          break;
-        }
-      }
-
+      Method requestHandler = findRequestHandler(controller);
       if (requestHandler == null) {
         throw new Exception(request.getPathInfo() + " 요청 페이지를 찾을 수 없습니다.");
       }

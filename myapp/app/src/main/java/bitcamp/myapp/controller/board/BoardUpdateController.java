@@ -1,6 +1,6 @@
 package bitcamp.myapp.controller.board;
 
-import bitcamp.myapp.controller.PageController;
+import bitcamp.myapp.controller.RequestMapping;
 import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.vo.AttachedFile;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-public class BoardUpdateController implements PageController {
+public class BoardUpdateController {
 
   private TransactionManager txManager;
   private BoardDao boardDao;
@@ -28,7 +28,7 @@ public class BoardUpdateController implements PageController {
     this.uploadDir = uploadDir;
   }
 
-  @Override
+  @RequestMapping
   public String execute(HttpServletRequest request, HttpServletResponse response)
       throws Exception {
 

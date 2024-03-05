@@ -1,20 +1,16 @@
 package bitcamp.myapp.controller.board;
 
-import bitcamp.myapp.controller.PageController;
+import bitcamp.myapp.controller.RequestMapping;
 import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.vo.AttachedFile;
 import bitcamp.myapp.vo.Member;
 import java.io.File;
-import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-public class BoardFileDeleteController implements PageController {
+public class BoardFileDeleteController {
 
   private BoardDao boardDao;
   private AttachedFileDao attachedFileDao;
@@ -26,7 +22,7 @@ public class BoardFileDeleteController implements PageController {
     this.uploadDir = uploadDir;
   }
 
-  @Override
+  @RequestMapping
   public String execute(HttpServletRequest request, HttpServletResponse response)
       throws Exception {
 
