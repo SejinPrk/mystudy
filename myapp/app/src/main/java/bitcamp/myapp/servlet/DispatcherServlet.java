@@ -2,19 +2,10 @@ package bitcamp.myapp.servlet;
 
 import bitcamp.myapp.controller.HomeController;
 import bitcamp.myapp.controller.RequestMapping;
-import bitcamp.myapp.controller.auth.LoginController;
-import bitcamp.myapp.controller.auth.LogoutController;
-import bitcamp.myapp.controller.board.BoardAddController;
-import bitcamp.myapp.controller.board.BoardDeleteController;
-import bitcamp.myapp.controller.board.BoardFileDeleteController;
-import bitcamp.myapp.controller.board.BoardListController;
-import bitcamp.myapp.controller.board.BoardUpdateController;
-import bitcamp.myapp.controller.board.BoardViewController;
-import bitcamp.myapp.controller.member.MemberAddController;
-import bitcamp.myapp.controller.member.MemberDeleteController;
-import bitcamp.myapp.controller.member.MemberListController;
-import bitcamp.myapp.controller.member.MemberUpdateController;
-import bitcamp.myapp.controller.member.MemberViewController;
+import bitcamp.myapp.controller.assignment.AssignmentController;
+import bitcamp.myapp.controller.auth.AuthController;
+import bitcamp.myapp.controller.board.BoardController;
+import bitcamp.myapp.controller.member.MemberController;
 import bitcamp.myapp.dao.AssignmentDao;
 import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.BoardDao;
@@ -24,7 +15,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -38,7 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/app/*")
 public class DispatcherServlet extends HttpServlet {
 
-  private Map<String, Object> controllerMap = new HashMap<>();
+  private List<Object> controllers = new ArrayList<>();
 
   @Override
   public void init() throws ServletException {
@@ -49,35 +42,15 @@ public class DispatcherServlet extends HttpServlet {
     AssignmentDao assignmentDao = (AssignmentDao) ctx.getAttribute("assignmentDao");
     AttachedFileDao attachedFileDao = (AttachedFileDao) ctx.getAttribute("attachedFileDao");
 
-    controllerMap.put("/home", new HomeController());
-
-    String memberUploadDir = this.getServletContext().getRealPath("/upload");
-    controllerMap.put("/member/list", new MemberListController(memberDao));
-    controllerMap.put("/member/view", new MemberViewController(memberDao));
-    controllerMap.put("/member/add", new MemberAddController(memberDao, memberUploadDir));
-    controllerMap.put("/member/update", new MemberUpdateController(memberDao, memberUploadDir));
-    controllerMap.put("/member/delete", new MemberDeleteController(memberDao, memberUploadDir));
-
-    controllerMap.put("/assignment/list", new AssignmentListController(assignmentDao));
-    controllerMap.put("/assignment/view", new AssignmentViewController(assignmentDao));
-    controllerMap.put("/assignment/add", new AssignmentAddController(assignmentDao));
-    controllerMap.put("/assignment/update", new AssignmentUpdateController(assignmentDao));
-    controllerMap.put("/assignment/delete", new AssignmentDeleteController(assignmentDao));
-
-    controllerMap.put("/auth/login", new LoginController(memberDao));
-    controllerMap.put("/auth/logout", new LogoutController());
+    controllers.add(new HomeController());
+    controllers.add(new AssignmentController(assignmentDao));
+    controllers.add(new AuthController(memberDao));
 
     String boardUploadDir = this.getServletContext().getRealPath("/upload/board");
-    controllerMap.put("/board/list", new BoardListController(boardDao));
-    controllerMap.put("/board/view", new BoardViewController(boardDao, attachedFileDao));
-    controllerMap.put("/board/add",
-        new BoardAddController(txManager, boardDao, attachedFileDao, boardUploadDir));
-    controllerMap.put("/board/update",
-        new BoardUpdateController(txManager, boardDao, attachedFileDao, boardUploadDir));
-    controllerMap.put("/board/delete",
-        new BoardDeleteController(txManager, boardDao, attachedFileDao, boardUploadDir));
-    controllerMap.put("/board/file/delete",
-        new BoardFileDeleteController(boardDao, attachedFileDao, boardUploadDir));
+    controllers.add(new BoardController(txManager, boardDao, attachedFileDao, boardUploadDir));
+
+    String memberUploadDir = this.getServletContext().getRealPath("/upload");
+    controllers.add(new MemberController(memberDao, memberUploadDir));
   }
 
   @Override

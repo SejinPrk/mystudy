@@ -15,7 +15,7 @@ public class AssignmentController {
     this.assignmentDao = assignmentDao;
   }
 
-  @RequestMapping
+  @RequestMapping("/assignment/add")
   public String add(HttpServletRequest request, HttpServletResponse response) throws Exception {
     if (request.getMethod().equals("GET")) {
       return "/assignment/form.jsp";
@@ -30,13 +30,13 @@ public class AssignmentController {
     return "redirect:list";
   }
 
-  @RequestMapping
+  @RequestMapping("/assignment/list")
   public String list(HttpServletRequest request, HttpServletResponse response) throws Exception {
     request.setAttribute("list", assignmentDao.findAll());
     return "/assignment/list.jsp";
   }
 
-  @RequestMapping
+  @RequestMapping("/assignment/view")
   public String view(HttpServletRequest request, HttpServletResponse response) throws Exception {
     int no = Integer.parseInt(request.getParameter("no"));
     Assignment assignment = assignmentDao.findBy(no);
@@ -47,7 +47,7 @@ public class AssignmentController {
     return "/assignment/view.jsp";
   }
 
-  @RequestMapping
+  @RequestMapping("/assignment/update")
   public String update(HttpServletRequest request, HttpServletResponse response) throws Exception {
     int no = Integer.parseInt(request.getParameter("no"));
 
@@ -66,7 +66,7 @@ public class AssignmentController {
     return "redirect:list";
   }
 
-  @RequestMapping
+  @RequestMapping("/assignment/delete")
   public String delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
     int no = Integer.parseInt(request.getParameter("no"));
     if (assignmentDao.delete(no) == 0) {
