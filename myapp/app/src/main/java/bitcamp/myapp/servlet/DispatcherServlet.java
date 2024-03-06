@@ -63,11 +63,11 @@ public class DispatcherServlet extends HttpServlet {
       AssignmentDao assignmentDao = (AssignmentDao) ctx.getAttribute("assignmentDao");
       AttachedFileDao attachedFileDao = (AttachedFileDao) ctx.getAttribute("attachedFileDao");
 
-//      controllers.add(new HomeController());
-//      controllers.add(new AssignmentController(assignmentDao));
-//      controllers.add(new AuthController(memberDao));
-//      controllers.add(new BoardController(txManager, boardDao, attachedFileDao));
-//      controllers.add(new MemberController(memberDao));
+      controllers.add(new HomeController());
+      controllers.add(new AssignmentController(assignmentDao));
+      controllers.add(new AuthController(memberDao));
+      controllers.add(new BoardController(txManager, boardDao, attachedFileDao));
+      controllers.add(new MemberController(memberDao));
 
       preparePageControllers();
       prepareRequestHandlers(controllers);
