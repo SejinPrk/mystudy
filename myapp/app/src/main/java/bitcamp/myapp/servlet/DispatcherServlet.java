@@ -141,7 +141,8 @@ public class DispatcherServlet extends HttpServlet {
 
         }
         else {
-
+          // 파라미터 타입이 도메인 클래스일 경우 해당 클래스의 객체를 준비한다.
+          args[i] = createValueObject(methodParam.getType(), request);
         }
       }
     }
