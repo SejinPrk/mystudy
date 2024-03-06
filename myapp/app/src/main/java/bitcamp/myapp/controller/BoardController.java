@@ -75,7 +75,6 @@ public class BoardController {
       txManager.startTransaction();
 
       boardDao.add(board);
-
       if (attachedFiles.size() > 0) {
         for (AttachedFile attachedFile : attachedFiles) {
           attachedFile.setBoardNo(board.getNo());
@@ -168,7 +167,7 @@ public class BoardController {
         attachedFileDao.addAll(attachedFiles);
       }
       txManager.commit();
-      return "redirect:list?category=" + category;
+      return "redirect:list?category=" + board.getCategory();
 
     } catch (Exception e) {
       try {
