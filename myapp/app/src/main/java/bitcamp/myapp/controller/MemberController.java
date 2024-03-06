@@ -19,8 +19,8 @@ public class MemberController {
 
   @RequestMapping("/member/form")
   public String add() throws Exception {
-      return "/member/form.jsp";
-    }
+    return "/member/form.jsp";
+  }
 
   @RequestMapping("/member/add")
   public String add(Member member, @RequestParam("file") Part file) throws Exception {
