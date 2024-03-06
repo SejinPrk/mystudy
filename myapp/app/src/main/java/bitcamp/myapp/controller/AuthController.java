@@ -4,7 +4,6 @@ import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.vo.Member;
 import java.util.Map;
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -21,6 +20,7 @@ public class AuthController {
     map.put("email", email);
     return "/auth/form.jsp";
   }
+
   @RequestMapping("/auth/login")
   public String login(
       @RequestParam("email") String email,

@@ -19,6 +19,7 @@ public class AssignmentController {
 
   @RequestMapping("/assignment/add")
   public String add(Assignment assignment) throws Exception {
+    System.out.println(assignment);
     assignmentDao.add(assignment);
     return "redirect:list";
   }

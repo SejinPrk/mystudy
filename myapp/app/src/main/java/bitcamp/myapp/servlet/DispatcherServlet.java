@@ -79,9 +79,10 @@ public class DispatcherServlet extends HttpServlet {
         throw new Exception(request.getPathInfo() + " 요청 페이지를 찾을 수 없습니다.");
       }
 
-      // 페이지 컨트롤러가 작업한 결과를 담을 보관소(=map)를 준비한다.
+      // 페이지 컨트롤러가 작업한 결과를 담을 보관소를 준비한다.
       Map<String, Object> map = new HashMap<>();
-      Object[] args = prepareRequestHandlerArguments(requestHandler.handler, request, response, map);
+      Object[] args = prepareRequestHandlerArguments(requestHandler.handler, request, response,
+          map);
 
       String viewUrl = (String) requestHandler.handler.invoke(requestHandler.controller, args);
 
@@ -146,7 +147,7 @@ public class DispatcherServlet extends HttpServlet {
         args[i] = response;
       } else if (methodParam.getType() == Map.class) {
         args[i] = map;
-      } else if (methodParam.getType() == HttpSession.class){
+      } else if (methodParam.getType() == HttpSession.class) {
         args[i] = request.getSession();
       } else {
         CookieValue cookieValueAnno = methodParam.getAnnotation(CookieValue.class);
@@ -164,7 +165,7 @@ public class DispatcherServlet extends HttpServlet {
           // 그 값을 메서드의 파라미터 타입으로 변환한 후 저장한다.
           String requestParameterName = requestParam.value();
 
-          if (methodParam.getType() == Part[].class){
+          if (methodParam.getType() == Part[].class) {
             Collection<Part> parts = request.getParts();
             List<Part> fileParts = new ArrayList<>();
             for (Part part : parts) {
@@ -175,7 +176,13 @@ public class DispatcherServlet extends HttpServlet {
             args[i] = fileParts.toArray(new Part[0]);
 
           } else if (methodParam.getType() == Part.class) {
-
+            Collection<Part> parts = request.getParts();
+            for (Part part : parts) {
+              if (part.getName().equals(requestParameterName)) {
+                args[i] = part;
+                break;
+              }
+            }
           } else {
             String requestParameterValue = request.getParameter(requestParameterName);
             args[i] = valueOf(requestParameterValue, methodParam.getType());
@@ -183,11 +190,11 @@ public class DispatcherServlet extends HttpServlet {
           continue;
         }
 
-          // 파라미터 타입이 도메인 클래스일 경우 해당 클래스의 객체를 준비하여
-          // 그 객체에 요청 파라미터 값들을 담은 다음에 저장한다..
-          args[i] = createValueObject(methodParam.getType(), request);
-        }
+        // 파라미터 타입이 도메인 클래스일 경우 해당 클래스의 객체를 준비하여
+        // 그 객체에 요청 파라미터 값들을 담은 다음에 저장한다..
+        args[i] = createValueObject(methodParam.getType(), request);
       }
+    }
 
     return args;
   }
