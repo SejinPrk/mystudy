@@ -12,6 +12,7 @@ import bitcamp.myapp.dao.AssignmentDao;
 import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.dao.MemberDao;
+import bitcamp.util.Component;
 import bitcamp.util.TransactionManager;
 import java.io.File;
 import java.io.FileFilter;
@@ -62,11 +63,11 @@ public class DispatcherServlet extends HttpServlet {
       AssignmentDao assignmentDao = (AssignmentDao) ctx.getAttribute("assignmentDao");
       AttachedFileDao attachedFileDao = (AttachedFileDao) ctx.getAttribute("attachedFileDao");
 
-      controllers.add(new HomeController());
-      controllers.add(new AssignmentController(assignmentDao));
-      controllers.add(new AuthController(memberDao));
-      controllers.add(new BoardController(txManager, boardDao, attachedFileDao));
-      controllers.add(new MemberController(memberDao));
+//      controllers.add(new HomeController());
+//      controllers.add(new AssignmentController(assignmentDao));
+//      controllers.add(new AuthController(memberDao));
+//      controllers.add(new BoardController(txManager, boardDao, attachedFileDao));
+//      controllers.add(new MemberController(memberDao));
 
       preparePageControllers();
       prepareRequestHandlers(controllers);
@@ -119,19 +120,33 @@ public class DispatcherServlet extends HttpServlet {
     }
   }
 
-  private void preparePageControllers() throws IOException {
+  private void preparePageControllers() throws Exception {
     File classpath = new File("./build/classes/java/main");
     System.out.println(classpath.getCanonicalPath());
-
+    findComponents(classpath, "");
   }
 
-  private void findComponents(File dir) {
-    File[] files = dir.listFiles(file -> file.getName().endsWith(".class"));
+  private void findComponents(File dir, String packageName) throws Exception {
+    File[] files = dir.listFiles(file ->
+        file.isDirectory() ||
+            (file.isFile()
+                && !file.getName().contains("$")
+                && file.getName().endsWith(".class")));
+
+    if (packageName.length() > 0) {
+      packageName += ".";
+    }
     for (File file : files) {
       if(file.isFile()) {
-        System.out.println(file.getName());
+        Class<?> clazz = Class.forName(packageName + file.getName().replace(".class", ""));
+        Component compAnno = clazz.getAnnotation(Component.class);
+        if (compAnno != null) {
+          Constructor<?> constructor = clazz.getConstructor();
+          controllers.add(constructor.newInstance());
+          System.out.println(clazz.getName() + "객체 생성!");
+        }
       } else {
-        findComponents(file);
+        findComponents(file, packageName + file.getName());
       }
     }
   }
