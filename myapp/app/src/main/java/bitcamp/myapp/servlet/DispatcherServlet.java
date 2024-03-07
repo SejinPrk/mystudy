@@ -27,6 +27,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+import org.checkerframework.checker.units.qual.A;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -49,7 +50,12 @@ public class DispatcherServlet extends HttpServlet {
       applicationContext = new ClassPathXmlApplicationContext(
           new String[]{"config/app-servlet.xml"}, parent);
 
-      //prepareRequestHandlers(applicationContext.getBeans());
+      String[] beanNames = applicationContext.getBeanDefinitionNames();
+      ArrayList<Object> beans = new ArrayList<>();
+      for (String beanName : beanNames) {
+        beans.add(applicationContext.getBean(beanName));
+      }
+      prepareRequestHandlers(beans);
 
     } catch (Exception e) {
       throw new ServletException(e);
