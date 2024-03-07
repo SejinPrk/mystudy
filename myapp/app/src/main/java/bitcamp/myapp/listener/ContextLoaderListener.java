@@ -1,8 +1,5 @@
 package bitcamp.myapp.listener;
 
-import bitcamp.util.DBConnectionPool;
-import java.util.HashMap;
-import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
