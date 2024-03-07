@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9160b05-d132-42d9-bdad-84098ff3ce04" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/resources/config/application-context.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/context/ApplicationContext.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/listener/ContextLoaderListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/listener/ContextLoaderListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/resources/config/application-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/config/application-context.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -304,9 +302,9 @@
       <item itemvalue="Application.Test" />
       <item itemvalue="Gradle.myapp [build]" />
       <item itemvalue="Gradle.myapp [run]" />
+      <item itemvalue="Gradle.myapp:app [build]" />
       <item itemvalue="Gradle.myapp:app-client [run]" />
       <item itemvalue="Gradle.myapp:app-server [run]" />
-      <item itemvalue="Gradle.myapp:app [build]" />
     </list>
     <recent_temporary>
       <list>
