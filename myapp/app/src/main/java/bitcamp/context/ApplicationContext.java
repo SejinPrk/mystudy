@@ -14,6 +14,12 @@ public class ApplicationContext {
   String basePackage;
   Map<String, Object> beans = new HashMap<>();
 
+  public ApplicationContext(Map<String, Object> beanMap, String basePackage) throws Exception {
+    beans.putAll(beanMap);
+    this.basePackage = basePackage;
+    findComponents(new File("./build/classes/java/main"), "");
+  }
+
   public ApplicationContext(ApplicationContext parent, String basePackage) throws Exception {
     this.parent = parent;
     this.basePackage = basePackage;
@@ -43,7 +49,6 @@ public class ApplicationContext {
         beans.put(
             compAnno.value().length() == 0 ? clazz.getName() : compAnno.value(),
             constructor.newInstance(args));
-
         System.out.println(clazz.getName() + " 객체 생성!");
 
       } else {
@@ -78,5 +83,7 @@ public class ApplicationContext {
     return null;
   }
 
-
+  public Collection<Object> getBeans() {
+    return beans.values();
+  }
 }

@@ -1,6 +1,7 @@
 package bitcamp.myapp.dao;
 
 import bitcamp.myapp.vo.Assignment;
+import bitcamp.util.Component;
 import java.util.List;
 
 public interface AssignmentDao {
