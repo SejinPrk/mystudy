@@ -26,7 +26,7 @@ public class ContextLoaderListener implements ServletContextListener {
 
     try {
       // 공유 객체를 보관할 ApplicationContext 객체 준비
-      ApplicationContext ctx = new ApplicationContext(beanMap, "bitcamp.myapp.dao");
+      ApplicationContext ctx = new ApplicationContext(beanMap, "bitcamp.myapp.dao", "bitcamp.util");
 
       // 서블릿에서 사용할 수 있도록 웹애플리케이션 저장소에 보관한다.
       ServletContext 웹애플리케이션저장소 = sce.getServletContext();
