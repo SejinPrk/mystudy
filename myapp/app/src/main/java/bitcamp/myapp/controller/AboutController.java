@@ -1,14 +1,12 @@
 package bitcamp.myapp.controller;
 
-import bitcamp.myapp.dao.MemberDao;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AboutController {
 
-  public AboutController(MemberDao memberDao) {
-    System.out.println("AboutController 호출됨!");
-
+  public AboutController() {
+    System.out.println("AboutController() 호출됨!");
   }
 
   @RequestMapping("/about")

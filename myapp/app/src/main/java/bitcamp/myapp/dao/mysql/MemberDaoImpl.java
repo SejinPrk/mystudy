@@ -122,7 +122,7 @@ public class MemberDaoImpl implements MemberDao {
         pstmt.setString(4, member.getPassword());
         pstmt.setInt(5, member.getNo());
       }
-      
+
       return pstmt.executeUpdate();
 
     } catch (Exception e) {

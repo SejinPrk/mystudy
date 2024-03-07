@@ -19,7 +19,6 @@ public class BoardDaoImpl implements BoardDao {
 
   public BoardDaoImpl(DBConnectionPool connectionPool) {
     System.out.println("BoardDaoImpl() 호출됨!");
-
     this.connectionPool = connectionPool;
   }
 

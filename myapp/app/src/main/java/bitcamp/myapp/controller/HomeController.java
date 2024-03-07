@@ -6,8 +6,7 @@ import org.springframework.stereotype.Component;
 public class HomeController {
 
   public HomeController() {
-    System.out.println("HomeController 호출됨!");
-
+    System.out.println("HomeController() 호출됨!");
   }
 
   @RequestMapping("/home")

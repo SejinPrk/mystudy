@@ -14,7 +14,7 @@ public class AuthController {
   MemberDao memberDao;
 
   public AuthController(MemberDao memberDao) {
-    System.out.println("AuthController 호출됨!");
+    System.out.println("AuthController() 호출됨!");
     this.memberDao = memberDao;
   }
 

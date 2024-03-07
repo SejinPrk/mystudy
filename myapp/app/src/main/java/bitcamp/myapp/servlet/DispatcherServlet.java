@@ -43,12 +43,13 @@ public class DispatcherServlet extends HttpServlet {
     try {
       System.setProperty("board.upload.dir", this.getServletContext().getRealPath("/upload/board"));
       System.setProperty("member.upload.dir", this.getServletContext().getRealPath("/upload"));
+
       ApplicationContext parent = (ApplicationContext) this.getServletContext()
           .getAttribute("applicationContext");
       applicationContext = new ClassPathXmlApplicationContext(
           new String[]{"config/app-servlet.xml"}, parent);
 
-   //   prepareRequestHandlers(applicationContext.getBeans());
+      //prepareRequestHandlers(applicationContext.getBeans());
 
     } catch (Exception e) {
       throw new ServletException(e);
