@@ -1,7 +1,6 @@
 package bitcamp.myapp.dao;
 
 import bitcamp.myapp.vo.Member;
-import bitcamp.util.Component;
 import java.util.List;
 
 public interface MemberDao {

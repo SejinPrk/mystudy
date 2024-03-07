@@ -1,7 +1,6 @@
 package bitcamp.myapp.dao;
 
 import bitcamp.myapp.vo.Board;
-import bitcamp.util.Component;
 import java.util.List;
 
 public interface BoardDao {

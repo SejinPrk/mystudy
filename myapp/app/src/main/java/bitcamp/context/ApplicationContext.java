@@ -1,10 +1,8 @@
 package bitcamp.context;
 
-import bitcamp.util.Component;
 import java.io.File;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Parameter;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
