@@ -19,7 +19,7 @@ public class MemberController {
   }
 
   @RequestMapping("/member/form")
-  public String add() throws Exception {
+  public String form() throws Exception {
     return "/member/form.jsp";
   }
 

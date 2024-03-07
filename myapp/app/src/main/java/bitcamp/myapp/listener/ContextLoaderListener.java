@@ -13,10 +13,10 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
-
 @WebListener
 public class ContextLoaderListener implements ServletContextListener {
   // 웹애플리케이션이 사용할 자원을 준비시키고 해제시키는 역할
+
 
   @Override
   public void contextInitialized(ServletContextEvent sce) {
@@ -37,6 +37,6 @@ public class ContextLoaderListener implements ServletContextListener {
 
     // 서블릿에서 사용할 수 있도록 웹애플리케이션 저장소에 보관한다.
     ServletContext 웹애플리케이션저장소 = sce.getServletContext();
-    웹애플리케이션저장소.setAttribute("beanMpa", beanMap);
+    웹애플리케이션저장소.setAttribute("beanMap", beanMap);
   }
 }
