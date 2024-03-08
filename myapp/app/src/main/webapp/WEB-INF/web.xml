@@ -13,7 +13,7 @@
   <display-name>과제 관리 시스템</display-name>
 
   <filter>
-    <filter-class>bitcamp.myapp.filter.CharacterEncodingFilter</filter-class>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
     <filter-name>CharacterEncodingFilter</filter-name>
     <init-param>
       <param-name>encoding</param-name>
