@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang='en'>
   <head>
@@ -9,18 +10,19 @@
 
 <jsp:include page="/header.jsp"></jsp:include>
 
-<h1>로그인</h1>
+<h1>분류</h1>
 
-<form action='/app/auth/login' method='post'>
+<form action='/app/category/update' method='post'>
 <div>
-    이메일: <input name='email' type='text'
-    value='${email}'>
+  번호: <input readonly name='no' type='text' value='${category.no}'>
 </div>
 <div>
-    암호: <input name='password' type='password'>
+  이름: <input name='name' type='text' value='${category.name}'>
 </div>
-<button>로그인</button>
-<input type='checkbox' name='saveEmail'> 이메일 저장
+<div>
+  <button>변경</button>
+  <a href='/app/category/delete?no=${category.no}'>[삭제]</a>
+</div>
 </form>
 
 <jsp:include page="/footer.jsp"></jsp:include>

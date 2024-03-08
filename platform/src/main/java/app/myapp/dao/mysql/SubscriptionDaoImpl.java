@@ -9,7 +9,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SubscriptionDaoImpl implements SubscriptionDao {
 
   DBConnectionPool connectionPool;

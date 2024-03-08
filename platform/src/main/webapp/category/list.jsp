@@ -4,25 +4,30 @@
 <html lang='en'>
   <head>
   <meta charset='UTF-8'>
-  <c:if test="${not empty loginUser}">
-    <meta http-equiv="Refresh" content="1;url=/index.html">
-  </c:if>
-  <c:if test="${empty loginUser}">
-    <meta http-equiv="Refresh" content="1;url=/app/auth/login">
-  </c:if>
   <title>비트캠프 데브옵스 5기</title>
 </head>
 <body>
 
 <jsp:include page="/header.jsp"></jsp:include>
 
-<h1>로그인</h1>
-<c:if test="${not empty loginUser}">
-  <p>${loginUser.name} 님 환영합니다.</p>
-</c:if>
-<c:if test="${empty loginUser}">
-  <p>이메일 또는 암호가 맞지 않습니다.</p>
-</c:if>
+<h1>분류</h1>
+
+<a href='/app/category/form'>새 분류</a>
+<table border='1'>
+  <thead>
+    <tr> <th>번호</th> <th>이름</th> </tr>
+  </thead>
+  <tbody>
+
+<c:forEach items="${list}" var="category">
+    <tr>
+      <td>${category.no}</td>
+      <td><a href='/app/category/view?no=${category.no}'>${category.name}</a></td>
+    </tr>
+</c:forEach>
+
+  </tbody>
+</table>
 
 <jsp:include page="/footer.jsp"></jsp:include>
 

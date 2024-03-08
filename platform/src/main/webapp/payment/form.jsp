@@ -9,18 +9,23 @@
 
 <jsp:include page="/header.jsp"></jsp:include>
 
-<h1>로그인</h1>
+<h1>플랫폼 관리 시스템</h1>
 
-<form action='/app/auth/login' method='post'>
-<div>
-    이메일: <input name='email' type='text'
-    value='${email}'>
-</div>
-<div>
-    암호: <input name='password' type='password'>
-</div>
-<button>로그인</button>
-<input type='checkbox' name='saveEmail'> 이메일 저장
+<h2>결제내역</h2>
+
+<form action='/app/payment/add' method='post'>
+  <div>
+     시작일: <input name='start' type='date'>
+  </div>
+  <div>
+     종료일: <input name='end' type='date'>
+  </div>
+  <div>
+      가격: <input name='amount' type='number'>
+  </div>
+  <div>
+    <button>등록</button>
+  </div>
 </form>
 
 <jsp:include page="/footer.jsp"></jsp:include>
