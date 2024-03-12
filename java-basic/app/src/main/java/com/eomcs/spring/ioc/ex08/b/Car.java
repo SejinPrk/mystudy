@@ -1,7 +1,6 @@
 package com.eomcs.spring.ioc.ex08.b;
 
 import java.sql.Date;
-import org.springframework.beans.factory.annotation.Autowired;
 
 // 의존 객체 Engine 주입 - 셋터 메서드에 @Autowired로 표시하라!
 public class Car {
