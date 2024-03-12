@@ -1,6 +1,7 @@
 package com.eomcs.spring.ioc.ex10.b;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import com.eomcs.spring.ioc.ex10.Car;
 
 //@Configuration
@@ -23,6 +24,7 @@ import com.eomcs.spring.ioc.ex10.Car;
 // Java config 클래스임을 표시할 때 붙이는 애노테이션이
 // 바로 @Configuration 이다.
 //
+@Configuration
 public class AppConfig {
   @Bean
   public Car car2() {
