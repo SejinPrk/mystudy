@@ -14,9 +14,9 @@
     <!-- 위의 태그는 애노테이션을 처리하는 다음 객체들을 생성하는 것과 같다. -->
     <!--
     <bean class="org.springframework.context.annotation.ConfigurationClassPostProcessor"/>
-    <bean class="org.springframework.context.annotation.AutowiredAnnotationBeanPostProcessor"/>
+    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
     <bean class="org.springframework.context.event.EventListenerMethodProcessor"/>
-    <bean class="org.springframework.context.annotation.DefaultEventListenerFactory"/>
+    <bean class="org.springframework.context.event.DefaultEventListenerFactory"/>
     -->
     
     <!-- 객체를 생성하기 위해 bean 태그를 사용하지 않고도
