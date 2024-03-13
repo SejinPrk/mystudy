@@ -48,7 +48,7 @@ import org.springframework.context.annotation.FilterType;
 
 public class AppConfig {
   @Bean
-  public Car car2() {
+  public Car car2o() {
     Car c = new Car(null);
     c.setMaker("비트자동차");
     c.setModel("티코");
