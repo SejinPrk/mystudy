@@ -13,4 +13,3 @@
   <context:component-scan base-package="bitcamp"/>
   <mvc:annotation-driven/>
 </beans>
-
