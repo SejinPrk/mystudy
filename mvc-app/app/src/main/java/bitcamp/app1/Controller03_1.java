@@ -33,7 +33,6 @@ public class Controller03_1 {
   public String handler3() {
     return "handler3";
   }
-
   // 테스트 방법:
   // => http://localhost:9999/eomcs-spring-webmvc/app1/c03_1
   @GetMapping
