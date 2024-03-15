@@ -10,14 +10,18 @@ public class App2WebApplicationInitializer extends
   private static Log log = LogFactory.getLog(App2WebApplicationInitializer.class);
 
   @Override
-  protected Class<?>[] getRootConfigClasses() {return null; }
+  protected Class<?>[] getRootConfigClasses() {
+    return null;
+  }
 
   @Override
-  protected Class<?>[] getServletConfigClasses() {return new Class[] {App2Config.class}; }
+  protected Class<?>[] getServletConfigClasses() {
+    return new Class[] {App2Config.class};
+  }
 
   @Override
   protected String[] getServletMappings() {
-    return new String[]{"/app2/*"};
+    return new String[] {"/app2/*"};
   }
 
   @Override

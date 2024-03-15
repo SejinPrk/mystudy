@@ -1,4 +1,3 @@
-// request handler를 구분하는 방법 - Content-Type 헤더의 값에 따라 구분하기
 package bitcamp.app1;
 
 import org.springframework.stereotype.Controller;
@@ -10,11 +9,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/c03_4")
 public class Controller03_4 {
-
   @PostMapping(consumes = "application/x-www-form-urlencoded")
   @ResponseBody
-  public String handler1(String s) {
-   // System.out.printf("%s : %d\n", name, age);
+  public String handler1(@RequestBody String s) {
+    //System.out.printf("%s : %d\n", name, age);
     System.out.println(s);
     return "handler1";
   }
@@ -23,7 +21,7 @@ public class Controller03_4 {
   @PostMapping(consumes = "multipart/form-data")
   @ResponseBody
   public String handler2(String name, int age) {
-   System.out.printf("%s : %d\n", name, age);
+    System.out.printf("%s : %d\n", name, age);
     return "handler2";
   }
 

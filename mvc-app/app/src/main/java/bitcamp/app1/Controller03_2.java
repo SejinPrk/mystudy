@@ -20,6 +20,7 @@ public class Controller03_2 {
   public String handler2() {
     return "handler2";
   }
+
   @GetMapping(headers = {"age", "name"})
   @ResponseBody
   public String handler3() {

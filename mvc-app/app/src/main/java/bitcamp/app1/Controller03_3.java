@@ -8,6 +8,26 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/c03_3")
 public class Controller03_3 {
+
+  @GetMapping("text")
+  @ResponseBody
+  public String text() {
+    return "text";
+  }
+
+  @GetMapping("html")
+  @ResponseBody
+  public String html() {
+    return "<html><body><h1>text</h1></body></html>";
+  }
+
+  @GetMapping("json")
+  @ResponseBody
+  public String json() {
+    return "{\"title\":\"text\"}";
+  }
+
+
   @GetMapping(produces = "text/plain")
   @ResponseBody
   public String handler1() {
@@ -35,6 +55,6 @@ public class Controller03_3 {
   @GetMapping
   @ResponseBody
   public String handler5() {
-    return "handler5";
+    return "other...";
   }
 }
