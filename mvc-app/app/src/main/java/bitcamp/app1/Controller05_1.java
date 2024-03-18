@@ -112,7 +112,7 @@ public class Controller05_1 {
     ResponseEntity<String> entity = new ResponseEntity<>(
         "<html><body><h1>abc가각간<h1></body></html>",
         headers,
-        HttpStatus.OK // 응답 상태 코드를 설정할 수 있다.
+        HttpStatus.OK// 응답 상태 코드를 설정할 수 있다.
     );
 
     return entity;
