@@ -1,6 +1,5 @@
 package bitcamp.app1;
 
-import java.beans.PropertyEditor;
 import java.io.PrintWriter;
 import java.sql.Date;
 import org.springframework.stereotype.Controller;
@@ -77,8 +76,8 @@ public class Controller04_4 {
     );
 
     데이터변환등록기.registerCustomEditor(
-        Engine.class,
-        new EnginePropertyEditor()
+        Engine.class, // String 값을 Engine 객체로 만들 것이라고 지정
+        new EnginePropertyEditor() // String 값을 Car 객체로 변환해줄 변환기 지정
     );
   }
 
