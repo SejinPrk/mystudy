@@ -49,6 +49,17 @@ public class Controller04_4 {
     out.println(car);
   }
 
+  // 테스트:
+  // http://.../c04_4/h3?engine=bitengine,3500,16
+  @GetMapping("h3")
+  @ResponseBody
+  public void handler3(PrintWriter out,
+      // 콤마(,)로 구분된 문자열을 Engine 객체로 변환하기?
+      // => String ===> Engine 프로퍼티 에디터를 등록하면 된다.
+      @RequestParam("engine") Engine engine) {
+
+    out.println(engine);
+  }
 
   // 페이지 컨트롤러의 request handler를 호출할 때
   // 요청 파라미터의 값을 request handler의 아규먼트로 바꿀 때 마다 호출되는 메서드
@@ -64,5 +75,12 @@ public class Controller04_4 {
         Car.class, // String 값을 Car 객체로 만들 것이라고 지정
         new CarPropertyEditor() // String 값을 Car 객체로 변환해줄 변환기 지정
     );
+
+    데이터변환등록기.registerCustomEditor(
+        Engine.class,
+        new EnginePropertyEditor()
+    );
   }
+
+
 }
