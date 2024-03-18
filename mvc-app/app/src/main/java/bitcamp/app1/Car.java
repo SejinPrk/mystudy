@@ -1,10 +1,13 @@
 package bitcamp.app1;
 
+import java.util.Date;
+
 public class Car {
   String model;
   String maker;
   int capacity;
   boolean auto;
+  Date createdDate;
   Engine engine;
 
   @Override
@@ -14,8 +17,17 @@ public class Car {
         ", maker='" + maker + '\'' +
         ", capacity=" + capacity +
         ", auto=" + auto +
+        ", createdDate=" + createdDate +
         ", engine=" + engine +
         '}';
+  }
+
+  public Date getCreatedDate() {
+    return createdDate;
+  }
+
+  public void setCreatedDate(Date createdDate) {
+    this.createdDate = createdDate;
   }
 
   public Engine getEngine() {
