@@ -59,4 +59,65 @@ public class Controller04_8 {
         (filename != null ? "<p><img src='../../upload/" + filename + "'></p>" : "")
         + "</body></html>";
   }
+
+  // MultipartFile로 멀티파트 데이터를 받으려면,
+  // Spring WebMVC 설정에서 MultipartResolver 객체를 등록해야 한다.
+  //
+  // 테스트:
+  // http://.../html/app1/c04_8.html
+  @PostMapping(value = "h2", produces = "text/html;charset=UTF-8")
+  @ResponseBody
+  public String handler2(//
+      String name, //
+      @RequestParam(defaultValue = "0") int age, //
+      MultipartFile photo // Spring API의 객체
+  ) throws Exception {
+
+    String filename = null;
+    if (photo != null && !photo.isEmpty()) {
+      filename = UUID.randomUUID().toString();
+      String path = sc.getRealPath("/upload/" + filename);
+      photo.transferTo(new File(path));
+    }
+
+    return "<html><head><title>c04_8/h2</title></head><body>" + "<h1>업로드 결과</h1>" + "<p>이름:" + name
+        + "</p>" + "<p>나이:" + age + "</p>" +
+        // 현재 URL이 다음과 같기 때문에 업로드 이미지의 URL을 이 경로를 기준으로 계산해야 한다.
+        // http://localhost:8080/java-spring-webmvc/app1/c04_8/h2
+        //
+        (filename != null ? "<p><img src='../../upload/" + filename + "'></p>" : "")
+        + "</body></html>";
+  }
+
+  // 테스트:
+  // http://.../html/app1/c04_8.html
+  @PostMapping(value = "h3", produces = "text/html;charset=UTF-8")
+  @ResponseBody
+  public String handler3(//
+      String name, //
+      int age, //
+      // 같은 이름으로 전송된 여러 개의 파일은 배열로 받으면 된다.
+      MultipartFile[] photo //
+  ) throws Exception {
+
+    StringWriter out0 = new StringWriter();
+    PrintWriter out = new PrintWriter(out0);
+    out.println("<html><head><title>c04_8/h3</title></head><body>");
+    out.println("<h1>업로드 결과</h1>");
+    out.printf("<p>이름:%s</p>\n", name);
+    out.printf("<p>나이:%s</p>\n", age);
+
+    for (MultipartFile f : photo) {
+      if (!f.isEmpty()) {
+        String filename = UUID.randomUUID().toString();
+        String path = sc.getRealPath("/upload/" + filename);
+        f.transferTo(new File(path));
+        out.printf("<p><img src='../../upload/%s'></p>\n", filename);
+      }
+    }
+    out.println("</body></html>");
+
+    return out0.toString();
+  }
+
 }
