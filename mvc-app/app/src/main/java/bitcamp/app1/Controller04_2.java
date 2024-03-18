@@ -1,4 +1,5 @@
 package bitcamp.app1;
+
 import java.io.PrintWriter;
 import javax.servlet.ServletRequest;
 import org.springframework.stereotype.Controller;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/c04_2")
 public class Controller04_2 {
-
   // 클라이언트가 보낸 파라미터 값을 바로 받을 수 있다.
 
   // => 요청 핸들러의 파라미터로 선언하면 된다.
@@ -37,6 +37,8 @@ public class Controller04_2 {
     out.printf("name=%s\n", name);
   }
 
+  // 테스트:
+  // http://.../app1/c04_2/h2?name1=kim&name2=park
   @GetMapping("h2")
   @ResponseBody
   public void handler2(

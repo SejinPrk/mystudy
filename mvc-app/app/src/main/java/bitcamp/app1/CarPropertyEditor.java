@@ -8,6 +8,7 @@ public class CarPropertyEditor extends PropertyEditorSupport {
   @Override
   public void setAsText(String text) throws IllegalArgumentException {
     String[] values = text.split(","); // model,maker,capacity,auto,createdDate
+
     Car car = new Car();
     car.setModel(values[0]);
     car.setMaker(values[1]);

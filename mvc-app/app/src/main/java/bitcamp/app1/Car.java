@@ -1,6 +1,6 @@
 package bitcamp.app1;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Car {
   String model;
