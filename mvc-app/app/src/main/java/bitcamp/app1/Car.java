@@ -5,6 +5,7 @@ public class Car {
   String maker;
   int capacity;
   boolean auto;
+  Engine engine;
 
   @Override
   public String toString() {
@@ -13,7 +14,16 @@ public class Car {
         ", maker='" + maker + '\'' +
         ", capacity=" + capacity +
         ", auto=" + auto +
+        ", engine=" + engine +
         '}';
+  }
+
+  public Engine getEngine() {
+    return engine;
+  }
+
+  public void setEngine(Engine engine) {
+    this.engine = engine;
   }
 
   public String getModel() {
