@@ -1,5 +1,6 @@
 package bitcamp.app2;
 
+import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,11 +20,10 @@ public class Controller01_1 {
     model.addAttribute("age", 20);
 
     return "/jsp/c01_1.jsp";
-    // 기본 ViewResolver는 리턴 값으로 URL을 받아
-    // 웹 애플리케이션 디렉토리에서 JSP를 찾는다.
-    // 웹 애플리케이션이 경로가 /eomcs-spring-webmvc 라면,
-    // JSP 경로는 다음과 같다.
-    // ==> /eomcs-spring-webmvc/jsp/c01_1.jsp
+    // 기본 ViewResolver는 리턴 값으로 받은 view name으로 JSP를 찾는다.
+    // 즉 view name을 JSP URL로 간주한다.
+    // 따라서 위의 return 문의 view name은 다음 JSP 경로와 같다.
+    // ==> /컨텍스트경로/jsp/c01_1.jsp
     //
     // InternalResourceViewResolver로 교체한 다음의 JSP URL은?
     // => /WEB-INF/jsp2//jsp/c01_1.jsp.jsp
@@ -37,19 +37,13 @@ public class Controller01_1 {
     model.addAttribute("name", "홍길동2");
     model.addAttribute("age", 30);
 
-    // 기본 ViewResolver를 사용할 때는
-    // 뷰 이름을 리턴하지 않으면, request handler의 URL을 사용한다.
-    //  즉 다음 return 문장을 작성한 것과 같다.
-    //  return "/c01_1/h2";
-    //
-    // Spring WebMVC의 기본 설정된 ViewResolver는
-    // 페이지 컨트롤러가 리턴한 URL을 가지고 view URL을 계산한다.
+    // 뷰 이름을 리턴하지 않으면,
+    // request handler의 URL을 가지고 view URL을 계산한다.
     // 계산 방법:
     // =>  현재 URL = /app2/c01_1/h2
-    // => view URL = 현재 URL의 경로 + request handler의 리턴 값
+    // => view URL = 현재 URL의 경로 + request handler의 URL
     //             = /app2/c01_1 + /c01_1/h2
     //             = /app2/c01_1/c01_1/h2
-    //
     //    따라서 잘못 계산된 view URL로 JSP를 찾으니까 오류가 발생한다!
     //
     //
@@ -60,5 +54,34 @@ public class Controller01_1 {
     //
   }
 
+  // 테스트:
+  // http://localhost:9999/eomcs-spring-webmvc/app2/c01_1/h3
+  @GetMapping("h3")
+  public String handler3(Map<String, Object> map) {
 
+    map.put("name", "홍길동3");
+    map.put("age", 40);
+
+    return "/WEB-INF/jsp/c01_1.jsp";
+    // MVC 모델에서는 JSP는 뷰 콤포넌트로서 출력이라는 역할을 담당한다.
+    // 출력할 데이터를 준비하는 일은 페이지 컨트롤러가 담당한다.
+    // 그래서 JSP를 실행할 때는 항상 페이지 컨트롤러를 통해 실행해야 한다.
+    // 페이지 컨트롤러가 하는 일이 없어도 프로그래밍의 일관성을 위해
+    // 직접 JSP을 요청하지 않고, 페이지 컨트롤러를 통해 요청해야 한다.
+    //
+    // 그런데 웹 디렉토리에 JSP를 두면 클라이언트에서 JSP를 직접 요청할 수 있다.
+    // 페이지 컨트롤러를 경유하지 않은 상태에서 실행해봐야 소용없지만,
+    // 그래도 요청은 할 수 있다.
+    // 이런 의미 없는 요청을 막는 방법으로,
+    // JSP 파일을 /WEB-INF 폴더 아래에 두는 것을 권장한다.
+    //
+    // 웹 브라우저에서 다음 URL의 JSP를 요청해보라!
+    // 1) http://localhost:8888/bitcamp-java-spring-webmvc/jsp/c01_1.jsp
+    // => 클라이언트가 요청할 수 있다.
+    // 2) http://localhost:8888/bitcamp-java-spring-webmvc/WEB-INF/jsp/c01_1.jsp
+    // => 클라이언트가 요청할 수 없다.
+    // => /WEB-INF 폴더에 있는 자원들은 클라이언트에서 직접 요청할 수 없다.
+    // => 그래서 잘못된 요청을 막을 수 있다.
+    // 실무에서는 이 방법을 사용한다.
+  }
 }
