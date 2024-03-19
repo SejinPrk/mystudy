@@ -41,5 +41,16 @@ public class Controller02_2 {
     return String.format("team: %s(%d)\n task: %s, %d", name, qty, title, state);
   }
 
+  @GetMapping(value = "h4/{team}/{task}", produces = "text/plain;charset=UTF-8")
+  @ResponseBody
+  public String handler4(
+      // 여러 개의 패스 변수가 있을 때 값을 꺼내는 방법
+      // => 만약 항목의 이름이 같다면?
+      @MatrixVariable(name = "name", pathVar="team") String name1,
+      @MatrixVariable(name = "qty", pathVar = "team") int qty1,
+      @MatrixVariable(name = "name", pathVar = "task") String name2,
+      @MatrixVariable(name = "qty", pathVar = "task") int qty2) {
 
+    return String.format("team: %s(%d)\n task: %s, %d", name1, qty1, name2, qty2);
+  }
 }
