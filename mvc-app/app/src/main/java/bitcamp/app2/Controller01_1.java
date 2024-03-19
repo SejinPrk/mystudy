@@ -37,18 +37,28 @@ public class Controller01_1 {
     model.addAttribute("name", "홍길동2");
     model.addAttribute("age", 30);
 
-    // 뷰 이름을 리턴하지 않으면
-    // request handler의 URL을 기준으로 view URL을 계산한다.
-    // =>  현재 URL = /c01_1/h2
-    // => view URL = 현재 URL의 경로 + request handler URL
-    //             = /c01_1
-    // 오류 발생!
+    // 기본 ViewResolver를 사용할 때는
+    // 뷰 이름을 리턴하지 않으면, request handler의 URL을 사용한다.
+    //  즉 다음 return 문장을 작성한 것과 같다.
+    //  return "/c01_1/h2";
+    //
+    // Spring WebMVC의 기본 설정된 ViewResolver는
+    // 페이지 컨트롤러가 리턴한 URL을 가지고 view URL을 계산한다.
+    // 계산 방법:
+    // =>  현재 URL = /app2/c01_1/h2
+    // => view URL = 현재 URL의 경로 + request handler의 리턴 값
+    //             = /app2/c01_1 + /c01_1/h2
+    //             = /app2/c01_1/c01_1/h2
+    //
+    //    따라서 잘못 계산된 view URL로 JSP를 찾으니까 오류가 발생한다!
+    //
     //
     // InternalResourceViewResolver로 교체한 다음은?
     // => 리턴 값이 없으면 요청 URL(/c01_1/h2)을 리턴 값으로 사용한다.
     // => 따라서 ViewResolver가 계산한 최종 URL은
     // /WEB-INF/jsp2/c01_1/h2.jsp
     //
-
   }
+
+
 }
