@@ -73,7 +73,7 @@ public class Controller01_2 {
     // 뷰 이름을 지정하지 않으면 request handler의 path를 ViewResolver에게 넘긴다.
     // => /c01_2/h5
     // InternalResourceViewResolver 는 위 URL을 다음과 같이 바꾼다.
-    // => /WEB-INF/jsp2/c01_2/h5.jsp
+    // => /WEB-INF/jsp/c01_2/h5.jsp
     // 그런 후에 해당 URL의 JSP를 실행한다.
     return mv;
   }
