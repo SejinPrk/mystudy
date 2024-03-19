@@ -1,43 +1,41 @@
 package algorithm.test.baekjoon.level19.Exam05;
 
-// 20920 영단어 암기는 괴로워
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
-import java.io.*;
-import java.util.*;
-
+// 4779 칸토어 집합
 public class Main {
-  public static void main(String[] args) throws IOException {
+  static int N;
+  static StringBuilder ans;
+  public static void main(String[] args) throws NumberFormatException, IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    StringTokenizer st = new StringTokenizer(br.readLine());
-    int n = Integer.parseInt(st.nextToken());
-    int m = Integer.parseInt(st.nextToken());
+    String str;
 
-    Map<String, Integer> map = new HashMap<>();
+    while ((str = br.readLine()) != null) {
+      N = Integer.parseInt(str);
+      ans = new StringBuilder();
+      int len = (int) Math.pow(3,N);
 
-    for (int i = 0; i < n; i++) {
-      String s = br.readLine();
-      if (s.length() < m) continue;
-      map.put(s, map.getOrDefault(s, 0) + 1);
-    }
-
-    List<String> words = new ArrayList<>(map.keySet());
-    Collections.sort(words, new Comparator<String>() {
-      @Override
-      public int compare(String o1, String o2) {
-        if (Integer.compare(map.get(o1), map.get(o2)) != 0) {
-          return Integer.compare(map.get(o2), map.get(o1));
-        }
-        if (o1.length() != o2.length()) {
-          return o2.length() - o1.length();
-        }
-        return o1.compareTo(o2);
+      for (int i = 0; i < len; i++) {
+        ans.append("-");
       }
-    });
-
-    StringBuilder sb = new StringBuilder();
-    for (String str : words) {
-      sb.append(str + "\n");
+      func(0, len);
+      System.out.println(ans);
     }
-    System.out.println(sb);
+  }
+
+  public static void func(int start, int size) {
+    if (size == 1) {
+      return;
+    }
+    int newSize = size / 3;
+
+    for (int i = start + newSize; i < start + 2 * newSize; i++) {
+      ans.setCharAt(i, ' ');
+    }
+
+    func(start, newSize);
+    func(start + 2 * newSize, newSize);
   }
 }

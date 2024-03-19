@@ -1,38 +1,35 @@
 package algorithm.test.baekjoon.level15.Exam06;
-// 1764 듣보잡
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.StringTokenizer;
 
+import java.util.Scanner;
+
+// 1929 소수 구하기
 public class Main {
-  public static void main(String[] args) throws IOException {
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    HashMap<String, Integer> hm = new HashMap<>();
-    List<String> list = new ArrayList<>();
-    StringTokenizer st = new StringTokenizer(br.readLine());
-    int n = Integer.parseInt(st.nextToken());
-    int m = Integer.parseInt(st.nextToken());
+  public static boolean[] prime;
+  public static void main(String[] args) {
+    Scanner sc =new Scanner(System.in);
+    int m = sc.nextInt();
+    int n = sc.nextInt();
 
-    for (int i = 0; i < n; i++) {
-      hm.put(br.readLine(), 1);
-    }
+    prime = new boolean[n+1];
+    get_prime();
 
-    for (int i = 0; i < m; i++) {
-      String name = br.readLine();hm.put(name, hm.getOrDefault(name, 0) + 1);
-      if (hm.get(name) == 2) list.add(name);
+    for (int i = m; i <= n; i++) {
+      if(!prime[i]) {
+        System.out.println(i);
+      }
     }
+  }
 
-    StringBuilder sb = new StringBuilder();
-    Collections.sort(list);
-    sb.append(list.size() + "\n");
-    for (String s : list) {
-      sb.append(s + "\n");
+  public static void get_prime() {
+    prime[0] = prime[1] = true;
+
+    for (int i = 2; i <= Math.sqrt(prime.length); i++) {
+      if (prime[i]) {
+        continue;
+      }
+      for (int j = i * i; j < prime.length; j += i) {
+        prime[j] = true;
+      }
     }
-    System.out.print(sb);
   }
 }

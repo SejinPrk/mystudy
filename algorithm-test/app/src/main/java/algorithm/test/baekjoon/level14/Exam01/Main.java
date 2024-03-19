@@ -1,23 +1,33 @@
 package algorithm.test.baekjoon.level14.Exam01;
 
-// 2750 수 정렬하기
-import java.util.Arrays;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.StringTokenizer;
 
 public class Main {
-  public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    int n = sc.nextInt();
-    int[] arr = new int[n];
+  public static void main(String[] args) throws IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    StringTokenizer st;
+    StringBuilder sb = new StringBuilder();
 
-    for (int i = 0; i< n; i++){
-      arr[i] = sc.nextInt();
-    }
-    Arrays.sort(arr);
+    HashMap<String, Integer> have = new HashMap<>();
 
-    for (int val : arr){
-      System.out.println(val);
+    int n = Integer.parseInt(br.readLine());
+    st = new StringTokenizer(br.readLine());
+    for (int i =0; i < n; i++) {
+      have.put(st.nextToken(), 0);
     }
+    int m = Integer.parseInt(br.readLine());
+    st = new StringTokenizer(br.readLine());
+    for (int i = 0; i < m; i++ ){
+      if (have.get(st.nextToken())!= null) {
+        sb.append("1 ");
+      } else {
+        sb.append("0 ");
+      }
+    }
+    System.out.println(sb.toString());
   }
-
 }

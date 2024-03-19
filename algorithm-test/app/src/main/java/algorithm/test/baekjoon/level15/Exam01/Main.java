@@ -1,33 +1,32 @@
 package algorithm.test.baekjoon.level15.Exam01;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.HashMap;
-import java.util.StringTokenizer;
+import java.util.Scanner;
 
+// 1934 최소공배수
 public class Main {
-  public static void main(String[] args) throws IOException {
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    StringTokenizer st;
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+
     StringBuilder sb = new StringBuilder();
 
-    HashMap<String, Integer> have = new HashMap<>();
+    for (int i = 0; i < n; i++) {
+      int a = sc.nextInt();
+      int b = sc.nextInt();
 
-    int n = Integer.parseInt(br.readLine());
-    st = new StringTokenizer(br.readLine());
-    for (int i =0; i < n; i++) {
-      have.put(st.nextToken(), 0);
+      int d = gcd(a, b);
+      sb.append(a * b / d).append('\n');
     }
-    int m = Integer.parseInt(br.readLine());
-    st = new StringTokenizer(br.readLine());
-    for (int i = 0; i < m; i++ ){
-      if (have.get(st.nextToken())!= null) {
-        sb.append("1 ");
-      } else {
-        sb.append("0 ");
-      }
+    System.out.println(sb);
+  }
+
+  public static int gcd(int a, int b) {
+
+    while (b != 0) {
+      int tmp = a % b;
+      a = b;
+      b = tmp;
     }
-    System.out.println(sb.toString());
+    return a;
   }
 }

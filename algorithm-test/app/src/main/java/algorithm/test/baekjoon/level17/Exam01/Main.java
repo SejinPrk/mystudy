@@ -1,38 +1,22 @@
 package algorithm.test.baekjoon.level17.Exam01;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.StringTokenizer;
+import java.io.OutputStreamWriter;
 
-// 28278 스택2
+// 15439 베라의 패션
 public class Main {
-  static LinkedList<Integer> stack = new LinkedList<>();
-  public static void main(String[] args) throws IOException {
+  public static void main(String[] args)  throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    StringBuilder sb = new StringBuilder();
-
-    StringTokenizer st;
+    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
     int N = Integer.parseInt(br.readLine());
 
-    while(N --> 0) {
-      st = new StringTokenizer(br.readLine());
-      String command = st.nextToken();
-      if (command.equals("1")) {
-        stack.addFirst(Integer.parseInt(st.nextToken()));
-      } else if (command.equals("2")) {
-        sb.append(stack.isEmpty()? -1 : stack.pollFirst()).append("\n");
-      } else if (command.equals("3")) {
-        sb.append(stack.size()).append("\n");
-      } else if (command.equals("4")) {
-        sb.append(stack.isEmpty()? 1 : 0).append("\n");
-      } else if (command.equals("5")) {
-        sb.append(stack.isEmpty()? -1 : stack.getFirst()).append("\n");
-      }
-    }
+    bw.write(N * (N-1) + "\n");
+    bw.flush();
     br.close();
-    System.out.println(sb);
+    bw.close();
   }
 }

@@ -1,37 +1,19 @@
 package algorithm.test.baekjoon.level19.Exam02;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.util.HashSet;
+import java.util.Scanner;
 
-// 25192 인사성 밝은 곰곰이
+// 10870 피보나치 수 5
 public class Main {
-  public static void main(String[] args) throws IOException {
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+  public static void main(String[] args) {
 
-    HashSet enter = new HashSet();
+    Scanner sc = new Scanner(System.in);
+    int N = sc.nextInt();
+    System.out.println(fibonacci(N));
+  }
 
-    int N = Integer.parseInt(br.readLine());
-    int cnt = 0;
-
-    for (int i = 0; i < N; i++) {
-      String chat = br.readLine();
-      if (chat.equals("ENTER")) {
-        cnt += enter.size();
-        enter = new HashSet();
-      } else {
-        enter.add(chat);
-      }
-    }
-    cnt += enter.size();
-
-    bw.write(cnt + "\n");
-    br.close();
-    bw.flush();
-    bw.close();
+  static int fibonacci(int n) {
+    if (n == 0) return 0;
+    if (n == 1) return 1;
+    return fibonacci(n-1) + fibonacci(n-2);
   }
 }

@@ -1,12 +1,37 @@
 package algorithm.test.baekjoon.level18.Exam02;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.HashSet;
 
-// 24723 녹색거탑
+// 25192 인사성 밝은 곰곰이
 public class Main {
-  public static void main(String[] args) {
-      Scanner sc = new Scanner(System.in);
-      int n = sc.nextInt();
-      System.out.println((int)Math.pow(2, n));
+  public static void main(String[] args) throws IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+    HashSet enter = new HashSet();
+
+    int N = Integer.parseInt(br.readLine());
+    int cnt = 0;
+
+    for (int i = 0; i < N; i++) {
+      String chat = br.readLine();
+      if (chat.equals("ENTER")) {
+        cnt += enter.size();
+        enter = new HashSet();
+      } else {
+        enter.add(chat);
+      }
+    }
+    cnt += enter.size();
+
+    bw.write(cnt + "\n");
+    br.close();
+    bw.flush();
+    bw.close();
   }
 }

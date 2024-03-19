@@ -1,41 +1,30 @@
 package algorithm.test.baekjoon.level19.Exam03;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.util.HashSet;
-import java.util.StringTokenizer;
+import java.util.Scanner;
 
-// 26069 붙임성 좋은 총총이
-public class Main {
-  public static void main(String[] args) throws IOException {
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+// 25501 재귀의 귀재
 
-    StringTokenizer st;
-    String A, B;
+public class Main{
 
-    HashSet<String> enter = new HashSet();
-    enter.add("ChongChong");
-
-    int N = Integer.parseInt(br.readLine());
-
-    for (int i = 0; i < N; i++) {
-      st = new StringTokenizer(br.readLine());
-      A = st.nextToken();
-      B = st.nextToken();
-      if (enter.contains(A) || enter.contains(B)) {
-        enter.add(A);
-        enter.add(B);
-      }
-    }
-    br.close();
-
-    bw.write(enter.size() + "\n");
-    bw.flush();
-    bw.close();
+  static int result;
+  public static int recursion(String s, int l, int r){
+    result++;
+    if(l >= r) return 1;
+    else if(s.charAt(l) != s.charAt(r)) return 0;
+    else return recursion(s, l+1, r-1);
   }
 
+  public static int isPalindrome(String s){
+    return recursion(s, 0, s.length()-1);
+  }
+
+  public static void main(String[] args){
+    Scanner sc = new Scanner(System.in);
+    int T = sc.nextInt();
+    for(int i = 0; i < T; i++) {
+      result = 0;
+      System.out.println(isPalindrome(sc.next()) + " " + result);
+    }
+    sc.close();
+  }
 }

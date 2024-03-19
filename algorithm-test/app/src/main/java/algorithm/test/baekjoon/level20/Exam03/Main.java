@@ -2,29 +2,36 @@ package algorithm.test.baekjoon.level20.Exam03;
 
 import java.util.Scanner;
 
-// 25501 재귀의 귀재
+// 15651 N과 M(3)
+    public class Main {
 
-public class Main{
+  public static int[] arr;
+  public static int N, M;
+  public static StringBuilder sb = new StringBuilder();
 
-  static int result;
-  public static int recursion(String s, int l, int r){
-    result++;
-    if(l >= r) return 1;
-    else if(s.charAt(l) != s.charAt(r)) return 0;
-    else return recursion(s, l+1, r-1);
-  }
-
-  public static int isPalindrome(String s){
-    return recursion(s, 0, s.length()-1);
-  }
-
-  public static void main(String[] args){
+  public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
-    int T = sc.nextInt();
-    for(int i = 0; i < T; i++) {
-      result = 0;
-      System.out.println(isPalindrome(sc.next()) + " " + result);
+
+    N = sc.nextInt();
+    M = sc.nextInt();
+
+    arr = new int[M];
+
+    dfs(0);
+    System.out.print(sb);
+  }
+
+  public static void dfs(int depth) {
+    if (depth == M) {
+      for (int i = 0; i < M; i++) {
+        sb.append(arr[i] + " ");
+      }
+      sb.append('\n');
+      return;
     }
-    sc.close();
+    for (int i = 1; i <= N; i++) {
+      arr[depth] = i;
+      dfs(depth + 1);
+    }
   }
 }

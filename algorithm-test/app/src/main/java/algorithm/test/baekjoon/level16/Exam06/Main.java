@@ -1,35 +1,71 @@
 package algorithm.test.baekjoon.level16.Exam06;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.StringTokenizer;
 
-// 1929 소수 구하기
+// 18258 큐 2
 public class Main {
-  public static boolean[] prime;
-  public static void main(String[] args) {
-    Scanner sc =new Scanner(System.in);
-    int m = sc.nextInt();
-    int n = sc.nextInt();
+  public static void main(String[] args) throws IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    StringBuilder sb = new StringBuilder();
+    Deque<Integer> q = new LinkedList<>();
 
-    prime = new boolean[n+1];
-    get_prime();
+    int N = Integer.parseInt(br.readLine());
 
-    for (int i = m; i <= n; i++) {
-      if(!prime[i]) {
-        System.out.println(i);
+    StringTokenizer command;
+
+    while (N-- > 0) {
+      command = new StringTokenizer(br.readLine(), " ");
+      switch (command.nextToken()) {
+        case "push" :
+          q.offer(Integer.parseInt(command.nextToken()));
+          break;
+
+
+        case "pop" :
+          Integer item = q.poll();
+          if (item == null) {
+            sb.append(-1).append('\n');
+          } else {
+            sb.append(item).append('\n');
+          }
+          break;
+
+        case "size" :
+          sb.append(q.size()).append('\n');
+          break;
+
+        case "empty" :
+          if (q.isEmpty()) {
+            sb.append(1).append('\n');
+          } else {
+            sb.append(0).append('\n');
+          }
+          break;
+
+        case "front" :
+          Integer item2 = q.peek();
+          if (item2 == null) {
+            sb.append(-1).append('\n');
+          } else {
+            sb.append(item2).append('\n');
+          }
+          break;
+
+        case "back" :
+          Integer item3 = q.peekLast();
+          if (item3 == null) {
+            sb.append(-1).append('\n');
+          } else {
+            sb.append(item3).append('\n');
+          }
+          break;
       }
     }
-  }
-
-  public static void get_prime() {
-    prime[0] = prime[1] = true;
-
-    for (int i = 2; i <= Math.sqrt(prime.length); i++) {
-      if (prime[i]) {
-        continue;
-      }
-      for (int j = i * i; j < prime.length; j += i) {
-        prime[j] = true;
-      }
-    }
+    System.out.println(sb);
   }
 }

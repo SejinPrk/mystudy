@@ -1,20 +1,35 @@
 package algorithm.test.baekjoon.level14.Exam03;
-// 25305 커트라인
-import java.util.Arrays;
+
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Scanner;
 
+// 7785 회사에 있는 사람
 public class Main {
+
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     int n = sc.nextInt();
-    int k = sc.nextInt();
-    int arr[] = new int[n];
+    HashMap<String, String> map = new HashMap<>();
 
-    for (int i = 0; i < n; i++){
-      arr[i] = sc.nextInt();
+    for (int i = 0; i < n; i++) {
+      String name = sc.next();
+      String status = sc.next();
+
+      if (map.containsKey(name)) {
+        map.remove(name);
+      } else {
+        map.put(name, status);
+      }
     }
 
-    Arrays.sort(arr);
-    System.out.println(arr[n-k]);
+    ArrayList<String> list = new ArrayList<>(map.keySet());
+    Collections.sort(list, Collections.reverseOrder());
+    for (var i : list) {
+      System.out.println(i + " ");
+    }
+
   }
 }

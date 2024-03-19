@@ -1,31 +1,25 @@
 package algorithm.test.baekjoon.level13.Exam02;
+// 2587 대표값2
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.Scanner;
 
-// 2231 분해합
 public class Main {
-  public static void main(String[] args) throws IOException {
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    int n = Integer.parseInt(br.readLine());
-    int ans = 0;
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int sum = 0;
+    int avg = 0;
+    int median = 0;
+    int arr[] = new int[5];
 
-
-    for (int i = 1; i <= n; i++){
-      int num = i;
-      int sum = 0;
-
-        while (num != 0){
-          sum += num % 10;
-          num /= 10;
-        }
-
-        if (sum + i == n){
-          ans = i;
-          break;
-        }
+    for(int i = 0; i < 5; i++){
+      arr[i] = sc.nextInt();
+      sum += arr[i];
     }
-    System.out.println(ans);
+    Arrays.sort(arr);
+    avg = sum / 5;
+    median = arr[2];
+
+    System.out.println(avg + " " + median);
   }
 }

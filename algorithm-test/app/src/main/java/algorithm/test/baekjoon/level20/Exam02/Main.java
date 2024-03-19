@@ -1,19 +1,39 @@
 package algorithm.test.baekjoon.level20.Exam02;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
-// 10870 피보나치 수 5
+// 15650 N과 M(2)
 public class Main {
-  public static void main(String[] args) {
+  public static int[] arr;
+  public static int N, M;
+  public static StringBuilder sb = new StringBuilder();
+  public static void main(String[] args) throws IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    StringTokenizer st = new StringTokenizer(br.readLine());
 
-    Scanner sc = new Scanner(System.in);
-    int N = sc.nextInt();
-    System.out.println(fibonacci(N));
+    N = Integer.parseInt(st.nextToken());
+    M = Integer.parseInt(st.nextToken());
+
+    arr = new int[M];
+
+    dfs(1, 0);
+    System.out.println(sb);
   }
 
-  static int fibonacci(int n) {
-    if (n == 0) return 0;
-    if (n == 1) return 1;
-    return fibonacci(n-1) + fibonacci(n-2);
+  public static void dfs(int at, int depth) {
+    if (depth == M) {
+      for (int val : arr) {
+        sb.append(val).append(' ');
+      }
+      sb.append('\n');
+      return;
+    }
+    for (int i = at; i <= N; i++) {
+      arr[depth] = i;
+      dfs(i + 1, depth + 1);
+    }
   }
 }

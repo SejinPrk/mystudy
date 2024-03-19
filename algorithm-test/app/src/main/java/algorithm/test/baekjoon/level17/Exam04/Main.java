@@ -1,53 +1,20 @@
 package algorithm.test.baekjoon.level17.Exam04;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Stack;
+import java.util.Scanner;
 
-// 4949 균형잡힌 세상
+//11050 이항 계수 1
 public class Main {
-  public static void main(String[] args) throws IOException {
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    StringBuilder sb = new StringBuilder();
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    int k = sc.nextInt();
 
-    String s;
-
-    while(true) {
-      s = br.readLine();
-      if (s.equals(".")) {
-        break;
-      }
-      sb.append(solve(s)).append('\n');
-    }
-    System.out.println(sb);
+      System.out.println(fac(n) / (fac(n-k) * fac(k)));
   }
-
-  public static String solve(String s) {
-    Stack<Character> stack = new Stack<>();
-    for (int i = 0; i < s.length(); i++) {
-      char c = s.charAt(i);
-
-      if (c == '(' || c== '[') {
-        stack.push(c);
-      } else if(c == ')') {
-        if (stack.empty() || stack.peek() != '(') {
-          return "no";
-        } else {
-          stack.pop();
-        }
-      } else if (c == ']') {
-        if (stack.empty() || stack.peek() != '[') {
-          return  "no";
-        } else {
-          stack.pop();
-        }
+    static int fac(int N) {
+      if (N <= 1) {
+        return 1;
       }
+      return N * fac(N-1);
     }
-    if (stack.empty()) {
-      return "yes";
-    } else {
-      return "no";
-    }
-  }
 }

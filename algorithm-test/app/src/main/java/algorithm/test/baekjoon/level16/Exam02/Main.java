@@ -1,25 +1,31 @@
 package algorithm.test.baekjoon.level16.Exam02;
-// 13241 최소공배수
 
 import java.util.Scanner;
+import java.util.Stack;
 
+// 10773 제로
 public class Main {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
-    long a = sc.nextInt();
-    long b = sc.nextInt();
 
-    long gcd = getGCD(Math.max(a, b), Math.min(a,b));
+    Stack<Integer> stack = new Stack<Integer>();
 
-    System.out.println((a*b)/gcd);
-  }
+    int k = sc.nextInt();
 
-  public static long getGCD(long a, long b){
-    while(b>0) {
-      long temp = a;
-      a = b;
-      b = temp%b;
+    for (int i = 0; i<k; i++) {
+      int num = sc.nextInt();
+
+      if (num ==0) {
+        stack.pop();
+      } else {
+        stack.push(num);
+      }
     }
-    return a;
+    int sum = 0;
+
+    for (int i : stack) {
+      sum += i;
+    }
+    System.out.println(sum);
   }
 }

@@ -1,30 +1,25 @@
 package algorithm.test.baekjoon.level15.Exam02;
-// 14425 문자열 집합
+// 13241 최소공배수
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.HashMap;
-import java.util.StringTokenizer;
+import java.util.Scanner;
 
 public class Main {
-  public static void main(String[] args) throws IOException {
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    StringTokenizer st = new StringTokenizer(br.readLine());
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    long a = sc.nextInt();
+    long b = sc.nextInt();
 
-    int n = Integer.parseInt(st.nextToken());
-    int m = Integer.parseInt(st.nextToken());
+    long gcd = getGCD(Math.max(a, b), Math.min(a,b));
 
-    HashMap<String, Integer> map = new HashMap<>();
-    for (int i =0; i < n; i++){
-      map.put(br.readLine(), 0);
+    System.out.println((a*b)/gcd);
+  }
+
+  public static long getGCD(long a, long b){
+    while(b>0) {
+      long temp = a;
+      a = b;
+      b = temp%b;
     }
-    int cnt = 0;
-
-    for (int i = 0; i < m; i++) {
-      if (map.containsKey(br.readLine()))
-        cnt++;
-    }
-    System.out.println(cnt);
+    return a;
   }
 }

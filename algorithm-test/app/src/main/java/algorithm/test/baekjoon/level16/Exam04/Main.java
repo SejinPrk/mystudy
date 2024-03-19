@@ -1,41 +1,53 @@
 package algorithm.test.baekjoon.level16.Exam04;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.util.Stack;
 
-// 2485 가로수
+// 4949 균형잡힌 세상
 public class Main {
   public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    StringBuilder sb = new StringBuilder();
 
-    int n = Integer.parseInt(br.readLine());
-    int[] tree = new int[n];
+    String s;
 
-    for (int i = 0; i < n; i++) {
-      tree[i] = Integer.parseInt(br.readLine());
-    }
-    br.close();
-
-    int gcd = 0;
-    for (int i = 0; i < n-1; i++) {
-      int d = tree[i + 1] - tree[i];
-      gcd = GCD(d, gcd);
-    }
-      bw.write((tree[n-1] - tree[0]) / gcd + 1 - (tree.length) + " ");
-      bw.flush();
-      bw.close();
-    }
-
-    static int GCD(int d, int gcd){
-      while (gcd != 0) {
-        int tmp = d % gcd;
-        d = gcd;
-        gcd = tmp;
+    while(true) {
+      s = br.readLine();
+      if (s.equals(".")) {
+        break;
       }
-      return d;
+      sb.append(solve(s)).append('\n');
     }
+    System.out.println(sb);
+  }
+
+  public static String solve(String s) {
+    Stack<Character> stack = new Stack<>();
+    for (int i = 0; i < s.length(); i++) {
+      char c = s.charAt(i);
+
+      if (c == '(' || c== '[') {
+        stack.push(c);
+      } else if(c == ')') {
+        if (stack.empty() || stack.peek() != '(') {
+          return "no";
+        } else {
+          stack.pop();
+        }
+      } else if (c == ']') {
+        if (stack.empty() || stack.peek() != '[') {
+          return  "no";
+        } else {
+          stack.pop();
+        }
+      }
+    }
+    if (stack.empty()) {
+      return "yes";
+    } else {
+      return "no";
+    }
+  }
 }

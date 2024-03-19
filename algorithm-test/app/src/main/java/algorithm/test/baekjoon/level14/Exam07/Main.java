@@ -1,32 +1,42 @@
 package algorithm.test.baekjoon.level14.Exam07;
-// 11650 좌표 정렬하기
-
-import java.util.Arrays;
-import java.util.Scanner;
+// 1269 대칭 차집합
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.StringTokenizer;
 
 public class Main {
-  public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    int n = sc.nextInt();
-    int [][] arr = new int[n][2];
+  public static void main(String[] args) throws IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    StringTokenizer st = new StringTokenizer(br.readLine());
 
-    for(int i = 0; i < n; i++) {
-      arr[i][0] = sc.nextInt();
-      arr[i][1] = sc.nextInt();
+    int a = Integer.parseInt(st.nextToken());
+    int b = Integer.parseInt(st.nextToken());
+    Set<Integer> A = new HashSet<>();
+    Set<Integer> B = new HashSet<>();
+
+    st = new StringTokenizer(br.readLine());
+    for (int i = 0; i < a; i++) {
+      A.add(Integer.parseInt(st.nextToken()));
+    }
+    st = new StringTokenizer(br.readLine());
+    for (int i = 0; i < b; i++) {
+      B.add(Integer.parseInt(st.nextToken()));
     }
 
-    Arrays.sort(arr, (a, b) -> {
-      if(a[0] == b[0]) {
-        return a[1] - b[1];
-      } else {
-        return a[0] - b[0];
+    int ans = 0;
+    for(int num : A) {
+      if(!B.contains(num)) {
+        ans += 1;
       }
-    });
-
-    StringBuilder sb = new StringBuilder();
-    for (int i =0; i<n; i++){
-      sb.append(arr[i][0] + " " + arr[i][1]).append('\n');
     }
-    System.out.println(sb);
+    for(int num : B) {
+      if(!A.contains(num)) {
+        ans += 1;
+      }
+    }
+    System.out.println(ans);
   }
 }

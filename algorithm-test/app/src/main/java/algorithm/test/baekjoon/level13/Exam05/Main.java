@@ -1,21 +1,31 @@
 package algorithm.test.baekjoon.level13.Exam05;
-// 1436 영화감독 숌
-import java.util.Scanner;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+
+// 10989 수 정렬하기 3
 public class Main {
-  public static void main(String[] args) {
 
-    Scanner in = new Scanner(System.in);
-    int N = in.nextInt();
-    int num = 666;
-    int cnt = 1;
+  public static void main(String[] args) throws IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    StringBuilder sb = new StringBuilder();
 
-    while (cnt != N){
-      num++;
-      if(String.valueOf(num).contains("666")) {
-        cnt++;
-      }
+    int n = Integer.parseInt(br.readLine());
+    int[] arr = new int[n];
+
+    for(int i =0; i< n; i++){
+      arr[i] = Integer.parseInt(br.readLine());
     }
-    System.out.println(num);
+
+    Arrays.sort(arr);
+
+    for(int i = 0; i< n; i++) {
+      sb.append(arr[i]).append('\n');
+    }
+    System.out.println(sb);
   }
 }
+
+

@@ -1,22 +1,31 @@
 package algorithm.test.baekjoon.level15.Exam08;
-// 11478 서로 다른 부분 문자열의 개수
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.HashSet;
-import java.util.Set;
+
+// 17103 골드바흐 파티션
+import java.util.Scanner;
 
 public class Main {
-  public static void main(String[] args) throws IOException {
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    String str = br.readLine();
-    Set<String> set = new HashSet<>();
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
 
-    for (int i = 0; i < str.length(); i++) {
-      for (int j = i+1; j <= str.length(); j++) {
-        set.add(str.substring(i, j));
+    boolean[] check = new boolean[1000001];
+    check[0] = true;
+    check[1] = true;
+    for (int i = 2; i <= Math.sqrt(1000000); i++) {
+      if (check[i]) continue;
+      for (int j = i*i; j < 1000001; j+=i) {
+        check[j] = true;
       }
     }
-    System.out.println(set.size());
+
+    int n = sc.nextInt();
+    for (int i = 0; i < n; i++) {
+      int cnt = 0;
+      int tmp = sc.nextInt();
+      for (int j = 2; j <= tmp/2; j++) {
+        if (!check[j] && !check[tmp-j])
+          cnt++;
+      }
+      System.out.println(cnt);
+    }
   }
 }

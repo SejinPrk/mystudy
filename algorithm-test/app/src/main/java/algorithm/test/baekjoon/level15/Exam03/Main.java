@@ -1,35 +1,47 @@
 package algorithm.test.baekjoon.level15.Exam03;
+// 1735 분수 합
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Scanner;
-
-// 7785 회사에 있는 사람
 public class Main {
+  public static void main(String[] args) throws IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    StringTokenizer st = new StringTokenizer(br.readLine());
+    int a = Integer.parseInt(st.nextToken());
+    int b = Integer.parseInt(st.nextToken());
 
-  public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    int n = sc.nextInt();
-    HashMap<String, String> map = new HashMap<>();
+    st = new StringTokenizer(br.readLine());
+    int c = Integer.parseInt(st.nextToken());
+    int d = Integer.parseInt(st.nextToken());
 
-    for (int i = 0; i < n; i++) {
-      String name = sc.next();
-      String status = sc.next();
+    int num = a * d + b * c;
+    int den = b * d;
 
-      if (map.containsKey(name)) {
-        map.remove(name);
-      } else {
-        map.put(name, status);
-      }
+    int mod = gcd(num, den);
+    num /= mod;
+    den /= mod;
+
+    bw.write(num + " " + den + "\n");
+    bw.flush();
+    bw.close();
+    br.close();
+  }
+
+  public static int gcd(int a, int b){
+  if(a <= b) {
+    int tmp = a;
+    a = b;
+    b = tmp;
     }
-
-    ArrayList<String> list = new ArrayList<>(map.keySet());
-    Collections.sort(list, Collections.reverseOrder());
-    for (var i : list) {
-      System.out.println(i + " ");
+  if (b == 0) {
+    return a;
     }
-
+    return gcd(b, a%b);
   }
 }

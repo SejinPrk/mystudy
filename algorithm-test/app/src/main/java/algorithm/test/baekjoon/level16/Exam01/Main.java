@@ -1,32 +1,38 @@
 package algorithm.test.baekjoon.level16.Exam01;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.StringTokenizer;
 
-// 1934 최소공배수
+// 28278 스택2
 public class Main {
-  public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    int n = sc.nextInt();
-
+  static LinkedList<Integer> stack = new LinkedList<>();
+  public static void main(String[] args) throws IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     StringBuilder sb = new StringBuilder();
 
-    for (int i = 0; i < n; i++) {
-      int a = sc.nextInt();
-      int b = sc.nextInt();
+    StringTokenizer st;
 
-      int d = gcd(a, b);
-      sb.append(a * b / d).append('\n');
+    int N = Integer.parseInt(br.readLine());
+
+    while(N --> 0) {
+      st = new StringTokenizer(br.readLine());
+      String command = st.nextToken();
+      if (command.equals("1")) {
+        stack.addFirst(Integer.parseInt(st.nextToken()));
+      } else if (command.equals("2")) {
+        sb.append(stack.isEmpty()? -1 : stack.pollFirst()).append("\n");
+      } else if (command.equals("3")) {
+        sb.append(stack.size()).append("\n");
+      } else if (command.equals("4")) {
+        sb.append(stack.isEmpty()? 1 : 0).append("\n");
+      } else if (command.equals("5")) {
+        sb.append(stack.isEmpty()? -1 : stack.getFirst()).append("\n");
+      }
     }
+    br.close();
     System.out.println(sb);
-  }
-
-  public static int gcd(int a, int b) {
-
-    while (b != 0) {
-      int tmp = a % b;
-      a = b;
-      b = tmp;
-    }
-    return a;
   }
 }

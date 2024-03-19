@@ -1,59 +1,80 @@
 package algorithm.test.baekjoon.level19.Exam04;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
-// 2108 통계학
+// 24060 알고리즘 수업 - 병합 정렬 1
 public class Main {
-  public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    int n = sc.nextInt();
-    int[] arr = new int[8001];
+  int[] arr;
+  static int[] temp;
+  static int result = -1;
+  static int cnt = 0;
+  static int K;
 
-    int sum = 0;
-    int max = Integer.MIN_VALUE;
-    int min = Integer.MAX_VALUE;
-    int median = 10000;
-    int mode = 10000;
+  public static void main(String[] args) throws IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    StringTokenizer st = new StringTokenizer(br.readLine());
+    int N = Integer.parseInt(st.nextToken());
+    K = Integer.parseInt(st.nextToken());
 
-    for (int i = 0; i < n; i++) {
-      int val = sc.nextInt();
-      sum += val;
-      arr[val + 4000] ++;
+    int [] arr = new int[N];
+    temp = new int[N];
 
-      if (max < val) {
-        max = val;
-      }
-      if (min > val) {
-        min = val;
-      }
+    st = new StringTokenizer(br.readLine());
+
+    for (int i = 0; i < N; i++) {
+      arr[i] = Integer.parseInt(st.nextToken());
     }
 
-    int cnt = 0;
-    int max_mode = 0;
+    merge_sort(arr, 0, N-1);
 
-    boolean flag = false;
-
-    for (int i = min + 4000; i <= max + 4000 ; i++) {
-      if (arr[i] > 0) {
-        if (cnt < (n+1)/2) {
-          cnt += arr[i];
-          median = i - 4000;
-        }
-
-        if (max_mode < arr[i]) {
-          max_mode = arr[i];
-          mode = i - 4000;
-          flag = true;
-        } else if (max_mode == arr[i] && flag == true) {
-          mode = i - 4000;
-          flag = false;
-        }
-      }
-    }
-    System.out.println((int)Math.round((double)sum /n));
-    System.out.println(median);
-    System.out.println(mode);
-    System.out.println(max - min);
+    System.out.println(result);
   }
 
+  static void merge_sort(int arr[], int p, int r) {
+    if (cnt > K) return;
+    if (p < r) {
+      int q = (p+r) / 2;
+      merge_sort(arr, p, q);
+      merge_sort(arr, q+1, r);
+      merge(arr, p, q, r);
+    }
+  }
+
+  static void merge(int A[], int p, int q, int r) {
+    int i = p;
+    int j = q + 1;
+    int t = 0;
+
+    while (i <= q && j <= r) {
+      if (A[i] < A[j]) {
+        temp[t++] = A[i++];
+      } else {
+        temp[t++] = A[j++];
+      }
+    }
+
+    while (i <= q) {
+      temp[t++] = A[i++];
+    }
+
+    while (j <= r) {
+      temp[t++] = A[j++];
+    }
+
+    i = p;
+    t = 0;
+    while (i <= r) {
+      cnt++;
+
+    if (cnt == K) {
+      result = temp[t];
+      break;
+    }
+
+    A[i++] = temp[t++];
+    }
+  }
 }

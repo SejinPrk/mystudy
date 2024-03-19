@@ -1,21 +1,23 @@
 package algorithm.test.baekjoon.level13.Exam06;
+// 1427 소트 인사이드
 
-import java.util.Scanner;
+import java.io.IOException;
+import java.io.InputStream;
 
-// 2839 설탕 배달
 public class Main {
-  public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    int n = sc.nextInt();
+  public static void main(String[] args) throws IOException {
+    InputStream in = System.in;
 
-    if(n == 4 || n == 7) {
-      System.out.println(-1);
-    } else if (n % 5 == 0) {
-      System.out.println(n / 5);
-    } else if (n % 5 ==1 || n % 5 == 3) {
-      System.out.println((n/5+1));
-    } else if (n % 5 == 2 || n % 5 == 4) {
-      System.out.println((n/5+2));
+    int[] counting = new int[10];
+    int c;
+    while((c=in.read()) != '\n'){
+      counting[c-'0']++;
+    }
+
+    for (int i = 9; i >= 0; i--) {
+      while(counting[i]-- > 0){
+        System.out.print(i);
+      }
     }
   }
 }

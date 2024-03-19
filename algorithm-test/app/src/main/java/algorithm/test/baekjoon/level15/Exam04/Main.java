@@ -1,36 +1,41 @@
 package algorithm.test.baekjoon.level15.Exam04;
-// 1620 나는야 포켓몬 마스터 이다솜
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
-import java.util.StringTokenizer;
+import java.io.OutputStreamWriter;
 
+// 2485 가로수
 public class Main {
   public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    StringTokenizer st = new StringTokenizer(br.readLine());
-    int n = Integer.parseInt(st.nextToken());
-    int m = Integer.parseInt(st.nextToken());
-    HashMap<String, Integer> hm = new HashMap<>();
-    String[] arr = new String[n + 1];
-    for (int i = 1; i <= n; i++) {
-      String s = br.readLine();
-      hm.put(s, i);
-      arr[i] = s;
+    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+    int n = Integer.parseInt(br.readLine());
+    int[] tree = new int[n];
+
+    for (int i = 0; i < n; i++) {
+      tree[i] = Integer.parseInt(br.readLine());
+    }
+    br.close();
+
+    int gcd = 0;
+    for (int i = 0; i < n-1; i++) {
+      int d = tree[i + 1] - tree[i];
+      gcd = GCD(d, gcd);
+    }
+      bw.write((tree[n-1] - tree[0]) / gcd + 1 - (tree.length) + " ");
+      bw.flush();
+      bw.close();
     }
 
-    StringBuilder sb = new StringBuilder();
-    for (int i = 0; i < m; i++) {
-      String s = br.readLine();
-      if (Character.isDigit(s.charAt(0))) {
-        sb.append(arr[Integer.parseInt(s)]);
-      } else {
-        sb.append(hm.get(s));
+    static int GCD(int d, int gcd){
+      while (gcd != 0) {
+        int tmp = d % gcd;
+        d = gcd;
+        gcd = tmp;
       }
-      sb.append("\n");
+      return d;
     }
-    System.out.println(sb);
-  }
 }

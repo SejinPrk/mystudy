@@ -1,42 +1,42 @@
 package algorithm.test.baekjoon.level15.Exam07;
-// 1269 대칭 차집합
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.StringTokenizer;
 
+import java.util.Scanner;
+
+// 4948 베르트랑 공준
 public class Main {
-  public static void main(String[] args) throws IOException {
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    StringTokenizer st = new StringTokenizer(br.readLine());
 
-    int a = Integer.parseInt(st.nextToken());
-    int b = Integer.parseInt(st.nextToken());
-    Set<Integer> A = new HashSet<>();
-    Set<Integer> B = new HashSet<>();
+  public static boolean[] prime = new boolean[246913];
 
-    st = new StringTokenizer(br.readLine());
-    for (int i = 0; i < a; i++) {
-      A.add(Integer.parseInt(st.nextToken()));
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    get_prime();
+
+    while (true) {
+      int n = sc.nextInt();
+      if (n == 0) {
+        break;
+      }
+      int cnt = 0;
+
+      for (int i = n + 1; i <= 2 * n; i++) {
+        if (!prime[i]) {
+          cnt++;
+        }
+      }
+      System.out.println(cnt);
     }
-    st = new StringTokenizer(br.readLine());
-    for (int i = 0; i < b; i++) {
-      B.add(Integer.parseInt(st.nextToken()));
-    }
+  }
 
-    int ans = 0;
-    for(int num : A) {
-      if(!B.contains(num)) {
-        ans += 1;
+
+  public static void get_prime() {
+    prime[0] = prime[1] = true;
+    for (int i = 2; i < Math.sqrt(prime.length); i++) {
+      if (prime[i]) {
+        continue;
+      }
+      for (int j = i * i; j < prime.length; j+=i) {
+        prime[j] = true;
       }
     }
-    for(int num : B) {
-      if(!A.contains(num)) {
-        ans += 1;
-      }
-    }
-    System.out.println(ans);
   }
 }
