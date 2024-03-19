@@ -19,11 +19,19 @@ public class Controller01_1 {
     model.addAttribute("name", "홍길동");
     model.addAttribute("age", 20);
 
-    return "/jsp/c01_1.jsp";
+    return "jsp/c01_1.jsp";
     // 기본 ViewResolver는 리턴 값으로 받은 view name으로 JSP를 찾는다.
-    // 즉 view name을 JSP URL로 간주한다.
-    // 따라서 위의 return 문의 view name은 다음 JSP 경로와 같다.
-    // ==> /컨텍스트경로/jsp/c01_1.jsp
+    // 1) 절대 경로로 시작할 때 - '/'로 시작할 때
+    //    예) return "/jsp/c01_1.jsp"
+    //        view URL = /웹애플리케이션루트경로(/) + view name
+    //                 = /jsp/c01_1.jsp
+    //
+    // 2) 상대 경로로 시작할 때 - '/'로 시작하지 않을 때
+    //    예) return "jsp/c01_1.jsp"
+    //        view URL = 현재 URL 경로 + view name
+    //                 = /웹애플리케이션경로/app2/c01_1 + jsp/c01_1.jsp
+    //                 = /app2/c01_1/jsp/c01_1.jsp
+    //
     //
     // InternalResourceViewResolver로 교체한 다음의 JSP URL은?
     // => /WEB-INF/jsp2//jsp/c01_1.jsp.jsp
@@ -38,7 +46,9 @@ public class Controller01_1 {
     model.addAttribute("age", 30);
 
     // 뷰 이름을 리턴하지 않으면,
-    // request handler의 URL을 가지고 view URL을 계산한다.
+    // request handler의 URL을 상대 경로 view name으로 사용한다.
+    // 즉 다음 리턴 문과 같다.
+    // return "c01_1/h2"
     // 계산 방법:
     // =>  현재 URL = /app2/c01_1/h2
     // => view URL = 현재 URL의 경로 + request handler의 URL
