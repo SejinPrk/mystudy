@@ -1,3 +1,4 @@
+// 기본 View Resolver 사용하기
 package bitcamp.app2;
 
 import java.util.Map;
@@ -19,14 +20,14 @@ public class Controller01_1 {
     model.addAttribute("name", "홍길동");
     model.addAttribute("age", 20);
 
-    return "jsp/c01_1.jsp";
+    return "/jsp/c01_1.jsp";
     // 기본 ViewResolver는 리턴 값으로 받은 view name으로 JSP를 찾는다.
-    // 1) 절대 경로로 시작할 때 - '/'로 시작할 때
+    // 1) 절대 경로로 시작할 때 - '/' 로 시작할 때
     //    예) return "/jsp/c01_1.jsp"
     //        view URL = /웹애플리케이션루트경로(/) + view name
     //                 = /jsp/c01_1.jsp
     //
-    // 2) 상대 경로로 시작할 때 - '/'로 시작하지 않을 때
+    // 2) 상대 경로로 시작할 때 - '/' 로 시작하지 않을 때
     //    예) return "jsp/c01_1.jsp"
     //        view URL = 현재 URL 경로 + view name
     //                 = /웹애플리케이션경로/app2/c01_1 + jsp/c01_1.jsp
@@ -36,7 +37,6 @@ public class Controller01_1 {
     // InternalResourceViewResolver로 교체한 다음의 JSP URL은?
     // => /WEB-INF/jsp2//jsp/c01_1.jsp.jsp
   }
-
 
   // 테스트:
   // http://localhost:9999/eomcs-spring-webmvc/app2/c01_1/h2
@@ -48,11 +48,10 @@ public class Controller01_1 {
     // 뷰 이름을 리턴하지 않으면,
     // request handler의 URL을 상대 경로 view name으로 사용한다.
     // 즉 다음 리턴 문과 같다.
-    // return "c01_1/h2"
+    //   return "c01_1/h2"
     // 계산 방법:
-    // =>  현재 URL = /app2/c01_1/h2
-    // => view URL = 현재 URL의 경로 + request handler의 URL
-    //             = /app2/c01_1 + /c01_1/h2
+    // => view URL = 현재 URL 경로 + view name
+    //             = /웹애플리케이션경로/app2/c01_1 + c01_1/h2
     //             = /app2/c01_1/c01_1/h2
     //    따라서 잘못 계산된 view URL로 JSP를 찾으니까 오류가 발생한다!
     //
@@ -94,4 +93,5 @@ public class Controller01_1 {
     // => 그래서 잘못된 요청을 막을 수 있다.
     // 실무에서는 이 방법을 사용한다.
   }
+
 }
