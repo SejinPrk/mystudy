@@ -1,5 +1,6 @@
 package bitcamp.app1;
 
+import java.util.Map;
 import javax.servlet.ServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,25 @@ public class Controller05_3 {
     request.setAttribute("name", "홍길동");
     request.setAttribute("age", 20); // auto-boxing: int ===> Integer 객체
     request.setAttribute("working", true); // auto-boxing: boolean ===> Boolean 객체
+
+    return "/WEB-INF/jsp/c05_3.jsp";
+  }
+
+  // 테스트:
+  //   http://localhost:9999/eomcs-spring-webmvc/app1/c05_3/h2
+  @GetMapping("h2")
+  public String handler2(Map<String,Object> map) {
+
+    // 아규먼트에 Map 타입의 변수를 선언하면
+    // 프론트 컨트롤러는 빈 맵 객체를 만들어 넘겨준다.
+    // 이 맵 객체의 용도는 JSP에 전달할 값을 담는 용이다.
+    // 맵 객체에 값을 담아 놓으면 프론트 컨트롤러가 JSP를 실행하기 전에
+    // ServletRequest로 복사한다.
+    // 따라서 ServletRequest에 값을 담는 것과 같다.
+    //
+    map.put("name", "홍길동");
+    map.put("age", 20); // auto-boxing
+    map.put("working", true); // auto-boxing
 
     return "/WEB-INF/jsp/c05_3.jsp";
   }
