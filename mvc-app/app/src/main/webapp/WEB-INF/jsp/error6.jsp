@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>c01_1</title>
+<title>jsp</title>
 </head>
 <body>
-<h1>/jsp/c01_1.jsp</h1>
-이름 = ${name}<br>
-나이 = ${age}<br>
+<h1>/WEB-INF/jsp/error6.jsp</h1>
+<p>예외객체: ${error}</p>
+<p>오류메시지: ${error.getMessage()}</p>
 </body>
 </html>
