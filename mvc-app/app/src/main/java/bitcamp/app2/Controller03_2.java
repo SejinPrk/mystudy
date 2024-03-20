@@ -16,7 +16,7 @@ public class Controller03_2 {
 
   @GetMapping(value = "h1", produces = "text/plain;charset=UTF-8")
   @ResponseBody
-  public String handler1(Model model, HttpSession session) {
+  public String handler1(Model model) {
     model.addAttribute("name2", "임꺽정");
     model.addAttribute("age2", "30");
     model.addAttribute("tel2", "1111-2222");

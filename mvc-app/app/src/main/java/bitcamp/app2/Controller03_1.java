@@ -18,8 +18,8 @@ public class Controller03_1 {
     //
     session.setAttribute("name", "홍길동");
     session.setAttribute("age", "20");
-//    session.setAttribute("name2", "임꺽정");
-//    session.setAttribute("age2", "30");
+    session.setAttribute("name2", "임꺽정");
+    session.setAttribute("age2", "30");
 
     return "세션에 값을 보관했음!";
   }
