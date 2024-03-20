@@ -1,6 +1,7 @@
 // JSON 콘텐트 출력하기
 package bitcamp.app2;
 
+import com.google.gson.Gson;
 import java.sql.Date;
 import java.util.ArrayList;
 import org.springframework.stereotype.Controller;
@@ -8,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.google.gson.Gson;
 
 @Controller
 @RequestMapping("/c05_1")
@@ -45,4 +45,9 @@ public class Controller05_1 {
     return new Gson().toJson(this.list);
   }
 
+  @GetMapping("h3")
+  @ResponseBody
+  public Object handler3() {
+    return this.list; // JSON 형식의 문자열은 자동으로 UTF-8로 인코딩 된다.
+  }
 }
