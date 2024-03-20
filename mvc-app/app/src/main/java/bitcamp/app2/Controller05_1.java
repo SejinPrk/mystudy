@@ -50,4 +50,5 @@ public class Controller05_1 {
   public Object handler3() {
     return this.list; // JSON 형식의 문자열은 자동으로 UTF-8로 인코딩 된다.
   }
+
 }
