@@ -44,7 +44,7 @@ public class App2Config implements WebMvcConfigurer {
     registry.addInterceptor(new Interceptor3()).addPathPatterns("/c04_1/**");
 
     registry.addInterceptor(new Interceptor4())
-        .addPathPatterns("/c04_1/*")
+        .addPathPatterns("/c04_1/**")
         .excludePathPatterns("/c04_1/a/**");
 
   }
