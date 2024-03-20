@@ -1,7 +1,7 @@
 package bitcamp.app2;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.sql.Date;
-//import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Board {
   protected int no;
@@ -72,7 +72,7 @@ public class Board {
     return createdDate;
   }
 
-  //@JsonFormat(shape=JsonFormat.Shape.STRING,pattern="yyyy-MM-dd")
+  @JsonFormat(shape=JsonFormat.Shape.STRING,pattern="yyyy-MM-dd")
   public void setCreatedDate(Date createdDate) {
     this.createdDate = createdDate;
   }
