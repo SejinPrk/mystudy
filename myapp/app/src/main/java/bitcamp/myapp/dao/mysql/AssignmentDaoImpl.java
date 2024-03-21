@@ -10,8 +10,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@Component
+@Repository
 public class AssignmentDaoImpl implements AssignmentDao {
 
   DBConnectionPool connectionPool;

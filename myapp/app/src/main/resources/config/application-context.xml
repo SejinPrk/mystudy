@@ -20,6 +20,4 @@
     </constructor-arg>
   </bean>
 
-  <context:component-scan base-package="bitcamp.myapp.dao,bitcamp.util"/>
-
 </beans>
