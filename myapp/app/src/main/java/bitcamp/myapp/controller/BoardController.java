@@ -47,26 +47,26 @@ public class BoardController {
     this.uploadDir = sc.getRealPath("/upload/board");
   }
 
-  @GetMapping("/board/form")
+  @GetMapping("form")
   public String form(
       int category,
-      Model model) throws Exception {
+      Map<String, Object>map) throws Exception {
 
-    model.addAttribute("boardName", category == 1 ? "게시글" : "가입인사");
-    model.addAttribute("category", category);
+    map.put("boardName", category == 1 ? "게시글" : "가입인사");
+    map.put("category", category);
     return "/board/form.jsp";
   }
 
-  @PostMapping("/board/add")
+  @PostMapping("add")
   public String add(
       Board board,
       MultipartFile[] attachedFiles,
       HttpSession session,
-      Map<String, Object> map) throws Exception {
+      Model model) throws Exception {
 
     int category = board.getCategory();
-    map.put("boardName", category == 1 ? "게시글" : "가입인사");
-    map.put("category", category);
+    model.addAttribute("boardName", category == 1 ? "게시글" : "가입인사");
+    model.addAttribute("category", category);
 
     try {
       Member loginUser = (Member) session.getAttribute("loginUser");
@@ -109,7 +109,7 @@ public class BoardController {
     }
   }
 
-  @GetMapping("/board/list")
+  @GetMapping("list")
   public String list(
       int category,
       Model model) throws Exception {
@@ -179,7 +179,7 @@ public class BoardController {
         for (MultipartFile file : attachedFiles) {
           file.transferTo(board.getNo());
         }
-        attachedFileDao.addAll(file);
+        attachedFileDao.addAll(attachedFiles);
       }
       txManager.commit();
       return "redirect:list?category=" + board.getCategory();
@@ -233,7 +233,7 @@ public class BoardController {
     }
   }
 
-  @GetMapping("/file/delete")
+  @GetMapping("file/delete")
   public String fileDelete(int category, int fileNo, HttpSession session) throws Exception {
 
     Member loginUser = (Member) session.getAttribute("loginUser");
