@@ -21,19 +21,19 @@ public class GlobalControllerAdvice {
       }
     });
   }
-}
 
-@ExceptionHandler
-public void exceptionHandler(Exception e) {
-  ModelAndView mv = new ModelAndView();
-  mv.addObject("message", e.getMessage());
+  @ExceptionHandler
+  public ModelAndView exceptionHandler(Exception e) {
+    ModelAndView mv = new ModelAndView();
+    mv.addObject("message", e.getMessage());
 
-  StringWriter stringWriter = new StringWriter();
-  PrintWriter out = new PrintWriter(stringWriter);
-  e.printStackTrace(out);
+    StringWriter stringWriter = new StringWriter();
+    PrintWriter out = new PrintWriter(stringWriter);
+    e.printStackTrace(out);
 
-  mv.addObject("detail", stringWriter.toString());
+    mv.addObject("detail", stringWriter.toString());
 
-  mv.setViewName("/error.jsp");
-  return mv;
+    mv.setViewName("/error.jsp");
+    return mv;
+  }
 }
