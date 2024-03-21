@@ -4,35 +4,26 @@ import java.io.File;
 import javax.servlet.Filter;
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration.Dynamic;
-import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
-import org.springframework.web.servlet.support.AbstractDispatcherServletInitializer;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class AppWebApplicationInitializer extends AbstractDispatcherServletInitializer {
+public class AppWebApplicationInitializer extends
+    AbstractAnnotationConfigDispatcherServletInitializer {
 
   ServletContext servletContext;
   AnnotationConfigWebApplicationContext rootContext;
 
   @Override
-  protected WebApplicationContext createRootApplicationContext() {
-    rootContext = new AnnotationConfigWebApplicationContext();
-    rootContext.register(RootConfig.class);
-    rootContext.refresh();
-    return rootContext;
+  protected Class<?>[] getRootConfigClasses() {
+    return new Class[] {RootConfig.class};
   }
 
   @Override
-  protected WebApplicationContext createServletApplicationContext() {
-    AnnotationConfigWebApplicationContext appContext = new AnnotationConfigWebApplicationContext();
-    appContext.register(AppConfig.class);
-    appContext.setParent(this.rootContext);
-    appContext.setServletContext(this.servletContext);
-    appContext.refresh();
-    return appContext;
-  }
+  protected Class<?>[] getServletConfigClasses() {
+    return new Class[] {AppConfig.class};
+}
 
   @Override
   protected String[] getServletMappings() {
@@ -53,11 +44,5 @@ public class AppWebApplicationInitializer extends AbstractDispatcherServletIniti
   @Override
   protected Filter[] getServletFilters() {
     return new Filter[]{new CharacterEncodingFilter("UTF-8")};
-  }
-
-  @Override
-  public void onStartup(ServletContext servletContext) throws ServletException {
-    this.servletContext = servletContext;
-    super.onStartup(servletContext);
   }
 }
