@@ -11,10 +11,15 @@ import javax.servlet.http.Part;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
+@RequestMapping("/member")
 public class MemberController {
 
   private final Log log = LogFactory.getLog(RootConfig.class);
@@ -27,43 +32,43 @@ public class MemberController {
     this.uploadDir = sc.getRealPath("/upload");
   }
 
-  @RequestMapping("/member/form")
+  @GetMapping("form")
   public String form() throws Exception {
     return "/member/form.jsp";
   }
 
-  @RequestMapping("/member/add")
-  public String add(Member member, @RequestParam("file") Part file) throws Exception {
+  @PostMapping("add")
+  public String add(Member member, @RequestParam("file") MultipartFile file) throws Exception {
     if (file.getSize() > 0) {
       String filename = UUID.randomUUID().toString();
       member.setPhoto(filename);
-      file.write(this.uploadDir + "/" + filename);
+      file.transferTo(new File(this.uploadDir + "/" + filename));
     }
     memberDao.add(member);
     return "redirect:list";
   }
 
-  @RequestMapping("/member/list")
-  public String list(Map<String, Object> map) throws Exception {
-    map.put("list", memberDao.findAll());
+  @GetMapping("list")
+  public String list(Model model) throws Exception {
+    model.addAttribute("list", memberDao.findAll());
     return "/member/list.jsp";
   }
 
-  @RequestMapping("/member/view")
+  @GetMapping("view")
   public String view(
       @RequestParam("no") int no,
-      Map<String, Object> map) throws Exception {
+      Model model) throws Exception {
 
     Member member = memberDao.findBy(no);
     if (member == null) {
       throw new Exception("회원 번호가 유효하지 않습니다.");
     }
-    map.put("member", member);
+    model.addAttribute("member", member);
     return "/member/view.jsp";
   }
 
-  @RequestMapping("/member/update")
-  public String update(Member member, @RequestParam("file") Part file) throws Exception {
+  @PostMapping("update")
+  public String update(Member member, @RequestParam("file") MultipartFile file) throws Exception {
 
     Member old = memberDao.findBy(member.getNo());
     if (old == null) {
@@ -74,7 +79,7 @@ public class MemberController {
     if (file.getSize() > 0) {
       String filename = UUID.randomUUID().toString();
       member.setPhoto(filename);
-      file.write(this.uploadDir + "/" + filename);
+      file.transferTo(this.uploadDir + "/" + filename);
       new File(this.uploadDir + "/" + old.getPhoto()).delete();
     } else {
       member.setPhoto(old.getPhoto());
@@ -84,7 +89,7 @@ public class MemberController {
     return "redirect:list";
   }
 
-  @RequestMapping("/member/delete")
+  @GetMapping("delete")
   public String delete(@RequestParam("no") int no) throws Exception {
     Member member = memberDao.findBy(no);
     if (member == null) {
