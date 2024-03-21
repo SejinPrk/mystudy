@@ -7,11 +7,10 @@ import bitcamp.util.DBConnectionPool;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -23,11 +22,6 @@ public class MemberDaoImpl implements MemberDao {
   public MemberDaoImpl(DBConnectionPool connectionPool) {
     log.debug("MemberDaoImpl() 호출됨!");
     this.connectionPool = connectionPool;
-    SqlSessionFactory sqlSessionFactory;
-
-    public MemberDaoImpl (DBConnectionPool connectionPool, SqlSessionFactory sqlSessionFactory) {
-
-    }
   }
 
   @Override
@@ -61,8 +55,27 @@ public class MemberDaoImpl implements MemberDao {
 
   @Override
   public List<Member> findAll() {
-    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      return sqlSession.selectList("Mapper1.sql1");
+    try (Connection con = connectionPool.getConnection();
+        PreparedStatement pstmt = con.prepareStatement(
+            "select member_no, email, name, photo, created_date from members");
+        ResultSet rs = pstmt.executeQuery();) {
+
+      ArrayList<Member> list = new ArrayList<>();
+
+      while (rs.next()) {
+        Member member = new Member();
+        member.setNo(rs.getInt("member_no"));
+        member.setEmail(rs.getString("email"));
+        member.setName(rs.getString("name"));
+        member.setPhoto(rs.getString("photo"));
+        member.setCreatedDate(rs.getDate("created_date"));
+
+        list.add(member);
+      }
+      return list;
+
+    } catch (Exception e) {
+      throw new DaoException("데이터 가져오기 오류", e);
     }
   }
 
