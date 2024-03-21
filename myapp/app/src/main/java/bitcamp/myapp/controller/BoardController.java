@@ -123,7 +123,6 @@ public class BoardController {
     if (category == 1) {
       model.addAttribute("files", attachedFileDao.findAllByBoardNo(no));
     }
-    return "/board/view.jsp";
   }
 
   @PostMapping("update")

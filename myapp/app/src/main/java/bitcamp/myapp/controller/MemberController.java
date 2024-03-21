@@ -29,7 +29,7 @@ public class MemberController {
   }
 
   @GetMapping("form")
-  public String form() throws Exception {
+  public void form() throws Exception {
   }
 
   @PostMapping("add")
@@ -44,7 +44,7 @@ public class MemberController {
   }
 
   @GetMapping("list")
-  public String list(Model model) throws Exception {
+  public void list(Model model) throws Exception {
     model.addAttribute("list", memberDao.findAll());
   }
 
