@@ -7,15 +7,14 @@ import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration.Dynamic;
-import org.springframework.web.context.AbstractContextLoaderInitializer;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.DispatcherServlet;
 
-public class AppWebApplicationInitializer2 /* extends AbstractContextLoaderInitializer */ {
-  AnnotationConfigWebApplicationContext rootContext;
+public class AppWebApplicationInitializer2 /*extends AbstractContextLoaderInitializer*/ {
 
+  AnnotationConfigWebApplicationContext rootContext;
 
   protected WebApplicationContext createRootApplicationContext() {
     rootContext = new AnnotationConfigWebApplicationContext();
@@ -24,11 +23,10 @@ public class AppWebApplicationInitializer2 /* extends AbstractContextLoaderIniti
     return rootContext;
   }
 
-
   public void onStartup(ServletContext servletContext) throws ServletException {
     // 수퍼 클래스의 onStartup()에서 ContextLoaderListener를 생성하기 때문에
     // 기존의 기능을 그대로 수행하도록 수퍼 클래스의 메서드를 호출한다.
-   // super.onStartup(servletContext);
+    //super.onStartup(servletContext);
 
     AnnotationConfigWebApplicationContext appContext = new AnnotationConfigWebApplicationContext();
     appContext.register(AppConfig.class);

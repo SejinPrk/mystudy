@@ -7,15 +7,15 @@ import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration.Dynamic;
-import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.DispatcherServlet;
 
-public class AppWebApplicationInitializer1 /* implements WebApplicationInitializer*/ {
+public class AppWebApplicationInitializer1 /*implements WebApplicationInitializer*/ {
 
   public void onStartup(ServletContext servletContext) throws ServletException {
+
     AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
     rootContext.register(RootConfig.class);
     rootContext.refresh();
@@ -48,4 +48,6 @@ public class AppWebApplicationInitializer1 /* implements WebApplicationInitializ
     );
 
   }
+
+
 }

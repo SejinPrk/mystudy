@@ -1,8 +1,6 @@
 package bitcamp.myapp.config;
 
 import java.io.File;
-import java.util.EnumSet;
-import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletContext;
@@ -11,10 +9,10 @@ import javax.servlet.ServletRegistration.Dynamic;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
-import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.support.AbstractDispatcherServletInitializer;
 
 public class AppWebApplicationInitializer extends AbstractDispatcherServletInitializer {
+
   ServletContext servletContext;
   AnnotationConfigWebApplicationContext rootContext;
 
@@ -38,12 +36,14 @@ public class AppWebApplicationInitializer extends AbstractDispatcherServletIniti
 
   @Override
   protected String[] getServletMappings() {
-    return new String[]{"/app"};
+    return new String[]{"/app/*"};
   }
 
   @Override
   protected void customizeRegistration(Dynamic registration) {
-    new File("./temp").getAbsolutePath(),
+    registration.setMultipartConfig(new MultipartConfigElement(
+        new File("./temp").getAbsolutePath(),
+        //new File(System.getProperty("java.io.tmpdir")).getAbsolutePath(),
         1024 * 1024 * 10,
         1024 * 1024 * 100,
         1024 * 1024 * 1
@@ -52,11 +52,12 @@ public class AppWebApplicationInitializer extends AbstractDispatcherServletIniti
 
   @Override
   protected Filter[] getServletFilters() {
-    return new Filter[] { new CharacterEncodingFilter("UTF-8")};
+    return new Filter[]{new CharacterEncodingFilter("UTF-8")};
   }
 
   @Override
   public void onStartup(ServletContext servletContext) throws ServletException {
-    
+    this.servletContext = servletContext;
+    super.onStartup(servletContext);
   }
 }
