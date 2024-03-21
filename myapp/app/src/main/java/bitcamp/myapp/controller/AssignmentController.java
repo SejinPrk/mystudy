@@ -1,19 +1,22 @@
 package bitcamp.myapp.controller;
 
+import bitcamp.myapp.config.RootConfig;
 import bitcamp.myapp.dao.AssignmentDao;
 import bitcamp.myapp.vo.Assignment;
 import java.util.Map;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AssignmentController {
-
+  private final Log log = LogFactory.getLog(RootConfig.class);
   private AssignmentDao assignmentDao;
 
   public AssignmentController(AssignmentDao assignmentDao) {
-    System.out.println("AssignmentController() 호출됨!");
+    log.debug("AssignmentController() 호출됨!");
     this.assignmentDao = assignmentDao;
   }
 

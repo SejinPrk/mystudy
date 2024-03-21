@@ -1,5 +1,6 @@
 package bitcamp.myapp.dao.mysql;
 
+import bitcamp.myapp.config.RootConfig;
 import bitcamp.myapp.dao.AssignmentDao;
 import bitcamp.myapp.dao.DaoException;
 import bitcamp.myapp.vo.Assignment;
@@ -9,15 +10,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class AssignmentDaoImpl implements AssignmentDao {
+  private final Log log = LogFactory.getLog(RootConfig.class);
 
   DBConnectionPool connectionPool;
 
   public AssignmentDaoImpl(DBConnectionPool connectionPool) {
-    System.out.println("AssignmentDaoImpl() 호출됨!");
+    log.debug("AssignmentDaoImpl() 호출됨!");
     this.connectionPool = connectionPool;
   }
 
