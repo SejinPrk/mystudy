@@ -11,7 +11,8 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 public class AppWebApplicationInitializer extends
     AbstractAnnotationConfigDispatcherServletInitializer {
-  private final Log log = LogFactory.getLog(RootConfig.class);
+
+  private final Log log = LogFactory.getLog(this.getClass());
 
   public AppWebApplicationInitializer() {
     log.debug("생성자 호출됨!");
@@ -19,13 +20,13 @@ public class AppWebApplicationInitializer extends
 
   @Override
   protected Class<?>[] getRootConfigClasses() {
-    return new Class[] {RootConfig.class};
+    return new Class[]{RootConfig.class};
   }
 
   @Override
   protected Class<?>[] getServletConfigClasses() {
-    return new Class[] {AppConfig.class};
-}
+    return new Class[]{AppConfig.class};
+  }
 
   @Override
   protected String[] getServletMappings() {
@@ -47,4 +48,5 @@ public class AppWebApplicationInitializer extends
   protected Filter[] getServletFilters() {
     return new Filter[]{new CharacterEncodingFilter("UTF-8")};
   }
+
 }

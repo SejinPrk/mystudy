@@ -1,6 +1,5 @@
 package bitcamp.myapp.dao.mysql;
 
-import bitcamp.myapp.config.RootConfig;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.dao.DaoException;
 import bitcamp.myapp.vo.Board;
@@ -17,8 +16,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class BoardDaoImpl implements BoardDao {
-  private final Log log = LogFactory.getLog(RootConfig.class);
 
+  private final Log log = LogFactory.getLog(this.getClass());
   DBConnectionPool connectionPool;
 
   public BoardDaoImpl(DBConnectionPool connectionPool) {

@@ -1,9 +1,7 @@
 package bitcamp.myapp.controller;
 
-import bitcamp.myapp.config.RootConfig;
 import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.vo.Member;
-import java.util.Map;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -15,13 +13,12 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/auth")
 public class AuthController {
-  private final Log log = LogFactory.getLog(RootConfig.class);
 
+  private final Log log = LogFactory.getLog(this.getClass());
   MemberDao memberDao;
 
   public AuthController(MemberDao memberDao) {

@@ -1,6 +1,5 @@
 package bitcamp.myapp.dao.mysql;
 
-import bitcamp.myapp.config.RootConfig;
 import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.DaoException;
 import bitcamp.myapp.vo.AttachedFile;
@@ -16,8 +15,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class AttachedFileDaoImpl implements AttachedFileDao {
-  private final Log log = LogFactory.getLog(RootConfig.class);
 
+  private final Log log = LogFactory.getLog(this.getClass());
   DBConnectionPool connectionPool;
 
   public AttachedFileDaoImpl(DBConnectionPool connectionPool) {

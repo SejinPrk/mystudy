@@ -1,9 +1,7 @@
 package bitcamp.myapp.controller;
 
-import bitcamp.myapp.config.RootConfig;
 import bitcamp.myapp.dao.AssignmentDao;
 import bitcamp.myapp.vo.Assignment;
-import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -11,12 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/assignment")
 public class AssignmentController {
-  private final Log log = LogFactory.getLog(RootConfig.class);
+
+  private final Log log = LogFactory.getLog(this.getClass());
   private AssignmentDao assignmentDao;
 
   public AssignmentController(AssignmentDao assignmentDao) {
@@ -29,7 +27,7 @@ public class AssignmentController {
     return "/assignment/form.jsp";
   }
 
-  @PostMapping("/assignment/add")
+  @PostMapping("add")
   public String add(Assignment assignment) throws Exception {
     System.out.println(assignment);
     assignmentDao.add(assignment);

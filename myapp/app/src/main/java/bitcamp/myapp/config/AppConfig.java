@@ -11,7 +11,8 @@ import org.springframework.web.multipart.support.StandardServletMultipartResolve
     "bitcamp.myapp.controller"
 })
 public class AppConfig {
-  private final Log log = LogFactory.getLog(RootConfig.class);
+
+  private final Log log = LogFactory.getLog(this.getClass());
 
   public AppConfig() {
     log.debug("생성자 호출됨!");

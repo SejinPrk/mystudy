@@ -1,6 +1,5 @@
 package bitcamp.util;
 
-import bitcamp.myapp.config.RootConfig;
 import java.sql.Connection;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -8,12 +7,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class TransactionManager {
-  private final Log log = LogFactory.getLog(RootConfig.class);
 
+  private final Log log = LogFactory.getLog(this.getClass());
   ConnectionPool connectionPool;
 
   public TransactionManager(ConnectionPool connectionPool) {
-      log.debug("생성자 호출됨!");
+    log.debug("생성자 호출됨!");
     this.connectionPool = connectionPool;
   }
 

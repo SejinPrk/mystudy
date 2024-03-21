@@ -1,6 +1,5 @@
 package bitcamp.util;
 
-import bitcamp.myapp.config.RootConfig;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.ArrayList;
@@ -11,11 +10,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DBConnectionPool implements ConnectionPool {
-  private final Log log = LogFactory.getLog(RootConfig.class);
 
   // 개별 스레드용 DB 커넥션 저장소
   private static final ThreadLocal<Connection> connectionThreadLocal = new ThreadLocal<>();
-
+  private final Log log = LogFactory.getLog(this.getClass());
   // DB 커넥션 목록
   ArrayList<Connection> connections = new ArrayList<>();
 
@@ -48,7 +46,7 @@ public class DBConnectionPool implements ConnectionPool {
         // 스레드풀에도 놀고 있는 Connection 이 없다면,
         // 새로 Connection을 만든다.
         con = new ConnectionProxy(DriverManager.getConnection(jdbcUrl, username, password), this);
-         log.debug(String.format("%s: DB 커넥션 생성\n", Thread.currentThread().getName()));
+        log.debug(String.format("%s: DB 커넥션 생성\n", Thread.currentThread().getName()));
       }
 
       // 현재 스레드에 Connection 을 보관한다.

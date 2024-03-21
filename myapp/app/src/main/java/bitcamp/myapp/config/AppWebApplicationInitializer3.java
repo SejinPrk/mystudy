@@ -9,13 +9,11 @@ import javax.servlet.ServletRegistration.Dynamic;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
-import org.springframework.web.servlet.support.AbstractDispatcherServletInitializer;
 
 public class AppWebApplicationInitializer3 /*extends AbstractDispatcherServletInitializer*/ {
 
   ServletContext servletContext;
   AnnotationConfigWebApplicationContext rootContext;
-
 
   protected WebApplicationContext createRootApplicationContext() {
     rootContext = new AnnotationConfigWebApplicationContext();
@@ -23,7 +21,6 @@ public class AppWebApplicationInitializer3 /*extends AbstractDispatcherServletIn
     rootContext.refresh();
     return rootContext;
   }
-
 
   protected WebApplicationContext createServletApplicationContext() {
     AnnotationConfigWebApplicationContext appContext = new AnnotationConfigWebApplicationContext();
@@ -34,11 +31,9 @@ public class AppWebApplicationInitializer3 /*extends AbstractDispatcherServletIn
     return appContext;
   }
 
-
   protected String[] getServletMappings() {
     return new String[]{"/app/*"};
   }
-
 
   protected void customizeRegistration(Dynamic registration) {
     registration.setMultipartConfig(new MultipartConfigElement(
@@ -50,14 +45,12 @@ public class AppWebApplicationInitializer3 /*extends AbstractDispatcherServletIn
     ));
   }
 
-
   protected Filter[] getServletFilters() {
     return new Filter[]{new CharacterEncodingFilter("UTF-8")};
   }
 
-
   public void onStartup(ServletContext servletContext) throws ServletException {
     this.servletContext = servletContext;
-  //  super.onStartup(servletContext);
+    //super.onStartup(servletContext);
   }
 }
