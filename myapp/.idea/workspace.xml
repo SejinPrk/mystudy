@@ -4,95 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9160b05-d132-42d9-bdad-84098ff3ce04" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../mvc-app/app/src/main/java/bitcamp/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mvc-app/app/src/main/java/bitcamp/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myproject/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myproject/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myproject/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myproject/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myproject/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myproject/myproject.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myproject/src/myproject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mystudy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mystudy.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/doc/data.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/doc/ddl.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/App.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/controller/AboutController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/controller/AuthController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/controller/CategoryController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/controller/HomeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/controller/MemberController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/controller/NotificationController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/controller/PaymentController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/controller/PlatformController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/controller/SubscriptionController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/CategoryDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/DaoException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/MemberDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/NotificationDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/PaymentDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/PlatformDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/SubscriptionDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/CategoryDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/MemberDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/NotificationDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/PaymentDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/PlatformDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/dao/mysql/SubscriptionDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Category.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Member.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Notification.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Payment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Platform.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/myapp/vo/Subscription.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/util/ConnectionPool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/util/ConnectionProxy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/util/DBConnectionPool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/java/app/util/TransactionManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/about.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/auth/form.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/auth/login.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/category/form.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/category/list.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/category/view.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/error.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/footer.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/header.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/home.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/img/default-photo.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/member/form.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/member/list.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/member/view.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/notification/form.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/notification/list.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/notification/view.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/payment/form.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/payment/list.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/payment/view.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/platform/form.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/platform/list.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/platform/view.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/subscription/form.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/subscription/list.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../platform/src/main/webapp/subscription/view.jsp" beforeDir="false" />
-    </list>
+    <list default="true" id="b9160b05-d132-42d9-bdad-84098ff3ce04" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -155,8 +67,8 @@
         <option value="package-info" />
         <option value="Interface" />
         <option value="AnnotationType" />
-        <option value="Class" />
         <option value="Kotlin Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -228,11 +140,11 @@
       <recent name="$PROJECT_DIR$/app/src/main/webapp/image" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="bitcamp.myapp.config" />
       <recent name="bitcamp.myapp.controller" />
       <recent name="bitcamp.util" />
       <recent name="bitcamp.myapp.servlet" />
       <recent name="bitcamp.myapp.controller.member" />
-      <recent name="bitcamp.myapp.controller.board" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.myapp [run]">
@@ -467,6 +379,6 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/myapp$myapp__run_.ic" NAME="myapp [run] Coverage Results" MODIFIED="1708315084742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/myapp$myapp__run_.ic" NAME="myapp [run] Coverage Results" MODIFIED="1710985009201" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
