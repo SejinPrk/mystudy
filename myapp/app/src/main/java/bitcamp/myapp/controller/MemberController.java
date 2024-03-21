@@ -30,7 +30,6 @@ public class MemberController {
 
   @GetMapping("form")
   public String form() throws Exception {
-    return "/member/form.jsp";
   }
 
   @PostMapping("add")
@@ -47,7 +46,6 @@ public class MemberController {
   @GetMapping("list")
   public String list(Model model) throws Exception {
     model.addAttribute("list", memberDao.findAll());
-    return "/member/list.jsp";
   }
 
   @GetMapping("view")
