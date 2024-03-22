@@ -56,9 +56,10 @@
       email,
       name,
       created_date as createdDate
-    from members
+    from
+      members
     where
-      email=#{email}
+      email= #{email}
       and password=sha2(#{password},256)
   </select>
 </mapper>

@@ -11,26 +11,32 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class AttachedFileDaoImpl implements AttachedFileDao {
 
   private final Log log = LogFactory.getLog(this.getClass());
-  SqlSessionFactory sqlSessionFactory;
   DBConnectionPool connectionPool;
 
-  public AttachedFileDaoImpl(SqlSessionFactory sqlSessionFactory) {
+  public AttachedFileDaoImpl(DBConnectionPool connectionPool) {
     log.debug("AttachedFileDaoImpl() 호출됨!");
-    this.sqlSessionFactory = sqlSessionFactory;
+    this.connectionPool = connectionPool;
   }
 
   @Override
   public void add(AttachedFile file) {
-    try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
-      sqlSession.insert("AttachedFileDao.add", file);
+    try (Connection con = connectionPool.getConnection();
+        PreparedStatement pstmt = con.prepareStatement(
+            "insert into board_files(file_path,board_no) values(?,?)")) {
+
+      pstmt.setString(1, file.getFilePath());
+      pstmt.setInt(2, file.getBoardNo());
+
+      pstmt.executeUpdate();
+
+    } catch (Exception e) {
+      throw new DaoException("데이터 입력 오류", e);
     }
   }
 
@@ -38,7 +44,7 @@ public class AttachedFileDaoImpl implements AttachedFileDao {
   public int addAll(List<AttachedFile> files) {
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
-            ")")) {
+            "insert into board_files(file_path,board_no) values(?,?)")) {
 
       for (AttachedFile file : files) {
         pstmt.setString(1, file.getFilePath());

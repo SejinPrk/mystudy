@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -21,29 +21,30 @@
 
   <insert id="add" parameterType="bitcamp.myapp.vo.Board"
     useGeneratedKeys="true" keyColumn="board_no" keyProperty="no">
-    insert into boards(title,content,writer,category)
-    values(#{title},#{content},#{writer},#{category})
+    insert into boards(title,content,writer,category) 
+    values(#{title},#{content},#{writer.no},#{category})
   </insert>
 
   <delete id="delete" parameterType="int">
-    delete from boards where board_no=#{value}
+    delete from boards 
+    where board_no=#{value}
   </delete>
 
   <select id="findAll" resultMap="BoardMap" parameterType="int">
-    select
+    select  
       b.board_no,
-      b.title,
+      b.title,  
       b.created_date,
       count(file_no) file_count,
       m.member_no,
       m.name
     from
-      boards b left outer join board_files bf on b.board_no=bf.board_no
-      inner join members m on b.writer=m.member_no
+      boards b left outer join board_files bf on b.board_no=bf.board_no  
+      inner join members m on b.writer=m.member_no  
     where
       b.category=#{value}
     group by
-      board_no as no
+      board_no  
     order by
       board_no desc
   </select>
@@ -51,13 +52,13 @@
   <select id="findBy" resultMap="BoardMap" parameterType="int">
     select
       b.board_no,
-      b.title,
+      b.title,  
       b.content,
       b.created_date,
-      m.member_no,
-      m.name
+      m.member_no,  
+      m.name  
     from
-      boards b inner join members m on b.writer=m.member_no
+      boards b inner join members m on b.writer=m.member_no  
     where
       board_no=#{value}
   </select>
@@ -69,5 +70,4 @@
     where
       board_no=#{no}
   </update>
-
 </mapper>

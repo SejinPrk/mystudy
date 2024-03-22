@@ -7,7 +7,7 @@
 
   <insert id="add" parameterType="bitcamp.myapp.vo.Assignment">
     insert into assignments(title,content,deadline)
-    values(#{title},#{content},#{deadline})
+    values(#{title}, #{content}, #{deadline})
   </insert>
 
   <delete id="delete" parameterType="int">
