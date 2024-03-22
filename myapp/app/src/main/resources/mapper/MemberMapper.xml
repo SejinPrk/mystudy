@@ -5,7 +5,7 @@
 
 <mapper namespace="MemberDao">
 
-  <resultMap id="MemberMap" type="bitcamp.myapp.vo.Member">
+  <resultMap id="MemberMap" type="Member">
     <id column="member_no" property="no"/>
     <result column="email" property="email"/>
     <result column="name" property="name"/>
@@ -13,7 +13,7 @@
     <result column="created_date" property="createdDate"/>
   </resultMap>
 
-  <insert id="add" parameterType="bitcamp.myapp.vo.Member">
+  <insert id="add" parameterType="Member">
     insert into members(email,name,password,photo)
     values(#{email},#{name},sha2(#{password},256),#{photo})
   </insert>
@@ -46,7 +46,7 @@
       member_no=#{value}
   </select>
 
-  <update id="update" parameterType="bitcamp.myapp.vo.Member">
+  <update id="update" parameterType="Member">
     update members set
       email=#{email},
       name=#{name},
