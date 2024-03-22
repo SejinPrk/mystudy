@@ -5,7 +5,7 @@
 
 <mapper namespace="AssignmentDao">
 
-  <resultMap id="AssignmentMap" type="bitcamp.myapp.vo.Assignment">
+  <resultMap id="AssignmentMap" type="Assignment">
     <id column="assignment_no" property="no"/>
     <result column="title" property="title"/>
     <result column="content" property="content"/>
