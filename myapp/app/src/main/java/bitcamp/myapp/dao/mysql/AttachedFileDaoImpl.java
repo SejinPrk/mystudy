@@ -14,6 +14,7 @@ public class AttachedFileDaoImpl implements AttachedFileDao {
 
   private final Log log = LogFactory.getLog(this.getClass());
   SqlSessionFactory sqlSessionFactory;
+
   public AttachedFileDaoImpl(SqlSessionFactory sqlSessionFactory) {
     log.debug("AttachedFileDaoImpl() 호출됨!");
     this.sqlSessionFactory = sqlSessionFactory;
@@ -50,7 +51,7 @@ public class AttachedFileDaoImpl implements AttachedFileDao {
   @Override
   public List<AttachedFile> findAllByBoardNo(int boardNo) {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      return sqlSession.selectList("AttachedFileDao.findAllByBoardNo");
+      return sqlSession.selectList("AttachedFileDao.findAllByBoardNo", boardNo);
     }
   }
 
