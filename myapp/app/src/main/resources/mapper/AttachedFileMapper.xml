@@ -12,12 +12,12 @@
   </resultMap>
 
   <insert id="add" parameterType="bitcamp.myapp.vo.AttachedFile">
-    insert into board_files(file_path,board_no)
-    values(#{filePath}, #{boardNo})
+    insert into board_files (file_path,board_no)
+    values (#{filePath},#{boardNo})
   </insert>
 
   <insert id="addAll" parameterType="list">
-    insert into board_files(file_path,board_no)
+    insert into board_files (file_path,board_no)
     values
     <foreach collection="list" item="item" separator=",">
       (#{item.filePath}, #{item.boardNo})
@@ -31,7 +31,7 @@
 
   <delete id="deleteAll" parameterType="int">
     delete from board_files
-    where file_no=#{value}
+    where board_no=#{value}
   </delete>
 
   <select id="findAllByBoardNo" resultMap="AttachedFileMap" parameterType="int">
@@ -47,7 +47,7 @@
       file_no asc
   </select>
 
-  <select id="findByNo" resultMap="AttachedFile" parameterType="int">
+  <select id="findByNo" resultMap="AttachedFileMap" parameterType="int">
     select
       file_no,
       file_path,

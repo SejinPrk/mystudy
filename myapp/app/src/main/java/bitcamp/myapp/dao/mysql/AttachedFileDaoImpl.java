@@ -30,7 +30,7 @@ public class AttachedFileDaoImpl implements AttachedFileDao {
   @Override
   public int addAll(List<AttachedFile> files) {
     try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
-      return sqlSession.insert("AttachedFileDao.add", files);
+      return sqlSession.insert("AttachedFileDao.addAll", files);
     }
   }
 
@@ -44,7 +44,7 @@ public class AttachedFileDaoImpl implements AttachedFileDao {
   @Override
   public int deleteAll(int boardNo) {
     try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
-      return sqlSession.delete("AttachedFileDao.delete", boardNo);
+      return sqlSession.delete("AttachedFileDao.deleteAll", boardNo);
     }
   }
 
@@ -58,7 +58,7 @@ public class AttachedFileDaoImpl implements AttachedFileDao {
   @Override
   public AttachedFile findByNo(int no) {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-    return sqlSession.selectOne("AttachedFileDao.findByNo", no);
+      return sqlSession.selectOne("AttachedFileDao.findByNo", no);
     }
   }
 }
