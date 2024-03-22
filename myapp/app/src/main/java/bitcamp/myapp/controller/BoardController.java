@@ -46,7 +46,7 @@ public class BoardController {
     model.addAttribute("category", category);
   }
 
-  @Transactional(rollbackFor = Exception.class)
+  @Transactional
   @PostMapping("add")
   public String add(
       Board board,
@@ -105,6 +105,8 @@ public class BoardController {
     model.addAttribute("board", board);
   }
 
+
+  @Transactional
   @PostMapping("update")
   public String update(
       Board board,
@@ -150,6 +152,7 @@ public class BoardController {
 
   }
 
+  @Transactional
   @GetMapping("delete")
   public String delete(int category, int no, HttpSession session) throws Exception {
 
