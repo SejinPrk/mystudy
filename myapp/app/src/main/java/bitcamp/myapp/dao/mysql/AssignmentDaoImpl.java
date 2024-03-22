@@ -18,7 +18,6 @@ public class AssignmentDaoImpl implements AssignmentDao {
   public AssignmentDaoImpl(SqlSessionFactory sqlSessionFactory) {
     log.debug("AssignmentDaoImpl() 호출됨!");
     this.sqlSessionFactory = sqlSessionFactory;
-
   }
 
   @Override

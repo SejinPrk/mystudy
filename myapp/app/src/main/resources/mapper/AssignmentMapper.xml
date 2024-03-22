@@ -11,11 +11,13 @@
   </insert>
 
   <delete id="delete" parameterType="int">
-    delete from assignments where assignment_no=#{value}
+    delete from assignments
+    where assignment_no=#{value}
   </delete>
 
   <select id="findAll" resultType="bitcamp.myapp.vo.Assignment">
-    select assignment_no as no,
+    select
+      assignment_no as no,
       title,
       deadline
     from
@@ -25,7 +27,11 @@
   </select>
 
   <select id="findBy" resultType="bitcamp.myapp.vo.Assignment" parameterType="int">
-    select *
+    select
+      assignment_no as no,
+      title,
+      content,
+      deadline
     from
       assignments
     where
