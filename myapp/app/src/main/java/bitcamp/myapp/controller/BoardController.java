@@ -41,6 +41,8 @@ public class BoardController {
   public void form(int category, Model model) throws Exception {
     model.addAttribute("boardName", category == 1 ? "게시글" : "가입인사");
     model.addAttribute("category", category);
+
+    AttachedFile f = new AttachedFile();
   }
 
   @PostMapping("add")

@@ -24,6 +24,7 @@ public class AssignmentController {
 
   @GetMapping("form")
   public void form() throws Exception {
+    Assignment a = new Assignment();
   }
 
   @PostMapping("add")
