@@ -25,15 +25,15 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/board")
 public class BoardController {
 
-  private final Log log = LogFactory.getLog(this.getClass());
-  private BoardService boardService;
+  private static final Log log = LogFactory.getLog(BoardController.class);
+  private final BoardService boardService;
+  private final ApplicationContext ctx;
   private String uploadDir;
-  @Autowired
-  private ApplicationContext ctx;
 
-  public BoardController(BoardService boardService, ServletContext sc) {
+  public BoardController(BoardService boardService, ApplicationContext ctx, ServletContext sc) {
     log.debug("BoardController() 호출됨!");
     this.boardService = boardService;
+    this.ctx = ctx;
     this.uploadDir = sc.getRealPath("/upload/board");
   }
 
@@ -41,8 +41,6 @@ public class BoardController {
   public void form(int category, Model model) throws Exception {
     model.addAttribute("boardName", category == 1 ? "게시글" : "가입인사");
     model.addAttribute("category", category);
-
-    AttachedFile f = new AttachedFile();
   }
 
   @PostMapping("add")
