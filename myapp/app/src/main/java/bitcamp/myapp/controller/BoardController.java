@@ -66,7 +66,7 @@ public class BoardController {
         }
         String filename = UUID.randomUUID().toString();
         file.transferTo(new File(this.uploadDir + "/" + filename));
-        files.add(new AttachedFile().filePath(filename));
+        files.add(AttachedFile.builder().filePath(filename).build());
       }
     }
     board.setFiles(files);
@@ -126,7 +126,7 @@ public class BoardController {
         }
         String filename = UUID.randomUUID().toString();
         file.transferTo(new File(this.uploadDir + "/" + filename));
-        files.add(new AttachedFile().filePath(filename));
+        files.add(AttachedFile.builder().filePath(filename).build());
       }
     }
     board.setFiles(files);
