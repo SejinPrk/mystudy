@@ -2,11 +2,9 @@ package bitcamp.myapp.vo;
 
 import java.io.Serializable;
 import java.sql.Date;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Setter
-@Getter
+@Data
 public class Assignment implements Serializable {
 
   private static final long serialVersionUID = 100L;
