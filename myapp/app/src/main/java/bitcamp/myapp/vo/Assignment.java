@@ -5,7 +5,8 @@ import java.sql.Date;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter
+@Setter
+@Getter
 public class Assignment implements Serializable {
 
   private static final long serialVersionUID = 100L;
