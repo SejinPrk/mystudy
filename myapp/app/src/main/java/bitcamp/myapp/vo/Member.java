@@ -5,7 +5,6 @@ import java.util.Date;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
 @Data
 public class Member implements Serializable {
 
