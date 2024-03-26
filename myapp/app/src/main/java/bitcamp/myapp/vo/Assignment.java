@@ -3,12 +3,6 @@ package bitcamp.myapp.vo;
 import java.io.Serializable;
 import java.sql.Date;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 @Data // = @Getter + @Setter + @ToString + @EqualsAndHashCode + @RequiredArgsConstructor
 public class Assignment implements Serializable {
