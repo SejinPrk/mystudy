@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 public class Board implements Serializable {
 
   private static final long serialVersionUID = 100L;
+
   private int category;
   private int no;
   private String title;
@@ -19,4 +20,5 @@ public class Board implements Serializable {
   private Date createdDate;
   private List<AttachedFile> files;
   private int fileCount;
+
 }
