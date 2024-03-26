@@ -9,8 +9,10 @@ import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.thymeleaf.spring5.ISpringTemplateEngine;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
@@ -28,10 +30,22 @@ public class AppConfig {
     return new StandardServletMultipartResolver();
   }
 
-  @Bean
+  //@Bean
   public ViewResolver viewResolver() {
-
-    return new InternalResourceViewResolver("/WEB-INF/jsp/", ".jsp");
+    InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+    viewResolver.setPrefix("/WEB-INF/jsp/");
+    viewResolver.setSuffix(".jsp");
+    viewResolver.setOrder(1);
+    return viewResolver;
+  }
+  @Bean
+  public ThymeleafViewResolver viewResolver(ISpringTemplateEngine springTemplateEngine){
+    ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
+    viewResolver.setTemplateEngine(springTemplateEngine);
+  //  viewResolver.setViewNames(new String[] {"*.html", "*.xhtml"});
+    viewResolver.setCharacterEncoding("UTF-8");
+    viewResolver.setOrder(1);
+    return viewResolver;
   }
 
   @Bean
