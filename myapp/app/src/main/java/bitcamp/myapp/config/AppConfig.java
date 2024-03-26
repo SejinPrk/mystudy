@@ -38,18 +38,19 @@ public class AppConfig {
     viewResolver.setOrder(1);
     return viewResolver;
   }
+
   @Bean
-  public ThymeleafViewResolver viewResolver(ISpringTemplateEngine springTemplateEngine){
+  public ThymeleafViewResolver viewResolver(ISpringTemplateEngine springTemplateEngine) {
     ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
     viewResolver.setTemplateEngine(springTemplateEngine);
-  //  viewResolver.setViewNames(new String[] {"*.html", "*.xhtml"});
+    //viewResolver.setViewNames(new String[]{"*.html", "*.xhtml"});
     viewResolver.setCharacterEncoding("UTF-8");
     viewResolver.setOrder(1);
     return viewResolver;
   }
 
   @Bean
-  public SpringResourceTemplateResolver templateResolver(ApplicationContext applicationContext){
+  public SpringResourceTemplateResolver templateResolver(ApplicationContext applicationContext) {
     SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
     templateResolver.setApplicationContext(applicationContext);
     templateResolver.setPrefix("/WEB-INF/templates/");
@@ -60,7 +61,7 @@ public class AppConfig {
   }
 
   @Bean
-  public SpringTemplateEngine templateEngine(ITemplateResolver templateResolver){
+  public SpringTemplateEngine templateEngine(ITemplateResolver templateResolver) {
     SpringTemplateEngine templateEngine = new SpringTemplateEngine();
     templateEngine.setTemplateResolver(templateResolver);
     templateEngine.setEnableSpringELCompiler(true);
