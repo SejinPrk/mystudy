@@ -6,6 +6,11 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.CannedAccessControlList;
+import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.amazonaws.services.s3.model.PutObjectRequest;
+import java.io.InputStream;
+import java.util.UUID;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.InitializingBean;
@@ -17,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class NcpStorageService implements StorageService, InitializingBean {
 
   private static Log log = LogFactory.getLog(NcpStorageService.class);
+
   final String endPoint;
   final String regionName;
   final String accessKey;
@@ -25,9 +31,10 @@ public class NcpStorageService implements StorageService, InitializingBean {
 
   public NcpStorageService(
       @Value("${ncp.ss.endpoint}") String endPoint,
-      @Value("${ncp.ss.regionname}") String regionName ,
-      @Value("${ncp.ss.accesskey}") String accessKey,
-      @Value("${ncp.ss.secretkey}") String secretKey) {
+      @Value("${ncp.ss.regionname}") String regionName,
+      @Value("${ncp.accesskey}") String accessKey,
+      @Value("${ncp.secretkey}") String secretKey) {
+
     this.endPoint = endPoint;
     this.regionName = regionName;
     this.accessKey = accessKey;
@@ -49,7 +56,32 @@ public class NcpStorageService implements StorageService, InitializingBean {
   }
 
   @Override
-  public String upload(MultipartFile multipartFile) throws Exception {
-    return null;
+  public String upload(String bucketName, String path, MultipartFile multipartFile)
+      throws Exception {
+
+    try (InputStream fileIn = multipartFile.getInputStream()) {
+
+      String filename = UUID.randomUUID().toString();
+      String objectName = path + filename;
+
+      // 서버에 업로드할 파일의 정보를 준비
+      ObjectMetadata objectMetadata = new ObjectMetadata();
+      objectMetadata.setContentType(multipartFile.getContentType());
+
+      // 서버에 업로드 요청 정보 생성
+      PutObjectRequest putObjectRequest = new PutObjectRequest(
+          bucketName,
+          objectName,
+          fileIn,
+          objectMetadata
+      ).withCannedAcl(CannedAccessControlList.PublicRead);
+
+      // 서버에 업로드 실행
+      s3.putObject(putObjectRequest);
+
+      log.debug(String.format("Object %s has been created.\n", objectName));
+
+      return filename;
+    }
   }
 }
