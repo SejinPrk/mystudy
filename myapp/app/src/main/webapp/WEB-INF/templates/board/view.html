@@ -27,16 +27,15 @@
   <div data-th-if="${category == 1}">
       첨부파일: <input multiple="multiple" name="attachedFiles" type="file">
       <ul>
-        <li data-th-each="file : *{files}" data-th-if="${file.filePath != null}">
-          <a data-th-href="@{/upload/board/{filePath}(filePath=*{filePath})}" data-th-text="*{filePath}"></a>
-          [<a data-th-href="@{/app/board/file/delete(category=${category},no=*{no})}">삭제</a>]
-        </li>
+        <li data-th-each="file : *{files}" data-th-object="${file}">
+          <a data-th-href="@{'/upload/board/' + *{filePath}}" href="file.html" data-th-text="*{filePath}"></a>
+          [<a data-th-href="@{file/delete(category=${category},no=*{no})}" href="file-delete.html">삭제</a>]</li>
       </ul>
   </div>
 
   <div>
     <button>변경</button>
-    <a href='/app/board/delete?category=${category}&no=${board.no}'>[삭제]</a>
+    <a href="@{delete(category=${category},no=*{no})}">[삭제]</a>
   </div>
 </form>
 
