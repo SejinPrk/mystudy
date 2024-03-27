@@ -9,7 +9,7 @@
 <div data-th-replace="header :: header">머리말</div>
 
 <h1>회원</h1>
-<form action='/app/member/update' method='post' enctype='multipart/form-data' data-th-object="${member}">
+<form action="update" data-th-action="@{update}" method='post' enctype='multipart/form-data' data-th-object="${member}">
 <div>
     사진:
   <div data-th-if="*{photo}" data-th-href="@{'/upload/' + *{photo}}">
