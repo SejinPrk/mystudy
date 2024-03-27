@@ -7,6 +7,7 @@ public class Main {
   static Long[][] dp;
   static int N;
   final static long MOD = 1000000000;
+
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     N = sc.nextInt();
@@ -38,6 +39,6 @@ public class Main {
         dp[d][val] = recur(d-1, val-1) + recur(d-1, val + 1);
       }
     }
-    return dp[d][val];
+    return dp[d][val] % MOD;
   }
 }
