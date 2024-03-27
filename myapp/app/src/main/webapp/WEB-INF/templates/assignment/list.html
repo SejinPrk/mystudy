@@ -21,9 +21,13 @@
   </thead>
   <tbody>
   <tr data-th-each="assignment : ${list}">
-      <td data-th-text="${assignment.no}"></td>
-      <td><a href='/app/assignment/view?no=${assignment.no}' data-th-text="${assignment.title}"></a></td>
-      <td data-th-text="${assignment.deadline}"></td>
+      <td data-th-text="${assignment.no}">101</td>
+      <td><a data-th-if="@{/app/assignment/view?(no=${assignment.no})}"
+          data-th-text="${assignment.title}"
+          href="view.html">자바 조건문
+        만들기</a>
+      </td>
+      <td data-th-text="${assignment.deadline}">2024-03-27</td>
   </tr>
   </tbody>
 </table>
