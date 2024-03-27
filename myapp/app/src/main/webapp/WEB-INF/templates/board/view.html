@@ -28,8 +28,9 @@
       첨부파일: <input multiple="multiple" name="attachedFiles" type="file">
       <ul>
         <li data-th-each="file : *{files}" data-th-object="${file}">
-          <a data-th-href="@{'/upload/board/' + *{filePath}}" href="file.html" data-th-text="*{filePath}"></a>
-          [<a data-th-href="@{file/delete(category=${category},no=*{no})}" href="file-delete.html">삭제</a>]</li>
+          <a data-th-href="@{'/upload/board/' + *{filePath}}" data-th-text="*{filePath}"
+             href="file.html">a.gif</a>
+          [<a data-th-href="@{file/delete(category=${category},no=*{no})}" href="file-delete.html">삭제</a>]'</li>
       </ul>
   </div>
 

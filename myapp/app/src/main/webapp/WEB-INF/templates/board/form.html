@@ -8,7 +8,7 @@
 
 <div data-th-replace="header :: header">머리말</div>
 
-<h1>${boardName}</h1>
+<h1 data-th-text="${boardName}">게시글</h1>
 
 <form data-th-action="@{add}" action="add" method='post' enctype='multipart/form-data'>
   <input name='category' type='hidden' data-th-value="${category}">
