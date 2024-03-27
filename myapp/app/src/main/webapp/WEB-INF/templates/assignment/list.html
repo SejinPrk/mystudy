@@ -13,18 +13,18 @@
 <a href='/app/assignment/form'>새 과제</a>
 <table border='1'>
   <thead>
-    <tr> <th>번호</th> <th>과제</th> <th>제출마감일</th> </tr>
+    <tr>
+      <th>번호</th>
+      <th>과제</th>
+      <th>제출마감일</th>
+    </tr>
   </thead>
   <tbody>
-
-<c:forEach items="${list}" var="assignment">
-    <tr>
-      <td>${assignment.no}</td>
-      <td><a href='/app/assignment/view?no=${assignment.no}'>${assignment.title}</a></td>
-      <td>${assignment.deadline}</td>
-    </tr>
-</c:forEach>
-
+  <tr data-th-each="assignment : ${list}">
+      <td data-th-text="${assignment.no}"></td>
+      <td><a href='/app/assignment/view?no=${assignment.no}' data-th-text="${assignment.title}"></a></td>
+      <td data-th-text="${assignment.deadline}"></td>
+  </tr>
   </tbody>
 </table>
 
