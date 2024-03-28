@@ -68,6 +68,10 @@ public class NcpStorageService implements StorageService, InitializingBean {
       ObjectMetadata objectMetadata = new ObjectMetadata();
       objectMetadata.setContentType(multipartFile.getContentType());
 
+      log.info(String.format("%s(%s)",
+          multipartFile.getOriginalFilename(),
+          multipartFile.getContentType()));
+
       // 서버에 업로드 요청 정보 생성
       PutObjectRequest putObjectRequest = new PutObjectRequest(
           bucketName,
@@ -86,8 +90,9 @@ public class NcpStorageService implements StorageService, InitializingBean {
   }
 
   @Override
-  public void delete(String bucketName, String Path, String objectName) throws Exception {
-    s3.deleteObject(bucketName, Path + objectName);
+  public void delete(String bucketName, String path, String objectName) throws Exception {
+    s3.deleteObject(bucketName, path + objectName);
+    
     log.debug(String.format("Object %s has been deleted.\n", objectName));
   }
 }

@@ -17,6 +17,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+@Configuration
 @EnableTransactionManagement
 @MapperScan("bitcamp.myapp.dao")
 @ComponentScan({"bitcamp.myapp.dao", "bitcamp.myapp.service"})
