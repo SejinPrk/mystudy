@@ -32,29 +32,4 @@ public class RootConfig {
   public RootConfig() {
     log.debug("생성자 호출됨!");
   }
-
-  @Bean
-  public PlatformTransactionManager transactionManager(DataSource dataSource) {
-    return new DataSourceTransactionManager(dataSource);
-  }
-
-  @Bean
-  public DataSource dataSource(
-      @Value("${jdbc.url}") String url,
-      @Value("${jdbc.username}") String username,
-      @Value("${jdbc.password}") String password) {
-    return new DriverManagerDataSource(url, username, password);
-  }
-
-  @Bean
-
-  public SqlSessionFactory sqlSessionFactory(ApplicationContext ctx, DataSource dataSource)
-      throws Exception {
-    SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
-    sqlSessionFactoryBean.setTypeAliasesPackage("bitcamp.myapp.vo");
-    sqlSessionFactoryBean.setMapperLocations(ctx.getResources("classpath:mapper/*Mapper.xml"));
-    sqlSessionFactoryBean.setDataSource(dataSource);
-
-    return sqlSessionFactoryBean.getObject();
-  }
 }
