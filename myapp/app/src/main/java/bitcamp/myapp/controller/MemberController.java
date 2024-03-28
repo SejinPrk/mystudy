@@ -3,8 +3,6 @@ package bitcamp.myapp.controller;
 import bitcamp.myapp.service.MemberService;
 import bitcamp.myapp.service.StorageService;
 import bitcamp.myapp.vo.Member;
-import java.io.File;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
