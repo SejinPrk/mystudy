@@ -19,8 +19,8 @@ public class DefaultMemberService implements MemberService {
   }
 
   @Override
-  public List<Member> list() {
-    return memberDao.findAll();
+  public List<Member> list(int pageNo, int pageSize) {
+    return memberDao.findAll(pageSize * (pageNo - 1), pageSize);
   }
 
   @Override
@@ -42,4 +42,7 @@ public class DefaultMemberService implements MemberService {
   public int delete(int no) {
     return memberDao.delete(no);
   }
+
+  @Override
+  public int countAll() { return memberDao.countAll();}
 }

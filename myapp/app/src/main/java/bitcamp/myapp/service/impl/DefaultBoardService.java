@@ -31,7 +31,7 @@ public class DefaultBoardService implements BoardService {
 
   @Override
   public List<Board> list(int category, int pageNo, int pageSize) {
-    return boardDao.findAll(category, pageSize * (pageNo-1), pageSize);
+    return boardDao.findAll(category, pageSize * (pageNo - 1), pageSize);
   }
 
   @Override
