@@ -44,5 +44,7 @@ public class DefaultMemberService implements MemberService {
   }
 
   @Override
-  public int countAll() { return memberDao.countAll();}
+  public int countAll() {
+    return memberDao.countAll();
+  }
 }

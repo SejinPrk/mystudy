@@ -39,5 +39,7 @@ public class DefaultAssignmentService implements AssignmentService {
   }
 
   @Override
-  public int countAll() { return assignmentDao.countAll();}
+  public int countAll() {
+    return assignmentDao.countAll();
+  }
 }

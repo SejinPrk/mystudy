@@ -72,6 +72,7 @@ public class MemberController implements InitializingBean {
     if (pageNo > numOfPage) {
       pageNo = numOfPage;
     }
+
     model.addAttribute("list", memberService.list(pageNo, pageSize));
     model.addAttribute("pageNo", pageNo);
     model.addAttribute("pageSize", pageSize);
