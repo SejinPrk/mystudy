@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <title>비트캠프 데브옵스 5기</title>
+</head>
+<body>
+
+<header data-th-fragment="header">
+  <img src='https://images.unsplash.com/photo-1621360841013-c7683c659ec6?q=80&w=2664&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'>
+  <a data-th-href="@{/platform/list}" href="platform/list">플랫폼</a>
+  <a data-th-href="@{/category/list}" href="category/list">분류</a>
+  <a data-th-href="@{/member/list}" href="member/list">회원</a>
+  <a data-th-href="@{/notification/list}" href="notification/list">알림</a>
+  <a data-th-href="@{/payment/list}" href="payment/list">결제내역</a>
+  <a data-th-href="@{/subscription/list}" href="subscription/list">구독내역</a>
+
+  <span data-th-if="${session.loginUser != null}"
+        data-th-text="${session.loginUser.name}">홍길동</span>
+  <a data-th-if="${session.loginUser != null}" data-th-href="@{/auth/logout}" href="auth/logout">로그아웃</a>
+
+  <a data-th-if="${session.loginUser == null}" data-th-href="@{/auth/form}" href="auth/form">로그인</a>
+
+  <a data-th-href="@{/about}" href="about">소개</a>
+</header>
+
+</body>
+</html>
