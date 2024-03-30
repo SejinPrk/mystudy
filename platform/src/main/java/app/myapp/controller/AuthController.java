@@ -2,37 +2,37 @@ package app.myapp.controller;
 
 import app.myapp.dao.MemberDao;
 import app.myapp.vo.Member;
-import java.util.Map;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+@RequiredArgsConstructor
 @Controller
+@RequestMapping("/auth")
 public class AuthController {
 
-  MemberDao memberDao;
+  private static final Log log = LogFactory.getLog(AuthController.class);
+  private final MemberService memberService;
 
-  public AuthController(MemberDao memberDao) {
-    System.out.println("AuthController() 호출됨!");
-    this.memberDao = memberDao;
+  @GetMapping("form")
+  public void form(@CookieValue(required = false) String email, Model model) {
+    model.addAttribute("email", email);
   }
 
-  @RequestMapping("/auth/form")
-  public String form(@CookieValue(value="email", required = false) String email,
-      Map<String, Object> map) {
-    map.put("email", email);
-    return "/auth/form.jsp";
-  }
-
-  @RequestMapping("/auth/login")
+  @PostMapping("login")
   public String login(
-      @RequestParam("email") String email,
-      @RequestParam("password") String password,
-      @RequestParam(value="saveEmail", required = false) String saveEmail,
+      String email,
+      String password,
+      String saveEmail,
       HttpServletResponse response,
       HttpSession session) throws Exception {
 
@@ -46,16 +46,18 @@ public class AuthController {
       response.addCookie(cookie);
     }
 
-    Member member = memberDao.findByEmailAndPassword(email, password);
+    Member member = memberService.get(email, password);
     if (member != null) {
       session.setAttribute("loginUser", member);
     }
-    return "/auth/login.jsp";
+
+    return "auth/login";
   }
 
-  @RequestMapping("/auth/logout")
+  @GetMapping("logout")
   public String logout(HttpSession session) throws Exception {
     session.invalidate();
     return "redirect:/index.html";
   }
 }
+
