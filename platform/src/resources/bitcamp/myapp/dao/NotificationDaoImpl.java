@@ -1,7 +1,6 @@
 package app.myapp.dao.mysql;
 
 import app.myapp.dao.NotificationDao;
-import app.myapp.dao.DaoException;
 import app.myapp.vo.Notification;
 import app.util.DBConnectionPool;
 import java.sql.Connection;

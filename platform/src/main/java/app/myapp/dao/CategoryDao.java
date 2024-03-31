@@ -2,15 +2,22 @@ package app.myapp.dao;
 
 import app.myapp.vo.Category;
 import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface CategoryDao {
-  public void add(Category category);
+  void add(Category category);
 
-  public int delete(int no);
+  int delete(int no);
 
-  public List<Category> findAll();
+  List<Category> findAll(
+      @Param("offset") int offset,
+      @Param("rowCount") int rowCount);
 
-  public Category findBy(int no);
+  Category findBy(int no);
 
-  public int update(Category category);
+  int update(Category category);
+
+  int countAll();
 }

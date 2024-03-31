@@ -1,7 +1,6 @@
 package app.myapp.dao.mysql;
 
 import app.myapp.dao.PlatformDao;
-import app.myapp.dao.DaoException;
 import app.myapp.vo.Platform;
 import app.util.DBConnectionPool;
 import java.sql.Connection;

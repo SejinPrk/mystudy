@@ -1,9 +1,7 @@
 package app.myapp.dao.mysql;
 
-import app.myapp.dao.DaoException;
 import app.myapp.dao.SubscriptionDao;
 import app.myapp.vo.Subscription;
-import app.util.DBConnectionPool;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +12,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class SubscriptionDaoImpl implements SubscriptionDao {
 
-  DBConnectionPool connectionPool;
 
   public SubscriptionDaoImpl(DBConnectionPool connectionPool) {
     this.connectionPool = connectionPool;

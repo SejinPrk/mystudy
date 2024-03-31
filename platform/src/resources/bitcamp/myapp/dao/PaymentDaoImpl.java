@@ -1,8 +1,7 @@
 package app.myapp.dao.mysql;
 
-import app.myapp.dao.CategoryDao;
-import app.myapp.dao.DaoException;
-import app.myapp.vo.Category;
+import app.myapp.dao.PaymentDao;
+import app.myapp.vo.Payment;
 import app.util.DBConnectionPool;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,17 +11,22 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CategoryDaoImpl implements CategoryDao {
+public class PaymentDaoImpl implements PaymentDao {
+
   DBConnectionPool connectionPool;
 
-  public CategoryDaoImpl(DBConnectionPool connectionPool) { this.connectionPool = connectionPool;}
+  public PaymentDaoImpl(DBConnectionPool connectionPool) {
+    this.connectionPool = connectionPool;
+  }
 
   @Override
-  public void add(Category category) {
+  public void add(Payment payment) {
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
-            "insert into category(name) values(?)")) {
-      pstmt.setString(1, category.getName());
+            "insert into payments(start,end,amount) values(?,?,?)")){
+      pstmt.setDate(1, payment.getStart());
+      pstmt.setDate(2, payment.getEnd());
+      pstmt.setInt(3, payment.getAmount());
       pstmt.executeUpdate();
 
     } catch (Exception e) {
@@ -34,7 +38,7 @@ public class CategoryDaoImpl implements CategoryDao {
   public int delete(int no) {
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
-            "delete from category where category_no=?")) {
+            "delete from payments where payment_no=?")) {
       pstmt.setInt(1, no);
       return pstmt.executeUpdate();
 
@@ -44,20 +48,22 @@ public class CategoryDaoImpl implements CategoryDao {
   }
 
   @Override
-  public List<Category> findAll() {
+  public List<Payment> findAll() {
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
-            "select category_no, name from category");
-        ResultSet rs = pstmt.executeQuery()) {
+            "select payment_no, start, end, amount from payments");
+      ResultSet rs = pstmt.executeQuery()) {
 
-      ArrayList<Category> list = new ArrayList<>();
+      ArrayList<Payment> list = new ArrayList<>();
 
       while (rs.next()) {
-        Category category = new Category();
-        category.setNo(rs.getInt("category_no"));
-        category.setName(rs.getString("name"));
+        Payment payment = new Payment();
+        payment.setNo(rs.getInt("payment_no"));
+        payment.setStart(rs.getDate("start"));
+        payment.setEnd(rs.getDate("end"));
+        payment.setAmount(rs.getInt("amount"));
 
-        list.add(category);
+        list.add(payment);
       }
       return list;
 
@@ -67,19 +73,21 @@ public class CategoryDaoImpl implements CategoryDao {
   }
 
   @Override
-  public Category findBy(int no) {
+  public Payment findBy(int no) {
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
-            "select category_no, name from category where category_no=?")){
+            "select payment_no, start, end, amount from payments where payment_no=?")){
       pstmt.setInt(1, no);
 
       try(ResultSet rs = pstmt.executeQuery()) {
 
         if (rs.next()) {
-          Category category = new Category();
-          category.setNo(rs.getInt("category_no"));
-          category.setName(rs.getString("name"));
-          return category;
+          Payment payment = new Payment();
+          payment.setNo(rs.getInt("payment_no"));
+          payment.setStart(rs.getDate("start"));
+          payment.setEnd(rs.getDate("end"));
+          payment.setAmount(rs.getInt("amount"));
+          return payment;
         }
         return null;
       }
@@ -90,12 +98,14 @@ public class CategoryDaoImpl implements CategoryDao {
   }
 
   @Override
-  public int update(Category category) {
+  public int update(Payment payment) {
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
-            "update category set name=? where category_no=?")){
-      pstmt.setString(1, category.getName());
-      pstmt.setInt(2, category.getNo());
+            "update payments set start=?, end=?, amount=? where payment_no=?")){
+      pstmt.setDate(1, payment.getStart());
+      pstmt.setDate(2, payment.getEnd());
+      pstmt.setInt(3, payment.getAmount());
+      pstmt.setInt(4, payment.getNo());
 
       return pstmt.executeUpdate();
 

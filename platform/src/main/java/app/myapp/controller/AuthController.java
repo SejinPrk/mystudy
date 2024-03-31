@@ -1,10 +1,11 @@
 package app.myapp.controller;
 
-import app.myapp.dao.MemberDao;
+import app.myapp.service.MemberService;
 import app.myapp.vo.Member;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;

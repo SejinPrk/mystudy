@@ -2,18 +2,28 @@ package app.myapp.dao;
 
 import app.myapp.vo.Member;
 import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface MemberDao {
 
-  public void add(Member member);
+  void add(Member member);
 
-  public int delete(int no);
+  int delete(int no);
 
-  public List<Member> findAll();
+  List<Member> findAll(
+      @Param("offset") int offset,
+      @Param("rowCount") int rowCount
+  );
 
-  public Member findBy(int no);
+  Member findBy(int no);
 
-  public int update(Member member);
+  int update(Member member);
 
-  public Member findByEmailAndPassword(String email, String password);
+  Member findByEmailAndPassword(
+      @Param("email") String email,
+      @Param("password") String password);
+
+  int countAll();
 }

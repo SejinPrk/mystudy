@@ -1,98 +1,132 @@
 package app.myapp.controller;
 
 import app.myapp.dao.MemberDao;
+import app.myapp.service.StorageService;
 import app.myapp.vo.Member;
 import java.io.File;
 import java.util.Map;
 import java.util.UUID;
 import javax.servlet.ServletContext;
 import javax.servlet.http.Part;
+import lombok.RequiredArgsConstructor;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+@RequiredArgsConstructor
 @Controller
-public class MemberController {
+@RequestMapping("/member")
+public class MemberController implements InitializingBean {
+
+  private static final Log log = LogFactory.getLog(MemberController.class);
 
   private MemberDao memberDao;
+  private final StorageService storageService;
   private String uploadDir;
 
-  public MemberController(MemberDao memberDao, ServletContext sc) {
-    System.out.println("MemberController() 호출됨!");
-    this.memberDao = memberDao;
-    this.uploadDir = sc.getRealPath("/upload");
+  @Value("${ncp.ss.bucketname}")
+  private String bucketName;
+
+  @Override
+  public void afterPropertiesSet() throws Exception {
+    this.uploadDir = "member/";
+
+    log.debug(String.format("uploadDir: %s", this.uploadDir));
+    log.debug(String.format("bucketname: %s", this.bucketName));
   }
 
-  @RequestMapping("/member/form")
-  public String form() throws Exception {
-    return "/member/form.jsp";
+  @GetMapping("form")
+  public void form() throws Exception {
   }
 
-  @RequestMapping("/member/add")
-  public String add(Member member, @RequestParam("file") Part file) throws Exception {
+  @PostMapping("add")
+  public String add(Member member, MultipartFile file) throws Exception {
     if (file.getSize() > 0) {
-      String filename = UUID.randomUUID().toString();
+      String filename = storageService.upload(this.bucketName, this.uploadDir, file);
       member.setPhoto(filename);
-      file.write(this.uploadDir + "/" + filename);
     }
-    memberDao.add(member);
+    memberService.add(member);
     return "redirect:list";
   }
 
-  @RequestMapping("/member/list")
-  public String list(Map<String, Object> map) throws Exception {
-    map.put("list", memberDao.findAll());
-    return "/member/list.jsp";
+  @GetMapping("list")
+  public void list(
+      @RequestParam(defaultValue = "1") int pageNo,
+      @RequestParam(defaultValue = "3") int pageSize,
+      Model model) throws Exception {
+
+    if (pageSize < 3 || pageSize > 20) {
+      pageSize = 3;
+    }
+
+    if (pageNo < 1) {
+      pageNo = 1;
+    }
+
+    int numOfRecord = memberService.countAll();
+    int numOfPage = numOfRecord / pageSize + ((numOfRecord % pageSize) > 0 ? 1 : 0);
+
+    if (pageNo > numOfPage) {
+      pageNo = numOfPage;
+    }
+
+    model.addAttribute("list", memberService.list(pageNo, pageSize));
+    model.addAttribute("pageNo", pageNo);
+    model.addAttribute("pageSize", pageSize);
+    model.addAttribute("numOfPage", numOfPage);
   }
 
-  @RequestMapping("/member/view")
-  public String view(
-      @RequestParam("no") int no,
-      Map<String, Object> map) throws Exception {
-
-    Member member = memberDao.findBy(no);
+  @GetMapping("view")
+  public void view(int no, Model model) throws Exception {
+    Member member = memberService.get(no);
     if (member == null) {
       throw new Exception("회원 번호가 유효하지 않습니다.");
     }
-    map.put("member", member);
-    return "/member/view.jsp";
+    model.addAttribute("member", member);
   }
 
-  @RequestMapping("/member/update")
-  public String update(Member member, @RequestParam("file") Part file) throws Exception {
+  @PostMapping("update")
+  public String update(Member member, MultipartFile file) throws Exception {
 
-    Member old = memberDao.findBy(member.getNo());
+    Member old = memberService.get(member.getNo());
     if (old == null) {
       throw new Exception("회원 번호가 유효하지 않습니다.");
     }
     member.setCreatedDate(old.getCreatedDate());
 
     if (file.getSize() > 0) {
-      String filename = UUID.randomUUID().toString();
+      String filename = storageService.upload(this.bucketName, this.uploadDir, file);
       member.setPhoto(filename);
-      file.write(this.uploadDir + "/" + filename);
-      new File(this.uploadDir + "/" + old.getPhoto()).delete();
+      storageService.delete(this.bucketName, this.uploadDir, old.getPhoto());
     } else {
       member.setPhoto(old.getPhoto());
     }
 
-    memberDao.update(member);
+    memberService.update(member);
     return "redirect:list";
   }
 
-  @RequestMapping("/member/delete")
-  public String delete(@RequestParam("no") int no) throws Exception {
-    Member member = memberDao.findBy(no);
+  @GetMapping("delete")
+  public String delete(int no) throws Exception {
+    Member member = memberService.get(no);
     if (member == null) {
       throw new Exception("회원 번호가 유효하지 않습니다.");
     }
 
-    memberDao.delete(no);
+    memberService.delete(no);
+
     String filename = member.getPhoto();
     if (filename != null) {
-      new File(this.uploadDir + "/" + filename).delete();
+      storageService.delete(this.bucketName, this.uploadDir, member.getPhoto());
     }
     return "redirect:list";
   }
 }
-
