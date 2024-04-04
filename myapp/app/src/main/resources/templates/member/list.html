@@ -21,10 +21,10 @@
   </thead>
   <tbody>
   <tr data-th-each="member : ${list}" data-th-object="${member}">
-    <td data-th-data="*{no}">100</td>
+    <td data-th-text="*{no}">100</td>
     <td>
       <img data-th-if="*{photo}"
-           data-th-src="@{'https://vci7dhgi2678.edge.naverncp.com/41bB3D1k0G/member/' + *{photo}(type=f,w=80,h=80,align=4,ttype=jpg)}"
+           data-th-src="@{'https://rljiyddk2675.edge.naverncp.com/68i0l8DhXa/member/' + *{photo}(type=f,w=20,h=20,ttype=jpg)}"
            src="/img/default-photo.jpeg">
       <img data-th-unless="*{photo}" height='20px' src='/img/default-photo.jpeg'>
       <a data-th-href="@{view(no=*{no})}" data-th-text="*{name}" href="view.html">홍길동</a></td>
@@ -36,15 +36,15 @@
 
 <p>
   [
-  <a data-th-if="${pageNo} <= 1">이전</a>
-  <a data-th-if="${pageNo > 1}"
-     data-th-href="@{list(category=${category},pageNo=${pageNo - 1},pageSize=${pageSize})}"
+  <a data-th-if="${pageNo <= 1}">이전</a>
+  <a data-th-href="@{list(category=${category},pageNo=${pageNo - 1},pageSize=${pageSize})}"
+     data-th-if="${pageNo > 1}"
      href="list">이전</a>
   ]
   [
   <a data-th-if="${pageNo >= numOfPage}">다음</a>
-  <a data-th-if="${pageNo < numOfPage}"
-     data-th-href="@{list(category=${category},pageNo=${pageNo + 1},pageSize=${pageSize})}"
+  <a data-th-href="@{list(category=${category},pageNo=${pageNo + 1},pageSize=${pageSize})}"
+     data-th-if="${pageNo < numOfPage}"
      href="list">다음</a>
   ]
 </p>
