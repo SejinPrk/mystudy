@@ -13,11 +13,20 @@
 <script>
   "use strict"
 
-  console.log(f1(100, 200));
+  function Student(sname, age) {
+    this.sname = sname;
+    this.age = age;
+   }
 
-  let f1 = function(a,b) {
-    return a + b;
+  Student.prototype.print = function() {
+    console.log(this.sname, this.age);
   };
+
+  let s1 = new Student("홍길동", 20);
+  let s2 = new Student("임꺽정", 30);
+
+  s1.print();
+  s2.print();
 
 </script>
 
