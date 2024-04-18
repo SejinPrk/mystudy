@@ -21,11 +21,11 @@
     display: inline-block;
     height: 16px; 
     width: 16px; 
+    box-sizing: border-box;
     background-image: url('img03.jpg');
     background-repeat: no-repeat;
-    background-position: 20px 0px; 
     background-size: 220px;
-    box-sizing: border-box;
+    background-position: 20px 0px; 
     position: relative;
     top: 5px;
     margin: 0 0 0 3px;
@@ -62,6 +62,7 @@ btn.addEventListener('click', function() {
   // 아이콘을 출력한다. 
   if (email.value == "hong@test.com") { // 존재하는 사용자일 경우
     state.style.backgroundPosition = "-204px -1px";
+  // 원래 코드 : state.style["background-position"] = "-204px -1px";
     messageSpan.innerHTML = "중복된 이메일입니다.";
     messageSpan.style["color"] = "red";
   } else {
