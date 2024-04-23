@@ -37,7 +37,7 @@ var el = document.querySelectorAll(".btn1");
 // };
 
 
-// 다음과 같이 각 태그 객체에 리스너를 추가하던가!
+// 다음과 같이 각 태그 객체에 리스너를 추가하든가!
 
 // for (var e of el) {
 // 	e.onclick = function() {
@@ -45,7 +45,21 @@ var el = document.querySelectorAll(".btn1");
 // 	}
 // }
 
+<!--let students = [-->
+<!--  {name:"홍길동", kor:100, math:100, eng:100},-->
+<!--  {name:"임꺽정", kor:90, math:90, eng:90}-->
+<!--];-->
 
+<!--for (let student of students) {-->
+<!--  student.compute = function() {-->
+<!--    this.sum = this.kor + this.math + this.eng;-->
+<!--  console.log(this.sum)-->
+<!--  };-->
+<!--}-->
+
+<!--students[0].compute();-->
+<!--students[1].compute();-->
+<!--console.log(students[0].compute == students[1].compute);-->
 
 // 다음처럼 한 개의 함수를 정의한 후에
 // 각 태그에 리스너로 등록하던가!
@@ -64,9 +78,6 @@ for (var e of el) {
 //$(".btn1").click(function() {
 //  console.log(this);
 //});
-
-
-
 
 
 
