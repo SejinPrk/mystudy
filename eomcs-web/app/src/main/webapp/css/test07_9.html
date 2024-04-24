@@ -17,7 +17,7 @@
   }
 
   #state {
-    /* border: 1px solid red; */
+    xborder: 1px solid red;
     display: inline-block;
     height: 16px; 
     width: 16px; 
@@ -62,11 +62,10 @@ btn.addEventListener('click', function() {
   // 아이콘을 출력한다. 
   if (email.value == "hong@test.com") { // 존재하는 사용자일 경우
     state.style.backgroundPosition = "-204px -1px";
-  // 원래 코드 : state.style["background-position"] = "-204px -1px";
     messageSpan.innerHTML = "중복된 이메일입니다.";
     messageSpan.style["color"] = "red";
   } else {
-    state.style.backgroundPosition = "-167px -1px";
+    state.style["background-position"] = "-167px -1px";
     messageSpan.innerHTML = "사용할 수 있는 이메일입니다.";
     messageSpan.style["color"] = "blue";
   }

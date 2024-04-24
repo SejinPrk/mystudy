@@ -26,8 +26,8 @@
 // 태그의 속성 바꾸기
 //
 var e = document.querySelector("article:nth-child(2) a");
-//console.log(e.href) 태그의 속성값 꺼내기: 아래 방식과 똑같다. (단, 이 방식은 원래 태그 객체에 존재하는 속성(href)이어야 가능)
-console.log(e.getAttribute('href')); // 원래 속성 + 개발자가 임의로 추가한 속성까지 뽑아낼 수 있는 문법
+console.log(e.href); // 원래 태그 객체에 있는 속성인 경우,
+console.log(e.getAttribute('href')); // 원래 속성 + 개발자가 임의로 추가한 속성
 
 document.querySelector('#btn1').onclick = function() {
   // 1) 방법1
@@ -40,7 +40,7 @@ document.querySelector('#btn1').onclick = function() {
   //      태그객체.setAttribute("속성명", "값")
   // => 이 메서드를 사용하면 개발자가 임의로 추가한 프로퍼티 값도 바꿀 수 있다.
   //    즉 원래 태그 객체에 없던 프로퍼티 값도 설정할 수 있다.
-   e.setAttribute("href", "http://www.google.com");
+  e.setAttribute("href", "http://www.google.com");
 };
 
 </script>
