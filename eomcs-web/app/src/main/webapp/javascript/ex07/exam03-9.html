@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex07</title>
+</head>
+<body>
+<div id="news"></div>
+<button class="btn">추가</button><br>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
+<script>
+"use strict"
+
+let news = $('#news');
+
+  $('.btn').click(function(event) {
+    $('<p>').html('okok').appendTo(news);
+  });
+
+</script>
+</body>
+</html>
