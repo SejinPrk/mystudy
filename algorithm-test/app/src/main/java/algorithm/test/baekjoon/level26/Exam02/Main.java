@@ -1,5 +1,5 @@
 package algorithm.test.baekjoon.level26.Exam02;
-// 11049 행렬 곱셈 순서
+// 1927 최소 힙
 public class Main {
 
 }
