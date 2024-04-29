@@ -5,7 +5,7 @@
 <title>ex07</title>
 </head>
 <body>
-<header></header>
+<div id="header"></div>
 <h1>AJAX - jQuery 사용하기</h1>
 <form>
 <input type="text" id="a"> + <input type="text" id="b">
@@ -25,22 +25,22 @@
   let btn1 = $('#btn1');
   let btn2 = $('#btn2');
 
-   $('#header').load('test5.jsp');
-
-  $.get('test5.jsp', function(result) {
-    $('#header').html(result);
-  });
+  $('#header').load('test5.jsp');
 
   btn1.click(function() {
     $.post(
       'test4.jsp',
       {a: $('#a').val(), b: $('#b').val()},
       function(result) {
-      //  r.val(result.data);
-      console.log(result);
+        //r.val(result.data);
+        console.log(result);
       },
       'json');
+
   });
+
+
+
 
 </script>
 
@@ -48,3 +48,8 @@
 
 </body>
 </html>
+
+
+
+
+

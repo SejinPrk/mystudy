@@ -4,7 +4,7 @@
 function jQuery(selector) {
   if (selector.startsWith("<")) {
     let e = document.createElement(selector.substring(1, selector.length - 1));
-    e.append1 = function(child) {
+    e.append = function(child) {
       e.appendChild(child);
     };
     return e;

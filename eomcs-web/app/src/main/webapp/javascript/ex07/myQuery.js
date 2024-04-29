@@ -1,9 +1,9 @@
 function myQuery(p) {
-  let el = document.querySelectorAll(p);
-
-  let el;
-  if (p.startsWith('<')) {  //'<p>'
-    el.push(document.createElement(p.substring(1, p.length-1)));
+  let el = [];
+  if (p instanceof Element) {
+    el.push(p);
+  } else if (p.startsWith('<')) { //'<p>'
+    el.push(document.createElement(p.substring(1, p.length - 1)));
   } else {
     let nodeList = document.querySelectorAll(p);
     for (let e of nodeList) {
@@ -24,7 +24,7 @@ function myQuery(p) {
 
   el.on = function(eventName, listener) {
     for (let e of el) {
-    e.addEventListener(eventName, listener);
+      e.addEventListener(eventName, listener);
     }
     return this;
   };
@@ -33,67 +33,91 @@ function myQuery(p) {
     if (listener) {
       el.on('click', listener);
     } else {
-      for(let e of el) {
+      for (let e of el) {
         e.dispatchEvent(new MouseEvent('click'));
       }
-      return this;
-    }
-  };
-
-  el.html = function(content) {
-    if(content) {
-      for (let e of el) {
-        e.innerHTML = content;
-      }
-    } else {
-      return el.length > 0 ? el[0].innerHTML : undefined;
     }
     return this;
   };
 
+  el.html = function(content) {
+    if (content) {
+      for (let e of el) {
+        e.innerHTML = content;
+      }
+      return this;
+    } else {
+      return el.length > 0 ? el[0].innerHTML : undefined;
+    }
+  };
+
   el.text = function(content) {
-    if(content){
+    if (content) {
       for (let e of el) {
         e.textContent = content;
       }
+      return this;
     } else {
-      return el.length > 0 ? e.textContent : undefined;
+      el.length > 0 ? el[0].textContent : undefined;
     }
   };
 
   el.load = function(url, p1, p2) {
-  let settings = {
-    url: url
-  }
-  let complete;
-  if (p1 && 'object'== typeof p1) {
-    settings.data = p1;
-  } if (p2 && 'function' == typeof p2) {
-    complete = p2;
+    let settings = {
+      url: url
     }
- else if (p1 && 'function' == typeof p1) {
-    complete = p1;
-  }
+    let complete;
+    if (p1 && 'object' == typeof p1) {
+      settings.data = p1;
+      if (p2 && 'function' == typeof p2) {
+        complete = p2;
+      }
+    } else if (p1 && 'function' == typeof p1) {
+      complete = p1;
+    }
 
-  settings.success = function() {
-    for (let e of el) {
-      e.innerHTML = result;
+    settings.success = function(result) {
+      for (let e of el) {
+        e.innerHTML = result;
+      }
+      if (complete) {
+        complete();
+      }
     }
-    if (complete) {
-      complete();
-    }
-  }
     myQuery.get(settings);
     return this;
   };
 
-  el.appendTo = function(selector) {
-    let parent = document.querySelector(selector);
+  el.appendTo = function(value) {
+    let parents;
+    if ('string' == typeof value) {
+      parents = myQuery(value);
+    } else {
+      parents = value;
+    }
+    parents.append(el);
+    return this;
+  };
+
+  el.append = function(childs) {
     for (let e of el) {
-      parent.appendChild(e);
+      for (let child of childs) {
+        e.appendChild(child);
+      }
     }
     return this;
   };
+
+  el.attr = function(name, value) {
+    if (arguments.length > 1) {
+      for (let e of el) {
+        e.setAttribute(name, value);
+      }
+      return this;
+    } else {
+      return el.length > 0 ? el[0].getAttribute(name) : undefined;
+    }
+  }
 
   return el;
 }
@@ -167,7 +191,7 @@ myQuery.get = function(url, p1, p2, p3) {
   let settings = {
     url: url,
     method: 'get',
-    dataType: 'test'
+    dataType: 'text'
   };
 
   if ('object' == typeof p1) {
@@ -193,6 +217,7 @@ myQuery.get = function(url, p1, p2, p3) {
 
 };
 
+
 myQuery.getJSON = function(url, p1, p2, p3) {
   if ('object' == typeof p1) {
     if (p2) {
@@ -211,7 +236,7 @@ myQuery.post = function(url, p1, p2, p3) {
   let settings = {
     url: url,
     method: 'post',
-    dataType: 'test'
+    dataType: 'text'
   };
 
   if ('object' == typeof p1) {

@@ -1,5 +1,5 @@
 {
-  "name": "nodejs",
+  "name": "socket",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "socket.io": "^4.7.5"
   }
 }
