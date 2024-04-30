@@ -1,60 +1,55 @@
 package algorithm.test.baekjoon.level27.Exam04;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-// 2629 양팔저울
+
 public class Main {
   static int N;
-  static int[] w;
-  static boolean[][] ans;
-
-  public static void main(String[] args) throws Exception {
+  static int[] chu;
+  static int num;
+  static int[] gusul;
+  static boolean[][] cache;
+  public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     N = Integer.parseInt(br.readLine());
     StringTokenizer st = new StringTokenizer(br.readLine());
-
-    w = new int[N];
-    ans = new boolean[N+1][40001];
-
-    for (int i = 0; i < N; i++) {
-      int src = Integer.parseInt(st.nextToken());
-      w[i] = src;
+    chu = new int[N];
+    for(int i = 0 ; i < N ; i++){
+      chu[i] = Integer.parseInt(st.nextToken());
     }
-
-    dp(0,0);
-
-    for (int j = 0; j < 20; j++) {
-      if (ans[N][j]) {
-        System.out.println(j);
-        System.out.println(ans[N][j] + " ");
-      }
-    }
-
-    int c = Integer.parseInt(br.readLine());
-    StringBuilder sb = new StringBuilder();
+    num = Integer.parseInt(br.readLine());
+    gusul = new int[num];
     st = new StringTokenizer(br.readLine());
-
-    for (int i = 0; i < c; i++) {
-      int t = Integer.parseInt(st.nextToken());
-      if (ans[N][t]) {
-        sb.append("Y ");
-      } else {
-        sb.append("N ");
-      }
+    for(int i = 0 ; i < num ; i++) {
+      gusul[i] = Integer.parseInt(st.nextToken());
     }
-    System.out.println(sb.toString());
+    cache = new boolean[N+1][40001];
+    dp(0,0);
+    for(int i = 0 ; i < num ; i++) {
+      boolean isPossible = false;
+      for(int j = 0 ; j < N+1 ; j++) {
+        if(cache[j][gusul[i]]) {
+          System.out.print("Y ");
+          isPossible = true;
+          break;
+        }
+      }
+      if(!isPossible) System.out.print("N ");
+    }
   }
 
-  static void dp(int cnt, int num) {
-    if (ans[cnt][num]) return;
-    ans[cnt][num] = true;
+  private static void dp(int n, int weight) {
+    if(weight < 0 || weight > 40000) return;
+    if(cache[n][weight]) return;
+    cache[n][weight] = true;
+    if(n == N) return;
 
-    if (cnt == N) return;
+    dp(n + 1, weight + chu[n]);
+    dp(n + 1, weight);
+    dp(n + 1, (weight < chu[n]) ? chu[n] - weight : weight - chu[n]); // 현재꺼를 빼는 경
 
-    dp(cnt + 1, num + w[cnt]);
-    dp(cnt + 1, num);
-    dp(cnt + 1, Math.abs(num - w[cnt]));
   }
 }
