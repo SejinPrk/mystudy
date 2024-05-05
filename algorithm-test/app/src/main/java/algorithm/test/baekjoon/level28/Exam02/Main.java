@@ -1,5 +1,5 @@
 package algorithm.test.baekjoon.level28.Exam02;
-
+// 17298 오큰수
 import java.util.Scanner;
 import java.util.Stack;
 
