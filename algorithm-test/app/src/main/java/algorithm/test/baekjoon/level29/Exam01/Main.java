@@ -1,5 +1,5 @@
 package algorithm.test.baekjoon.level29.Exam01;
-
+// 24479 알고리즘 수업 - 깊이 우선 탐색 1
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -27,7 +27,7 @@ public class Main {
       graph.add(new ArrayList<Integer>());
     }
 
-    for (int i = 0; i <= m; i++) {
+    for (int i = 0; i < m; i++) {
       st = new StringTokenizer(br.readLine(), " ");
       int u = Integer.parseInt(st.nextToken());
       int v = Integer.parseInt(st.nextToken());
